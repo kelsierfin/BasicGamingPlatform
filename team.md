@@ -1,3 +1,3 @@
-## Team Members ##
+# Team Members #
 
-# Sanbeer Shafin(30172174)
+## Sanbeer Shafin(30172174) ##
