@@ -5,3 +5,4 @@
 ## Roland Bako (30150358)
 ## Yadwinder Dhaliwal (30231610)
 ## Min Oh (30099454)
+## Sage Kennard (30146110)
