@@ -8,3 +8,4 @@
 - Sage Kennard (30146110)
 - Jennifer Ebose (30097393)
 - Anugya Ghimire (30040322)
+- Nathan Taylor (30206918)
