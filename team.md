@@ -4,3 +4,4 @@
 ## Hajra Athar (30165187)
 ## Roland Bako (30150358)
 ## Yadwinder Dhaliwal (30231610)
+## Min Oh (30099454)
