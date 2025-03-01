@@ -9,3 +9,4 @@
 - Jennifer Ebose (30097393)
 - Anugya Ghimire (30040322)
 - Nathan Taylor (30206918)
+- Jaspinder Singh Maan (30209953)
