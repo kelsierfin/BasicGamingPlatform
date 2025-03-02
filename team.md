@@ -17,3 +17,4 @@
 - Lara Agabrian (30207402)
 - Sabyasachi Barua (30227964)
 - Dalal Abdurazag (30125219)
+- Thu Quach (30212829)
