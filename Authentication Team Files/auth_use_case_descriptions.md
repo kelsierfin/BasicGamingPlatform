@@ -52,3 +52,62 @@ Enable any person to create an account.
 1. At what point should the server forcibly shut own the player(if the user is creating many a
  accounts using the same IP)?
 
+### User Login/Logout 
+**Primary Actor:**  
+Game Player
+
+**Goal in Context:**  
+Allow a player to login and logout.
+
+**Pre-Conditions:**
+- The system is accessible and online.
+- The player has an already registered account.
+
+**Trigger:**
+- Player initiates login by clicking the "Login" button.
+- Player initiates logout by clicking the "Logout" button.
+
+**Scenario:**
+
+***Login:***
+1. Player clicks the "login" button.
+2. Players enters their username and password.
+3. System validates their login credentials.
+4. if credentials are valid, the player is granted access.
+5. If credentials are invalid, an error message is displayed and the player is prompted to try again.
+6. The system may temporarily lock the account if the player has multiple failed attempts.
+
+***Logout***
+1. Player clicks the "logout" button.
+2. System ends the session.
+
+**Post-Conditions:**
+- After login, the player has access to their profile, and the game features.
+- After logout, the session is ended, and the player must login again to the access their profile.
+**Exceptions:**
+- Server downtime.
+- Multiple incorrect credentials may result in a temporary lock.
+- Automatic logout due to inactivity.
+
+**Priority:**
+- High. Essential for security, and also for user acess control.
+
+**When Available:**
+- First increment.
+
+**Frequency of Use:**
+- Frequent. Every time a player accesses or leaves the platform.
+
+**Channel to Actor:**
+- Web interface via mouse click or touch interaction.
+
+**Secondary Actors:**
+- System administrator
+
+**Channels to Secondary Actors:**
+- Admin dashbord
+
+**Open Issues:**
+1. A possible "remember me" option for easier access.
+2. Should multifactor authentication be implemented?
+3. After how long should should the system automatically logout due to inactivity?
