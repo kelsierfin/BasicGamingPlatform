@@ -111,3 +111,56 @@ Allow a player to login and logout.
 1. A possible "remember me" option for easier access.
 2. Should multifactor authentication be implemented?
 3. After how long should should the system automatically logout due to inactivity?
+
+### Edit Profile
+**Primary Actor:**  
+Game Player
+
+**Goal in Context:**  
+Allow user to make changes to profile when needed.
+
+**Pre-Conditions:**
+- Networking is running as needed.
+- Player has an existing profile and wants to make changes to it.
+- Player is logged in.
+
+**Trigger:**
+- Player clicks the edit profile button after logging in to existing account.
+
+**Scenario:**
+1. Player loads the platform through a web browser.
+2. Player is able to log in to the system.
+3. Player clicks "Edit Profile" after logging in.
+4. Player is able to edit username or profile picture. They are also able to change email address or
+   password with proper verification.
+5. If invalid details detected the user performs actions again until valid details are put in.
+6. When player's details are valid, it changes the desired information.
+
+**Post-Conditions:**
+- The player has successfully edited or changed their information.
+- The database is updated as required.
+
+**Exceptions:**
+- Server malfunction due to overloading
+
+**Priority:**
+- Medium.
+
+**When Available:**
+- Second Iteration.
+
+**Frequency of Use:**
+- Only when desired by user.
+
+**Channel to Actor:**
+- Click of a button using touchscreen or mouse click.
+
+**Secondary Actors:**
+- User Database.
+
+**Channels to Secondary Actors:**
+- Code
+
+**Open Issues:**
+1. Security measures for user verification?
+2. Require password input to edit profile?
