@@ -164,3 +164,56 @@ Allow user to make changes to profile when needed.
 **Open Issues:**
 1. Security measures for user verification?
 2. Require password input to edit profile?
+
+
+## Multifactor Authentication (MFA)
+**Primary Actor**
+Game Player
+
+**Goal in Context**
+- Requires users to provide an addtional verification step beyond standard username/password to increase account security 
+
+**Pre-Conditions**
+- the system is accessible and online
+- the played has a registered account and a valid username/password
+- MFA feature is enabled on the platform
+
+**Trigger** 
+-PLayer attempts to log in with correct username and password, prompting the system to initiate the MFA process
+
+**Scenario**
+1. Player enters valid username and password on the login screen.
+2. System validates these credentials.
+3. Upon successful validation, the system requests a second factor (e.g., code sent to email, SMS, authenticator app).
+4. Player inputs the one-time code or approves the request via an authenticator app.
+5. System verifies the code or approval.
+6. If the second factor is correct, the player is fully logged in.
+7. If the second factor is incorrect or not entered within a certain time frame, the system denies access and prompts the user to try again.
+
+**Post-Conditions**
+- Upon successful MFA, the player gains access to their profile and game features.
+- If MFA fails, the player remains locked out until they provide the correct second factor.
+
+**Exceptions**
+- Delivery delay or failure for the one-time code (e.g., email or SMS not received).
+- Authenticator app malfunction or time-synchronization errors causing valid codes to be rejected.
+
+**Priority**
+- Medium
+
+**When Available**
+- Third iteration
+
+**Frequency of Use:**
+- Every login attempt if MFA is enforced by default.
+- Optional if the player chooses to enable it.
+
+**Channel to Actor**
+- Click of a button using touchscreen or mouse click.
+
+**Secondary Actor**
+- External authentication service (e.g., authenticator app)
+
+**Open Issues**
+- Handling of backup authentication methods when the user cannot access their primary second factor?
+- Storage and management of user MFA preferences?
