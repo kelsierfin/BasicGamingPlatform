@@ -147,3 +147,50 @@ Open issues:
     - What level of administrative control is needed for chat moderation?
     - Should chat support auto-send game event notifications?
     - How will the "chat" feature scale between different game types (e.g., turn-based vs. real-time)?
+
+Use Case 3: Look up Players 
+
+Iteration: 1
+
+Primary actor: Registered Player
+
+Goal in context: To allow users to search for players using the GUI search feature, to access their profiles, and to examine stats before challenging them.
+
+Preconditions:
+1. The user is logged in.
+2. The user has an internet connection.
+3. The dashboard window is fully loaded, displaying a button called “Look up Player”
+
+Trigger: The user selects the user “Look up Players” button with their mouse. 
+
+Scenario:
+1. The user enters a player's name into the search bar and the list updates dynamically with similar names.
+2. The user applies filters (e.g., level, games played) via dropdown menus.
+3. The user sorts the list by name, level, or other attributes using sorting buttons.
+4. The user enters a player's name into the search bar.
+5. The user scrolls through the list using their mouse or the scroll bar.
+
+Postconditions:
+1. The selected player’s profile is displayed in a new window.
+2. Hovering over a name in the list triggers a pop-up showing the player's name and stats.
+
+Exceptions:
+1. If no matching players are found, the GUI displays a "No players found" message.
+2. If the user loses connection while searching, the GUI displays a "Connection lost. Couldn’t load list." message.
+
+Priority: High. A multiplayer GUI has to provide a way to access player stats of all players, for users to find and interact with others.
+
+When available: Third iteration. 
+
+Frequency of use: High. Players will frequently use this feature to find opponents.
+
+Channel to actor: The GUI 
+
+Secondary actors: 
+1. The player database.  
+2. The backend server. 
+
+Channels to secondary actors: Internet 
+
+Open issues: None
+
