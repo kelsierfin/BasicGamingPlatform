@@ -333,3 +333,53 @@ Allow a player to reset their password if they forget it.
 1. How long should the reset link remain valid?
 2. Should MFA be required?
 3. Should there be a limit to the number od resets with in a certain timeframe?
+
+### Deleting Account
+**Primary Actor:**  
+Game Player
+
+**Goal in Context:**  
+Enable any person to delete their account from the profile management page. 
+
+**Pre-Conditions:**
+- Network is running as needed.
+- Person is logged into their account
+
+**Trigger:**
+- Player clicks the delete account button from their profile management page.
+
+**Scenario:**
+1. Player logs in to their account.
+2. Player goes the profile management page.
+3. Player clicks on the delete account button. 
+4. Player gets asked to confirm if they want to delete account.
+5. If players confirms deletion, they are asked to input their password again and if the passwords matches with the
+    database then player is officially logged and account gets deleted
+
+**Post-Conditions:**
+- The person gets logged out of the account and lands to the homepage.
+- The person gets a sidebar notification  saying account deleted. 
+
+**Exceptions:**
+- database/server malfunction. 
+
+**Priority:**
+- Mid – not essential to the function of the platform. 
+
+**When Available:**
+- Second  increment.
+
+**Frequency of Use:**
+- moderate  – once in a while. 
+
+**Channel to Actor:**
+- Click of a button using touchscreen or mouse click under the profile management page. 
+
+**Secondary Actors:**
+- Developers, Testers, Admin
+
+**Channels to Secondary Actors:**
+- System Admin Dashboard
+
+**Open Issues:**
+1. Should we let players recover account during a period of time if it's already deleted from database?
