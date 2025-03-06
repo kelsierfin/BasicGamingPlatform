@@ -241,3 +241,51 @@ Searching up games by text
 Different ways to sort games. Example: Alphabetically, last played date, most played, self sort.
 
 
+Use case 4: Join a game from the library
+-Iteration: 1.0
+
+-Primary actor: registered player
+
+-Goal in context: After looking up for games read descriptions of gameplay or rules, allowing a registered player to participate in the game by clicking and choosing the gameplay.
+
+-Pre-conditions: 
+1.The player is successfully logged into their account.
+2.The player is directed to the game library page.
+3.The game library is not empty, and is available for selection
+
+-Trigger: The registered players join a game by choosing and clicking on the game icon or “start” button from the game library 
+
+-Priority: High-needed, the players should join in the game first, either want to play solo or join a team in multi-player games later.
+
+-When available: Available any time if the players have good internet connection and have logged into the game as a registered player to see the game library and pick one from it.
+
+-Scenario:
+1.Players log into the game application
+2.Players navigate to the game library
+3.Players read the descriptions and rules of the game
+4.Players engage in a game by clicking game icon to start game session
+-Exceptions:
+
+1.Internet corruption
+	The Wi-fi is so unstable that the game cannot continue
+	The system prompts a message on refreshing the Wi-fi or reload the game.
+2.Requirement for update
+	The game has updated new features
+	The system prompts a message on updating the game that players chose. 
+3.Unavailable participation due to full session
+	The game is full as the numbers of players for that game reach the capacity
+	The system prompts a message for matchmaking the player with the AI bot;    or suggests estimated waiting time until the new session is available.
+
+-Frequency of use: High frequency, the players engage in game by first logging in and joining in a game 
+
+-Channel to actor : the GUI
+
+-Secondary actors: the game server
+
+-Channel to the secondary actors: 
+	Game server: maintain the server to run 24/7
+
+-Open issues: N/A
+
+
+
