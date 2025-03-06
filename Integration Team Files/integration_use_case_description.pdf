@@ -69,17 +69,19 @@ Open issues:
 
 Use case: Updating profile
 Primary Actor: Player
-Goal in context: 
-Preconditions: 
-Scenario: 
-Exceptions: 
-Priority: 
-When available: 
-Frequency of use: 
-Channel to actor: 
-Secondary Actors: 
+Goal in context: After game concludes, both players profiles are updated to reflect new stats
+Preconditions: Game has been completed
+Scenario: 1. Win/loss is added to both player records (Leaderboard and Matchmaking and network)
+2. Both player stats are updated according to game outcome (Leaderboard and Matchmaking and network)
+Exceptions: 1. Either player leaves before game is completed
+Priority: High
+When available: Right after game is completed
+Frequency of use: Often
+Channel to actor: Platform, Electronic device(Computer,laptop,ect)
+Secondary Actors: Opponent, Network, Leaderboard and Matchmaking
 Channels to secondary actor: 
-Open issues: 
+Open issues: 1. How are stats effected if a player leaves mid game?
+2.Can game end in a draw?
 
 Use case: Updating leaderboard
 Primary Actor: Player
