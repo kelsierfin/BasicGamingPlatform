@@ -1,3 +1,5 @@
+// Will add trigger and postcondition tomorrow
+
 Use case: Start session
 Primary Actor: Player
 Goal in context: Player begins session to play a game
@@ -49,17 +51,21 @@ Open issues:
 
 Use case: Registering gameplay
 Primary Actor: Player
-Goal in context: 
-Preconditions: 
-Scenario: 
-Exceptions: 
-Priority: 
-When available: 
-Frequency of use: 
-Channel to actor: 
-Secondary Actors: 
-Channels to secondary actor: 
-Open issues: 
+Goal in context: Update gameplay and GUI for both players
+Preconditions: Game has already begun
+Scenario: 1. Player makes a move (game logic)
+2. GUI updates to show move (GUI)
+3. Opponents GUI updates to show player move (network, GUI, game logic)
+Exceptions: 1. Player does not make a valid move
+2. Player disconnects from network
+3. Player closes game/platform
+Priority: Essential
+When available: Whenever game is in play
+Frequency of use: Often
+Channel to actor: Platform, Electronic device(Computer,laptop,ect)
+Secondary Actors: Opponent, Network team, GUI team, Game Logic team
+Channels to secondary actor: Platform
+Open issues:
 
 Use case: Updating profile
 Primary Actor: Player
