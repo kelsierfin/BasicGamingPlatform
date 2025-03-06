@@ -217,3 +217,49 @@ Game Player
 **Open Issues**
 - Handling of backup authentication methods when the user cannot access their primary second factor?
 - Storage and management of user MFA preferences?
+
+
+
+## Viewing Match History
+**Primary Actor**
+Game Player
+
+**Goal in Context**
+- To enable the user to view his/her match history and other stats related to it 
+
+**Pre-Conditions**
+- the system is accessible and online
+- the user is a registered and has a username
+
+**Exceptions**
+The user has not played any previous match is using the platform for the first time.
+
+**Scenario**
+1. Player enters valid username and password on the login screen.
+2. System validates these credentials.
+3. The player clicks on match history
+4. the match history is visible to the player through a user interface.
+5. if the player has no match hisotry, the UI shows a 0/NA or an error window letting the user know the absence of the match history
+
+**Post-Conditions**
+- The player is able to veiw the matches, their serial number and the stats related to the match.
+
+**Priority**
+- High- Match History is crucial in mathcmaking and keeping the stats of the player
+
+**When Available**
+- first iteration
+
+**Frequency of Use:**
+- Optional: if the player wants to use it
+- high for the system for the process of matchmaking
+
+**Channel to Actor**
+- Click of a button using touchscreen or mouse click.
+
+**Secondary Actor**
+- System administrator
+
+**Open Issues**
+- what stats should the pllayer be able to see?
+- should the stats that the system can utilize be the same as the stats that the player can see.
