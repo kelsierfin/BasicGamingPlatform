@@ -10,25 +10,28 @@ Exceptions: 1. Player does not have platform installed (if necessary)
 Priority: Essential
 When available: Once platform is installed
 Frequency of use: Whenever platform is opened
-Channel to actor: Electronic device(Computer,laptop,ect)
-Secondary Actors: GUI team, Authentication and Profile
+Channel to actor: Platform, Electronic device(Computer,laptop,ect)
+Secondary Actors: GUI team, Authentication and Profile team
 Channels to secondary actor: Platform
 Open issues: 1. Does platform require instalation or is it available on web browser?
 2. Does platform require internet connection to begin session or only when attempting to start game?
 
 Use case: Matching players together
 Primary Actor: Player
-Goal in context: 
-Preconditions: 
-Scenario: 
-Exceptions: 
-Priority: 
-When available: 
-Frequency of use: 
-Channel to actor: 
-Secondary Actors: 
-Channels to secondary actor: 
-Open issues: 
+Goal in context: Connect player to a suitable opponent
+Preconditions: Player selects which game they want to play
+Scenario: 1. System finds all other players looking for a match (network)
+2. System selects opponent with closest skill rating (leaderboard and matchmaking)
+3. Game begins (GUI and game logic)
+Exceptions: 1. Player is offline
+2. There are no opponent to match up with
+Priority: Essential
+When available: Once game is selected
+Frequency of use: Often
+Channel to actor: Platform, Electronic device(Computer,laptop,ect)
+Secondary Actors: Opponent, Network team, Leaderboard and Matchmaking team, GUI team, Game Logic team
+Channels to secondary actor: Platform
+Open issues: 1. What if there are no online opponents within a reasonable skill range of player?
 
 Use case: Player joins game
 Primary Actor: Player
