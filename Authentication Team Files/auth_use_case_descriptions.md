@@ -16,7 +16,7 @@ Enable any person to create an account.
 
 **Scenario:**
 1. Player loads the platform through a web browser.
-2. Player clicks "Create An Account" after being promoted to login. 
+2. Player clicks "Create An Account" after being prompted to login. 
 3. Player inputs sufficient  details for Username, Password, Verify Password & Email. 
 4. If inputted invalid details where passwords don't match the requirements or if username already exists, it asks
    the user to perform actions again until valid details are put in. 
@@ -66,16 +66,23 @@ Allow a player to login and logout.
 **Trigger:**
 - Player initiates login by clicking the "Login" button.
 - Player initiates logout by clicking the "Logout" button.
+- Player selects "Guest Login"
 
 **Scenario:**
 
 ***Login:***
-1. Player clicks the "login" button.
-2. Players enters their username and password.
-3. System validates their login credentials.
-4. if credentials are valid, the player is granted access.
-5. If credentials are invalid, an error message is displayed and the player is prompted to try again.
-6. The system may temporarily lock the account if the player has multiple failed attempts.
+1. Player opens the platform and is prompted to login
+2. Player clicks the "login" button.
+3. Players enters their username and password.
+4. System validates their login credentials.
+5. if credentials are valid, the player is granted access.
+6. If credentials are invalid, an error message is displayed and the player is prompted to try again.
+7. The system may temporarily lock the account if the player has multiple failed attempts.
+8. If player does not have an account, they click "Create An Account" and are redirected to the creating an account page.
+
+***Guest Login:***
+1. Player clicks on "Guest Login"
+2. System grants limited access, restricting certain featues like, saving progress, or accessing leaderboards.
 
 ***Logout***
 1. Player clicks the "logout" button.
@@ -83,6 +90,7 @@ Allow a player to login and logout.
 
 **Post-Conditions:**
 - After login, the player has access to their profile, and the game features.
+- After guest login, the player has limited access.
 - After logout, the session is ended, and the player must login again to the access their profile.
 
 **Exceptions:**
@@ -109,9 +117,10 @@ Allow a player to login and logout.
 - Admin dashbord
 
 **Open Issues:**
-1. A possible "remember me" option for easier access.
+1. A possible "Remember Me" option for easier access.
 2. Should multifactor authentication be implemented?
 3. After how long should should the system automatically logout due to inactivity?
+4. What specific limitations should be placed on guest users.
 
 ### Edit Profile
 **Primary Actor:**  
