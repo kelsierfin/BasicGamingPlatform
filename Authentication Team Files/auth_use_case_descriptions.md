@@ -52,12 +52,12 @@ Enable any person to create an account.
 1. At what point should the server forcibly shut own the player(if the user is creating many a
  accounts using the same IP)?
 
-### User Login/Logout 
+### User Login
 **Primary Actor:**  
 Game Player
 
 **Goal in Context:**  
-Allow a player to login and logout.
+Allow a player to login.
 
 **Pre-Conditions:**
 - The system is accessible and online.
@@ -65,7 +65,6 @@ Allow a player to login and logout.
 
 **Trigger:**
 - Player initiates login by clicking the "Login" button.
-- Player initiates logout by clicking the "Logout" button.
 - Player selects "Guest Login"
 
 **Scenario:**
@@ -84,19 +83,13 @@ Allow a player to login and logout.
 1. Player clicks on "Guest Login"
 2. System grants limited access, restricting certain featues like, saving progress, or accessing leaderboards.
 
-***Logout***
-1. Player clicks the "logout" button.
-2. System ends the session.
-
 **Post-Conditions:**
 - After login, the player has access to their profile, and the game features.
 - After guest login, the player has limited access.
-- After logout, the session is ended, and the player must login again to the access their profile.
 
 **Exceptions:**
 - Server downtime.
 - Multiple incorrect credentials may result in a temporary lock.
-- Automatic logout due to inactivity.
 
 **Priority:**
 - High. Essential for security, and also for user access control.
@@ -105,7 +98,7 @@ Allow a player to login and logout.
 - First increment.
 
 **Frequency of Use:**
-- Frequent. Every time a player accesses or leaves the platform.
+- Frequent. Every time a player accesses the platform.
 
 **Channel to Actor:**
 - Web interface via mouse click or touch interaction.
@@ -119,8 +112,59 @@ Allow a player to login and logout.
 **Open Issues:**
 1. A possible "Remember Me" option for easier access.
 2. Should multifactor authentication be implemented?
-3. After how long should  the system automatically logout due to inactivity?
-4. What specific limitations should be placed on guest users.
+3. What specific limitations should be placed on guest users?
+
+### User Logout 
+**Primary Actor:**  
+Game Player
+
+**Goal in Context:**  
+Allow a player to logout.
+
+**Pre-Conditions:**
+- The system is accessible and online.
+- The player is logged in.
+
+**Trigger:**
+- Player initiates logout by clicking the "Logout" button.
+- Automatic logout due to inactivity.
+
+**Scenario:**
+
+1. Player clicks the "logout" button.
+2. System ends the session.
+3. Player is redirected to the login page.
+
+**Post-Conditions:**
+- After logout, the session is ended, and the player must login again to the access their profile.
+
+**Exceptions:**
+- Server downtime.
+- Server error prevents proper session termination.
+
+
+**Priority:**
+- High. Essential for security, and also for user access control.
+
+**When Available:**
+- First increment.
+
+**Frequency of Use:**
+- Frequent. Everytime a player exits the platform.
+
+**Channel to Actor:**
+- Web interface via mouse click or touch interaction.
+
+**Secondary Actors:**
+- System administrator
+
+**Channels to Secondary Actors:**
+- Admin dashboard
+
+**Open Issues:**
+1. After how long should  the system automatically logout due to inactivity?
+2. Should there be a confirmation prompt?
+
 
 ### Edit Profile
 **Primary Actor:**  
