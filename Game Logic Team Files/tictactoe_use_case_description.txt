@@ -1,0 +1,45 @@
+Use Case: Playing Multiplier Tic Tac Toe
+Primary Actor:
+-	Tic Tac Toe player one and player two
+Goal:
+-	 The goal of each player is to win the game by placing their selected symbol side by side three times either in a row, column or diagonally.
+Precondition
+-	Each player must log into their accounts for the online board game platform.
+-	To play the game in multiple players must have access to wi-fi.
+-	In order to run the game, the player must select Tic Tac Toe in the board games menu.
+Trigger:
+-	Once the game has begun running the player selects start and joins an online session with another online player.
+Scenario:
+1.  Player one selects X or O, the symbol that remains unselected gets assigned to player two.
+2.	Player one selects any empty cell inside of the three-by-three grid.
+3.	The game places player ones symbol inside of the selected cell.
+4.	The display changes to show that its player two’s turn
+5.	Player two selects an empty cell
+6.	The game places player two’s symbol inside of the selected cell.
+7.	Steps 2 – 6 repeats until either a player wins the game or until all the cells get filled.
+8.	If a player wins the display changes to show the winner and each player can choose to exit the game, rematch or choice to play another match with someone else.
+
+Exceptions:
+1.	All cells become occupied: The game ends in a draw and each player can choose to rematch or exit the game.
+2.	Player selects a cell when it’s not their turn: The grid does not change but the player is alerted through a pop up that it’s not their turn
+3.	A player exits their game before the game ends: The remaining player is connected to a new match
+4.	A player has not interacted with the game for more than two minutes:  The inactive player is kicked out of the match and the active player wins the game.
+5.	Player has a weak or non-existent internet connection: A pop-up window alerts the player of the issue, after which the player is not allowed to join the online game until they have a strong enough connection.
+
+Priority:
+-	Essential:  required to the test basic functionality of the platform.
+When available:
+-	End of second project iteration.
+Frequency of use:
+-	Frequent.
+Channel to actor:
+-	Trackpad, mouse and keyboard used by player.
+Secondary Actor:
+-	Dev team responsible for creating and maintaining the online board game platform.
+Channel to secondary actor:
+-	Technical support:  Email
+Open issues:
+-	Should we implement an offline version of the game.
+-	For the offline version are we going to incorporate different difficulty levels.
+-	Should we provide the option for players to play on different grid sizes.
+
