@@ -196,3 +196,48 @@ Channels to secondary actors: Internet
 
 Open issues: None
 
+Use Case 3: Game look up menu
+
+Iteration: 1.0, last modification: March 5th by Kemuel
+
+Primary Actor: Registered player
+
+Goal in context: Allows for a player to look through their list of games and read a description of its gameplay.
+
+Preconditions:
+Player is logged in.
+
+Trigger:
+When the customer starts the application.
+When you return to your games list after playing a game.
+
+Priority: High priority needed to interact with the rest of the program.
+
+When is it available: Available anytime the application is open, and when a game has ended.
+
+Scenario:
+Player starts game suite application
+Games on suite popup in a list
+Player clicks on a game in the list and sees their descriptions
+
+Exceptions:
+Player Does Not Start application
+Player is playing another game simultaneously
+Player is not logged in
+
+When available: Available as soon as the application starts.
+
+Frequency of use: High Frequency. Every time a user wants to look through their games
+
+Channel to actor: Player uses Keyboard/ mouse interactions to interact with the application
+
+Secondary actors:
+Player database.
+Game application client.
+Game servers.
+
+Open Issues:
+Searching up games by text
+Different ways to sort games. Example: Alphabetically, last played date, most played, self sort.
+
+
