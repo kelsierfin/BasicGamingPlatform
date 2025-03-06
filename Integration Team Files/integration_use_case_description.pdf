@@ -1,0 +1,90 @@
+Use case: Start session
+Goal in context: 
+Preconditions: 
+Scenario: 
+Exceptions: 
+Priority: 
+When available: 
+Frequency of use: 
+Channel to actor: 
+Secondary Actors: 
+Channels to secondary actor: 
+Open issues: 
+
+Use case: Matching players together
+Goal in context: 
+Preconditions: 
+Scenario: 
+Exceptions: 
+Priority: 
+When available: 
+Frequency of use: 
+Channel to actor: 
+Secondary Actors: 
+Channels to secondary actor: 
+Open issues: 
+
+Use case: Player joins game
+Goal in context: 
+Preconditions: 
+Scenario: 
+Exceptions: 
+Priority: 
+When available: 
+Frequency of use: 
+Channel to actor: 
+Secondary Actors: 
+Channels to secondary actor: 
+Open issues: 
+
+Use case: Registering gameplay
+Goal in context: 
+Preconditions: 
+Scenario: 
+Exceptions: 
+Priority: 
+When available: 
+Frequency of use: 
+Channel to actor: 
+Secondary Actors: 
+Channels to secondary actor: 
+Open issues: 
+
+Use case: Updating profile
+Goal in context: 
+Preconditions: 
+Scenario: 
+Exceptions: 
+Priority: 
+When available: 
+Frequency of use: 
+Channel to actor: 
+Secondary Actors: 
+Channels to secondary actor: 
+Open issues: 
+
+Use case: Updating leaderboard
+Goal in context: 
+Preconditions: 
+Scenario: 
+Exceptions: 
+Priority: 
+When available: 
+Frequency of use: 
+Channel to actor: 
+Secondary Actors: 
+Channels to secondary actor: 
+Open issues: 
+
+Use case: End session
+Goal in context: 
+Preconditions: 
+Scenario: 
+Exceptions: 
+Priority: 
+When available: 
+Frequency of use: 
+Channel to actor: 
+Secondary Actors: 
+Channels to secondary actor: 
+Open issues: 
