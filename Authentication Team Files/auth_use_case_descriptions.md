@@ -317,6 +317,58 @@ The user has not played any previous match is using the platform for the first t
 - what stats should the player be able to see?
 - should the stats that the system can utilize be the same as the stats that the player can see.
 
+
+## Failed Login Attempt
+**Primary Actor**
+- Game Player 
+
+**Goal in Context**
+- Highlight the scenario where a player fails to provide valid login credentials and the resulting system behaviour 
+
+**Pre-conditions**
+- The system is accessible and online.
+- The player has a registered account.
+- The player is attempting to log in.
+
+**Trigger**
+- Player enters incorrect login credentials (e.g., username or password) during the login process.
+
+**Scenario**
+1. Player clicks the "Login" button.
+2. Player inputs their username and password incorrectly.
+3. System checks the credentials against the stored user data.
+4. System detects invalid credentials.
+5. System displays an error message indicating the login has failed.
+
+**Post-Conditions**
+- The player is not granted access to the system if credentials remain invalid.
+- The system may lock the account if the failed attempts exceed the allowed number.
+
+**Exceptions**
+- Data inconsistency or database error causing valid credentials to be rejected.
+
+**Priority**
+- High
+
+**Availability**
+- First Iteration
+
+**Frequency of Use**
+- Occasional – Occurs only when the user enters incorrect credentials.
+
+**Channel to Actor**
+- Web interface via mouse click or touch interaction.
+
+**Secondary Actors**
+- System administrator
+
+**Channel to Secondary Actor**
+- Admin dashboard for potential account unlock or further investigation.
+
+**Open Issues**
+1. How many failed attempts should be allowed before locking the account?
+2. Should the lock duration be fixed or dynamic based on repeated offenses?
+
 ### Password Reset 
 **Primary Actor:**  
 Game Player
