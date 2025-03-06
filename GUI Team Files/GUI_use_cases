@@ -57,3 +57,93 @@ Open issues:
 2. Ability to block another user to avoid receiving challenge requests from them
 3. Timeout  mechanism for responding to challenges to prevent inactive or AFK players from slowing matchmaking times
 4. Having a friends list of specific players you frequently play with
+
+
+Use case 2: In-Game Chatting feature
+
+Iteration: 1
+
+Primary Actor: Player (active in game session)
+
+Goal in context: Enable real-time texting between players during gameplay without interrupting the gaming experience, allowing for social interaction, game strategy, and sportsmanship.
+
+Preconditions:
+
+    - User is logged in to the system
+    - User is currently participating in an active game session
+    - At least one opponent or teammate is connected to the same game session
+    - User has not been muted or restricted from the chatting feature
+
+Trigger:
+
+    - User activates chat interface by clicking chat icon or using keyboard shortcut
+    - User receives message from another player
+    - System event occurs requiring player notification (game state changes, turn alerts)
+
+Scenario:
+
+    - The player initiates the chat interface during an active game
+    - System displays chat window in a non-intrusive position relative to the game board
+    - System loads and displays the most recent message history (last 20 messages or configurable amount).
+    - Player types the message in the text input box.
+    - Player sends a message by pressing Enter key or clicking Send button
+    - System validates messages for length and content restrictions.
+    - System transmits message to messaging service with metadata (sender, timestamp, game session)
+    - System displays the message in the local chat history with appropriate formatting
+    - Recipients receive and view the message in their chat window
+    - System sends a subtle notification sound (if enabled in user preferences)
+    - Chat window can be minimized or relocated by user if desired
+    - User can scroll through message history while game continues
+    - If chat is inactive for 30 seconds, it automatically minimizes (optional tweek)
+
+Post conditions:
+
+    - Messages are left in the chat history throughout the game session
+    - All active participants can view the message
+    - Game state and performance remain unaffected
+    - Chat history is saved with game record for potential review
+
+Exceptions:
+
+    - Message exceeds length limit - System displays character count warning and prevents submission
+    - Inappropriate content detection - System filters content according to platform policy, or blocks message and warns user
+    - Rapid message flooding - System implements cooldown and notifies user to prevent spam
+    - Connectivity issue - System queues message for retry and displays sending status indicator
+    - Recipient has blocked sender - Message is sent but not delivered, with no notification to sender
+    - User has enabled "focus mode" - Incoming messages are queued but notifications suppressed
+    - Game is in critical state (time pressure, final moves) - System may delay non-urgent notifications
+
+Priority: Medium-High
+
+When available: Iteration 2
+
+Frequency of use: Very frequent - multiple times per game session
+
+Channel to actor:
+
+    - Visual chat interface within game UI
+    - Notification system (visual and/or audio)
+    - Optional keyboard shortcuts
+
+Secondary actors:
+
+    - Other players in the game (Opponents/Opponent)
+    - The system that handles messages
+    - Basic content filtering
+
+Channel to secondary actors:
+
+    - Basic communication between game components
+    - Real-time connection for instant messaging
+    - Connection to the main game session
+
+Open issues:
+    - Should private messaging between specific groups (e.g., team members) be allowed in team-based game modes?
+    - How should chat history be saved between game sessions for regular opponents?
+    - Should chat have rich text formatting or emoji reactions?
+    - How to balance chat visibility with space constraints in small screens
+    - Should voice chat be considered a future enhancement?
+    - How to manage international player translations?
+    - What level of administrative control is needed for chat moderation?
+    - Should chat support auto-send game event notifications?
+    - How will the "chat" feature scale between different game types (e.g., turn-based vs. real-time)?
