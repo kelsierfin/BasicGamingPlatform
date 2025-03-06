@@ -1,10 +1,10 @@
 Use Case 1: Challenge Players
 
-Iteration: 2, last modification: March 5th by Sage
+Iteration: 3, last modification: March 6th by Sage
 
 Primary Actor: Registered Player
 
-Goal in context: Allow a loggeed-in player to challenge another player to a match in an available online board game
+Goal in context: Allow a logged-in player to challenge another player to a match in an available online board game
 
 Preconditions: 
 1. The user is logged into their account
@@ -26,19 +26,17 @@ Scenario:
 8. The system sends a challenge request to the selected opponent
 9. The opponent receives a pop-up notification with "Accept" and "Decline" buttons
 10. The opponent either accepts or declines the challenge by clicking one of the buttons
-11. If accepted, the system initializes the game and directs both players to the game lobby
-12. If declined, the system notifies the challenger of the declined request and returns them to the "Challenge Players" screen
 
 Post conditions:
 1. If the challenge is accepted, both players enter the game lobby, ready to start the match
 2. If the challenge is declined, the challenger is returned to the "Challenge Players" screen
 
 Exceptions:
-1. The opponent goes offline before responding: the system must notify the challenger and cancels the challenge, sending the user back to the "Challenge Players" screen
-3. The game server is unavailable or down: the system must inform the user and prevent challenges from being sent or game selection
-4. The opponent is already in another match: the system must notify the challenger and direct them back to the screen of online players
-5. The challenger cancels the request before the opponent responds: the system must withdraw the challenge and cancel the challenge notification to the opponent
-6. User clicks outside of the challenge pop-up: The challenge request remains pending until the opponent responds or times out
+1. The opponent goes offline before responding: the system notifies the player and sends them back to the "Challenge Players" screen
+3. The game server is unavailable or down: the system notifies the player and prevents challenges from being sent
+4. The opponent is already in another match: the system notifies the player and directs them back to the online players screen
+5. The challenger cancels the request before the opponent responds: the system cancels sending the challenge notification to the opponent
+6. User clicks outside of the challenge pop-up: the challenge request remains pending until the opponent responds or times out
 
 Priority: High, this feature is essential for multiplayer games and direct player interaction and matchmaking
 
