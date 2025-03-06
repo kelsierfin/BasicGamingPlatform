@@ -99,7 +99,7 @@ Allow a player to login and logout.
 - Automatic logout due to inactivity.
 
 **Priority:**
-- High. Essential for security, and also for user acess control.
+- High. Essential for security, and also for user access control.
 
 **When Available:**
 - First increment.
@@ -114,12 +114,12 @@ Allow a player to login and logout.
 - System administrator
 
 **Channels to Secondary Actors:**
-- Admin dashbord
+- Admin dashboard
 
 **Open Issues:**
 1. A possible "Remember Me" option for easier access.
 2. Should multifactor authentication be implemented?
-3. After how long should should the system automatically logout due to inactivity?
+3. After how long should  the system automatically logout due to inactivity?
 4. What specific limitations should be placed on guest users.
 
 ### Edit Profile
@@ -229,7 +229,6 @@ Game Player
 - Storage and management of user MFA preferences?
 
 
-
 ## Viewing Match History
 **Primary Actor**
 Game Player
@@ -239,7 +238,7 @@ Game Player
 
 **Pre-Conditions**
 - the system is accessible and online
-- the user is a registered and has a username
+- the user is registered and has a username
 
 **Exceptions**
 The user has not played any previous match is using the platform for the first time.
@@ -249,10 +248,10 @@ The user has not played any previous match is using the platform for the first t
 2. System validates these credentials.
 3. The player clicks on match history
 4. the match history is visible to the player through a user interface.
-5. if the player has no match hisotry, the UI shows a 0/NA or an error window letting the user know the absence of the match history
+5. if the player has no match history, the UI shows a 0/NA or an error window letting the user know the absence of the match history
 
 **Post-Conditions**
-- The player is able to veiw the matches, their serial number and the stats related to the match.
+- The player is able to view the matches, their serial number and the stats related to the match.
 
 **Priority**
 - High- Match History is crucial in mathcmaking and keeping the stats of the player
@@ -271,7 +270,7 @@ The user has not played any previous match is using the platform for the first t
 - System administrator
 
 **Open Issues**
-- what stats should the pllayer be able to see?
+- what stats should the player be able to see?
 - should the stats that the system can utilize be the same as the stats that the player can see.
 
 ### Password Reset 
@@ -318,7 +317,7 @@ Allow a player to reset their password if they forget it.
 - First increment.
 
 **Frequency of Use:**
-- Meduim. Only for when players forget their passwords.
+- Medium. Only for when players forget their passwords.
 
 **Channel to Actor:**
 - Web interface via mouse click or touch interaction.
@@ -327,14 +326,14 @@ Allow a player to reset their password if they forget it.
 - System administrator
 
 **Channels to Secondary Actors:**
-- Admin dashbord
+- Admin dashboard
 
 **Open Issues:**
 1. How long should the reset link remain valid?
 2. Should MFA be required?
 3. Should there be a limit to the number od resets with in a certain timeframe?
 
-### Deleting Account
+### Delete Account
 **Primary Actor:**  
 Game Player
 
@@ -379,7 +378,61 @@ Enable any person to delete their account from the profile management page.
 - Developers, Testers, Admin
 
 **Channels to Secondary Actors:**
-- System Admin Dashboard
+- System Administrator
 
 **Open Issues:**
 1. Should we let players recover account during a period of time if it's already deleted from database?
+
+
+### View Player Profile
+**Primary Actor:**  
+Game Player
+
+**Goal in Context:**  
+Allow user to view other players profile.
+
+**Pre-Conditions:**
+- Networking is running as needed.
+- Player has an existing profile.
+- Player is logged in and has started a game.
+- Player wants to view opponent profile.
+
+**Trigger:**
+- Player clicks on the opponents name/ profile picture.
+
+**Scenario:**
+1. Player loads the platform through a web browser.
+2. Player is able to log in to the system.
+3. Player selects a game from the library and is matched with an opponent.
+4. Player wishes to view opponent information.
+5. Player clicks on the opponent username or profile picture.
+6. Player is able to see information like ranking, games played etc.
+7. Player is able to successfully exit out of the opponent profile and can continue the game as desired.
+
+**Post-Conditions:**
+- The player has successfully viewed other player’s profile.
+
+**Exceptions:**
+- Server malfunction.
+- Malfunction in code/matchmaking.
+
+**Priority:**
+- Medium.
+
+**When Available:**
+- Second Iteration.
+
+**Frequency of Use:**
+- Only when desired by user.
+
+**Channel to Actor:**
+- Click of a button using touchscreen or mouse click.
+
+**Secondary Actors:**
+- System Administrator
+
+**Channels to Secondary Actors:**
+- Code
+
+**Open Issues:**
+- Extent of information the player is able to see?
