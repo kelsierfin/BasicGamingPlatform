@@ -84,6 +84,7 @@ Allow a player to login and logout.
 **Post-Conditions:**
 - After login, the player has access to their profile, and the game features.
 - After logout, the session is ended, and the player must login again to the access their profile.
+
 **Exceptions:**
 - Server downtime.
 - Multiple incorrect credentials may result in a temporary lock.
@@ -263,3 +264,63 @@ The user has not played any previous match is using the platform for the first t
 **Open Issues**
 - what stats should the pllayer be able to see?
 - should the stats that the system can utilize be the same as the stats that the player can see.
+
+### Password Reset 
+**Primary Actor:**  
+Game Player
+
+**Goal in Context:**  
+Allow a player to reset their password if they forget it.
+
+**Pre-Conditions:**
+- The system is accessible and online.
+- The player has a registered account.
+- The player has access to the registered email.
+
+**Trigger:**
+- Player clicks on "Forgot Password" on the login page.
+
+**Scenario:**
+1. Player clicks on "Forgot Password"
+2. System prompts the player to enter their registered email address.
+3. Player enters the email and submits a request.
+4. System verifies if the email is registered to an account.
+5. If the email is valid. the system sends a password reset link to the email.
+6. Player clicks on the password reset link. Which leads them to a password reset page.
+7. Player enters a new password.
+8. System verifies the new password against security requirements.
+9. If valid, the password is updated and the player is notified.
+10. Player can now login using the new password.
+
+**Post-Conditions:**
+- The password is updated, and the player is notified.
+- System prevents the old password from being used.
+
+**Exceptions:**
+- Email entered does not match a registered email.
+- Reset link expires after a certain time.
+- The new password does not meet security requirements.
+- System fails to send the reset email.
+
+**Priority:**
+- High. Essential for account recovery.
+
+**When Available:**
+- First increment.
+
+**Frequency of Use:**
+- Meduim. Only for when players forget their passwords.
+
+**Channel to Actor:**
+- Web interface via mouse click or touch interaction.
+
+**Secondary Actors:**
+- System administrator
+
+**Channels to Secondary Actors:**
+- Admin dashbord
+
+**Open Issues:**
+1. How long should the reset link remain valid?
+2. Should MFA be required?
+3. Should there be a limit to the number od resets with in a certain timeframe?
