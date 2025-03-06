@@ -1,0 +1,59 @@
+Use Case 1: Challenge Players
+
+Iteration: 1, last modification: March 5th by Sage
+
+Primary Actor: Registered Player
+
+Goal in context: Allow a registered player to challenge another player to a match in an available board game
+
+Preconditions: 
+1. The user is logged into their account
+2. The user has an active internet connection
+3. The opponent they wish to challenge must also be a registered user and online
+4. The game server must be running
+5. At least one game must be available for selection
+
+Trigger: The player selects the option to challenge another player from the GUI
+
+Scenario: 
+1. The player navigates to the "Challenge Players" section in the GUI
+2. The system displays a list of available online players
+3. The player selects an opponent from the list
+4. The system prompts the player to select a game from the available options
+5. The player selects a game and confirms the challenge
+6.The system sends a challenge request to the selected opponent
+7.The opponent receives a notification of the challenge
+8.The opponent either accepts or declines the challenge
+9.If accepted, the system initializes the game and directs both players to the game lobby
+10.If declined, the system notifies the challenger of the declined request
+Post conditions:
+1. If the challenge is accepted, both players enter the game lobby, ready to start the match
+2. If the challenge is declined, the challenger is returned to the "Challenge Players" screen
+
+Exceptions:
+1. The opponent goes offline before responding: the system must notify the challenger and cancels the challenge, sending the user 2. back to the game lobby
+3. The game server is unavailable or down: the system must inform the user and prevent challenges from being sent or game selection
+4. The opponent is already in another match: the system must notify the challenger and direct them back to the screen of online players
+5. The challenger cancels the request before the opponent responds: the system must withdraw the challenge and cancel the challenge notification to the opponent
+
+Priority: High, this feature is essential for multiplayer games and direct player interaction and matchmaking
+
+When available: This feature is always accessible to players in the GUI once they are logged in and connected to the game server
+
+Frequency of use: Every time a player logs in to the server and wants to play a game with another user online
+
+Channel to actor: The player interacts through the GUI by selecting from the options to challenge another player who is online
+
+Secondary actors: 
+1. Opponent Player (receives the challenge and chooses whether to accept)
+2. Game Server (handles matchmaking and game initialization)
+
+Channel to secondary actors:
+1. Opponent Player: receives an in-game notification
+2. Game Server: Processes and maintains server status, game availability and matchmaking status for players
+
+Open issues:
+1. Multiple incoming challenges to the same player
+2. Ability to block another user to avoid receiving challenge requests from them
+3. Timeout  mechanism for responding to challenges to prevent inactive or AFK players from slowing matchmaking times
+4. Having a friends list of specific players you frequently play with
