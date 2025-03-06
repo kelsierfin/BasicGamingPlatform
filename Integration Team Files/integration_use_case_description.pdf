@@ -13,7 +13,7 @@ Priority: Essential
 When available: Once platform is installed
 Frequency of use: Whenever platform is opened
 Channel to actor: Platform, Electronic device(Computer,laptop,ect)
-Secondary Actors: GUI team, Authentication and Profile team
+Secondary Actors: GUI, Authentication and Profile, Network?
 Channels to secondary actor: Platform
 Open issues: 1. Does platform require instalation or is it available on web browser?
 2. Does platform require internet connection to begin session or only when attempting to start game?
@@ -31,7 +31,7 @@ Priority: Essential
 When available: Once game is selected
 Frequency of use: Often
 Channel to actor: Platform, Electronic device(Computer,laptop,ect)
-Secondary Actors: Opponent, Network team, Leaderboard and Matchmaking team, GUI team, Game Logic team
+Secondary Actors: Opponent, Network, Leaderboard and Matchmaking, GUI, Game Logic
 Channels to secondary actor: Platform
 Open issues: 1. What if there are no online opponents within a reasonable skill range of player?
 
@@ -63,7 +63,7 @@ Priority: Essential
 When available: Whenever game is in play
 Frequency of use: Often
 Channel to actor: Platform, Electronic device(Computer,laptop,ect)
-Secondary Actors: Opponent, Network team, GUI team, Game Logic team
+Secondary Actors: Opponent, Network, GUI, Game Logic 
 Channels to secondary actor: Platform
 Open issues:
 
