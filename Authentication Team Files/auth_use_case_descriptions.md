@@ -104,10 +104,10 @@ Allow a player to login.
 - Web interface via mouse click or touch interaction.
 
 **Secondary Actors:**
-- System administrator
+- Database
 
 **Channels to Secondary Actors:**
-- Admin dashboard
+- Code
 
 **Open Issues:**
 1. A possible "Remember Me" option for easier access.
@@ -156,10 +156,10 @@ Allow a player to logout.
 - Web interface via mouse click or touch interaction.
 
 **Secondary Actors:**
-- System administrator
+- Database
 
 **Channels to Secondary Actors:**
-- Admin dashboard
+- Code
 
 **Open Issues:**
 1. After how long should  the system automatically logout due to inactivity?
@@ -311,7 +311,7 @@ The user has not played any previous match is using the platform for the first t
 - Click of a button using touchscreen or mouse click.
 
 **Secondary Actor**
-- System administrator
+- Database
 
 **Open Issues**
 - what stats should the player be able to see?
@@ -360,10 +360,10 @@ The user has not played any previous match is using the platform for the first t
 - Web interface via mouse click or touch interaction.
 
 **Secondary Actors**
-- System administrator
+- Database
 
 **Channel to Secondary Actor**
-- Admin dashboard for potential account unlock or further investigation.
+- Code
 
 **Open Issues**
 1. How many failed attempts should be allowed before locking the account?
@@ -419,10 +419,10 @@ Allow a player to reset their password if they forget it.
 - Web interface via mouse click or touch interaction.
 
 **Secondary Actors:**
-- System administrator
+- Database
 
 **Channels to Secondary Actors:**
-- Admin dashboard
+- Code
 
 **Open Issues:**
 1. How long should the reset link remain valid?
@@ -471,10 +471,10 @@ Enable any person to delete their account from the profile management page.
 - Click of a button using touchscreen or mouse click under the profile management page. 
 
 **Secondary Actors:**
-- Developers, Testers, Admin
+- Developers, Testers, Database
 
 **Channels to Secondary Actors:**
-- System Administrator
+- Code
 
 **Open Issues:**
 1. Should we let players recover account during a period of time if it's already deleted from database?
@@ -525,59 +525,10 @@ Allow user to view other players profile.
 - Click of a button using touchscreen or mouse click.
 
 **Secondary Actors:**
-- System Administrator
+- Database
 
 **Channels to Secondary Actors:**
 - Code
 
 **Open Issues:**
 - Extent of information the player is able to see?
-
-### Logout
-**Primary Actor:**  
-Game Player
-
-**Goal in Context:**  
-Allow a player to logout of their session.
-
-**Pre-Conditions:**
-- The system is accessible and online.
-- The player has logged into their account and has finished their session.
-- Player wants to end session.
-
-**Trigger:**
-- Player clicks on the logout button.
-
-**Scenario:**
-1. Player has finished their session or wishes to end session.
-2. Player clicks the "logout" button.
-3. System ends the session.
-
-**Post-Conditions:**
-- The player has successfully ended their session.
-- The system has stored all relevant information like any updates in ranking, games played etc.
-
-**Exceptions:**
-- Server malfunction.
-- Automatic logout due to inactivity.
-
-**Priority:**
-- High. Essential for user access control.
-
-**When Available:**
-- First increment.
-
-**Frequency of Use:**
-- Frequent. Every time a player exits platform
-
-**Channel to Actor:**
-- Web interface via mouse click or touch interaction.
-
-**Secondary Actors:**
-- System administrator
-
-**Channels to Secondary Actors:**
-- Code
-
-**Open Issues:**
-1. Handle issues where user exits game without logging out. 
