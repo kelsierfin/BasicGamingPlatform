@@ -37,16 +37,17 @@ Open issues: 1. What if there are no online opponents within a reasonable skill 
 
 Use case: Game/server selection
 Primary Actor: Player
-Goal in context: 
-Preconditions: 
-Scenario: 
-Exceptions: 
-Priority: 
-When available: 
-Frequency of use: 
-Channel to actor: 
-Secondary Actors: 
-Channels to secondary actor: 
+Goal in context: Matches player to online opponents in desired server and game
+Preconditions: Player wants to begin a game 
+Scenario: 1. Player selects which server they want to play on (Network and GUI)
+2. Player selects which game they want to play (GUI)
+Exceptions: 1. Player is not connected to internet
+Priority: Essential
+When available: Whenever platform is open and game is not already in play
+Frequency of use: Often
+Channel to actor: Platform, Electronic device(Computer,laptop,ect)
+Secondary Actors: Network, GUI
+Channels to secondary actor: Platform
 Open issues: 
 
 Use case: Registering gameplay
