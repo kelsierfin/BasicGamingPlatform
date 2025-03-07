@@ -2,7 +2,7 @@ Use case: Start session
 Primary Actor: Player
 Goal in context: Player begins session to play a game
 Preconditions: 1. Player is connected to internet
-2. Player has ave platform installed (if necessary)
+2. Player has platform installed (if necessary)
 Trigger: Player starts game platform
 Scenario: 1. Player opens platform
 2. Platform GUI starts (GUI)
