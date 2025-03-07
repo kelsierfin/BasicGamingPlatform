@@ -35,7 +35,7 @@ Secondary Actors: Opponent, Network, Leaderboard and Matchmaking, GUI, Game Logi
 Channels to secondary actor: Platform
 Open issues: 1. What if there are no online opponents within a reasonable skill range of player?
 
-Use case: Player joins game
+Use case: Game/server selection
 Primary Actor: Player
 Goal in context: 
 Preconditions: 
@@ -79,23 +79,24 @@ When available: Right after game is completed
 Frequency of use: Often
 Channel to actor: Platform, Electronic device(Computer,laptop,ect)
 Secondary Actors: Opponent, Network, Leaderboard and Matchmaking
-Channels to secondary actor: 
+Channels to secondary actor: Platform
 Open issues: 1. How are stats effected if a player leaves mid game?
 2.Can game end in a draw?
 
 Use case: Updating leaderboard
 Primary Actor: Player
-Goal in context: 
-Preconditions: 
-Scenario: 
-Exceptions: 
-Priority: 
-When available: 
-Frequency of use: 
-Channel to actor: 
-Secondary Actors: 
-Channels to secondary actor: 
-Open issues: 
+Goal in context: Update global leaderboard based on outcome of a match
+Preconditions: Match has been completed 
+Scenario: 1. Players individual stats are updated (Leaderboard and Matchmaking and network)
+2. Players position in leaderboard is updated based on new stats (Leaderboard and Matchmaking and network)
+Exceptions: 1. Game doesn't finish or game result is inconclusive
+Priority: Medium
+When available: After game is finished
+Frequency of use: Often
+Channel to actor: Platform, Electronic device(Computer,laptop,ect)
+Secondary Actors: Opponent, Leaderboard and Matchmaking, Network
+Channels to secondary actor: Platform
+Open issues: 1. What statistics are used to determine leaderboard? (Ex. win rate, number of games won)
 
 Use case: End session
 Primary Actor: Player
