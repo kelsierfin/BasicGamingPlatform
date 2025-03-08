@@ -40,7 +40,8 @@ This project is part of an academic assignment for **SENG300**. It involves desi
 - **Board Game Implementation**  
   - **Chess** (with turn-taking, capturing, check/checkmate detection)  
   - **Tic-Tac-Toe** (simple, to validate core features)  
-  - **Connect Four** or any other chosen game (for more complex real-time play)  
+  - **Connect Four** or any other chosen game (for more complex real-time play) 
+  - **Go** 
 
 - **Leaderboard**  
   Track wins, losses, and performance stats.
