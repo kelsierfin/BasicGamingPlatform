@@ -1,0 +1,15 @@
+
+public class editProfile{
+    private String username;
+    private String Email;
+    private String firstName;
+    private String lastName;
+
+    public EditProfile(RegisterUser registeredUser) { //field needs changing based on register user class
+        this.username = registeredUser.getUsername();
+        this.email = registeredUser.getEmail();
+        this.firstName = registeredUser.getFirstName();
+        this.lastName = registeredUser.getLastName();
+    }
+
+}
