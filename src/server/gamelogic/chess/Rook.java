@@ -1,4 +1,4 @@
 package server.gamelogic.chess;
 
-public class ChessPiece {
+public class Rook extends Piece {
 }
