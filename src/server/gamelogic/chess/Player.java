@@ -6,12 +6,15 @@ import java.util.List;
 public class Player {
     ChessGame game;
     boolean playsForWhite;
+    Player opponent;
     List<Piece> pieces;
     List<Square> occupiedSquares;
 //    Square selection;   // Can be used to get move options using selection.findMoveOptions()
     List<Piece> capturedPieces;
+    int materialAdvantage;
     Piece selection;
     Square clickedSquare;
+    Piece clickedPiece;
     List<Square> moveOptions;
 
     public Player(ChessGame game, boolean playsForWhite) {
@@ -23,19 +26,13 @@ public class Player {
         moveOptions = new ArrayList<>();
     }
 
-    public void enactClick(String input) {
+    public void enactClick(String squareName) {
         if (game.activePlayer == this) {
-            clickedSquare = findSquare(input);
-            if (moveOptions.contains(clickedSquare)) {
-                game.move(selection, clickedSquare);
-                selection = null;
-                moveOptions.clear();
-                for (Piece piece : pieces) {
-                    piece.moveOptionsUpdated = false;
-                }
-            }
-            else if ((clickedSquare != selection.position) && occupiedSquares.contains(clickedSquare)) {
-                selection = clickedSquare.piece;
+            clickedSquare = findSquare(squareName);
+            clickedPiece = clickedSquare.piece;
+            if (moveOptions.contains(clickedSquare)) move();
+            else if ((clickedPiece != null) && pieces.contains(clickedPiece)) {
+                selection = clickedPiece;
                 moveOptions = selection.findMoveOptions();
                 // Create select instruction file
                 // Send instruction file to active player's computer
@@ -46,6 +43,23 @@ public class Player {
                 // Create deselect instruction file
                 // Send instruction file to active player's computer
             }
+        }
+    }
+
+    void move() {
+        if (clickedPiece != null) {
+            capturedPieces.add(clickedPiece);
+            materialAdvantage += clickedPiece.value;
+            opponent.materialAdvantage -= clickedPiece.value;
+        }
+        selection.position.piece = null;
+        clickedSquare.piece = selection;
+        selection.position = clickedSquare;
+
+        selection = null;
+        moveOptions.clear();
+        for (Piece piece : pieces) {
+            piece.moveOptionsUpdated = false;
         }
     }
 
@@ -68,8 +82,8 @@ public class Player {
         pieces.add(new Pawn(game, this,8));
     }
 
-    private Square findSquare(String input) {
-        return game.board[input.charAt(1)-'1'][input.charAt(0)-'a'];
+    private Square findSquare(String squareName) {
+        return game.board[squareName.charAt(1)-'1'][squareName.charAt(0)-'a'];
     }
 
 //    private boolean isValidReselection(Square square) {

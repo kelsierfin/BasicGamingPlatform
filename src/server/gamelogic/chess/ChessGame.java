@@ -5,7 +5,6 @@ final Square[][] board;
 final Player whitePlayer;
 final Player blackPlayer;
 public Player activePlayer;
-public Player inactivePlayer;
 
     public ChessGame() {
         board = new Square[8][8];
@@ -16,16 +15,13 @@ public Player inactivePlayer;
         }
         whitePlayer = new Player(this,true);
         blackPlayer = new Player(this,false);
+        whitePlayer.opponent = blackPlayer;
+        blackPlayer.opponent = whitePlayer;
         activePlayer = whitePlayer;
-        inactivePlayer = blackPlayer;
-    }
-
-    void move(Piece piece, Square destination) {
-
     }
 
     private static String findSquareName(int i, int j) {
         char[] fileList = {'a','b','c','d','e','f','g','h'};
-        return String.valueOf(fileList[j]) + String.valueOf(i+1);
+        return fileList[j] + String.valueOf(i+1);
     }
 }

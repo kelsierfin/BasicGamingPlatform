@@ -5,7 +5,7 @@ import java.util.List;
 public class Rook extends Piece {
 
     public Rook(ChessGame game, Player player, boolean isOnKingsSide) {
-        super(game, player,3);
+        super(game, player,5);
         if (isWhite) {
             if (isOnKingsSide) position = game.board[0][7];
             else position = game.board[0][0];
