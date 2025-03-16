@@ -49,6 +49,7 @@ public class Player {
     void move() {
         if (clickedPiece != null) {
             capturedPieces.add(clickedPiece);
+            clickedPiece.position = null;
             materialAdvantage += clickedPiece.value;
             opponent.materialAdvantage -= clickedPiece.value;
         }
