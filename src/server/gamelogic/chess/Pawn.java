@@ -4,10 +4,10 @@ import java.util.List;
 
 public class Pawn extends Piece {
 
-    public Pawn(ChessGame game, Player player, int file) {
-        super(game, player,1);
-        if (isWhite) position = game.board[1][file-1];
-        else position = game.board[7][file-1];
+    public Pawn(Player player, int file) {
+        super(player,1);
+        if (isWhite) position = ChessGame.board[1][file-1];
+        else position = ChessGame.board[7][file-1];
     }
 
     @Override

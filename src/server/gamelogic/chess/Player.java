@@ -28,20 +28,20 @@ public class Player {
 
     public void enactClick(String squareName) {
         if (game.activePlayer == this) {
-            clickedSquare = findSquare(squareName);
-            clickedPiece = clickedSquare.piece;
+            clickedSquare = ChessGame.nameToSquare.get(squareName);
+            clickedPiece = game.squareToPiece.get(clickedSquare);
             if (moveOptions.contains(clickedSquare)) move();
             else if ((clickedPiece != null) && pieces.contains(clickedPiece)) {
                 selection = clickedPiece;
                 moveOptions = selection.findMoveOptions();
-                // Create select instruction file
-                // Send instruction file to active player's computer
+                // Set instruction string to instruction to select clicked square
+                // Send instruction string through socket that represents the active player's connection
             }
             else {
                 selection = null;
                 moveOptions.clear();
-                // Create deselect instruction file
-                // Send instruction file to active player's computer
+                // Set instruction string to instruction to deselect currently selected square
+                // Send instruction string through socket that represents the active player's connection
             }
         }
     }
@@ -53,8 +53,8 @@ public class Player {
             materialAdvantage += clickedPiece.value;
             opponent.materialAdvantage -= clickedPiece.value;
         }
-        selection.position.piece = null;
-        clickedSquare.piece = selection;
+        game.squareToPiece.remove(selection.position);
+        game.squareToPiece.put(clickedSquare, selection);
         selection.position = clickedSquare;
 
         selection = null;
@@ -65,27 +65,27 @@ public class Player {
     }
 
     public void initializePieces() {
-        pieces.add(new King(game, this));
-        pieces.add(new Queen(game, this));
-        pieces.add(new Bishop(game, this, true));
-        pieces.add(new Bishop(game, this, false));
-        pieces.add(new Knight(game, this, true));
-        pieces.add(new Knight(game, this, false));
-        pieces.add(new Rook(game, this, true));
-        pieces.add(new Rook(game, this, false));
-        pieces.add(new Pawn(game, this,1));
-        pieces.add(new Pawn(game, this,2));
-        pieces.add(new Pawn(game, this,3));
-        pieces.add(new Pawn(game, this,4));
-        pieces.add(new Pawn(game, this,5));
-        pieces.add(new Pawn(game, this,6));
-        pieces.add(new Pawn(game, this,7));
-        pieces.add(new Pawn(game, this,8));
+        pieces.add(new King(this));
+        pieces.add(new Queen(this));
+        pieces.add(new Bishop(this, true));
+        pieces.add(new Bishop(this, false));
+        pieces.add(new Knight(this, true));
+        pieces.add(new Knight(this, false));
+        pieces.add(new Rook(this, true));
+        pieces.add(new Rook(this, false));
+        pieces.add(new Pawn(this,1));
+        pieces.add(new Pawn(this,2));
+        pieces.add(new Pawn(this,3));
+        pieces.add(new Pawn(this,4));
+        pieces.add(new Pawn(this,5));
+        pieces.add(new Pawn(this,6));
+        pieces.add(new Pawn(this,7));
+        pieces.add(new Pawn(this,8));
     }
 
-    private Square findSquare(String squareName) {
-        return game.board[squareName.charAt(1)-'1'][squareName.charAt(0)-'a'];
-    }
+//    private Square findSquare(String squareName) {
+//        return game.board[squareName.charAt(1)-'1'][squareName.charAt(0)-'a'];
+//    }
 
 //    private boolean isValidReselection(Square square) {
 //        if (square != selection.position) {

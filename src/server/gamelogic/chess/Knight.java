@@ -4,15 +4,15 @@ import java.util.List;
 
 public class Knight extends Piece {
 
-    public Knight(ChessGame game, Player player, boolean isOnKingsSide) {
-        super(game, player,3);
+    public Knight(Player player, boolean isOnKingsSide) {
+        super(player,3);
         if (isWhite) {
-            if (isOnKingsSide) position = game.board[0][6];
-            else position = game.board[0][1];
+            if (isOnKingsSide) position = ChessGame.board[0][6];
+            else position = ChessGame.board[0][1];
         }
         else {
-            if (isOnKingsSide) position = game.board[7][6];
-            else position = game.board[7][1];
+            if (isOnKingsSide) position = ChessGame.board[7][6];
+            else position = ChessGame.board[7][1];
         }
     }
 

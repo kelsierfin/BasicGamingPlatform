@@ -4,10 +4,10 @@ import java.util.List;
 
 public class Queen extends Piece {
 
-    public Queen(ChessGame game, Player player) {
-        super(game, player, 9);
-        if (isWhite) position = game.board[0][3];
-        else position = game.board[7][3];
+    public Queen(Player player) {
+        super(player, 9);
+        if (isWhite) position = ChessGame.board[0][3];
+        else position = ChessGame.board[7][3];
     }
 
     @Override
