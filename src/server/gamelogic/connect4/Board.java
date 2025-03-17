@@ -7,13 +7,38 @@ public class Board {
 
     public Board (){
         this.Board = new String[ROWS][COLUMNS];
+
+
+        int x = 0;
+        int y = 0;
+
+        while(x <= ROWS){
+            while(y <= COLUMNS){
+                this.Board[x][y] = " ";
+
+                y++;
+            }
+            x++;
+        }
+
+
     }
 
     public String[][] getBoard(){
         return this.Board;
     }
 
-    public void placeDisc(int row , int column, Disc disc){
+    public void placeDisc(int column, Disc disc){
+
+        int row = 0;
+
+        while(Board[row][column].equals(" ")){
+            row++;
+        }
+
+        row  = row - 1;
+
+
         this.Board[row][column] = disc.getSymbol();
     }
 
@@ -39,6 +64,26 @@ public class Board {
 
         return false;
     }
+
+    public void printBoard(){
+        int x = 0;
+        int y = 0;
+
+        while(x <= ROWS){
+            while(y <= COLUMNS){
+                System.out.print(Board[x][y]);
+                if( y == COLUMNS){
+                    System.out.print("\n");
+                }
+                y++;
+            }
+            x++;
+        }
+
+    }
+
+
+
 
 
 
