@@ -1,23 +1,32 @@
 package server.gamelogic.connect4;
 
-public class Board {
-    private final int ROWS = 5;
-    private final int COLUMNS = 6;
+public class Connect4_Board {
+    private final int ROWS = 6;
+    private final int COLUMNS = 7;
     private String[][] Board;
 
-    public Board (){
+    public Connect4_Board(){
         this.Board = new String[ROWS][COLUMNS];
 
 
         int x = 0;
-        int y = 0;
+        int y;
 
-        while(x <= ROWS){
-            while(y <= COLUMNS){
-                this.Board[x][y] = " ";
+        while(x < ROWS){
+            y = 0;
+            while(y < COLUMNS){
+                this.Board[x][y] = "[ ]";
+
+                if(y == COLUMNS -1 ){
+                    String cell = this.Board[x][y];
+                    cell = cell + "\n";
+                    this.Board[x][y] = cell;
+                }
 
                 y++;
             }
+
+
             x++;
         }
 
@@ -32,14 +41,23 @@ public class Board {
 
         int row = 0;
 
-        while(Board[row][column].equals(" ")){
+        while(Board[row][column].equals("[ ]")){
+
             row++;
+            if(row == ROWS -1){
+                System.out.println("row: " + row);
+
+                break;
+            }
         }
 
-        row  = row - 1;
 
 
-        this.Board[row][column] = disc.getSymbol();
+        this.Board[row][column] = "["+ disc.getSymbol() +"]";
+
+        if(column == COLUMNS-1){
+            this.Board[row][column] = "["+ disc.getSymbol() +"]\n";
+        }
     }
 
     public void removeDisc(int row, int column){
@@ -67,14 +85,13 @@ public class Board {
 
     public void printBoard(){
         int x = 0;
-        int y = 0;
+        int y;
 
-        while(x <= ROWS){
-            while(y <= COLUMNS){
+        while(x < ROWS){
+            y = 0;
+            while(y < COLUMNS){
                 System.out.print(Board[x][y]);
-                if( y == COLUMNS){
-                    System.out.print("\n");
-                }
+
                 y++;
             }
             x++;
@@ -92,3 +109,4 @@ public class Board {
 
 
 }
+
