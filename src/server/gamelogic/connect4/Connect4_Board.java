@@ -24,10 +24,12 @@ public class Connect4_Board {
                 }
 
                 y++;
+                //System.out.println("y = " + y);
             }
 
 
             x++;
+            //System.out.println("x = " + x);
         }
 
 
@@ -44,12 +46,14 @@ public class Connect4_Board {
         while(Board[row][column].equals("[ ]")){
 
             row++;
-            if(row == ROWS -1){
+            if(row == ROWS ){
                 System.out.println("row: " + row);
 
                 break;
             }
         }
+
+        row--;
 
 
 
@@ -65,11 +69,9 @@ public class Connect4_Board {
 
     }
 
-    public boolean validMove(int row, int column){
+    public boolean validMove(int column){
 
-        if( row < 0 || row  > 5 ){
-            return false;
-        }else if( column < 0 || column > 6){
+        if( column < 0 || column > 6){
             return false;
         }
         else{
