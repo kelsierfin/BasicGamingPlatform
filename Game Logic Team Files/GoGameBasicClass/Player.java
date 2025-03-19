@@ -41,3 +41,7 @@ public class Player {
     public void placeStone(int x, int y, Board board) {
         board.placeStone(x, y, this.team);
     }
+    public void surrender(Board board) {
+        board.surrender(this.team);
+    }
+}

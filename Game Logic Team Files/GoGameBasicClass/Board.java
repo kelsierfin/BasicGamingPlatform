@@ -34,7 +34,9 @@ public class Board {
         boolean[][] visited = new boolean[19][19];
         return dfs(x, y, color, visited);
     }
-
+    //Asked AI for help, this method was really hard and I struggled for more than 1 hour
+    //with no result.This method is used to check if a block of stones got surrounded by enemies.
+    //If so, clarify the area and make the area forbidden to be placed.
     private boolean dfs(int x, int y, int color, boolean[][] visited) {
         if (x < 0 || x >= 19 || y < 0 || y >= 19 || visited[x][y]) {
             return true;
@@ -78,5 +80,10 @@ public class Board {
         matrix[x][y] = (color == 1) ? black : white;
         checkSurround();
         checkState(this);
+    }
+    public void surrender(int surrenderingTeam) {
+        state = 3;
+        int winner = (surrenderingTeam == 1) ? 2 : 1;
+        System.out.println("player " + surrenderingTeam + " surrendered.");
     }
 }
