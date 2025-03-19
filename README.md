@@ -1,6 +1,6 @@
-# Online Multiplayer tictactoe.gamelogic.server.Board Game Platform
+# Online Multiplayer Board Game Platform
 
-Welcome to the **Online Multiplayer tictactoe.gamelogic.server.Board Game Platform (OMG)**! This project aims to provide a framework where users can:
+Welcome to the **Online Multiplayer Board Game Platform (OMG)**! This project aims to provide a framework where users can:
 
 1. Register, log in, and manage personal profiles  
 2. Match with other players using a matchmaking system  
@@ -37,7 +37,7 @@ This project is part of an academic assignment for **SENG300**. It involves desi
 - **Matchmaking**  
   Basic skill-based or open-lobby pairing.  
 
-- **tictactoe.gamelogic.server.Board Game Implementation**  
+- **Board Game Implementation**  
   - **Chess** (with turn-taking, capturing, check/checkmate detection)  
   - **Tic-Tac-Toe** (simple, to validate core features)  
   - **Connect Four** or any other chosen game (for more complex real-time play) 
