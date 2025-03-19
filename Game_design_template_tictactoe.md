@@ -23,7 +23,7 @@ Implementation Measures:
 
 Data Structures:
 
-    Board: A 3x3 2D array representing the grid.
+    tictactoe.gamelogic.server.Board: A 3x3 2D array representing the grid.
 
     Player: Stores player information (symbol: X/O).
 
