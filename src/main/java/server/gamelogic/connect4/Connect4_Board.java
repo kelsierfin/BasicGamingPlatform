@@ -1,4 +1,4 @@
-package server.gamelogic.connect4;
+package main.java.server.gamelogic.connect4;
 
 public class Connect4_Board {
     private final int ROWS = 6;
@@ -39,7 +39,7 @@ public class Connect4_Board {
         return this.Board;
     }
 
-    public void placeDisc(int column, Disc disc){
+    public void placeDisc(int column, server.gamelogic.connect4.Disc disc){
 
         int row = 0;
 
