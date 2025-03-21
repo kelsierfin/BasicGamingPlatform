@@ -68,8 +68,9 @@ public class PlayerStats {
         }
 
         // Update the database with the new mmr numbers and send it to update the leaderboard data
-        PlayerStatDatabase.updateElo(player1, mmr);
-        PlayerStatDatabase.updateElo(player2, mmr);
+        // updateLeaderboard might only need to be called once depending on if it updates only for the 1 player
+        PlayerStatDatabase.updateElo(player1, mmr1);
+        PlayerStatDatabase.updateElo(player2, mmr2);
         Leaderboard.updateLeaderboard(gameType, player1);
         Leaderboard.updateLeaderboard(gameType, player2);
 
