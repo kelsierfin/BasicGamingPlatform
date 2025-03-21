@@ -4,138 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GameApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LandingController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ca.ucalgary.seng.p3/landing.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Authentication Team Files/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Authentication Team Files/.gitkeep" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Authentication Team Files/PROJECT-TIMELINE-AUTHENTICATION-TEAM.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Authentication Team Files/PROJECT-TIMELINE-AUTHENTICATION-TEAM.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Authentication Team Files/Responsibilities Document_Planning Document - AUTH(P1).pdf" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Authentication Team Files/Responsibilities Document_Planning Document - AUTH(P1).pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Authentication Team Files/Use_Case_Descriptions_Authentication.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Authentication Team Files/Use_Case_Descriptions_Authentication.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Authentication Team Files/class_diagram_01.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Authentication Team Files/class_diagram_01.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Authentication Team Files/use_case_diagram_authentication.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Authentication Team Files/use_case_diagram_authentication.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI Team Files/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/p1/GUI Team Files/.gitkeep" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI Team Files/GUI Prototypes/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/p1/GUI Team Files/GUI Prototypes/.gitkeep" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI Team Files/GUI Prototypes/Chess_Mockup.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/GUI Team Files/GUI Prototypes/Chess_Mockup.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI Team Files/GUI Prototypes/Connect_4_draftUI.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/GUI Team Files/GUI Prototypes/Connect_4_draftUI.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI Team Files/GUI Prototypes/Dashboard.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/GUI Team Files/GUI Prototypes/Dashboard.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI Team Files/GUI Prototypes/Landing_Page.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/GUI Team Files/GUI Prototypes/Landing_Page.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI Team Files/GUI Prototypes/Log-In_Page.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/GUI Team Files/GUI Prototypes/Log-In_Page.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI Team Files/GUI Prototypes/Screenshot_2025-03-16_222121.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/GUI Team Files/GUI Prototypes/Screenshot_2025-03-16_222121.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI Team Files/GUI Prototypes/Screenshot_2025-03-16_222630.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/GUI Team Files/GUI Prototypes/Screenshot_2025-03-16_222630.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI Team Files/GUI Prototypes/Screenshot_2025-03-16_222644.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/GUI Team Files/GUI Prototypes/Screenshot_2025-03-16_222644.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI Team Files/GUI Prototypes/Sign-Up_Page.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/GUI Team Files/GUI Prototypes/Sign-Up_Page.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI Team Files/GUI Prototypes/Start_Game-_Chess.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/GUI Team Files/GUI Prototypes/Start_Game-_Chess.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI Team Files/GUI Prototypes/Start_Game-_Connect_4.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/GUI Team Files/GUI Prototypes/Start_Game-_Connect_4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI Team Files/GUI Prototypes/Start_Game-_Go.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/GUI Team Files/GUI Prototypes/Start_Game-_Go.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI Team Files/GUI Prototypes/Start_Game-_Tic_tac_toe.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/GUI Team Files/GUI Prototypes/Start_Game-_Tic_tac_toe.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI Team Files/GUI Prototypes/Start_Game_Page.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/GUI Team Files/GUI Prototypes/Start_Game_Page.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI Team Files/GUI Prototypes/Tic_Tac_Toe-_Game_Over.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/GUI Team Files/GUI Prototypes/Tic_Tac_Toe-_Game_Over.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI Team Files/GUI Prototypes/Tic_Tac_Toe.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/GUI Team Files/GUI Prototypes/Tic_Tac_Toe.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI Team Files/GUI Prototypes/end_game.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/GUI Team Files/GUI Prototypes/end_game.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI Team Files/GUI Prototypes/friends_screen.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/GUI Team Files/GUI Prototypes/friends_screen.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI Team Files/GUI Prototypes/game_in_session.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/GUI Team Files/GUI Prototypes/game_in_session.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI Team Files/GUI Prototypes/player_Look_Up.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/GUI Team Files/GUI Prototypes/player_Look_Up.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI Team Files/GUI Prototypes/player_Look_Up_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/GUI Team Files/GUI Prototypes/player_Look_Up_2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI Team Files/GUI Prototypes/player_lookup.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/GUI Team Files/GUI Prototypes/player_lookup.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI Team Files/GUI Prototypes/player_profile.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/GUI Team Files/GUI Prototypes/player_profile.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI Team Files/GUI Prototypes/settings_display_tab.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/GUI Team Files/GUI Prototypes/settings_display_tab.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI Team Files/GUI Prototypes/settings_history_tab.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/GUI Team Files/GUI Prototypes/settings_history_tab.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI Team Files/GUI Prototypes/settings_profile_tab.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/GUI Team Files/GUI Prototypes/settings_profile_tab.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI Team Files/GUI_Roles___Responsibilites.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/p1/GUI Team Files/GUI_Roles___Responsibilites.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI Team Files/GUI_Timeline.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/p1/GUI Team Files/GUI_Timeline.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI Team Files/GUI_use_case_diagram.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/GUI Team Files/GUI_use_case_diagram.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI Team Files/seng300_class_diagrams_gui.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/GUI Team Files/seng300_class_diagrams_gui.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI Team Files/use_case_descriptions_GUI.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/p1/GUI Team Files/use_case_descriptions_GUI.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game Logic Team Files/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Game Logic Team Files/.gitkeep" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game Logic Team Files/GoGameBasicClass/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Game Logic Team Files/GoGameBasicClass/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game Logic Team Files/GoGameBasicClass/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Game Logic Team Files/GoGameBasicClass/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game Logic Team Files/GoGameBasicClass/Stone.java" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Game Logic Team Files/GoGameBasicClass/Stone.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game Logic Team Files/Project_Timeline.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Game Logic Team Files/Project_Timeline.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game Logic Team Files/class_structure_diagram_chess.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Game Logic Team Files/class_structure_diagram_chess.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game Logic Team Files/class_structure_diagram_connect4.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Game Logic Team Files/class_structure_diagram_connect4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game Logic Team Files/class_structure_diagram_tictactoe.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Game Logic Team Files/class_structure_diagram_tictactoe.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game Logic Team Files/tictactoe_use_case_description.txt" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Game Logic Team Files/tictactoe_use_case_description.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game Logic Team Files/use_case_description_Go.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Game Logic Team Files/use_case_description_Go.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game Logic Team Files/use_case_description_connect4.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Game Logic Team Files/use_case_description_connect4.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game Logic Team Files/use_case_description_tictactoe.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Game Logic Team Files/use_case_description_tictactoe.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game Logic Team Files/use_case_descriptions_chess.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Game Logic Team Files/use_case_descriptions_chess.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game Logic Team Files/use_case_diagram_Go.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Game Logic Team Files/use_case_diagram_Go.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game Logic Team Files/use_case_diagram_chess.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Game Logic Team Files/use_case_diagram_chess.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game Logic Team Files/use_case_diagram_connect4.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Game Logic Team Files/use_case_diagram_connect4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game Logic Team Files/use_case_diagram_tictactoe.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Game Logic Team Files/use_case_diagram_tictactoe.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integration Team Files/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Integration Team Files/.gitkeep" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integration Team Files/Project_Plan_Integration.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Integration Team Files/Project_Plan_Integration.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integration Team Files/Roles_Responsabilities_Integration_.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Integration Team Files/Roles_Responsabilities_Integration_.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integration Team Files/class_structure_diagram_integration.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Integration Team Files/class_structure_diagram_integration.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integration Team Files/use_case_descriptions.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Integration Team Files/use_case_descriptions.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integration Team Files/use_case_descriptions_integration.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Integration Team Files/use_case_descriptions_integration.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integration Team Files/use_case_diagram_integration.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Integration Team Files/use_case_diagram_integration.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Leaderboard and Matchmaking Team Files/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Leaderboard and Matchmaking Team Files/.gitkeep" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Leaderboard and Matchmaking Team Files/Leaderboard_and_Matchmaking_Planning_Documents.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Leaderboard and Matchmaking Team Files/Leaderboard_and_Matchmaking_Planning_Documents.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Leaderboard and Matchmaking Team Files/leaderboard_and_matchmaking_class_diagram.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Leaderboard and Matchmaking Team Files/leaderboard_and_matchmaking_class_diagram.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Leaderboard and Matchmaking Team Files/leaderboard_and_matchmaking_use_case_descriptions.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Leaderboard and Matchmaking Team Files/leaderboard_and_matchmaking_use_case_descriptions.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Networking Team Files/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Networking Team Files/.gitkeep" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Networking Team Files/Initial_draft_documentation.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Networking Team Files/Initial_draft_documentation.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Networking Team Files/ProjectTimeline_Networking.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Networking Team Files/ProjectTimeline_Networking.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Networking Team Files/Requirement IDS.txt" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Networking Team Files/Requirement IDS.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Networking Team Files/Rolesandresponsibilities _ networking.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Networking Team Files/Rolesandresponsibilities _ networking.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Networking Team Files/class_diagram_networking.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Networking Team Files/class_diagram_networking.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Networking Team Files/use_case_descriptions.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Networking Team Files/use_case_descriptions.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Networking Team Files/use_case_diagram_Chat.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Networking Team Files/use_case_diagram_Chat.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Networking Team Files/use_case_diagram_ConnectServer.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Networking Team Files/use_case_diagram_ConnectServer.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Networking Team Files/use_case_diagram_Matchmaking.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Networking Team Files/use_case_diagram_Matchmaking.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Networking Team Files/use_case_diagram_Query.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Networking Team Files/use_case_diagram_Query.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Networking Team Files/use_case_diagram_Synchronization.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Networking Team Files/use_case_diagram_Synchronization.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Networking Team Files/use_case_diagram_UserData.png" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Networking Team Files/use_case_diagram_UserData.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Teams Sorting Files/GUI_team.md" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Teams Sorting Files/GUI_team.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Teams Sorting Files/authentication_team.md" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Teams Sorting Files/authentication_team.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Teams Sorting Files/game_logic_team.md" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Teams Sorting Files/game_logic_team.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Teams Sorting Files/integration_team.md" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Teams Sorting Files/integration_team.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Teams Sorting Files/matchmaking_team.md" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Teams Sorting Files/matchmaking_team.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Teams Sorting Files/networking_team.md" beforeDir="false" afterPath="$PROJECT_DIR$/p1/Teams Sorting Files/networking_team.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p3/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p3/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p3/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p3/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p3/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p3/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p3/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p3/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p3/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p3/src/main/java/ca/ucalgary/cpsc/p3/HelloApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p3/src/main/java/ca/ucalgary/cpsc/p3/HelloController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p3/src/main/java/module-info.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p3/src/main/resources/ca/ucalgary/cpsc/p3/hello-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/GameApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/gui/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/gui/controllers/LandingController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/gui/scenes/dashboard.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/gui/scenes/landing.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/gui/scenes/login.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/gui/scenes/signup.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/gui/styles/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/gamelogic/chess/Bishop.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/gamelogic/chess/ChessGame.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/gamelogic/chess/IPiece.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/gamelogic/chess/King.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/gamelogic/chess/Knight.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/gamelogic/chess/Pawn.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/gamelogic/chess/Piece.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/gamelogic/chess/Player.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/gamelogic/chess/Queen.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/gamelogic/chess/Rook.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/gamelogic/chess/Square.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/gamelogic/connect4/Connect4.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/gamelogic/connect4/Connect4_Board.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/gamelogic/connect4/Disc.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/gamelogic/connect4/Player.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/gamelogic/go/deleteMeAfterAddingFirstFileToPackage" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/gamelogic/tictactoe/Board.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/gamelogic/tictactoe/Boards.java" beforeDir="false" />
+    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="added Main class">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,6 +20,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="module-info" />
       </list>
     </option>
   </component>
@@ -160,70 +35,44 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.GameApplication.executor": "Run",
-    "Application.HelloApplication.executor": "Run",
-    "Application.ca.ucalgary.seng.p3.GameApplication.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "gui",
-    "last_opened_file_path": "C:/Users/ebose/OneDrive/Desktop/SENG 300/seng300-w25-project/target/classes/ca/ucalgary/seng/p3",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.GameApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ca.ucalgary.seng.p3.GameApplication.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;gui&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ebose/OneDrive/Desktop/SENG 300/seng300-w25-project/target/classes/ca/ucalgary/seng/p3&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\target\classes\ca\ucalgary\seng\p3" />
       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\p3\target\classes" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources\ca.ucalgary.seng.p3" />
+      <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\java" />
       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\java\ca\ucalgary\seng\p3" />
+      <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources\ca.ucalgary.seng.p3" />
       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\p3\target\classes\resources\ca\ucalgary\seng300\p3" />
       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\p3\target\classes\resources" />
-      <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\p1" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ca.ucalgary.seng.p3.GameApplication">
-    <configuration name="GameApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="client.GameApplication" />
-      <module name="seng300-w25-project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value=".*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ca.ucalgary.seng300.p3.HelloApplication" />
-      <module name="p3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ca.ucalgary.seng300.p3.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ca.ucalgary.seng.p3.GameApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ca.ucalgary.seng.p3.GameApplication" />
-      <module name="seng300-w25-project" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml -cp target/classes ca.ucalgary.seng.p3.GameApplication &quot;-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2024.3.2\lib\idea_rt.jar=53374:C:\Program Files\JetBrains\IntelliJ IDEA 2024.3.2\bin&quot; -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8" />
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ca.ucalgary.seng.p3.Main" />
+      <module name="seng-w25-project" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ca.ucalgary.seng.p3.*" />
@@ -234,16 +83,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="Application.ca.ucalgary.seng.p3.GameApplication" />
-      <item itemvalue="Application.GameApplication" />
-      <item itemvalue="Application.HelloApplication" />
-    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ca.ucalgary.seng.p3.GameApplication" />
-        <item itemvalue="Application.GameApplication" />
-        <item itemvalue="Application.HelloApplication" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -273,6 +115,7 @@
       <workItem from="1742518846711" duration="683000" />
       <workItem from="1742519561240" duration="632000" />
       <workItem from="1742521471913" duration="467000" />
+      <workItem from="1742524021227" duration="1448000" />
     </task>
     <servers />
   </component>
@@ -289,5 +132,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="project successfully restructured" />
+    <option name="LAST_COMMIT_MESSAGE" value="project successfully restructured" />
   </component>
 </project>

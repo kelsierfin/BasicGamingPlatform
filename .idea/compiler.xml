@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="seng300-w25-project" />
+        <module name="seng-w25-project" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="p3" target="23" />
+      <module name="seng300-w25-project" target="23" />
     </bytecodeTargetLevel>
   </component>
 </project>
