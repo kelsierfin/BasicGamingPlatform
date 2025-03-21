@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng.p3.LandingController">
+    <!-- Define a Button with an fx:id to link it to the controller -->
+    <Button fx:id="myButton" text="Click Me" onAction="#handleButtonClick" layoutX="200" layoutY="200"/>
+</AnchorPane>
