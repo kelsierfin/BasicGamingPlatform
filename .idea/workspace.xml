@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="Added the profileController.java and SettingsController.java classes for the settings and profile fxml files">
-      <change beforePath="$PROJECT_DIR$/target/classes/connect4.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/connect4.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/Connect4Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/SettingsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/connect4.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/connect4.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/connect4.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/connect4.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/profile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/profile.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/profileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/ProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/settigns.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/settigns.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
