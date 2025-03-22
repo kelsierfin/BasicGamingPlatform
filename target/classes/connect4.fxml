@@ -43,6 +43,9 @@
             <Button fx:id="newGameButton" text="New Game"
                     style="-fx-background-color: white; -fx-border-color: #e0e0e0; -fx-border-radius: 20; -fx-background-radius: 20; -fx-padding: 8 20;"
                     onAction="#handleNewGame"/>
+            <Button fx:id="settingsButton" text="Settings"
+                    style="-fx-background-color: white; -fx-border-color: #e0e0e0; -fx-border-radius: 20; -fx-background-radius: 20; -fx-padding: 8 20;"
+                    onAction="#handleSettings"/>
         </HBox>
     </bottom>
 </BorderPane>

@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="Added profile.fxml and made changes to it for the settings screen">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="Added the profileController.java and SettingsController.java classes for the settings and profile fxml files">
+      <change beforePath="$PROJECT_DIR$/target/classes/connect4.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/connect4.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +113,7 @@
       <workItem from="1742531730916" duration="46000" />
       <workItem from="1742531779689" duration="19000" />
       <workItem from="1742531810516" duration="1402000" />
-      <workItem from="1742622003354" duration="1399000" />
+      <workItem from="1742622003354" duration="1510000" />
     </task>
     <task id="LOCAL-00001" summary="Added connect4.fxml and connect 4.css, started working on connect 4 game page">
       <option name="closed" value="true" />
@@ -155,7 +155,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742623318001</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added the profileController.java and SettingsController.java classes for the settings and profile fxml files">
+      <option name="closed" value="true" />
+      <created>1742623471939</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1742623471939</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -179,6 +187,7 @@
     <MESSAGE value="made a basic layout for the connect4.fxml" />
     <MESSAGE value="created settigns.fxml" />
     <MESSAGE value="Added profile.fxml and made changes to it for the settings screen" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added profile.fxml and made changes to it for the settings screen" />
+    <MESSAGE value="Added the profileController.java and SettingsController.java classes for the settings and profile fxml files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the profileController.java and SettingsController.java classes for the settings and profile fxml files" />
   </component>
 </project>
