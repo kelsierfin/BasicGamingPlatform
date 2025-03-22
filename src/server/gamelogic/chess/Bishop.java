@@ -17,9 +17,55 @@ public class Bishop extends Piece {
     }
 
     @Override
-    public List<Square> findMoveOptions() {
-        if (moveOptionsUpdated) return moveOptions;
-        // Update moveOptions
-        return moveOptions;
+    public void updateMoveOptions() {
+        moveOptions.clear();
+
+        // Find move options for the diagonal direction characterized by decreasing rank and file
+        int i = 1;
+        boolean pieceReached = false;
+        while ((position.rankIndex - i >= 0) && (position.fileIndex - i >= 0) && !pieceReached) {
+            Square possibleMoveOption = ChessGame.board[position.rankIndex-i][position.fileIndex-i];
+            pieceReached = processPossibleMoveOption(possibleMoveOption);
+            i++;
+        }
+
+        // Find move options for the diagonal direction characterized by increasing rank and decreasing file
+        i = 1;
+        pieceReached = false;
+        while ((position.rankIndex + i < 8) && (position.fileIndex - i >= 0) && !pieceReached) {
+            Square possibleMoveOption = ChessGame.board[position.rankIndex+i][position.fileIndex-i];
+            pieceReached = processPossibleMoveOption(possibleMoveOption);
+            i++;
+        }
+
+        // Find move options for the diagonal direction characterized by increasing rank and file
+        i = 1;
+        pieceReached = false;
+        while ((position.rankIndex + i < 8) && (position.fileIndex + i < 8) && !pieceReached) {
+            Square possibleMoveOption = ChessGame.board[position.rankIndex+i][position.fileIndex+i];
+            pieceReached = processPossibleMoveOption(possibleMoveOption);
+            i++;
+        }
+
+        // Find move options for the diagonal direction characterized by decreasing rank and increasing file
+        i = 1;
+        pieceReached = false;
+        while ((position.rankIndex - i >= 0) && (position.fileIndex + i < 8) && !pieceReached) {
+            Square possibleMoveOption = ChessGame.board[position.rankIndex-i][position.fileIndex+i];
+            pieceReached = processPossibleMoveOption(possibleMoveOption);
+            i++;
+        }
+
+        moveOptionsUpdated = true;
+    }
+
+    private boolean processPossibleMoveOption(Square possibleMoveOption) {
+        Piece pieceOnSquare = player.game.squareToPiece.get(possibleMoveOption);
+        if (pieceOnSquare == null) {
+            moveOptions.add(possibleMoveOption);
+            return false;
+        }
+        if (pieceOnSquare.player == player.opponent) moveOptions.add(possibleMoveOption);
+        return true;
     }
 }

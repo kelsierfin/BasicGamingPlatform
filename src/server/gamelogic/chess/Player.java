@@ -33,7 +33,7 @@ public class Player {
             if (moveOptions.contains(clickedSquare)) move();
             else if ((clickedPiece != null) && pieces.contains(clickedPiece)) {
                 selection = clickedPiece;
-                moveOptions = selection.findMoveOptions();
+                moveOptions = selection.getMoveOptions();
                 // Set instruction string to instruction to select clicked square
                 // Send instruction string through socket that represents the active player's connection
             }

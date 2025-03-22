@@ -11,9 +11,7 @@ public class Pawn extends Piece {
     }
 
     @Override
-    public List<Square> findMoveOptions() {
-        if (moveOptionsUpdated) return moveOptions;
+    public void updateMoveOptions() {
         // Update moveOptions
-        return moveOptions;
     }
 }

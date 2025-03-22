@@ -3,5 +3,6 @@ package server.gamelogic.chess;
 import java.util.List;
 
 public interface IPiece {
-    List<Square> findMoveOptions();
+    List<Square> getMoveOptions();
+    void updateMoveOptions();
 }

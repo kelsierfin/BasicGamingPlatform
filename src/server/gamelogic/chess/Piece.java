@@ -17,4 +17,12 @@ public abstract class Piece implements IPiece{
         this.value = value;
     }
 
+    @Override
+    public List<Square> getMoveOptions() {
+        if (moveOptionsUpdated) return moveOptions;
+
+        // If move options not updated
+        updateMoveOptions();
+        return moveOptions;
+    }
 }
