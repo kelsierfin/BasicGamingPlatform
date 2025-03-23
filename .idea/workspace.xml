@@ -4,17 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="Added the profileController.java and SettingsController.java classes for the settings and profile fxml files">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/Connect4Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/SettingsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/connect4.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/connect4.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/connect4.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/connect4.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/profile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/profile.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/profileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/ProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/settigns.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/settigns.fxml" afterDir="false" />
+    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="files moved in the right location">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/landing.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GameApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GameApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LandingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LandingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/landing.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/landing.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/GameApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/GameApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/landing.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/landing.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="module-info" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -72,11 +69,11 @@
       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\p3\target\classes" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\java" />
       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\java\ca\ucalgary\seng\p3" />
+      <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources" />
+      <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\java" />
       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources\ca.ucalgary.seng.p3" />
       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\p3\target\classes\resources\ca\ucalgary\seng300\p3" />
-      <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\p3\target\classes\resources" />
     </key>
   </component>
   <component name="RunManager">
@@ -172,7 +169,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742623471939</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="files moved in the right location">
+      <option name="closed" value="true" />
+      <created>1742685852513</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1742685852513</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -197,6 +202,7 @@
     <MESSAGE value="created settigns.fxml" />
     <MESSAGE value="Added profile.fxml and made changes to it for the settings screen" />
     <MESSAGE value="Added the profileController.java and SettingsController.java classes for the settings and profile fxml files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added the profileController.java and SettingsController.java classes for the settings and profile fxml files" />
+    <MESSAGE value="files moved in the right location" />
+    <option name="LAST_COMMIT_MESSAGE" value="files moved in the right location" />
   </component>
 </project>
