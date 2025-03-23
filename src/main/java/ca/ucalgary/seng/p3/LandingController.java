@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
+
 public class LandingController {
     @FXML
     private Button signUpButton;
@@ -15,6 +17,14 @@ public class LandingController {
     private Text faq;
     @FXML
     private Text rules;
+
+
+    @FXML
+    private void initialize() {
+        about.setText("ABOUT");
+        faq.setText("FAQ");
+        rules.setText("RULES");
+    }
 
 
 }
