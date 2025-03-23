@@ -1,18 +1,16 @@
 package server.gamelogic.chess;
 
-import java.util.List;
-
 public class Knight extends Piece {
 
     public Knight(Player player, boolean isOnKingsSide) {
         super(player,3);
         if (isWhite) {
-            if (isOnKingsSide) position = ChessGame.board[0][6];
-            else position = ChessGame.board[0][1];
+            if (isOnKingsSide) position = ChessGame.BOARD[0][6];
+            else position = ChessGame.BOARD[0][1];
         }
         else {
-            if (isOnKingsSide) position = ChessGame.board[7][6];
-            else position = ChessGame.board[7][1];
+            if (isOnKingsSide) position = ChessGame.BOARD[7][6];
+            else position = ChessGame.BOARD[7][1];
         }
     }
 

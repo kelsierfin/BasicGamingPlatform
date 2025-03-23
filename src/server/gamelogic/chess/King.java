@@ -1,13 +1,11 @@
 package server.gamelogic.chess;
 
-import java.util.List;
-
 public class King extends Piece {
 
     public King(Player player) {
         super(player, 0);
-        if (isWhite) position = ChessGame.board[0][4];
-        else position = ChessGame.board[7][4];
+        if (isWhite) position = ChessGame.BOARD[0][4];
+        else position = ChessGame.BOARD[7][4];
     }
 
     @Override

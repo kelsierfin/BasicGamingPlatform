@@ -1,5 +1,10 @@
 package server.gamelogic.chess;
 
+import commonfiles.commands.chess.ChessCommand;
+import commonfiles.commands.chess.GUI_to_GameLogic.Click;
+import commonfiles.commands.chess.GUI_to_GameLogic.PromotionSelection;
+
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,14 +13,14 @@ public class Player {
     boolean playsForWhite;
     Player opponent;
     List<Piece> pieces;
-    List<Square> occupiedSquares;
-//    Square selection;   // Can be used to get move options using selection.findMoveOptions()
+//    List<Square> occupiedSquares;
     List<Piece> capturedPieces;
     int materialAdvantage;
+//    boolean hasTurn;
     Piece selection;
-    Square clickedSquare;
-    Piece clickedPiece;
     List<Square> moveOptions;
+    Pawn pawnToPromote;
+    boolean kingOrRookMoved;
 
     public Player(ChessGame game, boolean playsForWhite) {
         this.game = game;
@@ -24,44 +29,79 @@ public class Player {
         initializePieces();
         capturedPieces = new ArrayList<>();
         moveOptions = new ArrayList<>();
+//        isPromotingPawn = false;
     }
 
-    public void enactClick(String squareName) {
+    public void processInput(ChessCommand input) {
         if (game.activePlayer == this) {
-            clickedSquare = ChessGame.nameToSquare.get(squareName);
-            clickedPiece = game.squareToPiece.get(clickedSquare);
-            if (moveOptions.contains(clickedSquare)) move();
-            else if ((clickedPiece != null) && pieces.contains(clickedPiece)) {
-                selection = clickedPiece;
-                moveOptions = selection.getMoveOptions();
-                // Set instruction string to instruction to select clicked square
-                // Send instruction string through socket that represents the active player's connection
+            if (input instanceof Click c) {
+                if (pawnToPromote == null) enactClick((c.squareName));
+                // else deal with invalid input
+            } else if (input instanceof PromotionSelection ps) {
+                if (pawnToPromote != null) promotePawn(ps.pieceType);
+                // else deal with invalid input
             }
-            else {
-                selection = null;
-                moveOptions.clear();
-                // Set instruction string to instruction to deselect currently selected square
-                // Send instruction string through socket that represents the active player's connection
-            }
+            // else deal with invalid input
         }
     }
 
-    void move() {
-        if (clickedPiece != null) {
-            capturedPieces.add(clickedPiece);
-            clickedPiece.position = null;
-            materialAdvantage += clickedPiece.value;
-            opponent.materialAdvantage -= clickedPiece.value;
-        }
-        game.squareToPiece.remove(selection.position);
-        game.squareToPiece.put(clickedSquare, selection);
-        selection.position = clickedSquare;
+    private void enactClick(String squareName) {
+        Square clickedSquare = ChessGame.NAME_TO_SQUARE.get(squareName);
+        Piece clickedPiece = game.boardLayout.get(clickedSquare);
+        if (moveOptions.contains(clickedSquare)) move(clickedSquare, clickedPiece);
+        else if ((clickedPiece != null) && pieces.contains(clickedPiece)) select(clickedPiece);
+        else deselect();
+    }
 
-        selection = null;
+    private void move(Square destination, Piece pieceToCapture) {
+        if (pieceToCapture != null) {
+            capturedPieces.add(pieceToCapture);
+            pieceToCapture.position = null;
+            materialAdvantage += pieceToCapture.value;
+            opponent.materialAdvantage -= pieceToCapture.value;
+        }
+        game.boardLayout.remove(selection.position);
+        game.boardLayout.put(destination, selection);
+        selection.position = destination;
+
         moveOptions.clear();
+
         for (Piece piece : pieces) {
             piece.moveOptionsUpdated = false;
         }
+        if ((selection instanceof Pawn p) && (destination.rankIndex == 7)) {
+            pawnToPromote = p;
+        }
+        game.activePlayer = opponent;
+    }
+
+    private void select(Piece selection) {
+        this.selection = selection;
+        moveOptions = selection.getCurrentMoveOptions();
+        // Create select instruction
+        // Send select instruction through socket that represents player's connection
+    }
+
+    private void deselect() {
+        selection = null;
+        moveOptions.clear();
+        // Create deselect instruction
+        // Send deselect instruction through socket that represents player's connection
+    }
+
+    private void promotePawn(char pieceType) {
+        Square position = selection.position;
+        Class<? extends Piece> type = ChessGame.SYMBOL_TO_PIECE.get(pieceType);
+        if ((type == Queen.class) || (type == Rook.class) || (type == Knight.class) || (type == Bishop.class)) {
+            try {
+                Piece newPiece = type.getDeclaredConstructor(Player.class, Square.class).newInstance(this, position);
+            } catch (NoSuchMethodException | InstantiationException | IllegalAccessException |
+                     InvocationTargetException e) {
+                e.printStackTrace();
+            }
+            // Replace pawnToPromote with newPiece
+        }
+        // else handle invalid pieceType
     }
 
     public void initializePieces() {
@@ -83,18 +123,4 @@ public class Player {
         pieces.add(new Pawn(this,8));
     }
 
-//    private Square findSquare(String squareName) {
-//        return game.board[squareName.charAt(1)-'1'][squareName.charAt(0)-'a'];
-//    }
-
-//    private boolean isValidReselection(Square square) {
-//        if (square != selection.position) {
-//            for (Piece piece : pieces) {
-//                if (piece.position == square) {
-//                    return true;
-//                }
-//            }
-//        }
-//        return false;
-//    }
 }

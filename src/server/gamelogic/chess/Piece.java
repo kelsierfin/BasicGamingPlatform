@@ -18,7 +18,7 @@ public abstract class Piece implements IPiece{
     }
 
     @Override
-    public List<Square> getMoveOptions() {
+    public List<Square> getCurrentMoveOptions() {
         if (moveOptionsUpdated) return moveOptions;
 
         // If move options not updated

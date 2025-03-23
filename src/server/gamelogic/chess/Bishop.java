@@ -1,18 +1,16 @@
 package server.gamelogic.chess;
 
-import java.util.List;
-
 public class Bishop extends Piece {
 
     public Bishop(Player player, boolean isOnKingsSide) {
         super(player,3);
         if (isWhite) {
-            if (isOnKingsSide) position = ChessGame.board[0][5];
-            else position = ChessGame.board[0][2];
+            if (isOnKingsSide) position = ChessGame.BOARD[0][5];
+            else position = ChessGame.BOARD[0][2];
         }
         else {
-            if (isOnKingsSide) position = ChessGame.board[7][5];
-            else position = ChessGame.board[7][2];
+            if (isOnKingsSide) position = ChessGame.BOARD[7][5];
+            else position = ChessGame.BOARD[7][2];
         }
     }
 
@@ -24,7 +22,7 @@ public class Bishop extends Piece {
         int i = 1;
         boolean pieceReached = false;
         while ((position.rankIndex - i >= 0) && (position.fileIndex - i >= 0) && !pieceReached) {
-            Square possibleMoveOption = ChessGame.board[position.rankIndex-i][position.fileIndex-i];
+            Square possibleMoveOption = ChessGame.BOARD[position.rankIndex-i][position.fileIndex-i];
             pieceReached = processPossibleMoveOption(possibleMoveOption);
             i++;
         }
@@ -33,7 +31,7 @@ public class Bishop extends Piece {
         i = 1;
         pieceReached = false;
         while ((position.rankIndex + i < 8) && (position.fileIndex - i >= 0) && !pieceReached) {
-            Square possibleMoveOption = ChessGame.board[position.rankIndex+i][position.fileIndex-i];
+            Square possibleMoveOption = ChessGame.BOARD[position.rankIndex+i][position.fileIndex-i];
             pieceReached = processPossibleMoveOption(possibleMoveOption);
             i++;
         }
@@ -42,7 +40,7 @@ public class Bishop extends Piece {
         i = 1;
         pieceReached = false;
         while ((position.rankIndex + i < 8) && (position.fileIndex + i < 8) && !pieceReached) {
-            Square possibleMoveOption = ChessGame.board[position.rankIndex+i][position.fileIndex+i];
+            Square possibleMoveOption = ChessGame.BOARD[position.rankIndex+i][position.fileIndex+i];
             pieceReached = processPossibleMoveOption(possibleMoveOption);
             i++;
         }
@@ -51,7 +49,7 @@ public class Bishop extends Piece {
         i = 1;
         pieceReached = false;
         while ((position.rankIndex - i >= 0) && (position.fileIndex + i < 8) && !pieceReached) {
-            Square possibleMoveOption = ChessGame.board[position.rankIndex-i][position.fileIndex+i];
+            Square possibleMoveOption = ChessGame.BOARD[position.rankIndex-i][position.fileIndex+i];
             pieceReached = processPossibleMoveOption(possibleMoveOption);
             i++;
         }
@@ -60,7 +58,7 @@ public class Bishop extends Piece {
     }
 
     private boolean processPossibleMoveOption(Square possibleMoveOption) {
-        Piece pieceOnSquare = player.game.squareToPiece.get(possibleMoveOption);
+        Piece pieceOnSquare = player.game.boardLayout.get(possibleMoveOption);
         if (pieceOnSquare == null) {
             moveOptions.add(possibleMoveOption);
             return false;
