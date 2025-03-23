@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="CENTER" spacing="20" styleClass="settings-vbox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng.p3.SettingsController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+    <Button fx:id="backButton" text="Back" onAction="#handleBack"/>
+    <Button fx:id="profileButton" text="Profile" onAction="#handleProfile"/>
+    <Button fx:id="matchHistoryButton" text="Match History" onAction="#handleMatchHistory"/>
+</VBox>
