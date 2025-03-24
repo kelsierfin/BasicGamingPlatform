@@ -1,25 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng.p3.Connect4Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="ca.ucalgary.seng.p3.Connect4Controller">
     <!-- Top section: Player info and game title -->
     <top>
         <HBox alignment="CENTER" spacing="20" style="-fx-background-color: white; -fx-border-color: #e0e0e0; -fx-border-width: 0 0 1 0; -fx-padding: 10;">
-            <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS" spacing="10">
-                <Circle fx:id="player1Icon" radius="20" fill="#ff4b6e"/>
-                <Label fx:id="player1Name" text="Player 1" style="-fx-font-weight: bold;"/>
-                <Label fx:id="timer" text="3:00" style="-fx-background-color: #f0f0f0; -fx-padding: 5 10; -fx-background-radius: 15;"/>
+            <HBox alignment="CENTER_LEFT" spacing="10" HBox.hgrow="ALWAYS">
+                <Circle fx:id="player1Icon" fill="#ff4b6e" radius="20" />
+                <Label fx:id="player1Name" style="-fx-font-weight: bold;" text="Player 1" />
+                <Label fx:id="timer" style="-fx-background-color: #f0f0f0; -fx-padding: 5 10; -fx-background-radius: 15;" text="3:00" />
             </HBox>
 
-            <Label text="Connect 4" style="-fx-font-size: 24; -fx-font-weight: bold;"/>
+            <Label style="-fx-font-size: 24; -fx-font-weight: bold;" text="Connect 4" />
 
-            <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS" spacing="10">
-                <Label fx:id="player2Name" text="Player 2" style="-fx-font-weight: bold;"/>
-                <Circle fx:id="player2Icon" radius="20" fill="#20c997"/>
+            <HBox alignment="CENTER_RIGHT" spacing="10" HBox.hgrow="ALWAYS">
+                <Label fx:id="player2Name" style="-fx-font-weight: bold;" text="Player 2" />
+                <Circle fx:id="player2Icon" fill="#20c997" radius="20" />
             </HBox>
         </HBox>
     </top>
@@ -27,7 +31,7 @@
     <!-- Center: Game board -->
     <center>
         <StackPane alignment="CENTER" style="-fx-padding: 20;">
-            <Rectangle fx:id="gameBackground" width="450" height="400" arcWidth="30" arcHeight="30" fill="#f0f0f0"/>
+            <Rectangle fx:id="gameBackground" arcHeight="30" arcWidth="30" fill="#f0f0f0" height="400" width="450" />
             <GridPane fx:id="gameBoard" alignment="CENTER" hgap="8" vgap="8">
                 <!-- The game board will be populated in the controller -->
             </GridPane>
@@ -37,15 +41,9 @@
     <!-- Bottom: Game controls -->
     <bottom>
         <HBox alignment="CENTER" spacing="20" style="-fx-background-color: white; -fx-border-color: #e0e0e0; -fx-border-width: 1 0 0 0; -fx-padding: 10;">
-            <Button fx:id="abortGameButton" text="Abort Game"
-                    style="-fx-background-color: white; -fx-border-color: #e0e0e0; -fx-border-radius: 20; -fx-background-radius: 20; -fx-padding: 8 20;"
-                    onAction="#handleAbortGame"/>
-            <Button fx:id="newGameButton" text="New Game"
-                    style="-fx-background-color: white; -fx-border-color: #e0e0e0; -fx-border-radius: 20; -fx-background-radius: 20; -fx-padding: 8 20;"
-                    onAction="#handleNewGame"/>
-            <Button fx:id="settingsButton" text="Settings"
-                    style="-fx-background-color: white; -fx-border-color: #e0e0e0; -fx-border-radius: 20; -fx-background-radius: 20; -fx-padding: 8 20;"
-                    onAction="#handleSettings"/>
+            <Button fx:id="abortGameButton" onAction="#handleAbortGame" style="-fx-background-color: white; -fx-border-color: #e0e0e0; -fx-border-radius: 20; -fx-background-radius: 20; -fx-padding: 8 20;" text="Abort Game" />
+            <Button fx:id="newGameButton" onAction="#handleNewGame" style="-fx-background-color: white; -fx-border-color: #e0e0e0; -fx-border-radius: 20; -fx-background-radius: 20; -fx-padding: 8 20;" text="New Game" />
+            <Button fx:id="settingsButton" onAction="#handleSettings" style="-fx-background-color: white; -fx-border-color: #e0e0e0; -fx-border-radius: 20; -fx-background-radius: 20; -fx-padding: 8 20;" text="Settings" />
         </HBox>
     </bottom>
 </BorderPane>

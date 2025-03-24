@@ -10,11 +10,9 @@ import java.io.IOException;
 public class GameApplication extends Application{
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(GameApplication.class.getResource("/landing.fxml"));
-        AnchorPane root = new AnchorPane();
-        fxmlLoader.setRoot(root);
-        fxmlLoader.load();
-        Scene scene = new Scene(root, 900, 600);
+        FXMLLoader fxmlLoader = new FXMLLoader(GameApplication.class.getResource("/dashboard.fxml"));
+        fxmlLoader.setRoot(new AnchorPane());
+        Scene scene = new Scene(fxmlLoader.load(), 900, 600);
 
         stage.setTitle("Placeholder Title");
         stage.setScene(scene);
