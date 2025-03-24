@@ -1,4 +1,4 @@
-package main.java.server.gamelogic.connect4;
+package server.gamelogic.connect4;
 
 public class Connect4_Board {
     private final int ROWS = 6;
@@ -24,12 +24,10 @@ public class Connect4_Board {
                 }
 
                 y++;
-                //System.out.println("y = " + y);
             }
 
 
             x++;
-            //System.out.println("x = " + x);
         }
 
 
@@ -39,7 +37,7 @@ public class Connect4_Board {
         return this.Board;
     }
 
-    public void placeDisc(int column, server.gamelogic.connect4.Disc disc){
+    public void placeDisc(int column, Disc disc){
 
         int row = 0;
 
@@ -80,7 +78,72 @@ public class Connect4_Board {
 
     }
 
-    public boolean checkWin(){
+    public boolean checkWin(String sym){
+        int index_row = 0;
+        int index_column = 0;
+        int match = 1;
+        String prevSymbol = getSymbol(Board[index_row][index_column]);
+
+
+        while(index_row < ROWS){
+            index_column = 0;
+            while(index_column < COLUMNS){
+
+                String symbol = getSymbol(Board[index_row][index_column]);
+
+                if(prevSymbol.equals(symbol) && prevSymbol.equals(sym)) {
+
+                    match++;
+
+                    if (match == 3) {
+                        return true;
+                    }
+
+                }else{
+                    match = 0;
+
+                }
+                prevSymbol = getSymbol(Board[index_row][index_column]);
+                index_column++;
+            }
+            match = 0;
+            index_row++;
+        }
+
+        index_column = 0;
+        match = 1;
+
+
+        while(index_column < COLUMNS){
+            index_row = 0;
+            while(index_row < ROWS){
+
+                String symbol = getSymbol(Board[index_row][index_column]);
+
+                if(prevSymbol.equals(symbol) && prevSymbol.equals(sym)) {
+
+                    match++;
+
+                    if (match == 3) {
+                        return true;
+                    }
+
+                }else{
+                    match = 0;
+
+                }
+                prevSymbol = getSymbol(Board[index_row][index_column]);
+                index_row++;
+            }
+            match = 0;
+            index_column++;
+        }
+
+
+
+
+
+
 
         return false;
     }
@@ -100,6 +163,14 @@ public class Connect4_Board {
         }
 
     }
+
+    public String getSymbol(String x){
+        String[] array = x.split("");
+        return array[1];
+    }
+
+
+
 
 
 

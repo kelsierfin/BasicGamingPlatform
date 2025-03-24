@@ -1,4 +1,4 @@
-package main.java.server.gamelogic.connect4;
+package server.gamelogic.connect4;
 import server.gamelogic.connect4.Player;
 
 import java.util.Scanner;
@@ -42,8 +42,15 @@ public class Connect4 {
                 moveValid = board.validMove(Integer.parseInt(player1_input));
             }
 
-            board.placeDisc(Integer.parseInt(player1_input), new server.gamelogic.connect4.Disc(player_one.getSelectedSymbol()));
+            board.placeDisc(Integer.parseInt(player1_input), new Disc(player_one.getSelectedSymbol()));
             board.printBoard();
+
+            gameEnd = board.checkWin(player_one.getSelectedSymbol());
+            if(gameEnd){
+                System.out.println("Player One Wins!!!!!!!");
+                break;
+            }
+
 
             moveValid = false;
 
@@ -55,7 +62,7 @@ public class Connect4 {
                 moveValid = board.validMove(Integer.parseInt(player1_input));
             }
 
-            board.placeDisc(Integer.parseInt(player1_input), new server.gamelogic.connect4.Disc(player_two.getSelectedSymbol()));
+            board.placeDisc(Integer.parseInt(player1_input), new Disc(player_two.getSelectedSymbol()));
             board.printBoard();
 
             moveValid = false;
