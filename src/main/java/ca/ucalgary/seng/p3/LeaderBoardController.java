@@ -15,6 +15,7 @@ import java.io.IOException;
 /***
  * Example use to create TicTacToe leaderboard page (the same for other games):
  * LeaderBoardController page = new LeaderBoardController("TicTacToe", "/icons/tictactoe-background.png");
+ * Scene scene = new Scene(page.root, 900, 600);
  */
 public class LeaderBoardController {
     public Parent root;
