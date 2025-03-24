@@ -6,30 +6,29 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class server {
+    private static int nextPort = 49153;  // Starting port for assigning to players
+
     public static void main(String[] args) {
         try {
             //Create a server socket bound to port 49152.
             ServerSocket serverSocket = new ServerSocket(49152);
             System.out.println("Server is online, waiting for client connection......");
 
-            //Client connection await.
-            Socket clientSocket = serverSocket.accept();
-            System.out.println("Client connected, start communication......");
+            while (true) {
+                // Wait for two clients to connect
+                Socket player1Socket = serverSocket.accept();
+                System.out.println("Player 1 connected.");
 
-            //Input and output stream.
-            BufferedReader input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-            PrintWriter output = new PrintWriter(clientSocket.getOutputStream());
+                Socket player2Socket = serverSocket.accept();
+                System.out.println("Player 2 connected.");
 
-            //Read the message from the client.
-            String clientMessage = input.readLine();
-            System.out.println("Client message: " + clientMessage);
+                // Assign a unique port for the match between Player 1 and Player 2
+                int matchPort = nextPort++;
+                System.out.println("Assigning match port: " + matchPort);
 
-            //Close the connection.
-            input.close();
-            output.close();
-            clientSocket.close();
-            serverSocket.close();
-            System.out.println("Server closed!");
+                // Create threads to handle each player's communication
+                new Thread(new ClientHandler(player1Socket, matchPort)).start();
+            }
 
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
