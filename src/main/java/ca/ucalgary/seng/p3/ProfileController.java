@@ -57,9 +57,8 @@ public class ProfileController {
         alert.setHeaderText("Are you sure you want to logout?");
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
-                // Notify the Authentication team to handle actual logout logic
-                Stage stage = (Stage) logoutButton.getScene().getWindow();
-                stage.close();
+                // Authentication team to add logout logic here
+                PageNavigator.navigateTo("landing"); // Navigate to landing page
             }
         });
     }
