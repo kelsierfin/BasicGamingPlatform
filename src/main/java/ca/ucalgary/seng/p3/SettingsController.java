@@ -31,10 +31,10 @@ public class SettingsController {
     }
 
     @FXML
-    private void handleBack() throws IOException {
-        Stage stage = (Stage) backButton.getScene().getWindow();
-        stage.close(); // Close the Settings window
+    private void handleBack() {
+        PageNavigator.navigateTo("dashboard"); // Navigate back to dashboard
     }
+
 
     @FXML
     private void handleProfileTab() {
