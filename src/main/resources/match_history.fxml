@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng.p3.MatchHistoryController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+    <top>
+        <VBox spacing="15">
+            <Label text="Match History" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+            <HBox spacing="10">
+                <ComboBox fx:id="gameFilterComboBox" promptText="All Games">
+                    <HBox.margin>
+                        <Insets right="10"/>
+                    </HBox.margin>
+                </ComboBox>
+                <ComboBox fx:id="timeFilterComboBox" promptText="Last 30 Days"/>
+            </HBox>
+
+            <BorderPane style="-fx-background-color: #f5f5f5; -fx-background-radius: 5; -fx-padding: 15;">
+                <left>
+                    <VBox>
+                        <Label text="Total Games: 48" style="-fx-font-weight: bold;"/>
+                        <Label text="Wins: 23"/>
+                    </VBox>
+                </left>
+                <center>
+                    <VBox alignment="CENTER_LEFT">
+                        <Label text="Losses: 19"/>
+                        <Label text="Draw: 06"/>
+                    </VBox>
+                </center>
+                <right>
+                    <Label text="Win Rate: 47.92%" style="-fx-font-weight: bold;"/>
+                </right>
+            </BorderPane>
+        </VBox>
+    </top>
+    <center>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="10"/>
+            </padding>
+
+            <!-- Match 1 -->
+            <BorderPane style="-fx-border-color: #e0e0e0; -fx-border-radius: 5; -fx-padding: 10;">
+                <left>
+                    <VBox>
+                        <Label text="Alexander vs. C4king" style="-fx-font-weight: bold;"/>
+                        <Label text="Connect Four • March 5, 2025 • 16:32" style="-fx-text-fill: #666666;"/>
+                    </VBox>
+                </left>
+                <right>
+                    <HBox spacing="10" alignment="CENTER_RIGHT">
+                        <Label text="Loss" style="-fx-text-fill: #ff5252;"/>
+                        <Button text="Rematch" style="-fx-background-color: #6495ED; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                    </HBox>
+                </right>
+            </BorderPane>
+
+            <!-- Match 2 -->
+            <BorderPane style="-fx-border-color: #e0e0e0; -fx-border-radius: 5; -fx-padding: 10;">
+                <left>
+                    <VBox>
+                        <Label text="AstroidDestroyer vs. liab009" style="-fx-font-weight: bold;"/>
+                        <Label text="Chess • March 3, 2025 • 09:45" style="-fx-text-fill: #666666;"/>
+                    </VBox>
+                </left>
+                <right>
+                    <HBox spacing="10" alignment="CENTER_RIGHT">
+                        <Label text="Win" style="-fx-text-fill: #4CAF50;"/>
+                        <Button text="Rematch" style="-fx-background-color: #6495ED; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                    </HBox>
+                </right>
+            </BorderPane>
+
+            <!-- Match 3 -->
+            <BorderPane style="-fx-border-color: #e0e0e0; -fx-border-radius: 5; -fx-padding: 10;">
+                <left>
+                    <VBox>
+                        <Label text="knighowl vs. 505Arctic" style="-fx-font-weight: bold;"/>
+                        <Label text="Tic Tac Toe • March 1, 2025 • 14:20" style="-fx-text-fill: #666666;"/>
+                    </VBox>
+                </left>
+                <right>
+                    <HBox spacing="10" alignment="CENTER_RIGHT">
+                        <Label text="Win" style="-fx-text-fill: #4CAF50;"/>
+                        <Button text="Rematch" style="-fx-background-color: #6495ED; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                    </HBox>
+                </right>
+            </BorderPane>
+        </VBox>
+    </center>
+</BorderPane>
