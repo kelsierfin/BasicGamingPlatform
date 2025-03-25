@@ -63,4 +63,25 @@ public class ProfileController {
             }
         });
     }
+    @FXML
+    private void handleSave() {
+        System.out.println("Saving profile changes: Email=" + emailField.getText() +
+                ", Bio=" + bioArea.getText() +
+                ", New Password=" + (newPassField.getText().isEmpty() ? "unchanged" : "changed"));
+        // Authentication team to add save logic here
+    }
+
+    @FXML
+    private void handleDeleteAccount() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete Account");
+        alert.setHeaderText("Are you sure you want to delete your account? This cannot be undone.");
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                System.out.println("Delete Account requested");
+                // Authentication team to add deletion logic here
+                PageNavigator.navigateTo("landing"); // Navigate to landing after deletion
+            }
+        });
+    }
 }
