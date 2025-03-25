@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="tested connect4 game play screen, need to implement the chat logic, new game logic and abort game logic">
+    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="testing files">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GameApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GameApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/GameApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/GameApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/Connect4Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/Connect4Controller.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +25,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -138,7 +138,8 @@
       <workItem from="1742708928094" duration="7487000" />
       <workItem from="1742781694738" duration="13037000" />
       <workItem from="1742939451631" duration="7000" />
-      <workItem from="1742939470987" duration="3075000" />
+      <workItem from="1742939470987" duration="3222000" />
+      <workItem from="1742943710814" duration="823000" />
     </task>
     <task id="LOCAL-00001" summary="Added connect4.fxml and connect 4.css, started working on connect 4 game page">
       <option name="closed" value="true" />
@@ -284,7 +285,23 @@
       <option name="project" value="LOCAL" />
       <updated>1742942333000</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="testing files">
+      <option name="closed" value="true" />
+      <created>1742943597538</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1742943597538</updated>
+    </task>
+    <task id="LOCAL-00020" summary="testing files">
+      <option name="closed" value="true" />
+      <created>1742943621385</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1742943621385</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -320,6 +337,7 @@
     <MESSAGE value="updated the PageNavigator.java for testing" />
     <MESSAGE value="Tested settings screen implementation, username is not showing up. haven't handled avatar yet, functionality for save, delete, lacks logic" />
     <MESSAGE value="tested connect4 game play screen, need to implement the chat logic, new game logic and abort game logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="tested connect4 game play screen, need to implement the chat logic, new game logic and abort game logic" />
+    <MESSAGE value="testing files" />
+    <option name="LAST_COMMIT_MESSAGE" value="testing files" />
   </component>
 </project>

@@ -1,11 +1,14 @@
 package ca.ucalgary.seng.p3;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
 
 public class Connect4Controller {
 
@@ -41,16 +44,17 @@ public class Connect4Controller {
 
     // Track if this is the local player's turn
     private boolean isLocalPlayerTurn = false;
+    private Timeline gameTimer;
+    private int secondsRemaining = 600; // 10 minutes initial time
 
     @FXML
     private void initialize() {
-        // Initialize UI components
         System.out.println("Connect4 game screen initialized");
 
         // Set default values
         player1Name.setText("Player 1");
         player2Name.setText("Player 2");
-        timer.setText("03:58");
+        startTimer();
     }
 
     /**
@@ -73,10 +77,28 @@ public class Connect4Controller {
 
     /**
      * Updates the game timer display
-     * @param timeString The time to display (format: "MM:SS")
      */
-    public void updateTimer(String timeString) {
-        timer.setText(timeString);
+    private void startTimer() {
+        if (gameTimer != null) {
+            gameTimer.stop();
+        }
+        secondsRemaining = 600;
+        timer.setText(formatTime(secondsRemaining));
+        gameTimer = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
+            secondsRemaining--;
+            timer.setText(formatTime(secondsRemaining));
+            if (secondsRemaining <= 0) {
+                gameTimer.stop();
+                handleGameOver(null);
+            }
+        }));
+        gameTimer.setCycleCount(Timeline.INDEFINITE);
+        gameTimer.play();
+    }
+    private String formatTime(int seconds) {
+        int minutes = seconds / 60;
+        int secs = seconds % 60;
+        return String.format("%02d:%02d", minutes, secs);
     }
 
     /**
@@ -99,20 +121,29 @@ public class Connect4Controller {
 
     @FXML
     private void handleAbortGame() {
-        System.out.println("Abort game button clicked");
-        // Will be implemented by game logic team
+        if (gameTimer != null) {
+            gameTimer.stop();
+        }
+        PageNavigator.navigateTo("dashboard"); // Navigate to dashboard
     }
 
     @FXML
     private void handleNewGame() {
-        System.out.println("New game button clicked");
-        // Will be implemented by game logic team
-    }
-
-    @FXML
-    private void handleChat() {
-        System.out.println("Chat button clicked");
-        // Will open the chat interface
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("New Game");
+        alert.setHeaderText("Starting a new game will end the current one.");
+        alert.setContentText("You will lose this game. Are you sure?");
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                // Reset game with current players
+                String localPlayer = player1Name.getText();
+                String remotePlayer = player2Name.getText();
+                setupMatchedPlayers(localPlayer, remotePlayer, true); // Assuming local is Player 1
+                startTimer(); // Restart timer
+                System.out.println("New game started with " + localPlayer + " vs " + remotePlayer);
+                // Game logic team to reset board here
+            }
+        });
     }
 
     /**
@@ -122,5 +153,35 @@ public class Connect4Controller {
     public void cleanup() {
         // Any cleanup logic needed when the game ends
         System.out.println("Cleaning up Connect4 game resources");
+    }
+
+    @FXML
+    private void handleChat() {
+        Dialog<String> chatDialog = new Dialog<>();
+        chatDialog.setTitle("Chat");
+        chatDialog.setHeaderText("Chat with " + player2Name.getText());
+
+        // Set up dialog content
+        TextArea chatArea = new TextArea();
+        chatArea.setEditable(false);
+        chatArea.setPrefHeight(200);
+        TextField messageField = new TextField();
+        messageField.setPromptText("Type your message...");
+        Button sendButton = new Button("Send");
+        sendButton.setOnAction(e -> {
+            String message = messageField.getText();
+            if (!message.trim().isEmpty()) {
+                chatArea.appendText("Me: " + message + "\n");
+                messageField.clear();
+                // Chat team to add networking logic here
+            }
+        });
+
+        VBox content = new VBox(10, chatArea, messageField, sendButton);
+        chatDialog.getDialogPane().setContent(content);
+
+        // Add OK button to close dialog
+        chatDialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+        chatDialog.show();
     }
 }
