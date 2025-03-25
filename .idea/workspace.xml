@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="dashboard added with games" />
+    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="Updated the handleLogout() method">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-20_10_58_p_m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-20_10_58_p_m___Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-20_10_58_p_m___Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-20_10_58_p_m___Changes_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-20_11_00_p_m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-20_11_00_p_m___Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-22_5_18_p_m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-22_5_18_p_m___Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-25_11_41_a_m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-25_11_41_a_m___Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/PageNavigator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/PageNavigator.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -91,14 +99,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.23654.117" />
-        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-IU-243.23654.117" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -127,6 +127,8 @@
       <workItem from="1742695138037" duration="1627000" />
       <workItem from="1742708928094" duration="7487000" />
       <workItem from="1742781694738" duration="13037000" />
+      <workItem from="1742939451631" duration="7000" />
+      <workItem from="1742939470987" duration="1397000" />
     </task>
     <task id="LOCAL-00001" summary="Added connect4.fxml and connect 4.css, started working on connect 4 game page">
       <option name="closed" value="true" />
@@ -224,7 +226,31 @@
       <option name="project" value="LOCAL" />
       <updated>1742788903961</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Used PageNavigator class to add the functionality of using the back button in SettingsController.java">
+      <option name="closed" value="true" />
+      <created>1742941312206</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1742941312206</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Added functionality to handle save and logout buttons using the page navigator class">
+      <option name="closed" value="true" />
+      <created>1742941601330</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1742941601330</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Updated the handleLogout() method">
+      <option name="closed" value="true" />
+      <created>1742941639144</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1742941639144</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -253,6 +279,10 @@
     <MESSAGE value="landing page added" />
     <MESSAGE value="logIn &amp; signUp pages added" />
     <MESSAGE value="dashboard added with games" />
-    <option name="LAST_COMMIT_MESSAGE" value="dashboard added with games" />
+    <MESSAGE value="testing some files" />
+    <MESSAGE value="Used PageNavigator class to add the functionality of using the back button in SettingsController.java" />
+    <MESSAGE value="Added functionality to handle save and logout buttons using the page navigator class" />
+    <MESSAGE value="Updated the handleLogout() method" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated the handleLogout() method" />
   </component>
 </project>
