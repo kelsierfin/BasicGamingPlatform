@@ -10,7 +10,7 @@ public class LandingController {
     @FXML
     private Button signUpButton;
     @FXML
-    private Button loginButton;
+    private Button logInButton;
     @FXML
     private Text about;
     @FXML
@@ -25,7 +25,4 @@ public class LandingController {
         faq.setText("FAQ");
         rules.setText("RULES");
     }
-
-
 }
-

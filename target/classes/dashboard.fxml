@@ -64,7 +64,7 @@
                                        <children>
                                           <ImageView fx:id="tttIcon" fitHeight="105.0" fitWidth="144.0" layoutX="21.0" layoutY="24.0">
                                              <image>
-                                                <Image url="@icons/ttt%20icon.png" />
+                                                <Image url="@icons/ttt icon.png" />
                                              </image>
                                           </ImageView>
                                        </children>
@@ -86,7 +86,7 @@
                                        <children>
                                           <ImageView fx:id="connect4Icon" fitHeight="105.0" fitWidth="144.0" layoutX="21.0" layoutY="24.0">
                                              <image>
-                                                <Image url="@icons/connect4%20icon.png" />
+                                                <Image url="@icons/connect4 icon.png" />
                                              </image>
                                           </ImageView>
                                        </children>
@@ -108,7 +108,7 @@
                                        <children>
                                           <ImageView fx:id="goIcon" fitHeight="105.0" fitWidth="144.0" layoutX="21.0" layoutY="24.0">
                                              <image>
-                                                <Image url="@icons/go%20icon.png" />
+                                                <Image url="@icons/go icon.png" />
                                              </image>
                                           </ImageView>
                                        </children>

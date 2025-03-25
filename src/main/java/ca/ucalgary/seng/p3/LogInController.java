@@ -28,5 +28,4 @@ public class LogInController {
 
     @FXML
     private Hyperlink signUpLink;
-
 }
