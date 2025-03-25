@@ -151,7 +151,9 @@ public class Connect4Controller {
      * when navigating away from this screen
      */
     public void cleanup() {
-        // Any cleanup logic needed when the game ends
+        if (gameTimer != null) {
+            gameTimer.stop();
+        }
         System.out.println("Cleaning up Connect4 game resources");
     }
 
