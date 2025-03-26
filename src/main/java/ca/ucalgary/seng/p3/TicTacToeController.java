@@ -2,11 +2,15 @@ package ca.ucalgary.seng.p3;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class TicTacToeController {
+
+    @FXML
+    private Label turnLabel;
 
     @FXML
     private Button exitButton;
@@ -60,6 +64,20 @@ public class TicTacToeController {
 
     @FXML
     private void handleCellClick() {
-        // Placeholder for future game logic
+        // After player makes a move
+        switchTurn(false);  // Switch to opponent's turn
+
+        // Handle opponent's move (can be AI or another player, etc.)
+        // When it's the player's turn again:
+        switchTurn(true);  // Switch back to player's turn
+    }
+
+    @FXML
+    private void switchTurn(boolean isPlayerTurn) {
+        if (isPlayerTurn) {
+            turnLabel.setText("YOUR TURN");
+        } else {
+            turnLabel.setText("OPPONENT'S TURN");
+        }
     }
 }
