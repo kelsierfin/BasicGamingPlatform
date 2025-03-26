@@ -1,8 +1,8 @@
-# Server-Side Network Integration
+# Server-Side Integration
 
 ## Overview
 - **Purpose**: TCP server for client connections and message exchange  
-- **Scope**: Network communication layer  
+- **Scope**: Server communication layer  
 - **Audience**: Networking Team, Integration Team, GameLogic Team  
 
 ## Architecture
