@@ -2,17 +2,17 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane fx:id="root" prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng.p3.StartGameController">
-    
+<StackPane fx:id="root" prefHeight="600" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng.p3.StartGameController">
+
     <BorderPane fx:id="mainBorderPane">
         <top>
-            <!-- Top bar: menu button on left, title in center, profile button on right -->
             <BorderPane style="-fx-padding: 10; -fx-background-color: lightgrey;">
                 <left>
                     <Button fx:id="menuButton" onAction="#handleMenuButton" style="-fx-font-size: 18; -fx-background-color: transparent; -fx-border-color: transparent;" text="≡" />
@@ -25,22 +25,16 @@
                 </right>
             </BorderPane>
         </top>
-        
+
         <center>
-            <VBox alignment="CENTER" spacing="20">
-                <!-- "X vs O" label -->
-                <Label style="-fx-font-size: 30; -fx-text-fill: #333;" text="&lt;Image will go here&gt;" />
-                <!-- Board placeholder -->
+            <VBox alignment="CENTER" spacing="20" style="-fx-background-color: white;">
                 <ImageView fx:id="boardImage" fitWidth="250" preserveRatio="true" style="-fx-border-color: lightgray; -fx-border-width: 2;" />
-                <!-- Green "FIND A MATCH" button -->
                 <Button fx:id="findMatchButton" onAction="#handleFindMatch" style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-size: 16; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 10 20;" text="FIND A MATCH" />
             </VBox>
         </center>
     </BorderPane>
-    
-    <!-- Popup Menu: appears below the top bar, initially visible for testing -->
+
     <VBox fx:id="menuPopup" maxHeight="250" maxWidth="200" style="-fx-background-color: #e0e0e0; -fx-padding: 20; -fx-border-color: #999; -fx-border-width: 1; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 0);" translateY="60" visible="true" StackPane.alignment="TOP_LEFT">
-        <!-- Wrap the Menu label in an HBox to center it horizontally -->
         <HBox alignment="CENTER">
             <Label style="-fx-font-size: 18; -fx-font-weight: bold;" text="Menu" />
         </HBox>
