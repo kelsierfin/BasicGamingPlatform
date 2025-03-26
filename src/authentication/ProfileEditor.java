@@ -4,10 +4,16 @@ import java.io.*;
 import java.util.*;
 
 public class ProfileEditor {
-    private static final String FILE_NAME = "accounts.csv";
+    private final String fileName;
     private Scanner scanner;
 
     public ProfileEditor() {
+        this("accounts.csv"); // default filename
+    }
+
+
+    ProfileEditor(String fileName) {
+        this.fileName = fileName;
         this.scanner = new Scanner(System.in);
     }
 
@@ -20,7 +26,6 @@ public class ProfileEditor {
         System.out.println("=== Profile Editor ===");
 
         try {
-            // Username verification with retry loop
             String username = null;
             String[] details = null;
 
@@ -39,13 +44,11 @@ public class ProfileEditor {
                 }
             }
 
-            // Display current profile (with masked sensitive data)
             System.out.println("\nCurrent Profile:");
             System.out.println("Username: " + username);
             System.out.println("Password: " + getPassword());
             System.out.println("Email: " + getEmail(details[1]));
 
-            // Main menu loop
             while (true) {
                 System.out.println("\nEdit Options:");
                 System.out.println("1. Change Username");
@@ -71,7 +74,6 @@ public class ProfileEditor {
                     case "2":
                         boolean emailUpdated = false;
                         while (!emailUpdated) {
-                            System.out.println("Email Requirements:");
                             System.out.print("Enter new email: ");
                             String newEmail = scanner.nextLine();
 
@@ -121,11 +123,11 @@ public class ProfileEditor {
     }
 
     // Masking methods
-    private String getPassword() {
+    String getPassword() {
         return "****";
     }
 
-    private String getEmail(String email) {
+    String getEmail(String email) {
         if (email == null || email.isEmpty()) return "";
 
         String[] parts = email.split("@");
@@ -144,12 +146,12 @@ public class ProfileEditor {
     }
 
     // Account operations
-    private String[] getAccountDetails(String username) throws IOException {
+    String[] getAccountDetails(String username) throws IOException {
         Map<String, String[]> accounts = loadAccounts();
         return accounts.get(username);
     }
 
-    private boolean updateUsername(String currentUsername, String newUsername) throws IOException {
+    boolean updateUsername(String currentUsername, String newUsername) throws IOException {
         Map<String, String[]> accounts = loadAccounts();
 
         if (accounts.containsKey(newUsername) && !currentUsername.equals(newUsername)) {
@@ -164,7 +166,7 @@ public class ProfileEditor {
         return true;
     }
 
-    private void updateEmail(String username, String newEmail) throws IOException {
+    void updateEmail(String username, String newEmail) throws IOException {
         if (!isValidEmail(newEmail)) {
             throw new IllegalArgumentException("Invalid email format");
         }
@@ -177,7 +179,7 @@ public class ProfileEditor {
         writeAllAccounts(accounts);
     }
 
-    private void updatePassword(String username, String newPassword) throws IOException {
+    void updatePassword(String username, String newPassword) throws IOException {
         if (!isValidPassword(newPassword)) {
             throw new IllegalArgumentException("Password doesn't meet requirements");
         }
@@ -191,8 +193,8 @@ public class ProfileEditor {
     }
 
     // File operations
-    private void writeAllAccounts(Map<String, String[]> accounts) throws IOException {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_NAME))) {
+    void writeAllAccounts(Map<String, String[]> accounts) throws IOException {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))) {
             for (Map.Entry<String, String[]> entry : accounts.entrySet()) {
                 bw.write(entry.getKey() + "," + entry.getValue()[0] + "," + entry.getValue()[1]);
                 bw.newLine();
@@ -200,9 +202,9 @@ public class ProfileEditor {
         }
     }
 
-    private Map<String, String[]> loadAccounts() throws IOException {
+    Map<String, String[]> loadAccounts() throws IOException {
         Map<String, String[]> accounts = new HashMap<>();
-        File file = new File(FILE_NAME);
+        File file = new File(fileName);
 
         if (!file.exists()) {
             file.createNewFile();
@@ -222,7 +224,7 @@ public class ProfileEditor {
     }
 
     // Validation methods
-    private boolean isValidEmail(String email) {
+    boolean isValidEmail(String email) {
         if (email == null || email.isEmpty()) return false;
         String[] parts = email.split("@");
         return parts.length == 2 &&
@@ -230,7 +232,7 @@ public class ProfileEditor {
                 !parts[1].isEmpty();
     }
 
-    private boolean isValidPassword(String password) {
+    boolean isValidPassword(String password) {
         if (password == null || password.length() < 8) return false;
 
         boolean hasNumber = false;
