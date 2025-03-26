@@ -1,4 +1,0 @@
-Here is the link to our GitLab Repository for this Project:
-
-https://csgit.ucalgary.ca/sanbeer.shafin/seng300-w25-project
-
