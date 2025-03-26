@@ -70,6 +70,26 @@ public class PlayerStatData {
 
     }
 
+    public int getOverallGamesPlayed() {
+        return overallGamesPlayed;
+    }
+
+    public int getOverallGamesWon() {
+        return overallGamesWon;
+    }
+
+    public int getOverallWinRate() {
+        return overallWinRate;
+    }
+
+    public int getGameStats(String game) {
+        return gameStats.get(game);
+    }
+
+    public List<MatchData> getMatchHistory() {
+        return matchHistory;
+    }
+
     // Helper to calculate winrate whenever it changes
     private double setMatchWinRate() {
         winRate = Math.floor((double)overallGamesWon / (double)overallGamesPlayed * 10000) / 100;
