@@ -3,7 +3,7 @@
 ## Overview
 - **Purpose**: TCP server for client connections and message exchange  
 - **Scope**: Network communication layer  
-- **Audience**: Networking Team, Integration Team  
+- **Audience**: Networking Team, Integration Team, GameLogic Team  
 
 ## Architecture
 ```mermaid
