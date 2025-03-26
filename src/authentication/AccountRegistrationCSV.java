@@ -75,7 +75,7 @@ public class AccountRegistrationCSV {
      * Reads the accounts from the CSV file and stores them in a map.
      * @return A map of usernames to password/email arrays.
      */
-    private static Map<String, String[]> loadAccounts() throws IOException {
+    public static Map<String, String[]> loadAccounts() throws IOException {
         Map<String, String[]> accounts = new HashMap<>();
         File file = new File(FILE_NAME);
 
