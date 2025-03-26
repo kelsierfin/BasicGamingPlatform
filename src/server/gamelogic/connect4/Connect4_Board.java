@@ -139,8 +139,76 @@ public class Connect4_Board {
             index_column++;
         }
 
+        prevSymbol = getSymbol(Board[0][0]);
+        index_column = 0;
+        int start_column = 0;
 
 
+        while(start_column < COLUMNS){
+            index_row = 0;
+            index_column = start_column;
+
+
+            while(index_column < COLUMNS || index_row < ROWS){
+                String symbol = getSymbol(Board[index_row][index_column]);
+
+                if(prevSymbol.equals(symbol) && !symbol.equals("[ ]")){
+                    match++;
+
+                    if(match == 3){
+                        return true;
+                    }
+
+                }else{
+                    match = 0;
+                }
+                index_column++;
+                index_row++;
+
+
+            }
+
+            start_column++;
+
+
+
+        }
+
+        prevSymbol = getSymbol(Board[1][0]);
+        index_column = 0;
+
+
+        int start_row = 0;
+
+
+
+        while(start_row < ROWS){
+            index_row = start_row;
+
+            while(index_column < COLUMNS || index_row < ROWS){
+                String symbol = getSymbol(Board[index_row][index_column]);
+
+                if(prevSymbol.equals(symbol) && !symbol.equals("[ ]")){
+                    match++;
+
+                    if(match == 3){
+                        return true;
+                    }
+
+                }else{
+                    match = 0;
+                }
+                index_column++;
+                index_row++;
+
+
+            }
+
+            start_row++;
+
+
+
+        }
 
 
 
