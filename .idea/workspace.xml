@@ -4,17 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="dashboard added with games">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/PageNavigator.java" afterDir="false" />
+    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="testing files">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LandingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LandingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LogInController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/SignUpController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/GameApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/GameApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/LandingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/LandingController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/LogInController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/LogInController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/SignUpController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/SignUpController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dashboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/Connect4Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/Connect4Controller.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +25,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -82,7 +75,20 @@
       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\java\ca\ucalgary\seng\p3" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.GameApplication">
+    <configuration name="GameApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ca.ucalgary.seng.p3.GameApplication" />
+      <module name="seng-w25-project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ca.ucalgary.seng.p3.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ca.ucalgary.seng.p3.Main" />
       <module name="seng-w25-project" />
@@ -98,17 +104,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.GameApplication" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.23654.117" />
-        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-IU-243.23654.117" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -138,6 +137,9 @@
       <workItem from="1742695138037" duration="1627000" />
       <workItem from="1742708928094" duration="7487000" />
       <workItem from="1742781694738" duration="13037000" />
+      <workItem from="1742939451631" duration="7000" />
+      <workItem from="1742939470987" duration="3222000" />
+      <workItem from="1742943710814" duration="823000" />
     </task>
     <task id="LOCAL-00001" summary="Added connect4.fxml and connect 4.css, started working on connect 4 game page">
       <option name="closed" value="true" />
@@ -235,7 +237,71 @@
       <option name="project" value="LOCAL" />
       <updated>1742788903961</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Used PageNavigator class to add the functionality of using the back button in SettingsController.java">
+      <option name="closed" value="true" />
+      <created>1742941312206</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1742941312206</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Added functionality to handle save and logout buttons using the page navigator class">
+      <option name="closed" value="true" />
+      <created>1742941601330</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1742941601330</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Updated the handleLogout() method">
+      <option name="closed" value="true" />
+      <created>1742941639144</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1742941639144</updated>
+    </task>
+    <task id="LOCAL-00016" summary="updated the PageNavigator.java for testing">
+      <option name="closed" value="true" />
+      <created>1742941831550</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1742941831550</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Tested settings screen implementation, username is not showing up. haven't handled avatar yet, functionality for save, delete, lacks logic">
+      <option name="closed" value="true" />
+      <created>1742942224104</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1742942224104</updated>
+    </task>
+    <task id="LOCAL-00018" summary="tested connect4 game play screen, need to implement the chat logic, new game logic and abort game logic">
+      <option name="closed" value="true" />
+      <created>1742942333000</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1742942333000</updated>
+    </task>
+    <task id="LOCAL-00019" summary="testing files">
+      <option name="closed" value="true" />
+      <created>1742943597538</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1742943597538</updated>
+    </task>
+    <task id="LOCAL-00020" summary="testing files">
+      <option name="closed" value="true" />
+      <created>1742943621385</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1742943621385</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,6 +330,14 @@
     <MESSAGE value="landing page added" />
     <MESSAGE value="logIn &amp; signUp pages added" />
     <MESSAGE value="dashboard added with games" />
-    <option name="LAST_COMMIT_MESSAGE" value="dashboard added with games" />
+    <MESSAGE value="testing some files" />
+    <MESSAGE value="Used PageNavigator class to add the functionality of using the back button in SettingsController.java" />
+    <MESSAGE value="Added functionality to handle save and logout buttons using the page navigator class" />
+    <MESSAGE value="Updated the handleLogout() method" />
+    <MESSAGE value="updated the PageNavigator.java for testing" />
+    <MESSAGE value="Tested settings screen implementation, username is not showing up. haven't handled avatar yet, functionality for save, delete, lacks logic" />
+    <MESSAGE value="tested connect4 game play screen, need to implement the chat logic, new game logic and abort game logic" />
+    <MESSAGE value="testing files" />
+    <option name="LAST_COMMIT_MESSAGE" value="testing files" />
   </component>
 </project>
