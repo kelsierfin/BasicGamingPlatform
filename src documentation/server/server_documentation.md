@@ -52,5 +52,3 @@ nc localhost 49152
 |---------------------|--------------------------|
 | `BindException`     | Change port number       |
 | Connection drops    | Add timeout handling     |
-
-```
