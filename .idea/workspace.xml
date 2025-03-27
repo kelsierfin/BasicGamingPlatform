@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="Changed image location for the start game screens, added game request notification button, edited menu buttons list">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/TicTacToeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/TicTacToeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tictactoe.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tictactoe.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +49,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "gui",
+    "git-widget-placeholder": "Integration",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/sagek/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Scene Builder/SceneBuilder.lnk",
     "list.type.of.created.stylesheet": "CSS",
