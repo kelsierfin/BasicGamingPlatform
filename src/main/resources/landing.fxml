@@ -6,11 +6,12 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" type="AnchorPane" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng.p3.LandingController">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" styleClass="title" type="AnchorPane" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng.p3.LandingController">
    <children>
-      <AnchorPane layoutX="516.0" layoutY="29.0" prefHeight="44.0" prefWidth="352.0">
+      <AnchorPane layoutX="516.0" layoutY="29.0" prefHeight="44.0" prefWidth="352.0" style="-fx-border-color: black; -fx-border-radius: 30px; -fx-border-width: 1.5px;">
          <children>
             <GridPane layoutX="26.0" layoutY="7.0">
               <columnConstraints>
@@ -29,11 +30,14 @@
             </GridPane>
          </children>
       </AnchorPane>
-      <VBox alignment="CENTER" layoutX="120.0" layoutY="93.0" prefHeight="325.0" prefWidth="660.0">
+      <VBox fx:id="platform" alignment="CENTER" layoutX="120.0" layoutY="93.0" prefHeight="325.0" prefWidth="660.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Obitron;" text="Online " />
-            <Text layoutX="329.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Multiplayer" />
-            <Text layoutX="329.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Platform " />
+            <Text fx:id="titleLine1" strokeType="OUTSIDE" strokeWidth="0.0" text="Online ">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font></Text>
+            <Text fx:id="titleLine2" layoutX="329.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Multiplayer" />
+            <Text fx:id="titleLine3" layoutX="329.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Platform " />
          </children>
       </VBox>
       <GridPane layoutX="158.0" layoutY="443.0" prefHeight="30.0" prefWidth="584.0">
@@ -45,8 +49,8 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="signUpButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="Sign Up" GridPane.halignment="CENTER" />
-            <Button fx:id="logInButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="Log In" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+            <Button fx:id="signUpButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" style="-fx-border-radius: 15px; -fx-background-radius: 15px; -fx-background-color: black; -fx-border-color: black; -fx-text-fill: white;" text="Sign Up" GridPane.halignment="CENTER" />
+            <Button fx:id="logInButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: black; -fx-background-radius: 15; -fx-border-color: black; -fx-text-fill: white; -fx-border-radius: 15px;" text="Log In" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
          </children>
       </GridPane>
    </children>

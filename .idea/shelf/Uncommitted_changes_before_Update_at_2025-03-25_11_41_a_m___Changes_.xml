@@ -1,0 +1,24 @@
+<changelist name="Uncommitted_changes_before_Update_at_2025-03-25_11_41_a_m__[Changes]" date="1742924519302" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-25_11_41_a_m__[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 2025-03-25 11:41 a.m. [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/ca/ucalgary/seng/p3/LogInController.class" />
+    <option name="AFTER_PATH" value="target/classes/ca/ucalgary/seng/p3/LogInController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-25_11_41_a_m__[Changes]/LogInController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/ca/ucalgary/seng/p3/GameApplication.class" />
+    <option name="AFTER_PATH" value="target/classes/ca/ucalgary/seng/p3/GameApplication.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-25_11_41_a_m__[Changes]/GameApplication.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/ca/ucalgary/seng/p3/LandingController.class" />
+    <option name="AFTER_PATH" value="target/classes/ca/ucalgary/seng/p3/LandingController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-25_11_41_a_m__[Changes]/LandingController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/ca/ucalgary/seng/p3/SignUpController.class" />
+    <option name="AFTER_PATH" value="target/classes/ca/ucalgary/seng/p3/SignUpController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-25_11_41_a_m__[Changes]/SignUpController.class" />
+  </binary>
+</changelist>

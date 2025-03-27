@@ -1,0 +1,62 @@
+<changelist name="Uncommitted_changes_before_Update_at_2025-03-25_7_47_p_m__[Changes]" date="1742953670484" recycled="false" toDelete="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-25_7_47_p_m__[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 2025-03-25 7:47 p.m. [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/icons/chess icon.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="src/main/resources/icons/chess icon.png" />
+    <option name="AFTER_PATH" value="src/main/resources/icons/chess_icon.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-25_7_47_p_m__[Changes]/chess_icon.png" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="src/main/resources/icons/profile.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-25_7_47_p_m__[Changes]/profile.png" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="src/main/resources/icons/tictactoe.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-25_7_47_p_m__[Changes]/tictactoe.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/ca/ucalgary/seng/p3/LeaderBoardController.class" />
+    <option name="AFTER_PATH" value="target/classes/ca/ucalgary/seng/p3/LeaderBoardController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-25_7_47_p_m__[Changes]/LeaderBoardController.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="src/main/resources/icons/chess.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-25_7_47_p_m__[Changes]/chess.png" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="src/main/resources/icons/go.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-25_7_47_p_m__[Changes]/go.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/ca/ucalgary/seng/p3/PageNavigator.class" />
+    <option name="AFTER_PATH" value="target/classes/ca/ucalgary/seng/p3/PageNavigator.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-25_7_47_p_m__[Changes]/PageNavigator.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/ca/ucalgary/seng/p3/GameApplication.class" />
+    <option name="AFTER_PATH" value="target/classes/ca/ucalgary/seng/p3/GameApplication.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-25_7_47_p_m__[Changes]/GameApplication.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="src/main/resources/icons/connect4.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-25_7_47_p_m__[Changes]/connect4.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/ca/ucalgary/seng/p3/LogInController.class" />
+    <option name="AFTER_PATH" value="target/classes/ca/ucalgary/seng/p3/LogInController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-25_7_47_p_m__[Changes]/LogInController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/ca/ucalgary/seng/p3/LandingController.class" />
+    <option name="AFTER_PATH" value="target/classes/ca/ucalgary/seng/p3/LandingController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-25_7_47_p_m__[Changes]/LandingController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/ca/ucalgary/seng/p3/SignUpController.class" />
+    <option name="AFTER_PATH" value="target/classes/ca/ucalgary/seng/p3/SignUpController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-25_7_47_p_m__[Changes]/SignUpController.class" />
+  </binary>
+</changelist>

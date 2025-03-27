@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<VBox  spacing="20.0" xmlns:fx="http://javafx.com/fxml">
+
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" />
+    </padding>
+    <GridPane>
+        <columnConstraints>
+            <ColumnConstraints percentWidth="20"/>
+            <ColumnConstraints percentWidth="60" halignment="CENTER"/>
+            <ColumnConstraints percentWidth="20"/>
+        </columnConstraints>
+        <children>
+            <Button fx:id = "btnBack" style="-fx-background-color: transparent">
+                <GridPane.columnIndex>0</GridPane.columnIndex>
+                <GridPane.rowIndex>0</GridPane.rowIndex>
+            </Button>
+            <Label fx:id="leaderboard" style = "-fx-font-size: 22; -fx-padding: 80 0 0 0" textFill="aliceblue"  >
+                <GridPane.columnIndex>1</GridPane.columnIndex>
+                <GridPane.rowIndex>0</GridPane.rowIndex>
+            </Label>
+            <HBox alignment="CENTER">
+                <GridPane.columnIndex>2</GridPane.columnIndex>
+                <GridPane.rowIndex>0</GridPane.rowIndex>
+                <children>
+                    <Label fx:id ="userName" text = "UserName" style="-fx-font-size: 21" textFill="aliceblue"/>
+                    <Button fx:id="btnUserProfile" style="-fx-background-color: transparent;" />
+                </children>
+
+            </HBox>
+        </children>
+    </GridPane>
+
+
+
+    <GridPane  fx:id="rankList" vgap="20" style="-fx-padding: 40 0 0 0" >
+        <columnConstraints>
+            <ColumnConstraints percentWidth="12.5"/>
+            <ColumnConstraints percentWidth="12.5" />
+            <ColumnConstraints percentWidth="25" />
+            <ColumnConstraints percentWidth="25"/>
+            <ColumnConstraints percentWidth="25"/>
+        </columnConstraints>
+        <children>
+            <Label fx:id="nameRanking" text="NAME" style="-fx-font-size: 18" textFill="aliceblue">
+                <GridPane.columnIndex>2</GridPane.columnIndex>
+                <GridPane.rowIndex>0</GridPane.rowIndex>
+            </Label>
+            <Label fx:id="pointsRanking" text="POINTS" style="-fx-font-size: 18" textFill="aliceblue">
+                <GridPane.columnIndex>3</GridPane.columnIndex>
+                <GridPane.rowIndex>0</GridPane.rowIndex>
+            </Label>
+            <Label fx:id="winRateRanking" text="WINNING RATE" style="-fx-font-size: 18" textFill="aliceblue">
+                <GridPane.columnIndex>4</GridPane.columnIndex>
+                <GridPane.rowIndex>0</GridPane.rowIndex>
+            </Label>
+        </children>
+
+    </GridPane>
+</VBox>
