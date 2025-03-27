@@ -1,4 +1,5 @@
-package main.java.server.gamelogic.connect4;
+package server.gamelogic.connect4;
+
 import server.gamelogic.connect4.Player;
 
 public class ChatBox {

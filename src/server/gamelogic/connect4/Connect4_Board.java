@@ -24,10 +24,12 @@ public class Connect4_Board {
                 }
 
                 y++;
+                //System.out.println("y = " + y);
             }
 
 
             x++;
+            //System.out.println("x = " + x);
         }
 
 
@@ -41,7 +43,7 @@ public class Connect4_Board {
 
         int row = 0;
 
-        while(Board[row][column].equals("[ ]")){
+        while(Board[row][column].equals("[ ]") || Board[row][column].equals("[ ]\n") ){
 
             row++;
             if(row == ROWS ){
@@ -54,7 +56,7 @@ public class Connect4_Board {
         row--;
 
 
-
+        System.out.println("row = " + row + " column = " + column);
         this.Board[row][column] = "["+ disc.getSymbol() +"]";
 
         if(column == COLUMNS-1){
@@ -71,6 +73,8 @@ public class Connect4_Board {
 
         if( column < 0 || column > 6){
             return false;
+        }else if(isColumnFull()){
+            return false;
         }
         else{
             return true;
@@ -84,6 +88,7 @@ public class Connect4_Board {
         int match = 1;
         String prevSymbol = getSymbol(Board[index_row][index_column]);
 
+        // Checking for horizontal win.
 
         while(index_row < ROWS){
             index_column = 0;
@@ -113,6 +118,7 @@ public class Connect4_Board {
         index_column = 0;
         match = 1;
 
+        // Checking for Vertical win.
 
         while(index_column < COLUMNS){
             index_row = 0;
@@ -139,6 +145,9 @@ public class Connect4_Board {
             index_column++;
         }
 
+        // Checking for diagonal win
+        System.out.println("Executing column diagonal check");
+
         prevSymbol = getSymbol(Board[0][0]);
         index_column = 0;
         int start_column = 0;
@@ -149,10 +158,12 @@ public class Connect4_Board {
             index_column = start_column;
 
 
-            while(index_column < COLUMNS || index_row < ROWS){
+            while(index_column < COLUMNS && index_row < ROWS){
                 String symbol = getSymbol(Board[index_row][index_column]);
 
-                if(prevSymbol.equals(symbol) && !symbol.equals("[ ]")){
+
+
+                if(prevSymbol.equals(symbol) &&  prevSymbol.equals(sym)){
                     match++;
 
                     if(match == 3){
@@ -180,15 +191,15 @@ public class Connect4_Board {
 
         int start_row = 0;
 
-
+        System.out.println("Executing row diagonal check");
 
         while(start_row < ROWS){
             index_row = start_row;
 
-            while(index_column < COLUMNS || index_row < ROWS){
+            while(index_column < COLUMNS && index_row < ROWS){
                 String symbol = getSymbol(Board[index_row][index_column]);
 
-                if(prevSymbol.equals(symbol) && !symbol.equals("[ ]")){
+                if(prevSymbol.equals(symbol) && prevSymbol.equals(sym)){
                     match++;
 
                     if(match == 3){
@@ -212,9 +223,32 @@ public class Connect4_Board {
 
 
 
+        return false;
+    }
+
+    public boolean isColumnFull(){
+        int i = 0;
+
+
+        while(i < COLUMNS){
+            if(!Board[0][i].equals("[ ]") && !Board[0][i].equals("[ ]\n")){
+                System.out.println("column full");
+
+                return true;
+            }else{
+                i++;
+            }
+        }
 
         return false;
     }
+
+
+
+
+
+
+
 
     public void printBoard(){
         int x = 0;
