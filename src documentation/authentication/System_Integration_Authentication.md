@@ -76,14 +76,32 @@ username,hashed_password,email,account_type
 testuser,$2a$10$N9qo8uLOickgx2ZMRZoMy...,user@test.com,REGISTERED
 ```
 
-## 5. Error Handling
+## 5. Error Management
 
-| Error Code | Description                  | Recommended Action               |
-|------------|------------------------------|-----------------------------------|
-| AUTH-001   | Invalid credentials          | Show "Wrong username/password"   |
-| AUTH-002   | Username exists              | Suggest alternatives             |
-| AUTH-003   | Weak password                | Show complexity requirements     |
-| AUTH-004   | Corrupted database           | Redirect to recovery flow        |
+### Error Handling (API)
+```java
+try {
+    AuthService.register(user);
+} catch (AuthException e) {
+    // Programmatic recovery
+    if (e.getCode().equals("AUTH-002")) {
+        showError("Username taken. Try " + suggestAltName());
+    }
+}
+```
+
+### Troubleshooting (Ops)
+**Issue**: Users can't register  
+**Diagnosis**:
+1. Check CSV file permissions: `ls -la accounts.csv`
+2. Verify disk space: `df -h`
+3. Search logs: `grep "AUTH-002" auth.log`
+
+**Resolution**:
+```bash
+chmod 600 accounts.csv  # Restrict permissions
+systemctl restart auth-service
+```
 
 ## 6. Suggested Integration Steps
 
