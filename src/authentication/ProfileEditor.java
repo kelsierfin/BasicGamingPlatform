@@ -59,6 +59,20 @@ public class ProfileEditor {
 
                 String choice = scanner.nextLine();
 
+
+                if (choice.equals("4")) {
+                    System.out.println("Goodbye!");
+                    return;
+                }
+
+
+                MultifactorAuthentication mfa = new MultifactorAuthentication();
+                if (!mfa.startMFAProcess(scanner, username)) {
+                    System.out.println("MFA failed. Please try again");
+                    continue;
+                }
+
+
                 switch (choice) {
                     case "1":
                         System.out.print("Enter new username: ");
@@ -107,9 +121,6 @@ public class ProfileEditor {
                         }
                         break;
 
-                    case "4":
-                        System.out.println("Goodbye!");
-                        return;
 
                     default:
                         System.out.println("Invalid choice!");
