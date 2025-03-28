@@ -1,0 +1,531 @@
+Index: src/main/java/ca/ucalgary/seng/p3/GameApplication.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ca.ucalgary.seng.p3;\r\nimport javafx.application.Application;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.layout.AnchorPane;\r\nimport javafx.stage.Stage;\r\n\r\nimport java.io.IOException;\r\n\r\npublic class GameApplication extends Application{\r\n    @Override\r\n    public void start(Stage stage) throws IOException {\r\n        FXMLLoader fxmlLoader = new FXMLLoader(GameApplication.class.getResource(\"/dashboard.fxml\"));\r\n        fxmlLoader.setRoot(new AnchorPane());\r\n        Scene scene = new Scene(fxmlLoader.load(), 900, 600);\r\n\r\n        stage.setTitle(\"Placeholder Title\");\r\n        stage.setScene(scene);\r\n        stage.show();\r\n    }\r\n\r\n    public static void main(String[] args) {\r\n        launch();\r\n    }\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/ca/ucalgary/seng/p3/GameApplication.java b/src/main/java/ca/ucalgary/seng/p3/GameApplication.java
+--- a/src/main/java/ca/ucalgary/seng/p3/GameApplication.java	(revision b4787ed59b925ae1d8b1ebfc17c00751bb09ad1e)
++++ b/src/main/java/ca/ucalgary/seng/p3/GameApplication.java	(date 1742953631286)
+@@ -10,10 +10,10 @@
+ public class GameApplication extends Application{
+     @Override
+     public void start(Stage stage) throws IOException {
+-        FXMLLoader fxmlLoader = new FXMLLoader(GameApplication.class.getResource("/dashboard.fxml"));
+-        fxmlLoader.setRoot(new AnchorPane());
++        FXMLLoader fxmlLoader = new FXMLLoader(GameApplication.class.getResource("settings.fxml"));
++
+         Scene scene = new Scene(fxmlLoader.load(), 900, 600);
+-
++        stage.setResizable(false);
+         stage.setTitle("Placeholder Title");
+         stage.setScene(scene);
+         stage.show();
+Index: src/main/resources/startgame_chess.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import javafx.scene.control.Button?>\r\n<?import javafx.scene.control.Label?>\r\n<?import javafx.scene.image.ImageView?>\r\n<?import javafx.scene.layout.BorderPane?>\r\n<?import javafx.scene.layout.HBox?>\r\n<?import javafx.scene.layout.StackPane?>\r\n<?import javafx.scene.layout.VBox?>\r\n\r\n<StackPane fx:id=\"root\" prefHeight=\"600\" prefWidth=\"900.0\" xmlns=\"http://javafx.com/javafx/23.0.1\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"ca.ucalgary.seng.p3.StartGameController\">\r\n    \r\n    <BorderPane fx:id=\"mainBorderPane\">\r\n        <top>\r\n            <!-- Top bar: menu button on left, title in center, profile button on right -->\r\n            <BorderPane style=\"-fx-padding: 10; -fx-background-color: lightgrey;\">\r\n                <left>\r\n                    <Button fx:id=\"menuButton\" onAction=\"#handleMenuButton\" style=\"-fx-font-size: 18; -fx-background-color: transparent; -fx-border-color: transparent;\" text=\"≡\" />\r\n                </left>\r\n                <center>\r\n                    <Label style=\"-fx-font-size: 24; -fx-font-weight: bold;\" text=\"CHESS\" />\r\n                </center>\r\n                <right>\r\n                    <Button fx:id=\"profileButton\" onAction=\"#handleProfileButton\" style=\"-fx-font-size: 18; -fx-background-color: transparent; -fx-border-color: transparent;\" text=\"\uD83D\uDC64\" />\r\n                </right>\r\n            </BorderPane>\r\n        </top>\r\n        \r\n        <center>\r\n            <VBox alignment=\"CENTER\" spacing=\"20\">\r\n                <!-- \"X vs O\" label -->\r\n                <Label style=\"-fx-font-size: 30; -fx-text-fill: #333;\" text=\"&lt;Image will go here&gt;\" />\r\n                <!-- Board placeholder -->\r\n                <ImageView fx:id=\"boardImage\" fitWidth=\"250\" preserveRatio=\"true\" style=\"-fx-border-color: lightgray; -fx-border-width: 2;\" />\r\n                <!-- Green \"FIND A MATCH\" button -->\r\n                <Button fx:id=\"findMatchButton\" onAction=\"#handleFindMatch\" style=\"-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-size: 16; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 10 20;\" text=\"FIND A MATCH\" />\r\n            </VBox>\r\n        </center>\r\n    </BorderPane>\r\n    \r\n    <!-- Popup Menu: appears below the top bar, initially visible for testing -->\r\n    <VBox fx:id=\"menuPopup\" maxHeight=\"250\" maxWidth=\"200\" style=\"-fx-background-color: #e0e0e0; -fx-padding: 20; -fx-border-color: #999; -fx-border-width: 1; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 0);\" translateY=\"60\" visible=\"true\" StackPane.alignment=\"TOP_LEFT\">\r\n        <!-- Wrap the Menu label in an HBox to center it horizontally -->\r\n        <HBox alignment=\"CENTER\">\r\n            <Label style=\"-fx-font-size: 18; -fx-font-weight: bold;\" text=\"Menu\" />\r\n        </HBox>\r\n        <Button fx:id=\"dashboardButton\" onAction=\"#handleDashboardButton\" style=\"-fx-background-radius: 8; -fx-padding: 8 16; -fx-min-width: 150; -fx-min-height: 40; -fx-max-width: 150; -fx-max-height: 40;\" text=\"Dashboard\" />\r\n        <Button fx:id=\"leaderboardButton\" onAction=\"#handleLeaderboardButton\" style=\"-fx-background-radius: 8; -fx-padding: 8 16; -fx-min-width: 150; -fx-min-height: 40; -fx-max-width: 150; -fx-max-height: 40;\" text=\"Leaderboard\" />\r\n        <Button fx:id=\"friendsListButton\" onAction=\"#handleFriendsListButton\" style=\"-fx-background-radius: 8; -fx-padding: 8 16; -fx-min-width: 150; -fx-min-height: 40; -fx-max-width: 150; -fx-max-height: 40;\" text=\"Friends List\" />\r\n        <Button fx:id=\"gameRequestsButton\" onAction=\"#handleGameRequestsButton\" style=\"-fx-background-radius: 8; -fx-padding: 8 16; -fx-min-width: 150; -fx-min-height: 40; -fx-max-width: 150; -fx-max-height: 40;\" text=\"Game Requests\" />\r\n        <Button fx:id=\"gameRulesButton\" onAction=\"#handleGameRulesButton\" style=\"-fx-background-radius: 8; -fx-padding: 8 16; -fx-min-width: 150; -fx-min-height: 40; -fx-max-width: 150; -fx-max-height: 40;\" text=\"Game Rules\" />\r\n    </VBox>\r\n</StackPane>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/startgame_chess.fxml b/src/main/resources/startgame_chess.fxml
+--- a/src/main/resources/startgame_chess.fxml	(revision b4787ed59b925ae1d8b1ebfc17c00751bb09ad1e)
++++ b/src/main/resources/startgame_chess.fxml	(date 1742952801938)
+@@ -46,8 +46,8 @@
+         </HBox>
+         <Button fx:id="dashboardButton" onAction="#handleDashboardButton" style="-fx-background-radius: 8; -fx-padding: 8 16; -fx-min-width: 150; -fx-min-height: 40; -fx-max-width: 150; -fx-max-height: 40;" text="Dashboard" />
+         <Button fx:id="leaderboardButton" onAction="#handleLeaderboardButton" style="-fx-background-radius: 8; -fx-padding: 8 16; -fx-min-width: 150; -fx-min-height: 40; -fx-max-width: 150; -fx-max-height: 40;" text="Leaderboard" />
+-        <Button fx:id="friendsListButton" onAction="#handleFriendsListButton" style="-fx-background-radius: 8; -fx-padding: 8 16; -fx-min-width: 150; -fx-min-height: 40; -fx-max-width: 150; -fx-max-height: 40;" text="Friends List" />
+-        <Button fx:id="gameRequestsButton" onAction="#handleGameRequestsButton" style="-fx-background-radius: 8; -fx-padding: 8 16; -fx-min-width: 150; -fx-min-height: 40; -fx-max-width: 150; -fx-max-height: 40;" text="Game Requests" />
++        <Button fx:id="friendsListButton" onAction="#handleFriendsListButton" style="-fx-background-radius: 8; -fx-padding: 8 16; -fx-min-width: 150; -fx-min-height: 40; -fx-max-width: 150; -fx-max-height: 40;" text="Find Player" />
++        <Button fx:id="gameRequestsButton" onAction="#handleGameRequestsButton" style="-fx-background-radius: 8; -fx-padding: 8 16; -fx-min-width: 150; -fx-min-height: 40; -fx-max-width: 150; -fx-max-height: 40;" text="Settings" />
+         <Button fx:id="gameRulesButton" onAction="#handleGameRulesButton" style="-fx-background-radius: 8; -fx-padding: 8 16; -fx-min-width: 150; -fx-min-height: 40; -fx-max-width: 150; -fx-max-height: 40;" text="Game Rules" />
+     </VBox>
+ </StackPane>
+Index: src/main/resources/dashboard.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import javafx.scene.control.Button?>\r\n<?import javafx.scene.image.Image?>\r\n<?import javafx.scene.image.ImageView?>\r\n<?import javafx.scene.layout.AnchorPane?>\r\n<?import javafx.scene.layout.ColumnConstraints?>\r\n<?import javafx.scene.layout.GridPane?>\r\n<?import javafx.scene.layout.HBox?>\r\n<?import javafx.scene.layout.RowConstraints?>\r\n<?import javafx.scene.layout.VBox?>\r\n\r\n<fx:root maxHeight=\"-Infinity\" maxWidth=\"-Infinity\" minHeight=\"-Infinity\" minWidth=\"-Infinity\" prefHeight=\"600.0\" prefWidth=\"900.0\" style=\"-fx-background-color: white;\" type=\"AnchorPane\" xmlns=\"http://javafx.com/javafx/23.0.1\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"ca.ucalgary.seng.p3.DashboardController\">\r\n   <children>\r\n      <VBox prefHeight=\"600.0\" prefWidth=\"900.0\">\r\n         <children>\r\n            <AnchorPane prefHeight=\"50.0\" prefWidth=\"900.0\" style=\"-fx-background-color: d9d9d9;\" />\r\n            <HBox alignment=\"TOP_CENTER\" layoutX=\"10.0\" layoutY=\"60.0\" prefHeight=\"68.0\" prefWidth=\"900.0\" />\r\n            <HBox alignment=\"TOP_CENTER\" prefHeight=\"140.0\" prefWidth=\"900.0\">\r\n               <children>\r\n                  <AnchorPane prefHeight=\"140.0\" prefWidth=\"808.0\" style=\"-fx-background-color: rgba(200, 200, 200, 0.4); -fx-background-radius: 20; -fx-border-radius: 20;\" />\r\n               </children>\r\n            </HBox>\r\n            <HBox alignment=\"TOP_CENTER\" layoutX=\"10.0\" layoutY=\"60.0\" prefHeight=\"57.0\" prefWidth=\"900.0\" />\r\n            <HBox alignment=\"CENTER\" prefHeight=\"255.0\" prefWidth=\"900.0\">\r\n               <children>\r\n                  <GridPane alignment=\"CENTER\" prefHeight=\"231.0\" prefWidth=\"821.0\">\r\n                    <columnConstraints>\r\n                      <ColumnConstraints hgrow=\"SOMETIMES\" minWidth=\"10.0\" prefWidth=\"100.0\" />\r\n                      <ColumnConstraints hgrow=\"SOMETIMES\" minWidth=\"10.0\" prefWidth=\"100.0\" />\r\n                        <ColumnConstraints hgrow=\"SOMETIMES\" minWidth=\"10.0\" prefWidth=\"100.0\" />\r\n                        <ColumnConstraints hgrow=\"SOMETIMES\" minWidth=\"10.0\" prefWidth=\"100.0\" />\r\n                    </columnConstraints>\r\n                    <rowConstraints>\r\n                      <RowConstraints minHeight=\"10.0\" prefHeight=\"30.0\" vgrow=\"SOMETIMES\" />\r\n                    </rowConstraints>\r\n                     <children>\r\n                        <AnchorPane prefHeight=\"200.0\" prefWidth=\"200.0\">\r\n                           <children>\r\n                              <VBox layoutX=\"10.0\" layoutY=\"9.0\" prefHeight=\"223.0\" prefWidth=\"186.0\" style=\"-fx-background-color: rgba(200, 200, 200, 0.4); -fx-background-radius: 20px; ;\">\r\n                                 <children>\r\n                                     <AnchorPane prefHeight=\"161.0\" prefWidth=\"186.0\" style=\"-fx-background-radius: 15px; -fx-border-radius: 15px;\">\r\n                                         <children>\r\n                                             <ImageView fx:id=\"chessIcon\" fitHeight=\"105.0\" fitWidth=\"144.0\" layoutX=\"21.0\" layoutY=\"24.0\">\r\n                                                 <image>\r\n                                                     <Image url=\"@icons/chess icon.png\" />\r\n                                                 </image>\r\n                                             </ImageView>\r\n                                         </children>\r\n                                     </AnchorPane>                                    <HBox alignment=\"CENTER\" prefHeight=\"100.0\" prefWidth=\"186.0\">\r\n                                       <children>\r\n                                          <Button mnemonicParsing=\"false\" prefHeight=\"30.0\" prefWidth=\"130.0\" style=\"-fx-background-color: black; -fx-border-color: black; -fx-background-radius: 15; -fx-border-radius: 15; -fx-text-fill: white;\" text=\"Play\" />\r\n                                       </children>\r\n                                    </HBox>\r\n                                 </children>\r\n                              </VBox>\r\n                           </children>\r\n                        </AnchorPane>\r\n                        <AnchorPane layoutX=\"9.0\" layoutY=\"10.0\" prefHeight=\"200.0\" prefWidth=\"200.0\" GridPane.columnIndex=\"1\">\r\n                           <children>\r\n                              <VBox layoutX=\"10.0\" layoutY=\"9.0\" prefHeight=\"223.0\" prefWidth=\"186.0\" style=\"-fx-background-color: rgba(200, 200, 200, 0.4); -fx-background-radius: 20px; ;\">\r\n                                 <children>\r\n                                    <AnchorPane prefHeight=\"161.0\" prefWidth=\"186.0\" style=\"-fx-background-radius: 15px; -fx-border-radius: 15px;\">\r\n                                       <children>\r\n                                          <ImageView fx:id=\"tttIcon\" fitHeight=\"105.0\" fitWidth=\"144.0\" layoutX=\"21.0\" layoutY=\"24.0\">\r\n                                             <image>\r\n                                                <Image url=\"@icons/ttt icon.png\" />\r\n                                             </image>\r\n                                          </ImageView>\r\n                                       </children>\r\n                                    </AnchorPane>\r\n                                    <HBox alignment=\"CENTER\" prefHeight=\"100.0\" prefWidth=\"186.0\">\r\n                                       <children>\r\n                                          <Button mnemonicParsing=\"false\" prefHeight=\"30.0\" prefWidth=\"130.0\" style=\"-fx-background-color: black; -fx-border-color: black; -fx-background-radius: 15; -fx-border-radius: 15; -fx-text-fill: white;\" text=\"Play\" />\r\n                                       </children>\r\n                                    </HBox>\r\n                                 </children>\r\n                              </VBox>\r\n                           </children>\r\n                        </AnchorPane>\r\n                        <AnchorPane layoutX=\"9.0\" layoutY=\"10.0\" prefHeight=\"200.0\" prefWidth=\"200.0\" GridPane.columnIndex=\"2\">\r\n                           <children>\r\n                              <VBox layoutX=\"10.0\" layoutY=\"9.0\" prefHeight=\"223.0\" prefWidth=\"186.0\" style=\"-fx-background-color: rgba(200, 200, 200, 0.4); -fx-background-radius: 20px; ;\">\r\n                                 <children>\r\n                                    <AnchorPane prefHeight=\"161.0\" prefWidth=\"186.0\" style=\"-fx-background-radius: 15px; -fx-border-radius: 15px;\">\r\n                                       <children>\r\n                                          <ImageView fx:id=\"connect4Icon\" fitHeight=\"105.0\" fitWidth=\"144.0\" layoutX=\"21.0\" layoutY=\"24.0\">\r\n                                             <image>\r\n                                                <Image url=\"@icons/connect4 icon.png\" />\r\n                                             </image>\r\n                                          </ImageView>\r\n                                       </children>\r\n                                    </AnchorPane>\r\n                                    <HBox alignment=\"CENTER\" prefHeight=\"100.0\" prefWidth=\"200.0\">\r\n                                       <children>\r\n                                          <Button mnemonicParsing=\"false\" prefHeight=\"30.0\" prefWidth=\"130.0\" style=\"-fx-background-color: black; -fx-border-color: black; -fx-background-radius: 15; -fx-border-radius: 15; -fx-text-fill: white;\" text=\"Play\" />\r\n                                       </children>\r\n                                    </HBox>\r\n                                 </children>\r\n                              </VBox>\r\n                           </children>\r\n                        </AnchorPane>\r\n                        <AnchorPane layoutX=\"9.0\" layoutY=\"10.0\" prefHeight=\"200.0\" prefWidth=\"200.0\" GridPane.columnIndex=\"3\">\r\n                           <children>\r\n                              <VBox layoutX=\"10.0\" layoutY=\"9.0\" prefHeight=\"223.0\" prefWidth=\"186.0\" style=\"-fx-background-color: rgba(200, 200, 200, 0.4); -fx-background-radius: 20px; ;\">\r\n                                 <children>\r\n                                    <AnchorPane prefHeight=\"161.0\" prefWidth=\"186.0\" style=\"-fx-background-radius: 15px; -fx-border-radius: 15px;\">\r\n                                       <children>\r\n                                          <ImageView fx:id=\"goIcon\" fitHeight=\"105.0\" fitWidth=\"144.0\" layoutX=\"21.0\" layoutY=\"24.0\">\r\n                                             <image>\r\n                                                <Image url=\"@icons/go icon.png\" />\r\n                                             </image>\r\n                                          </ImageView>\r\n                                       </children>\r\n                                    </AnchorPane>\r\n                                    <HBox alignment=\"CENTER\" prefHeight=\"100.0\" prefWidth=\"200.0\">\r\n                                       <children>\r\n                                          <Button mnemonicParsing=\"false\" prefHeight=\"30.0\" prefWidth=\"130.0\" style=\"-fx-background-color: black; -fx-border-color: black; -fx-background-radius: 15; -fx-border-radius: 15; -fx-text-fill: white;\" text=\"Play\" />\r\n                                       </children>\r\n                                    </HBox>\r\n                                 </children>\r\n                              </VBox>\r\n                           </children>\r\n                        </AnchorPane>\r\n                     </children>\r\n                  </GridPane>\r\n               </children>\r\n            </HBox>\r\n         </children>\r\n      </VBox>\r\n   </children>\r\n</fx:root>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/dashboard.fxml b/src/main/resources/dashboard.fxml
+--- a/src/main/resources/dashboard.fxml	(revision b4787ed59b925ae1d8b1ebfc17c00751bb09ad1e)
++++ b/src/main/resources/dashboard.fxml	(date 1742932538213)
+@@ -9,19 +9,26 @@
+ <?import javafx.scene.layout.HBox?>
+ <?import javafx.scene.layout.RowConstraints?>
+ <?import javafx.scene.layout.VBox?>
++<?import javafx.scene.text.Text?>
+ 
+ <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: white;" type="AnchorPane" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng.p3.DashboardController">
+    <children>
+       <VBox prefHeight="600.0" prefWidth="900.0">
+          <children>
+             <AnchorPane prefHeight="50.0" prefWidth="900.0" style="-fx-background-color: d9d9d9;" />
+-            <HBox alignment="TOP_CENTER" layoutX="10.0" layoutY="60.0" prefHeight="68.0" prefWidth="900.0" />
++            <HBox alignment="CENTER" layoutX="10.0" layoutY="60.0" prefHeight="68.0" prefWidth="745.0">
++               <children>
++                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome User_Name !" />
++               </children></HBox>
+             <HBox alignment="TOP_CENTER" prefHeight="140.0" prefWidth="900.0">
+                <children>
+-                  <AnchorPane prefHeight="140.0" prefWidth="808.0" style="-fx-background-color: rgba(200, 200, 200, 0.4); -fx-background-radius: 20; -fx-border-radius: 20;" />
++                  <AnchorPane prefHeight="140.0" prefWidth="832.0" style="-fx-background-color: rgba(200, 200, 200, 0.4); -fx-background-radius: 20; -fx-border-radius: 20;" />
+                </children>
+             </HBox>
+-            <HBox alignment="TOP_CENTER" layoutX="10.0" layoutY="60.0" prefHeight="57.0" prefWidth="900.0" />
++            <HBox alignment="CENTER" layoutX="10.0" layoutY="60.0" prefHeight="57.0" prefWidth="900.0">
++               <children>
++                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Games" />
++               </children></HBox>
+             <HBox alignment="CENTER" prefHeight="255.0" prefWidth="900.0">
+                <children>
+                   <GridPane alignment="CENTER" prefHeight="231.0" prefWidth="821.0">
+@@ -37,13 +44,13 @@
+                      <children>
+                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                            <children>
+-                              <VBox layoutX="10.0" layoutY="9.0" prefHeight="223.0" prefWidth="186.0" style="-fx-background-color: rgba(200, 200, 200, 0.4); -fx-background-radius: 20px; ;">
++                              <VBox layoutX="10.0" layoutY="9.0" prefHeight="223.0" prefWidth="186.0" style="-fx-background-color: rgba(200, 200, 200, 0.4); -fx-background-radius: 20px;">
+                                  <children>
+                                      <AnchorPane prefHeight="161.0" prefWidth="186.0" style="-fx-background-radius: 15px; -fx-border-radius: 15px;">
+                                          <children>
+-                                             <ImageView fx:id="chessIcon" fitHeight="105.0" fitWidth="144.0" layoutX="21.0" layoutY="24.0">
++                                             <ImageView fx:id="chessIcon" fitHeight="105.0" fitWidth="155.0" layoutX="16.0" layoutY="24.0">
+                                                  <image>
+-                                                     <Image url="@icons/chess icon.png" />
++                                                     <Image url="@icons/chess_icon.png" />
+                                                  </image>
+                                              </ImageView>
+                                          </children>
+Index: target/classes/startgame_chess.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import javafx.scene.control.Button?>\r\n<?import javafx.scene.control.Label?>\r\n<?import javafx.scene.image.ImageView?>\r\n<?import javafx.scene.layout.BorderPane?>\r\n<?import javafx.scene.layout.HBox?>\r\n<?import javafx.scene.layout.StackPane?>\r\n<?import javafx.scene.layout.VBox?>\r\n\r\n<StackPane fx:id=\"root\" prefHeight=\"600\" prefWidth=\"900.0\" xmlns=\"http://javafx.com/javafx/23.0.1\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"ca.ucalgary.seng.p3.StartGameController\">\r\n    \r\n    <BorderPane fx:id=\"mainBorderPane\">\r\n        <top>\r\n            <!-- Top bar: menu button on left, title in center, profile button on right -->\r\n            <BorderPane style=\"-fx-padding: 10; -fx-background-color: lightgrey;\">\r\n                <left>\r\n                    <Button fx:id=\"menuButton\" onAction=\"#handleMenuButton\" style=\"-fx-font-size: 18; -fx-background-color: transparent; -fx-border-color: transparent;\" text=\"≡\" />\r\n                </left>\r\n                <center>\r\n                    <Label style=\"-fx-font-size: 24; -fx-font-weight: bold;\" text=\"CHESS\" />\r\n                </center>\r\n                <right>\r\n                    <Button fx:id=\"profileButton\" onAction=\"#handleProfileButton\" style=\"-fx-font-size: 18; -fx-background-color: transparent; -fx-border-color: transparent;\" text=\"\uD83D\uDC64\" />\r\n                </right>\r\n            </BorderPane>\r\n        </top>\r\n        \r\n        <center>\r\n            <VBox alignment=\"CENTER\" spacing=\"20\">\r\n                <!-- \"X vs O\" label -->\r\n                <Label style=\"-fx-font-size: 30; -fx-text-fill: #333;\" text=\"&lt;Image will go here&gt;\" />\r\n                <!-- Board placeholder -->\r\n                <ImageView fx:id=\"boardImage\" fitWidth=\"250\" preserveRatio=\"true\" style=\"-fx-border-color: lightgray; -fx-border-width: 2;\" />\r\n                <!-- Green \"FIND A MATCH\" button -->\r\n                <Button fx:id=\"findMatchButton\" onAction=\"#handleFindMatch\" style=\"-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-size: 16; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 10 20;\" text=\"FIND A MATCH\" />\r\n            </VBox>\r\n        </center>\r\n    </BorderPane>\r\n    \r\n    <!-- Popup Menu: appears below the top bar, initially visible for testing -->\r\n    <VBox fx:id=\"menuPopup\" maxHeight=\"250\" maxWidth=\"200\" style=\"-fx-background-color: #e0e0e0; -fx-padding: 20; -fx-border-color: #999; -fx-border-width: 1; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 0);\" translateY=\"60\" visible=\"true\" StackPane.alignment=\"TOP_LEFT\">\r\n        <!-- Wrap the Menu label in an HBox to center it horizontally -->\r\n        <HBox alignment=\"CENTER\">\r\n            <Label style=\"-fx-font-size: 18; -fx-font-weight: bold;\" text=\"Menu\" />\r\n        </HBox>\r\n        <Button fx:id=\"dashboardButton\" onAction=\"#handleDashboardButton\" style=\"-fx-background-radius: 8; -fx-padding: 8 16; -fx-min-width: 150; -fx-min-height: 40; -fx-max-width: 150; -fx-max-height: 40;\" text=\"Dashboard\" />\r\n        <Button fx:id=\"leaderboardButton\" onAction=\"#handleLeaderboardButton\" style=\"-fx-background-radius: 8; -fx-padding: 8 16; -fx-min-width: 150; -fx-min-height: 40; -fx-max-width: 150; -fx-max-height: 40;\" text=\"Leaderboard\" />\r\n        <Button fx:id=\"friendsListButton\" onAction=\"#handleFriendsListButton\" style=\"-fx-background-radius: 8; -fx-padding: 8 16; -fx-min-width: 150; -fx-min-height: 40; -fx-max-width: 150; -fx-max-height: 40;\" text=\"Friends List\" />\r\n        <Button fx:id=\"gameRequestsButton\" onAction=\"#handleGameRequestsButton\" style=\"-fx-background-radius: 8; -fx-padding: 8 16; -fx-min-width: 150; -fx-min-height: 40; -fx-max-width: 150; -fx-max-height: 40;\" text=\"Game Requests\" />\r\n        <Button fx:id=\"gameRulesButton\" onAction=\"#handleGameRulesButton\" style=\"-fx-background-radius: 8; -fx-padding: 8 16; -fx-min-width: 150; -fx-min-height: 40; -fx-max-width: 150; -fx-max-height: 40;\" text=\"Game Rules\" />\r\n    </VBox>\r\n</StackPane>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/classes/startgame_chess.fxml b/target/classes/startgame_chess.fxml
+--- a/target/classes/startgame_chess.fxml	(revision b4787ed59b925ae1d8b1ebfc17c00751bb09ad1e)
++++ b/target/classes/startgame_chess.fxml	(date 1742952801938)
+@@ -46,8 +46,8 @@
+         </HBox>
+         <Button fx:id="dashboardButton" onAction="#handleDashboardButton" style="-fx-background-radius: 8; -fx-padding: 8 16; -fx-min-width: 150; -fx-min-height: 40; -fx-max-width: 150; -fx-max-height: 40;" text="Dashboard" />
+         <Button fx:id="leaderboardButton" onAction="#handleLeaderboardButton" style="-fx-background-radius: 8; -fx-padding: 8 16; -fx-min-width: 150; -fx-min-height: 40; -fx-max-width: 150; -fx-max-height: 40;" text="Leaderboard" />
+-        <Button fx:id="friendsListButton" onAction="#handleFriendsListButton" style="-fx-background-radius: 8; -fx-padding: 8 16; -fx-min-width: 150; -fx-min-height: 40; -fx-max-width: 150; -fx-max-height: 40;" text="Friends List" />
+-        <Button fx:id="gameRequestsButton" onAction="#handleGameRequestsButton" style="-fx-background-radius: 8; -fx-padding: 8 16; -fx-min-width: 150; -fx-min-height: 40; -fx-max-width: 150; -fx-max-height: 40;" text="Game Requests" />
++        <Button fx:id="friendsListButton" onAction="#handleFriendsListButton" style="-fx-background-radius: 8; -fx-padding: 8 16; -fx-min-width: 150; -fx-min-height: 40; -fx-max-width: 150; -fx-max-height: 40;" text="Find Player" />
++        <Button fx:id="gameRequestsButton" onAction="#handleGameRequestsButton" style="-fx-background-radius: 8; -fx-padding: 8 16; -fx-min-width: 150; -fx-min-height: 40; -fx-max-width: 150; -fx-max-height: 40;" text="Settings" />
+         <Button fx:id="gameRulesButton" onAction="#handleGameRulesButton" style="-fx-background-radius: 8; -fx-padding: 8 16; -fx-min-width: 150; -fx-min-height: 40; -fx-max-width: 150; -fx-max-height: 40;" text="Game Rules" />
+     </VBox>
+ </StackPane>
+Index: src/main/java/ca/ucalgary/seng/p3/GamecardController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/ca/ucalgary/seng/p3/GamecardController.java b/src/main/java/ca/ucalgary/seng/p3/GamecardController.java
+new file mode 100644
+--- /dev/null	(date 1742953585682)
++++ b/src/main/java/ca/ucalgary/seng/p3/GamecardController.java	(date 1742953585682)
+@@ -0,0 +1,4 @@
++package ca.ucalgary.seng.p3;
++
++public class GamecardController {
++}
+Index: target/classes/dashboard.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import javafx.scene.control.Button?>\r\n<?import javafx.scene.image.Image?>\r\n<?import javafx.scene.image.ImageView?>\r\n<?import javafx.scene.layout.AnchorPane?>\r\n<?import javafx.scene.layout.ColumnConstraints?>\r\n<?import javafx.scene.layout.GridPane?>\r\n<?import javafx.scene.layout.HBox?>\r\n<?import javafx.scene.layout.RowConstraints?>\r\n<?import javafx.scene.layout.VBox?>\r\n\r\n<fx:root maxHeight=\"-Infinity\" maxWidth=\"-Infinity\" minHeight=\"-Infinity\" minWidth=\"-Infinity\" prefHeight=\"600.0\" prefWidth=\"900.0\" style=\"-fx-background-color: white;\" type=\"AnchorPane\" xmlns=\"http://javafx.com/javafx/23.0.1\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"ca.ucalgary.seng.p3.DashboardController\">\r\n   <children>\r\n      <VBox prefHeight=\"600.0\" prefWidth=\"900.0\">\r\n         <children>\r\n            <AnchorPane prefHeight=\"50.0\" prefWidth=\"900.0\" style=\"-fx-background-color: d9d9d9;\" />\r\n            <HBox alignment=\"TOP_CENTER\" layoutX=\"10.0\" layoutY=\"60.0\" prefHeight=\"68.0\" prefWidth=\"900.0\" />\r\n            <HBox alignment=\"TOP_CENTER\" prefHeight=\"140.0\" prefWidth=\"900.0\">\r\n               <children>\r\n                  <AnchorPane prefHeight=\"140.0\" prefWidth=\"808.0\" style=\"-fx-background-color: rgba(200, 200, 200, 0.4); -fx-background-radius: 20; -fx-border-radius: 20;\" />\r\n               </children>\r\n            </HBox>\r\n            <HBox alignment=\"TOP_CENTER\" layoutX=\"10.0\" layoutY=\"60.0\" prefHeight=\"57.0\" prefWidth=\"900.0\" />\r\n            <HBox alignment=\"CENTER\" prefHeight=\"255.0\" prefWidth=\"900.0\">\r\n               <children>\r\n                  <GridPane alignment=\"CENTER\" prefHeight=\"231.0\" prefWidth=\"821.0\">\r\n                    <columnConstraints>\r\n                      <ColumnConstraints hgrow=\"SOMETIMES\" minWidth=\"10.0\" prefWidth=\"100.0\" />\r\n                      <ColumnConstraints hgrow=\"SOMETIMES\" minWidth=\"10.0\" prefWidth=\"100.0\" />\r\n                        <ColumnConstraints hgrow=\"SOMETIMES\" minWidth=\"10.0\" prefWidth=\"100.0\" />\r\n                        <ColumnConstraints hgrow=\"SOMETIMES\" minWidth=\"10.0\" prefWidth=\"100.0\" />\r\n                    </columnConstraints>\r\n                    <rowConstraints>\r\n                      <RowConstraints minHeight=\"10.0\" prefHeight=\"30.0\" vgrow=\"SOMETIMES\" />\r\n                    </rowConstraints>\r\n                     <children>\r\n                        <AnchorPane prefHeight=\"200.0\" prefWidth=\"200.0\">\r\n                           <children>\r\n                              <VBox layoutX=\"10.0\" layoutY=\"9.0\" prefHeight=\"223.0\" prefWidth=\"186.0\" style=\"-fx-background-color: rgba(200, 200, 200, 0.4); -fx-background-radius: 20px; ;\">\r\n                                 <children>\r\n                                     <AnchorPane prefHeight=\"161.0\" prefWidth=\"186.0\" style=\"-fx-background-radius: 15px; -fx-border-radius: 15px;\">\r\n                                         <children>\r\n                                             <ImageView fx:id=\"chessIcon\" fitHeight=\"105.0\" fitWidth=\"144.0\" layoutX=\"21.0\" layoutY=\"24.0\">\r\n                                                 <image>\r\n                                                     <Image url=\"@icons/chess icon.png\" />\r\n                                                 </image>\r\n                                             </ImageView>\r\n                                         </children>\r\n                                     </AnchorPane>                                    <HBox alignment=\"CENTER\" prefHeight=\"100.0\" prefWidth=\"186.0\">\r\n                                       <children>\r\n                                          <Button mnemonicParsing=\"false\" prefHeight=\"30.0\" prefWidth=\"130.0\" style=\"-fx-background-color: black; -fx-border-color: black; -fx-background-radius: 15; -fx-border-radius: 15; -fx-text-fill: white;\" text=\"Play\" />\r\n                                       </children>\r\n                                    </HBox>\r\n                                 </children>\r\n                              </VBox>\r\n                           </children>\r\n                        </AnchorPane>\r\n                        <AnchorPane layoutX=\"9.0\" layoutY=\"10.0\" prefHeight=\"200.0\" prefWidth=\"200.0\" GridPane.columnIndex=\"1\">\r\n                           <children>\r\n                              <VBox layoutX=\"10.0\" layoutY=\"9.0\" prefHeight=\"223.0\" prefWidth=\"186.0\" style=\"-fx-background-color: rgba(200, 200, 200, 0.4); -fx-background-radius: 20px; ;\">\r\n                                 <children>\r\n                                    <AnchorPane prefHeight=\"161.0\" prefWidth=\"186.0\" style=\"-fx-background-radius: 15px; -fx-border-radius: 15px;\">\r\n                                       <children>\r\n                                          <ImageView fx:id=\"tttIcon\" fitHeight=\"105.0\" fitWidth=\"144.0\" layoutX=\"21.0\" layoutY=\"24.0\">\r\n                                             <image>\r\n                                                <Image url=\"@icons/ttt icon.png\" />\r\n                                             </image>\r\n                                          </ImageView>\r\n                                       </children>\r\n                                    </AnchorPane>\r\n                                    <HBox alignment=\"CENTER\" prefHeight=\"100.0\" prefWidth=\"186.0\">\r\n                                       <children>\r\n                                          <Button mnemonicParsing=\"false\" prefHeight=\"30.0\" prefWidth=\"130.0\" style=\"-fx-background-color: black; -fx-border-color: black; -fx-background-radius: 15; -fx-border-radius: 15; -fx-text-fill: white;\" text=\"Play\" />\r\n                                       </children>\r\n                                    </HBox>\r\n                                 </children>\r\n                              </VBox>\r\n                           </children>\r\n                        </AnchorPane>\r\n                        <AnchorPane layoutX=\"9.0\" layoutY=\"10.0\" prefHeight=\"200.0\" prefWidth=\"200.0\" GridPane.columnIndex=\"2\">\r\n                           <children>\r\n                              <VBox layoutX=\"10.0\" layoutY=\"9.0\" prefHeight=\"223.0\" prefWidth=\"186.0\" style=\"-fx-background-color: rgba(200, 200, 200, 0.4); -fx-background-radius: 20px; ;\">\r\n                                 <children>\r\n                                    <AnchorPane prefHeight=\"161.0\" prefWidth=\"186.0\" style=\"-fx-background-radius: 15px; -fx-border-radius: 15px;\">\r\n                                       <children>\r\n                                          <ImageView fx:id=\"connect4Icon\" fitHeight=\"105.0\" fitWidth=\"144.0\" layoutX=\"21.0\" layoutY=\"24.0\">\r\n                                             <image>\r\n                                                <Image url=\"@icons/connect4 icon.png\" />\r\n                                             </image>\r\n                                          </ImageView>\r\n                                       </children>\r\n                                    </AnchorPane>\r\n                                    <HBox alignment=\"CENTER\" prefHeight=\"100.0\" prefWidth=\"200.0\">\r\n                                       <children>\r\n                                          <Button mnemonicParsing=\"false\" prefHeight=\"30.0\" prefWidth=\"130.0\" style=\"-fx-background-color: black; -fx-border-color: black; -fx-background-radius: 15; -fx-border-radius: 15; -fx-text-fill: white;\" text=\"Play\" />\r\n                                       </children>\r\n                                    </HBox>\r\n                                 </children>\r\n                              </VBox>\r\n                           </children>\r\n                        </AnchorPane>\r\n                        <AnchorPane layoutX=\"9.0\" layoutY=\"10.0\" prefHeight=\"200.0\" prefWidth=\"200.0\" GridPane.columnIndex=\"3\">\r\n                           <children>\r\n                              <VBox layoutX=\"10.0\" layoutY=\"9.0\" prefHeight=\"223.0\" prefWidth=\"186.0\" style=\"-fx-background-color: rgba(200, 200, 200, 0.4); -fx-background-radius: 20px; ;\">\r\n                                 <children>\r\n                                    <AnchorPane prefHeight=\"161.0\" prefWidth=\"186.0\" style=\"-fx-background-radius: 15px; -fx-border-radius: 15px;\">\r\n                                       <children>\r\n                                          <ImageView fx:id=\"goIcon\" fitHeight=\"105.0\" fitWidth=\"144.0\" layoutX=\"21.0\" layoutY=\"24.0\">\r\n                                             <image>\r\n                                                <Image url=\"@icons/go icon.png\" />\r\n                                             </image>\r\n                                          </ImageView>\r\n                                       </children>\r\n                                    </AnchorPane>\r\n                                    <HBox alignment=\"CENTER\" prefHeight=\"100.0\" prefWidth=\"200.0\">\r\n                                       <children>\r\n                                          <Button mnemonicParsing=\"false\" prefHeight=\"30.0\" prefWidth=\"130.0\" style=\"-fx-background-color: black; -fx-border-color: black; -fx-background-radius: 15; -fx-border-radius: 15; -fx-text-fill: white;\" text=\"Play\" />\r\n                                       </children>\r\n                                    </HBox>\r\n                                 </children>\r\n                              </VBox>\r\n                           </children>\r\n                        </AnchorPane>\r\n                     </children>\r\n                  </GridPane>\r\n               </children>\r\n            </HBox>\r\n         </children>\r\n      </VBox>\r\n   </children>\r\n</fx:root>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/classes/dashboard.fxml b/target/classes/dashboard.fxml
+--- a/target/classes/dashboard.fxml	(revision b4787ed59b925ae1d8b1ebfc17c00751bb09ad1e)
++++ b/target/classes/dashboard.fxml	(date 1742932538213)
+@@ -9,19 +9,26 @@
+ <?import javafx.scene.layout.HBox?>
+ <?import javafx.scene.layout.RowConstraints?>
+ <?import javafx.scene.layout.VBox?>
++<?import javafx.scene.text.Text?>
+ 
+ <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: white;" type="AnchorPane" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng.p3.DashboardController">
+    <children>
+       <VBox prefHeight="600.0" prefWidth="900.0">
+          <children>
+             <AnchorPane prefHeight="50.0" prefWidth="900.0" style="-fx-background-color: d9d9d9;" />
+-            <HBox alignment="TOP_CENTER" layoutX="10.0" layoutY="60.0" prefHeight="68.0" prefWidth="900.0" />
++            <HBox alignment="CENTER" layoutX="10.0" layoutY="60.0" prefHeight="68.0" prefWidth="745.0">
++               <children>
++                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome User_Name !" />
++               </children></HBox>
+             <HBox alignment="TOP_CENTER" prefHeight="140.0" prefWidth="900.0">
+                <children>
+-                  <AnchorPane prefHeight="140.0" prefWidth="808.0" style="-fx-background-color: rgba(200, 200, 200, 0.4); -fx-background-radius: 20; -fx-border-radius: 20;" />
++                  <AnchorPane prefHeight="140.0" prefWidth="832.0" style="-fx-background-color: rgba(200, 200, 200, 0.4); -fx-background-radius: 20; -fx-border-radius: 20;" />
+                </children>
+             </HBox>
+-            <HBox alignment="TOP_CENTER" layoutX="10.0" layoutY="60.0" prefHeight="57.0" prefWidth="900.0" />
++            <HBox alignment="CENTER" layoutX="10.0" layoutY="60.0" prefHeight="57.0" prefWidth="900.0">
++               <children>
++                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Games" />
++               </children></HBox>
+             <HBox alignment="CENTER" prefHeight="255.0" prefWidth="900.0">
+                <children>
+                   <GridPane alignment="CENTER" prefHeight="231.0" prefWidth="821.0">
+@@ -37,13 +44,13 @@
+                      <children>
+                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                            <children>
+-                              <VBox layoutX="10.0" layoutY="9.0" prefHeight="223.0" prefWidth="186.0" style="-fx-background-color: rgba(200, 200, 200, 0.4); -fx-background-radius: 20px; ;">
++                              <VBox layoutX="10.0" layoutY="9.0" prefHeight="223.0" prefWidth="186.0" style="-fx-background-color: rgba(200, 200, 200, 0.4); -fx-background-radius: 20px;">
+                                  <children>
+                                      <AnchorPane prefHeight="161.0" prefWidth="186.0" style="-fx-background-radius: 15px; -fx-border-radius: 15px;">
+                                          <children>
+-                                             <ImageView fx:id="chessIcon" fitHeight="105.0" fitWidth="144.0" layoutX="21.0" layoutY="24.0">
++                                             <ImageView fx:id="chessIcon" fitHeight="105.0" fitWidth="155.0" layoutX="16.0" layoutY="24.0">
+                                                  <image>
+-                                                     <Image url="@icons/chess icon.png" />
++                                                     <Image url="@icons/chess_icon.png" />
+                                                  </image>
+                                              </ImageView>
+                                          </children>
+Index: target/classes/leaderboard.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import javafx.geometry.Insets?>\r\n<?import javafx.scene.control.Label?>\r\n<?import javafx.scene.layout.VBox?>\r\n\r\n<?import javafx.scene.control.Button?>\r\n<?import javafx.scene.layout.HBox?>\r\n<?import javafx.scene.control.ListView?>\r\n<?import javafx.scene.text.Text?>\r\n<?import javafx.scene.layout.FlowPane?>\r\n<?import javafx.scene.layout.GridPane?>\r\n<?import javafx.scene.layout.ColumnConstraints?>\r\n<VBox  spacing=\"20.0\" xmlns:fx=\"http://javafx.com/fxml\">\r\n\r\n    <padding>\r\n        <Insets bottom=\"20.0\" left=\"20.0\" right=\"20.0\" top=\"20.0\"/>\r\n    </padding>\r\n    <GridPane>\r\n        <columnConstraints>\r\n            <ColumnConstraints percentWidth=\"20\"/>\r\n            <ColumnConstraints percentWidth=\"60\" halignment=\"CENTER\"/>\r\n            <ColumnConstraints percentWidth=\"20\"/>\r\n        </columnConstraints>\r\n        <children>\r\n            <Button fx:id = \"btnBack\" style=\"-fx-background-color: transparent\">\r\n                <GridPane.columnIndex>0</GridPane.columnIndex>\r\n                <GridPane.rowIndex>0</GridPane.rowIndex>\r\n            </Button>\r\n            <Label fx:id=\"leaderboard\" style = \"-fx-font-size: 22; -fx-padding: 80 0 0 0\" textFill=\"aliceblue\"  >\r\n                <GridPane.columnIndex>1</GridPane.columnIndex>\r\n                <GridPane.rowIndex>0</GridPane.rowIndex>\r\n            </Label>\r\n            <HBox alignment=\"CENTER\">\r\n                <GridPane.columnIndex>2</GridPane.columnIndex>\r\n                <GridPane.rowIndex>0</GridPane.rowIndex>\r\n                <children>\r\n                    <Label fx:id =\"userName\" text = \"UserName\" style=\"-fx-font-size: 21\" textFill=\"aliceblue\"/>\r\n                    <Button fx:id=\"btnUserProfile\" style=\"-fx-background-color: transparent;\" />\r\n                </children>\r\n\r\n            </HBox>\r\n        </children>\r\n    </GridPane>\r\n\r\n\r\n\r\n    <GridPane  fx:id=\"rankList\" vgap=\"20\" style=\"-fx-padding: 40 0 0 0\" >\r\n        <columnConstraints>\r\n            <ColumnConstraints percentWidth=\"12.5\"/>\r\n            <ColumnConstraints percentWidth=\"12.5\" />\r\n            <ColumnConstraints percentWidth=\"25\" />\r\n            <ColumnConstraints percentWidth=\"25\"/>\r\n            <ColumnConstraints percentWidth=\"25\"/>\r\n        </columnConstraints>\r\n        <children>\r\n            <Label fx:id=\"nameRanking\" text=\"NAME\" style=\"-fx-font-size: 18\" textFill=\"aliceblue\">\r\n                <GridPane.columnIndex>2</GridPane.columnIndex>\r\n                <GridPane.rowIndex>0</GridPane.rowIndex>\r\n            </Label>\r\n            <Label fx:id=\"pointsRanking\" text=\"POINTS\" style=\"-fx-font-size: 18\" textFill=\"aliceblue\">\r\n                <GridPane.columnIndex>3</GridPane.columnIndex>\r\n                <GridPane.rowIndex>0</GridPane.rowIndex>\r\n            </Label>\r\n            <Label fx:id=\"winRateRanking\" text=\"WINNING RATE\" style=\"-fx-font-size: 18\" textFill=\"aliceblue\">\r\n                <GridPane.columnIndex>4</GridPane.columnIndex>\r\n                <GridPane.rowIndex>0</GridPane.rowIndex>\r\n            </Label>\r\n        </children>\r\n\r\n    </GridPane>\r\n</VBox>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/classes/leaderboard.fxml b/target/classes/leaderboard.fxml
+--- a/target/classes/leaderboard.fxml	(revision b4787ed59b925ae1d8b1ebfc17c00751bb09ad1e)
++++ b/target/classes/leaderboard.fxml	(date 1742924517293)
+@@ -6,15 +6,13 @@
+ 
+ <?import javafx.scene.control.Button?>
+ <?import javafx.scene.layout.HBox?>
+-<?import javafx.scene.control.ListView?>
+-<?import javafx.scene.text.Text?>
+-<?import javafx.scene.layout.FlowPane?>
++
+ <?import javafx.scene.layout.GridPane?>
+ <?import javafx.scene.layout.ColumnConstraints?>
+ <VBox  spacing="20.0" xmlns:fx="http://javafx.com/fxml">
+ 
+     <padding>
+-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
++        <Insets bottom="20.0" left="20.0" right="20.0" />
+     </padding>
+     <GridPane>
+         <columnConstraints>
+Index: src/main/resources/gamecard.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/gamecard.fxml b/src/main/resources/gamecard.fxml
+new file mode 100644
+--- /dev/null	(date 1742944241867)
++++ b/src/main/resources/gamecard.fxml	(date 1742944241867)
+@@ -0,0 +1,189 @@
++<?xml version="1.0" encoding="UTF-8"?>
++
++<?import javafx.scene.control.Label?>
++<?import javafx.scene.control.ToolBar?>
++<?import javafx.scene.image.Image?>
++<?import javafx.scene.image.ImageView?>
++<?import javafx.scene.layout.AnchorPane?>
++<?import javafx.scene.layout.BorderPane?>
++<?import javafx.scene.layout.ColumnConstraints?>
++<?import javafx.scene.layout.GridPane?>
++<?import javafx.scene.layout.HBox?>
++<?import javafx.scene.layout.RowConstraints?>
++<?import javafx.scene.layout.VBox?>
++
++<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
++   <top>
++      <ToolBar prefHeight="38.0" prefWidth="900.0" BorderPane.alignment="CENTER">
++         <items>
++            <HBox alignment="CENTER" prefHeight="28.0" prefWidth="717.0">
++               <children>
++                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="189.0" layoutY="16.0" prefHeight="17.0" prefWidth="236.0" />
++                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="236.0" text="Dashboard" />
++                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="16.0" prefHeight="17.0" prefWidth="236.0" text="Leaderboard" />
++                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="110.0" layoutY="16.0" prefHeight="17.0" prefWidth="236.0" text="Players" />
++                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="143.0" layoutY="16.0" prefHeight="17.0" prefWidth="236.0" text="Settings" />
++               </children>
++            </HBox>
++         </items>
++      </ToolBar>
++   </top>
++   <left>
++      <AnchorPane prefHeight="361.0" prefWidth="900.0" BorderPane.alignment="CENTER">
++         <children>
++            <VBox prefHeight="563.0" prefWidth="530.0">
++               <children>
++                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
++                     <children>
++                        <Label text="                GAMES" />
++                     </children>
++                  </HBox>
++                  <HBox alignment="CENTER" prefHeight="414.0" prefWidth="530.0">
++                     <children>
++                        <GridPane alignment="CENTER_LEFT" prefHeight="414.0" prefWidth="448.0">
++                          <columnConstraints>
++                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="273.5555419921875" minWidth="8.000023735894104" prefWidth="218.6666734483507" />
++                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="440.2222900390625" minWidth="10.0" prefWidth="182.2222154405382" />
++                          </columnConstraints>
++                          <rowConstraints>
++                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
++                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
++                          </rowConstraints>
++                           <children>
++                              <HBox prefHeight="208.0" prefWidth="37.0">
++                                 <children>
++                                    <VBox prefHeight="208.0" prefWidth="61.0">
++                                       <children>
++                                          <BorderPane prefHeight="163.0" prefWidth="47.0" style="-fx-background-color: #f2f2f2; -fx-border-radius: 15; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.7), 5, 0.1, 1, 2);">
++                                             <top>
++                                                <HBox alignment="CENTER" prefHeight="22.0" prefWidth="137.0" BorderPane.alignment="CENTER">
++                                                   <children>
++                                                      <Label alignment="CENTER" text="CONNECT 4" />
++                                                   </children>
++                                                </HBox>
++                                             </top>
++                                             <center>
++                                                <ImageView fitHeight="117.0" fitWidth="204.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
++                                                   <image>
++                                                      <Image url="@icons/connect4.png" />
++                                                   </image>
++                                                </ImageView>
++                                             </center>
++                                             <bottom>
++                                                <HBox alignment="CENTER" prefHeight="25.0" prefWidth="204.0" BorderPane.alignment="CENTER">
++                                                   <children>
++                                                      <Label alignment="CENTER" text="PLAY" />
++                                                   </children>
++                                                </HBox>
++                                             </bottom>
++                                          </BorderPane>
++                                       </children>
++                                    </VBox>
++                                 </children>
++                              </HBox>
++                              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
++                                 <children>
++                                    <VBox prefHeight="208.0" prefWidth="128.0">
++                                       <children>
++                                          <BorderPane prefHeight="153.0" prefWidth="204.0" style="-fx-background-color: #f2f2f2; -fx-border-radius: 15; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.7), 5, 0.1, 1, 2);">
++                                             <top>
++                                                <HBox alignment="CENTER" prefHeight="22.0" prefWidth="137.0" BorderPane.alignment="CENTER">
++                                                   <children>
++                                                      <Label alignment="CENTER" text="GO" />
++                                                   </children>
++                                                </HBox>
++                                             </top>
++                                             <center>
++                                                <ImageView fitHeight="117.0" fitWidth="204.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
++                                                   <image>
++                                                      <Image url="@icons/go.png" />
++                                                   </image>
++                                                </ImageView>
++                                             </center>
++                                             <bottom>
++                                                <HBox alignment="CENTER" prefHeight="25.0" prefWidth="204.0" BorderPane.alignment="CENTER">
++                                                   <children>
++                                                      <Label alignment="CENTER" text="PLAY" />
++                                                   </children>
++                                                </HBox>
++                                             </bottom>
++                                          </BorderPane>
++                                       </children>
++                                    </VBox>
++                                 </children>
++                              </HBox>
++                              <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
++                                 <children>
++                                    <VBox prefHeight="208.0" prefWidth="128.0">
++                                       <children>
++                                          <BorderPane prefHeight="153.0" prefWidth="204.0" style="-fx-background-color: #f2f2f2; -fx-border-radius: 15; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.7), 5, 0.1, 1, 2);">
++                                             <top>
++                                                <HBox alignment="CENTER" prefHeight="22.0" prefWidth="137.0" BorderPane.alignment="CENTER">
++                                                   <children>
++                                                      <Label alignment="CENTER" text="TIC TAC TOE" />
++                                                   </children>
++                                                </HBox>
++                                             </top>
++                                             <center>
++                                                <ImageView fitHeight="117.0" fitWidth="204.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
++                                                   <image>
++                                                      <Image url="@icons/tictactoe.png" />
++                                                   </image>
++                                                </ImageView>
++                                             </center>
++                                             <bottom>
++                                                <HBox alignment="CENTER" prefHeight="25.0" prefWidth="204.0" BorderPane.alignment="CENTER">
++                                                   <children>
++                                                      <Label alignment="CENTER" text="PLAY" />
++                                                   </children>
++                                                </HBox>
++                                             </bottom>
++                                          </BorderPane>
++                                       </children>
++                                    </VBox>
++                                 </children>
++                              </HBox>
++                              <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
++                                 <children>
++                                    <VBox prefHeight="208.0" prefWidth="128.0">
++                                       <children>
++                                          <BorderPane prefHeight="153.0" prefWidth="204.0" style="-fx-background-color: #f2f2f2; -fx-border-radius: 15; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.7), 5, 0.1, 1, 2);">
++                                             <top>
++                                                <HBox alignment="CENTER" prefHeight="22.0" prefWidth="137.0" BorderPane.alignment="CENTER">
++                                                   <children>
++                                                      <Label alignment="CENTER" text="CHESS" />
++                                                   </children>
++                                                </HBox>
++                                             </top>
++                                             <center>
++                                                <ImageView fitHeight="117.0" fitWidth="204.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
++                                                   <image>
++                                                      <Image url="@icons/chess.png" />
++                                                   </image>
++                                                </ImageView>
++                                             </center>
++                                             <bottom>
++                                                <HBox alignment="CENTER" prefHeight="25.0" prefWidth="204.0" BorderPane.alignment="CENTER">
++                                                   <children>
++                                                      <Label alignment="CENTER" text="PLAY" />
++                                                   </children>
++                                                </HBox>
++                                             </bottom>
++                                          </BorderPane>
++                                       </children>
++                                    </VBox>
++                                 </children>
++                              </HBox>
++                           </children>
++                        </GridPane>
++                     </children>
++                  </HBox>
++               </children>
++            </VBox>
++         </children>
++      </AnchorPane>
++   </left>
++   <right>
++      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
++   </right>
++</BorderPane>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"4c541496-94b3-4c69-933a-cd960206f3dd\" name=\"Changes\" comment=\"dashboard added with games\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/PageNavigator.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LandingController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LandingController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LogInController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LogInController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/SignUpController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/SignUpController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/GameApplication.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/GameApplication.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/LandingController.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/LandingController.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/LogInController.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/LogInController.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/SignUpController.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/SignUpController.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/dashboard.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/dashboard.fxml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"module-info\" />\r\n        <option value=\"CSS File\" />\r\n        <option value=\"FxmlFile\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 3\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2uai3ajYYOM7IGmzLD9DKS5CMGd\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;Application.GameApplication.executor&quot;: &quot;Run&quot;,\r\n    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,\r\n    &quot;Application.Main.executor&quot;: &quot;Run&quot;,\r\n    &quot;Application.ca.ucalgary.seng.p3.GameApplication.executor&quot;: &quot;Run&quot;,\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;gui&quot;,\r\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/ebose/OneDrive/Desktop/SENG 300/seng300-w25-project/target/classes/ca/ucalgary/seng/p3&quot;,\r\n    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\ebose\\OneDrive\\Desktop\\SENG 300\\seng300-w25-project\\target\\classes\\ca\\ucalgary\\seng\\p3\" />\r\n      <recent name=\"C:\\Users\\ebose\\OneDrive\\Desktop\\SENG 300\\seng300-w25-project\\p3\\target\\classes\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\ebose\\OneDrive\\Desktop\\SENG 300\\seng300-w25-project\\src\\main\\resources\\icons\" />\r\n      <recent name=\"C:\\Users\\ebose\\OneDrive\\Desktop\\SENG 300\\seng300-w25-project\\src\\main\\resources\\images\" />\r\n      <recent name=\"C:\\Users\\ebose\\OneDrive\\Desktop\\SENG 300\\seng300-w25-project\\src\\main\\resources\" />\r\n      <recent name=\"C:\\Users\\ebose\\OneDrive\\Desktop\\SENG 300\\seng300-w25-project\\src\\main\\resources\\fonts\" />\r\n      <recent name=\"C:\\Users\\ebose\\OneDrive\\Desktop\\SENG 300\\seng300-w25-project\\src\\main\\java\\ca\\ucalgary\\seng\\p3\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"ca.ucalgary.seng.p3.Main\" />\r\n      <module name=\"seng-w25-project\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"ca.ucalgary.seng.p3.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.23654.117\" />\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-IU-243.23654.117\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"4c541496-94b3-4c69-933a-cd960206f3dd\" name=\"Changes\" comment=\"\" />\r\n      <created>1742492887818</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1742492887818</updated>\r\n      <workItem from=\"1742492889197\" duration=\"3602000\" />\r\n      <workItem from=\"1742496867294\" duration=\"1846000\" />\r\n      <workItem from=\"1742506365183\" duration=\"791000\" />\r\n      <workItem from=\"1742514355024\" duration=\"1100000\" />\r\n      <workItem from=\"1742515484635\" duration=\"1203000\" />\r\n      <workItem from=\"1742516716496\" duration=\"1736000\" />\r\n      <workItem from=\"1742518498573\" duration=\"332000\" />\r\n      <workItem from=\"1742518846711\" duration=\"683000\" />\r\n      <workItem from=\"1742519561240\" duration=\"632000\" />\r\n      <workItem from=\"1742521471913\" duration=\"467000\" />\r\n      <workItem from=\"1742524021227\" duration=\"1448000\" />\r\n      <workItem from=\"1742531710659\" duration=\"7000\" />\r\n      <workItem from=\"1742531730916\" duration=\"46000\" />\r\n      <workItem from=\"1742531779689\" duration=\"19000\" />\r\n      <workItem from=\"1742531810516\" duration=\"1402000\" />\r\n      <workItem from=\"1742622003354\" duration=\"1510000\" />\r\n      <workItem from=\"1742693866100\" duration=\"1004000\" />\r\n      <workItem from=\"1742695138037\" duration=\"1627000\" />\r\n      <workItem from=\"1742708928094\" duration=\"7487000\" />\r\n      <workItem from=\"1742781694738\" duration=\"13037000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Added connect4.fxml and connect 4.css, started working on connect 4 game page\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742532772017</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742532772017</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"made a basic layout for the connect4.fxml\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742533212766</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742533212766</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"created settigns.fxml\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742623190016</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742623190016</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Added profile.fxml and made changes to it for the settings screen\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742623267821</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742623267821</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Added profile.fxml and made changes to it for the settings screen\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742623318001</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742623318001</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Added the profileController.java and SettingsController.java classes for the settings and profile fxml files\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742623471939</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742623471939</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"files moved in the right location\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742685852513</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742685852513</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"landing page added\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742689484749</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742689484749</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"logIn &amp; signUp pages added\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742694853294</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742694853294</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"logIn &amp; signUp pages added\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742694864153</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742694864153</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"dashboard added with games\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742788888846</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742788888846</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"dashboard added with games\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742788903961</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742788903961</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"13\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"project successfully restructured\" />\r\n    <MESSAGE value=\"Added a draft UI screen for the Connect 4 game interface\" />\r\n    <MESSAGE value=\"Added connect4.fxml and connect 4.css, started working on connect 4 game page\" />\r\n    <MESSAGE value=\"made a basic layout for the connect4.fxml\" />\r\n    <MESSAGE value=\"created settigns.fxml\" />\r\n    <MESSAGE value=\"Added profile.fxml and made changes to it for the settings screen\" />\r\n    <MESSAGE value=\"Added the profileController.java and SettingsController.java classes for the settings and profile fxml files\" />\r\n    <MESSAGE value=\"files moved in the right location\" />\r\n    <MESSAGE value=\"landing page added\" />\r\n    <MESSAGE value=\"logIn &amp; signUp pages added\" />\r\n    <MESSAGE value=\"dashboard added with games\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"dashboard added with games\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision b4787ed59b925ae1d8b1ebfc17c00751bb09ad1e)
++++ b/.idea/workspace.xml	(date 1742953547988)
+@@ -4,17 +4,28 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="dashboard added with games">
+-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/PageNavigator.java" afterDir="false" />
++    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="added navigator class">
++      <change afterPath="$PROJECT_DIR$/src/main/java/GamecardController.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/gamecard.fxml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/chess.png" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/connect4.png" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/go.png" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/profile.png" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/tictactoe.png" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LandingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LandingController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LogInController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/SignUpController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GameApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GameApplication.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/dashboard.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/icons/chess icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/icons/chess_icon.png" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/startgame_chess.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/startgame_chess.fxml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/GameApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/GameApplication.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/LandingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/LandingController.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/LeaderBoardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/LeaderBoardController.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/LogInController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/LogInController.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/PageNavigator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/PageNavigator.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/SignUpController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/SignUpController.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/target/classes/dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dashboard.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/icons/chess icon.png" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/leaderboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leaderboard.fxml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -25,9 +36,9 @@
+     <option name="RECENT_TEMPLATES">
+       <list>
+         <option value="module-info" />
+-        <option value="CSS File" />
+         <option value="FxmlFile" />
+         <option value="Class" />
++        <option value="CSS File" />
+       </list>
+     </option>
+   </component>
+@@ -56,7 +67,7 @@
+     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+     &quot;git-widget-placeholder&quot;: &quot;gui&quot;,
+     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ebose/OneDrive/Desktop/SENG 300/seng300-w25-project/target/classes/ca/ucalgary/seng/p3&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/ebose/OneDrive/Desktop/SENG 300/seng300-w25-project/src/main/resources/icons&quot;,
+     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+@@ -71,6 +82,7 @@
+ }</component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
++      <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources\icons" />
+       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\target\classes\ca\ucalgary\seng\p3" />
+       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\p3\target\classes" />
+     </key>
+@@ -138,6 +150,10 @@
+       <workItem from="1742695138037" duration="1627000" />
+       <workItem from="1742708928094" duration="7487000" />
+       <workItem from="1742781694738" duration="13037000" />
++      <workItem from="1742924345383" duration="9493000" />
++      <workItem from="1742943264733" duration="937000" />
++      <workItem from="1742945439734" duration="487000" />
++      <workItem from="1742952200362" duration="1256000" />
+     </task>
+     <task id="LOCAL-00001" summary="Added connect4.fxml and connect 4.css, started working on connect 4 game page">
+       <option name="closed" value="true" />
+@@ -235,7 +251,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1742788903961</updated>
+     </task>
+-    <option name="localTasksCounter" value="13" />
++    <task id="LOCAL-00013" summary="added navigator class">
++      <option name="closed" value="true" />
++      <created>1742924656152</created>
++      <option name="number" value="00013" />
++      <option name="presentableId" value="LOCAL-00013" />
++      <option name="project" value="LOCAL" />
++      <updated>1742924656152</updated>
++    </task>
++    <option name="localTasksCounter" value="14" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -264,6 +288,7 @@
+     <MESSAGE value="landing page added" />
+     <MESSAGE value="logIn &amp; signUp pages added" />
+     <MESSAGE value="dashboard added with games" />
+-    <option name="LAST_COMMIT_MESSAGE" value="dashboard added with games" />
++    <MESSAGE value="added navigator class" />
++    <option name="LAST_COMMIT_MESSAGE" value="added navigator class" />
+   </component>
+ </project>
+\ No newline at end of file
