@@ -18,7 +18,7 @@ public class UserLogin {
                 case "Guest Login":
                     guestLogin();
                     break;
-                case "Register": //still need to add
+                case "Register":
                     try {
                         AccountRegistrationCSV.createNewAccount(scanner);
                     } catch (IOException e) {
