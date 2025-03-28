@@ -67,6 +67,12 @@ public class Connect4 {
 
             moveValid = false;
 
+            gameEnd = board.checkWin(player_two.getSelectedSymbol());
+            if(gameEnd){
+                System.out.println("Player Two Wins!!!!!!!");
+                break;
+            }
+
 
 
         }
