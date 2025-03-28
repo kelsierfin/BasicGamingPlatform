@@ -3,16 +3,16 @@ package server;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
-import java.io.*;
-import java.net.*;
-import java.util.*;
 
-public class Server {
+public class TCPserver {
     private static final int PORT = 12345;
-    private static Set<ClientHandler> clients = Collections.synchronizedSet(new HashSet<>());
+    static Set<ClientHandler> clients = Collections.synchronizedSet(new HashSet<>());
+    static List<String> usernames = new ArrayList<>();
 
     public static void main(String[] args) {
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
