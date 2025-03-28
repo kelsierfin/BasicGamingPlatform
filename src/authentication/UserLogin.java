@@ -5,10 +5,10 @@ import java.util.*;
 
 public class UserLogin {
     private static final String FILE_NAME = "accounts.csv";
+    private static final String SESSION_FILE = "session.csv";
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        while (true) {
             System.out.println("Choose an option: \nLogin \nGuest Login \nRegister \nExit");
             String choice = scanner.nextLine();
             switch (choice) {
@@ -19,6 +19,11 @@ public class UserLogin {
                     guestLogin();
                     break;
                 case "Register": //still need to add
+                    try {
+                        AccountRegistrationCSV.createNewAccount(scanner);
+                    } catch (IOException e) {
+                        System.out.println("Registration failed due to an error: " + e.getMessage());
+                    }
                     break;
                 case "Exit":
                     System.out.println("Exiting. See you again!");
@@ -26,7 +31,6 @@ public class UserLogin {
                     return; // Exit the program
                 default:
                     System.out.println("Invalid. Please try again.");
-            }
         }
     }
     private static void login(Scanner scanner) {
@@ -46,6 +50,7 @@ public class UserLogin {
 
             if (accounts.containsKey(username) && accounts.get(username).equals(password)) {
                 System.out.println("Login successful! Welcome, " + username + ".");
+                saveSession(username);
                 return;
             } else {
                 System.out.println("Invalid username or password. Please try again.");
@@ -54,7 +59,8 @@ public class UserLogin {
     }
 
     private static void guestLogin() {
-        System.out.println("Guest login successful!"); //temp
+        System.out.println("Guest login successful!");
+        saveSession("Guest");//temp
     }
 
     private static Map<String, String> loadAccounts() {
@@ -80,6 +86,11 @@ public class UserLogin {
 
         return accounts;
     }
+    private static void saveSession(String username) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(SESSION_FILE, true))) {
+            writer.write(username + "\n");
+        } catch (IOException e) {
+            System.out.println("Error saving session: " + e.getMessage());
+        }
+    }
 }
-
-
