@@ -1,0 +1,38 @@
+.menu-button {
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-padding: 5px;
+}
+
+.menu-button:hover{
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.5, 2, 2);
+}
+
+.menu-popup {
+    -fx-background-color: #ffffff;
+    -fx-padding: 10px;
+    -fx-border-color: transparent;
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.menu-popup Button {
+    -fx-background-color: #e0e0e0;
+    -fx-text-fill: #333;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-min-width: 150px;
+    -fx-min-height: 40px;
+    -fx-max-width: 150px;
+    -fx-max-height: 40px;
+}
+
+.menu-popup Button:hover {
+    -fx-background-color: #cccccc;
+    -fx-text-fill: black;
+    -fx-cursor: hand;
+}
