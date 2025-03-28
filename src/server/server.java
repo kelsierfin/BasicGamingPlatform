@@ -1,37 +1,46 @@
-import java.io.BufferedReader;
+package server;
+
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+import java.io.*;
+import java.net.*;
+import java.util.*;
 
-public class server {
-    private static int nextPort = 49153;  // Starting port for assigning to players
+public class Server {
+    private static final int PORT = 12345;
+    private static Set<ClientHandler> clients = Collections.synchronizedSet(new HashSet<>());
 
     public static void main(String[] args) {
-        try {
-            //Create a server socket bound to port 49152.
-            ServerSocket serverSocket = new ServerSocket(49152);
-            System.out.println("Server is online, waiting for client connection......");
-
+        try (ServerSocket serverSocket = new ServerSocket(PORT)) {
+            System.out.println("Server started on port " + PORT);
             while (true) {
-                // Wait for two clients to connect
-                Socket player1Socket = serverSocket.accept();
-                System.out.println("Player 1 connected.");
-
-                Socket player2Socket = serverSocket.accept();
-                System.out.println("Player 2 connected.");
-
-                // Assign a unique port for the match between Player 1 and Player 2
-                int matchPort = nextPort++;
-                System.out.println("Assigning match port: " + matchPort);
-
-                // Create threads to handle each player's communication
-                new Thread(new ClientHandler(player1Socket, matchPort)).start();
+                Socket socket = serverSocket.accept();
+                ClientHandler clientHandler = new ClientHandler(socket);
+                clients.add(clientHandler);
+                new Thread(clientHandler).start();
             }
-
         } catch (IOException e) {
-            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public static void broadcast(String message, ClientHandler sender) {
+        synchronized (clients) {
+            for (ClientHandler client : clients) {
+                if (client != sender) {
+                    client.sendMessage(message);
+                }
+            }
+        }
+    }
+
+    public static void removeClient(ClientHandler client) {
+        synchronized (clients) {
+            clients.remove(client);
         }
     }
 }

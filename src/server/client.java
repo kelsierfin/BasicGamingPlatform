@@ -1,40 +1,39 @@
-import java.io.*;
-import java.net.*;
+package client;
 
-public class client {
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.util.Scanner;
+class Client {
+    private static final String SERVER_ADDRESS = "localhost";
+    private static final int PORT = 12345;
+
     public static void main(String[] args) {
-        try {
-            // Connect to the server at localhost on port 49152
-            Socket socket = new Socket("localhost", 49152);
+        try (Socket socket = new Socket(SERVER_ADDRESS, PORT);
+             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+             Scanner scanner = new Scanner(System.in)) {
 
-            // Create input and output streams for communication
-            BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-            PrintWriter output = new PrintWriter(socket.getOutputStream(), true);
-            BufferedReader serverInput = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            Thread listener = new Thread(() -> {
+                try {
+                    String message;
+                    while ((message = in.readLine()) != null) {
+                        System.out.println("Server: " + message);
+                    }
+                } catch (IOException e) {
+                    System.out.println("Connection closed.");
+                }
+            });
+            listener.start();
 
-            // Receive the match port from the server
-            String serverMessage = serverInput.readLine();
-            System.out.println(serverMessage);
-
-            // Now that the match port is received, connect to that port (dynamic connection)
-            int matchPort = Integer.parseInt(serverMessage.split(": ")[1]);
-            socket = new Socket("localhost", matchPort);  // Connect to the match port
-
-            // Communicate on the match port
-            BufferedReader matchInput = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            PrintWriter matchOutput = new PrintWriter(socket.getOutputStream(), true);
-
-            String message;
-            while (true) {
-                System.out.print("Enter message to server: ");
-                message = input.readLine();
-                
-                // Send message to server
-                matchOutput.println(message);
-
-                // Receive and print server's response
-                String matchMessage = matchInput.readLine();
-                System.out.println("Match: " + matchMessage);
+            while (scanner.hasNextLine()) {
+                String userInput = scanner.nextLine();
+                if (userInput.equalsIgnoreCase("exit")) {
+                    break;
+                }
+                out.println(userInput);
             }
         } catch (IOException e) {
             e.printStackTrace();
