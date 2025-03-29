@@ -4,84 +4,165 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class Connect4Controller {
 
-    @FXML
-    private Circle player1Icon;
+    @FXML private Label timer;
+    @FXML private Button exitButton;
+    @FXML private Button sendButton;
+    @FXML private TextField chatTextField;
+    @FXML private TextArea chatArea;
+    @FXML private GridPane gameBoardGrid;
+    @FXML private Circle player1Icon;
+    @FXML private Circle player2Icon;
+    @FXML private Label player1Name;
+    @FXML private Label player2Name;
 
-    @FXML
-    private Circle player2Icon;
-
-    @FXML
-    private Label player1Name;
-
-    @FXML
-    private Label player2Name;
-
-    @FXML
-    private Label timer;
-
-    @FXML
-    private Rectangle gameBackground;
-
-    @FXML
-    private StackPane gameBoardContainer;
-
-    @FXML
-    private Button abortGameButton;
-
-    @FXML
-    private Button newGameButton;
-
-    @FXML
-    private Button chatButton;
-
-    // Track if this is the local player's turn
-    private boolean isLocalPlayerTurn = false;
+    private String[][] board; // 6x7 game board
+    private boolean isLocalPlayerTurn = true;
+    private boolean gameEnd = false;
     private Timeline gameTimer;
-    private int secondsRemaining = 600; // 10 minutes initial time
+    private int secondsRemaining = 600;
+    private final int ROWS = 6;
+    private final int COLUMNS = 7;
 
     @FXML
     private void initialize() {
-        System.out.println("Connect4 game screen initialized");
-
-        // Set default values
-        player1Name.setText("Player 1");
-        player2Name.setText("Player 2");
+        if (chatArea != null) {
+            chatArea.setEditable(false);
+        }
+        player1Name.setText("PLAYER 1");
+        player2Name.setText("PLAYER 2");
+        initializeGame();
         startTimer();
     }
 
-    /**
-     * This method will be called by the matchmaking team when a match is found
-     * @param localPlayerName The local player's username
-     * @param remotePlayerName The remote player's username
-     * @param isPlayerOne Whether the local player is Player 1 (red)
-     */
-    public void setupMatchedPlayers(String localPlayerName, String remotePlayerName, boolean isPlayerOne) {
-        if (isPlayerOne) {
-            // Local user is Player 1 (red)
-            player1Name.setText(localPlayerName);
-            player2Name.setText(remotePlayerName);
-        } else {
-            // Local user is Player 2 (green)
-            player1Name.setText(remotePlayerName);
-            player2Name.setText(localPlayerName);
+    private void initializeGame() {
+        // Initialize the board as a 6x7 grid of empty slots
+        board = new String[ROWS][COLUMNS];
+        for (int row = 0; row < ROWS; row++) {
+            for (int col = 0; col < COLUMNS; col++) {
+                board[row][col] = " "; // Empty slot
+            }
+        }
+        setupGameBoard();
+        updateTurnIndicator();
+    }
+
+    private void setupGameBoard() {
+        gameBoardGrid.setStyle("-fx-background-color: Grey;");
+        for (int row = 0; row < ROWS; row++) {
+            for (int col = 0; col < COLUMNS; col++) {
+                Circle slot = new Circle(30, javafx.scene.paint.Color.WHITE);
+                slot.setStroke(javafx.scene.paint.Color.BLACK);
+                gameBoardGrid.add(slot, col, row);
+                final int column = col;
+                slot.setOnMouseClicked(e -> handleColumnClick(column));
+            }
         }
     }
 
-    /**
-     * Updates the game timer display
-     */
-    private void startTimer() {
-        if (gameTimer != null) {
-            gameTimer.stop();
+    @FXML
+    private void handleColumnClick(int column) {
+        if (!isLocalPlayerTurn || gameEnd) return;
+
+        if (placeDisc(column, "R")) { // "R" for Player 1
+            updateBoardUI();
+            if (checkWin("R")) { // Placeholder for win check
+                gameEnd = true;
+                handleGameOver(player1Name.getText());
+            } else {
+                switchTurn(false); // Switch to opponent
+            }
         }
+    }
+
+    private boolean placeDisc(int column, String symbol) {
+        for (int row = ROWS - 1; row >= 0; row--) {
+            if (board[row][column].equals(" ")) {
+                board[row][column] = symbol;
+                return true;
+            }
+        }
+        return false; // Column is full
+    }
+
+    private void updateBoardUI() {
+        for (int row = 0; row < ROWS; row++) {
+            for (int col = 0; col < COLUMNS; col++) {
+                Circle slot = (Circle) gameBoardGrid.getChildren().get(row * COLUMNS + col);
+                if (board[row][col].equals("R")) {
+                    slot.setFill(javafx.scene.paint.Color.RED);
+                } else if (board[row][col].equals("Y")) {
+                    slot.setFill(javafx.scene.paint.Color.YELLOW);
+                } else {
+                    slot.setFill(javafx.scene.paint.Color.WHITE);
+                }
+            }
+        }
+    }
+
+    private boolean checkWin(String symbol) {
+        // Placeholder: Add win checking logic later when merging with Connect4_Board
+        // For now, return false to keep the game running
+        return false;
+    }
+
+    @FXML
+    private void handleExit() {
+        if (gameTimer != null) gameTimer.stop();
+        Stage stage = (Stage) exitButton.getScene().getWindow();
+        stage.close(); // Or use PageNavigator.navigateTo("dashboard")
+    }
+
+    @FXML
+    private void handleSend() {
+        String message = chatTextField.getText();
+        if (message != null && !message.trim().isEmpty()) {
+            chatArea.appendText("Me: " + message + "\n");
+            chatTextField.clear();
+        }
+    }
+
+    private void switchTurn(boolean isLocalTurn) {
+        this.isLocalPlayerTurn = isLocalTurn;
+        updateTurnIndicator();
+        if (!isLocalTurn && !gameEnd) {
+            simulateOpponentMove();
+        }
+    }
+
+    private void updateTurnIndicator() {
+        if (isLocalPlayerTurn) {
+            player1Icon.setStroke(javafx.scene.paint.Color.BLACK);
+            player2Icon.setStroke(null);
+        } else {
+            player2Icon.setStroke(javafx.scene.paint.Color.BLACK);
+            player1Icon.setStroke(null);
+        }
+    }
+
+    private void simulateOpponentMove() {
+        for (int col = 0; col < COLUMNS; col++) {
+            if (placeDisc(col, "Y")) { // "Y" for Player 2
+                updateBoardUI();
+                if (checkWin("Y")) { // Placeholder for win check
+                    gameEnd = true;
+                    handleGameOver(player2Name.getText());
+                } else {
+                    switchTurn(true); // Switch back to player
+                }
+                break;
+            }
+        }
+    }
+
+    private void startTimer() {
+        if (gameTimer != null) gameTimer.stop();
         secondsRemaining = 600;
         timer.setText(formatTime(secondsRemaining));
         gameTimer = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
@@ -95,95 +176,31 @@ public class Connect4Controller {
         gameTimer.setCycleCount(Timeline.INDEFINITE);
         gameTimer.play();
     }
+
     private String formatTime(int seconds) {
         int minutes = seconds / 60;
         int secs = seconds % 60;
         return String.format("%02d:%02d", minutes, secs);
     }
 
-    /**
-     * This method will be called by the game logic team to set whose turn it is
-     * @param isLocalTurn true if it's the local player's turn, false otherwise
-     */
-    public void setPlayerTurn(boolean isLocalTurn) {
-        this.isLocalPlayerTurn = isLocalTurn;
-        // Update UI to indicate whose turn it is (can be implemented later)
+    private void handleGameOver(String winnerName) {
+        gameTimer.stop();
+        String message = winnerName != null ? winnerName + " wins!" : "Game ended in a draw!";
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Game Over");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
-    /**
-     * This method will be called by the game logic team when a game ends
-     * @param winnerName name of the player who won, or null for a draw
-     */
-    public void handleGameOver(String winnerName) {
-        // Display game over message and update UI
-        // This will be implemented by UI team after game logic is done
-    }
-
-    @FXML
-    private void handleAbortGame() {
-        if (gameTimer != null) {
-            gameTimer.stop();
+    public void setupMatchedPlayers(String localPlayerName, String remotePlayerName, boolean isPlayerOne) {
+        if (isPlayerOne) {
+            player1Name.setText(localPlayerName);
+            player2Name.setText(remotePlayerName);
+        } else {
+            player1Name.setText(remotePlayerName);
+            player2Name.setText(localPlayerName);
         }
-        PageNavigator.navigateTo("dashboard"); // Navigate to dashboard
-    }
-
-    @FXML
-    private void handleNewGame() {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("New Game");
-        alert.setHeaderText("Starting a new game will end the current one.");
-        alert.setContentText("You will lose this game. Are you sure?");
-        alert.showAndWait().ifPresent(response -> {
-            if (response == ButtonType.OK) {
-                // Reset game with current players
-                String localPlayer = player1Name.getText();
-                String remotePlayer = player2Name.getText();
-                setupMatchedPlayers(localPlayer, remotePlayer, true); // Assuming local is Player 1
-                startTimer(); // Restart timer
-                System.out.println("New game started with " + localPlayer + " vs " + remotePlayer);
-                // Game logic team to reset board here
-            }
-        });
-    }
-
-    /**
-     * This method will be called by the matchmaking team to clean up resources
-     * when navigating away from this screen
-     */
-    public void cleanup() {
-        if (gameTimer != null) {
-            gameTimer.stop();
-        }
-        System.out.println("Cleaning up Connect4 game resources");
-    }
-
-    @FXML
-    private void handleChat() {
-        Dialog<String> chatDialog = new Dialog<>();
-        chatDialog.setTitle("Chat");
-        chatDialog.setHeaderText("Chat with " + player2Name.getText());
-
-        // Set up dialog content
-        TextArea chatArea = new TextArea();
-        chatArea.setEditable(false);
-        chatArea.setPrefHeight(200);
-        TextField messageField = new TextField();
-        messageField.setPromptText("Type your message...");
-        Button sendButton = new Button("Send");
-        sendButton.setOnAction(e -> {
-            String message = messageField.getText();
-            if (!message.trim().isEmpty()) {
-                chatArea.appendText("Me: " + message + "\n");
-                messageField.clear();
-                // Chat team to add networking logic here
-            }
-        });
-
-        VBox content = new VBox(10, chatArea, messageField, sendButton);
-        chatDialog.getDialogPane().setContent(content);
-
-        // Add OK button to close dialog
-        chatDialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
-        chatDialog.show();
+        initializeGame();
     }
 }
