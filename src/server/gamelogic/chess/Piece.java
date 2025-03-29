@@ -10,6 +10,7 @@ public abstract class Piece implements IPiece{
     Square position;
     List<Square> moveOptions;
     boolean moveOptionsUpdated;
+    List<Square> attackedSquares;
 
     public Piece(Player player, int value) {
         this.player = player;
@@ -17,12 +18,8 @@ public abstract class Piece implements IPiece{
         this.value = value;
     }
 
-    @Override
-    public List<Square> getCurrentMoveOptions() {
-        if (moveOptionsUpdated) return moveOptions;
-
-        // If move options not updated
-        updateMoveOptions();
-        return moveOptions;
+    public Piece(Player player, int value, Square position) {
+        this(player, value);
+        this.position = position;
     }
 }

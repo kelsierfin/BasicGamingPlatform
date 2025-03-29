@@ -12,4 +12,9 @@ public class Pawn extends Piece {
     public void updateMoveOptions() {
         // Update moveOptions
     }
+
+    @Override
+    public void updateAttackedSquares() {
+
+    }
 }

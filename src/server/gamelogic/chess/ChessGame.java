@@ -11,7 +11,6 @@ public class ChessGame {
     public Player activePlayer;
     public HashMap<Square, Piece> boardLayout;
 
-
     static {
         // Define BOARD and NAME_TO_SQUARE
         for (int i = 0; i < 8; i++) {

@@ -8,12 +8,16 @@ public class Queen extends Piece {
         else position = ChessGame.BOARD[7][3];
     }
      public Queen(Player player, Square position) {
-        super(player, 9);
-        this.position = position;
+        super(player, 9, position);
      }
 
     @Override
     public void updateMoveOptions() {
         // Update moveOptions
+    }
+
+    @Override
+    public void updateAttackedSquares() {
+
     }
 }

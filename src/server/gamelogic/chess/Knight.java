@@ -14,8 +14,17 @@ public class Knight extends Piece {
         }
     }
 
+    public Knight(Player player, Square position) {
+        super(player,3, position);
+    }
+
     @Override
     public void updateMoveOptions() {
         // Update moveOptions
+    }
+
+    @Override
+    public void updateAttackedSquares() {
+
     }
 }

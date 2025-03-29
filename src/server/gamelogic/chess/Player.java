@@ -12,15 +12,17 @@ public class Player {
     ChessGame game;
     boolean playsForWhite;
     Player opponent;
+    King king;
+    Rook kingSideRook;
+    Rook queenSideRook;
     List<Piece> pieces;
-//    List<Square> occupiedSquares;
     List<Piece> capturedPieces;
     int materialAdvantage;
-//    boolean hasTurn;
     Piece selection;
-    List<Square> moveOptions;
+    Piece movedPiece;
+    List<Square> attackedSquares;
     Pawn pawnToPromote;
-    boolean kingOrRookMoved;
+    boolean canCastle;
 
     public Player(ChessGame game, boolean playsForWhite) {
         this.game = game;
@@ -28,8 +30,8 @@ public class Player {
         pieces = new ArrayList<>();
         initializePieces();
         capturedPieces = new ArrayList<>();
-        moveOptions = new ArrayList<>();
-//        isPromotingPawn = false;
+        materialAdvantage = 0;
+        attackedSquares = new ArrayList<>();
     }
 
     public void processInput(ChessCommand input) {
@@ -48,43 +50,66 @@ public class Player {
     private void enactClick(String squareName) {
         Square clickedSquare = ChessGame.NAME_TO_SQUARE.get(squareName);
         Piece clickedPiece = game.boardLayout.get(clickedSquare);
-        if (moveOptions.contains(clickedSquare)) move(clickedSquare, clickedPiece);
-        else if ((clickedPiece != null) && pieces.contains(clickedPiece)) select(clickedPiece);
+
+        if (selection != null && selection.moveOptions.contains(clickedSquare))
+            move(clickedSquare, clickedPiece);
+        else if ((clickedPiece != null) && pieces.contains(clickedPiece))
+            select(clickedPiece);
         else deselect();
     }
 
     private void move(Square destination, Piece pieceToCapture) {
+        movedPiece = selection;
+        selection = null;
+
         if (pieceToCapture != null) {
             capturedPieces.add(pieceToCapture);
             pieceToCapture.position = null;
             materialAdvantage += pieceToCapture.value;
             opponent.materialAdvantage -= pieceToCapture.value;
         }
-        game.boardLayout.remove(selection.position);
-        game.boardLayout.put(destination, selection);
-        selection.position = destination;
 
-        moveOptions.clear();
+        if (canCastle) {
+            if (destination == kingSideRook.castleKingDest) {
+                game.boardLayout.remove(kingSideRook.position);
+                game.boardLayout.put(kingSideRook.castleDest, kingSideRook);
+                kingSideRook.position = kingSideRook.castleDest;
+            }
+            if (destination == queenSideRook.castleKingDest) {
+                game.boardLayout.remove(queenSideRook.position);
+                game.boardLayout.put(queenSideRook.castleDest, queenSideRook);
+                queenSideRook.position = queenSideRook.castleDest;
+            }
+            canCastle = false;
+        }
+
+        game.boardLayout.remove(movedPiece.position);
+        game.boardLayout.put(destination, movedPiece);
+        movedPiece.position = destination;
+
+        if (movedPiece instanceof CastledPiece cp) cp.hasMoved = true;
 
         for (Piece piece : pieces) {
             piece.moveOptionsUpdated = false;
         }
-        if ((selection instanceof Pawn p) && (destination.rankIndex == 7)) {
+
+        if ((movedPiece instanceof Pawn p) && (destination.rankIndex == 7)) {
             pawnToPromote = p;
-        }
+        } else {
+        updateAttackedSquares();
         game.activePlayer = opponent;
+        }
     }
 
     private void select(Piece selection) {
         this.selection = selection;
-        moveOptions = selection.getCurrentMoveOptions();
+        if (!selection.moveOptionsUpdated) selection.updateMoveOptions();
         // Create select instruction
         // Send select instruction through socket that represents player's connection
     }
 
     private void deselect() {
         selection = null;
-        moveOptions.clear();
         // Create deselect instruction
         // Send deselect instruction through socket that represents player's connection
     }
@@ -95,13 +120,24 @@ public class Player {
         if ((type == Queen.class) || (type == Rook.class) || (type == Knight.class) || (type == Bishop.class)) {
             try {
                 Piece newPiece = type.getDeclaredConstructor(Player.class, Square.class).newInstance(this, position);
-            } catch (NoSuchMethodException | InstantiationException | IllegalAccessException |
-                     InvocationTargetException e) {
+                // Replace pawnToPromote with newPiece
+                updateAttackedSquares();
+                game.activePlayer = opponent;
+            } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
                 e.printStackTrace();
             }
-            // Replace pawnToPromote with newPiece
         }
         // else handle invalid pieceType
+    }
+
+    private void updateAttackedSquares() {
+        attackedSquares.clear();
+        for (Piece piece : pieces) {
+            piece.updateAttackedSquares();
+            for (Square square : piece.attackedSquares) {
+                if (!attackedSquares.contains(square)) attackedSquares.add(square);
+            }
+        }
     }
 
     public void initializePieces() {
