@@ -83,36 +83,36 @@ public class StartGameController {
         loadGameImage(gameType);  // Load the appropriate image for the game
     }
 
-    // More event handlers for other buttons, unfinished:
+    // More event handlers for other buttons, add the logic and page navigation later
     @FXML
-    private void handleProfileButton() {
+    private void handleProfileButton(ActionEvent event) {
     }
 
     @FXML
-    private void handleFindMatch() {
+    private void handleFindMatch(ActionEvent event) {
     }
 
     @FXML
-    private void handleDashboardButton() {
+    private void handleDashboardButton(ActionEvent event) {
     }
 
     @FXML
-    private void handleLeaderboardButton() {
+    private void handleLeaderboardButton(ActionEvent event) {
     }
 
     @FXML
-    private void handleFindAPlayerButton() {
+    private void handleFindAPlayerButton(ActionEvent event) {
     }
 
     @FXML
-    private void handleSettingsButton() {
+    private void handleSettingsButton(ActionEvent event) {
     }
 
     @FXML
-    private void handleGameRulesButton() {
+    private void handleGameRulesButton(ActionEvent event) {
     }
 
     @FXML
-    private void handleBellButton() {
+    private void handleBellButton(ActionEvent event) {
     }
 }
