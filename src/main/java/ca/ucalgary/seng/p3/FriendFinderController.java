@@ -10,6 +10,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
+
+import java.awt.event.ActionEvent;
 import java.awt.event.InputMethodEvent;
 import java.awt.event.MouseEvent;
 
@@ -64,8 +66,19 @@ public class FriendFinderController {
         other_Player_Name.setText(players.toString());
     }
 
+
     @FXML
-    void change_List(InputMethodEvent event) {
+    void handleBellButton(ActionEvent event) {
+
+    }
+
+    @FXML
+    void handleMenuButton(ActionEvent event) {
+
+    }
+
+    @FXML
+    void handleProfileButton(ActionEvent event) {
 
     }
 
@@ -76,11 +89,7 @@ public class FriendFinderController {
 
     @FXML
     void send_Text(MouseEvent event) {
-        // set player text
-        String playerText = player_Chat_Input.getText() ;
-        if(event.getSource() == player_Chat_Send){
-        }
-    }
 
+    }
 
 }
