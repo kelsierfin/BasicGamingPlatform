@@ -21,7 +21,7 @@ Allows user to make changes to their profile
 
 ### Account Registration/ Creation ###
 Allows user to create new accounts and stores the credentials in a CSV file
-1)main(String[] args): Entry point for the program, displays menu asking if the user wants to register a new account.
+1) main(String[] args): Entry point for the program, displays menu asking if the user wants to register a new account.
 → Calls createNewAccount(Scanner scanner) to handle the registration process
 
 2) createNewAccount(Scanner scanner): Collects and validates user input, ensures username is unique and passwords match, 
