@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng.p3.SignUpController">
    <children>
-      <Button fx:id="signUpButton" layoutX="383.0" layoutY="418.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" text="Sign Up" />
+      <Button fx:id="signUpButton" layoutX="383.0" layoutY="418.0" mnemonicParsing="false" onAction="#handleSignUpButton" prefHeight="35.0" prefWidth="150.0" text="Sign Up" />
       <VBox layoutX="353.0" layoutY="213.0" prefHeight="173.0" prefWidth="210.0">
          <children>
             <Label text="Username" />
@@ -26,8 +26,8 @@
             <Label alignment="CENTER" contentDisplay="CENTER" text="Sign Up" />
          </children>
       </VBox>
-      <Button fx:id="backButton" layoutX="52.0" layoutY="49.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="118.0" text="&lt; Back" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="372.0" layoutY="468.0" text="Already have an account ?" />
-      <Hyperlink fx:id="logInLink" layoutX="511.0" layoutY="465.0" text="Log In" />
+      <Button fx:id="backButton" layoutX="52.0" layoutY="49.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="35.0" prefWidth="118.0" text="&lt; Back" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="365.0" layoutY="468.0" text="Already have an account ?" />
+      <Hyperlink fx:id="logInLink" layoutX="512.0" layoutY="465.0" onAction="#handleLogInLink" text="Log In" />
    </children>
 </AnchorPane>

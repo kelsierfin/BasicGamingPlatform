@@ -12,12 +12,11 @@ public class LandingController {
     @FXML
     private Button logInButton;
     @FXML
-    private Text about;
+    private Button about;
     @FXML
-    private Text faq;
+    private Button faq;
     @FXML
-    private Text rules;
-
+    private Button rules;
 
     @FXML
     private void initialize() {
@@ -25,4 +24,22 @@ public class LandingController {
         faq.setText("FAQ");
         rules.setText("RULES");
     }
+
+    public void handleSignUpButton() {
+        PageNavigator.navigateTo("signUp");
+    }
+
+    public void handleLogInButton() {
+        PageNavigator.navigateTo("logIn");
+    }
+
+    public void handleAboutButton() {
+    }
+
+    public void handleRulesButton() {
+    }
+
+    public void handleFaqButton() {
+    }
 }
+

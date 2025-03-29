@@ -21,6 +21,7 @@
 .nav-button{
     -fx-background-color: #e8e8e8;
     -fx-text-fill: #6a6666;
+    -fx-font-weight: bold;
 
 }
 .nav-button:hover {

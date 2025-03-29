@@ -1,5 +1,6 @@
 package ca.ucalgary.seng.p3;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
@@ -28,4 +29,23 @@ public class LogInController {
 
     @FXML
     private Hyperlink signUpLink;
+
+    public void initialize() {
+    }
+
+    public void handleBackButton() {
+        PageNavigator.navigateTo("landing");
+    }
+
+    public void handleLogInButton() {
+        PageNavigator.navigateTo("home");
+    }
+
+    public void handleGuestLogInButton() {
+        PageNavigator.navigateTo("home");
+    }
+    public void handleSignUpLink() {
+        PageNavigator.navigateTo("signUp");
+    }
 }
+
