@@ -9,7 +9,7 @@ public class AccountRegistrationCSV {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Welcome to the Game Platform!");
+        System.out.println("Welcome!");
 
         // Loop to allow multiple account creations
         while (true) {
@@ -38,17 +38,30 @@ public class AccountRegistrationCSV {
     public static void createNewAccount(Scanner scanner) throws IOException {
         // Load existing accounts from the CSV file into a map
         Map<String, String[]> accounts = loadAccounts();
-
+        int usernameAttempts = 0;
+        int passwordAttempts = 0;
+        int emailAttempts = 0;
         while (true) {
             System.out.print("Enter Username: ");
             String username = scanner.nextLine();
 
-            // Check if the username is already taken
+            // Check if the username is already taken & Allow for Loop over 3 times.
             if (accounts.containsKey(username)) {
+                usernameAttempts++;
                 System.out.println("Error: Username already exists. Try again.");
+
+                if (usernameAttempts >= 3) {
+                    System.out.println("Too many failed attempts. Exiting account creation.");
+                    return; // Exit the method after 3 failed attempts
+                }
+
                 continue;
             }
 
+            System.out.println("Password Requirements:");
+            System.out.println("- 8+ characters");
+            System.out.println("- 1 number, 1 capital letter");
+            System.out.println("- No spaces");
             System.out.print("Enter Password: ");
             String password = scanner.nextLine();
 
@@ -64,9 +77,28 @@ public class AccountRegistrationCSV {
             System.out.print("Enter Email: ");
             String email = scanner.nextLine();
 
+            boolean isValidEmail = email != null && !email.isEmpty() && email.contains("@");
+
+            if (!isValidEmail) {
+                emailAttempts++;
+                System.out.println("Error: Invalid Email Format. Try again.");
+
+                if (emailAttempts >= 3) {
+                    System.out.println("Too many failed attempts. Exiting account creation.");
+                    return; // Exit the method after 3 failed attempts
+                }
+
+                continue;
+            }
+
+
             // Save the new account to the CSV file
             saveAccount(username, password, email);
             System.out.println("Account created successfully! Please login.");
+
+            usernameAttempts = 0;
+            passwordAttempts = 0;
+            emailAttempts = 0;
             break; // Exit the loop after successful account creation
         }
     }
@@ -99,6 +131,7 @@ public class AccountRegistrationCSV {
 
         return accounts;
     }
+
 
     /**
      * Appends a new account to the CSV file.
