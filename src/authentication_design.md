@@ -22,17 +22,17 @@ Allows user to make changes to their profile
 ### Account Registration/ Creation ###
 Allows user to create new accounts and stores the credentials in a CSV file
 1) main(String[] args): Entry point for the program, displays menu asking if the user wants to register a new account.
-→ Calls createNewAccount(Scanner scanner) to handle the registration process
+->  Calls createNewAccount(Scanner scanner) to handle the registration process
 
 2) createNewAccount(Scanner scanner): Collects and validates user input, ensures username is unique and passwords match, 
 then saves the new account.
-→ Calls loadAccounts() to check if the entered username already exists
-→ Calls saveAccount(String username, String password, String email) to store the new user information in the CSV file
-→ Called by main(String[] args) to handle the account creation workflow
+-> Calls loadAccounts() to check if the entered username already exists
+->  Calls saveAccount(String username, String password, String email) to store the new user information in the CSV file
+-> Called by main(String[] args) to handle the account creation workflow
 
-3)loadAccounts(): Loads existing accounts from the CSV file into a map (username → [password, email]).
-→ Called by createNewAccount(Scanner scanner) to validate that the username is not already taken
+3) loadAccounts(): Loads existing accounts from the CSV file into a map (username → [password, email]).
+-> Called by createNewAccount(Scanner scanner) to validate that the username is not already taken
 
-4)saveAccount(String username, String password, String email): Appends a new account to the CSV file with the given 
+4) saveAccount(String username, String password, String email): Appends a new account to the CSV file with the given 
 credentials.
-→ Called by createNewAccount(Scanner scanner) to permanently store the account after validation
+->  Called by createNewAccount(Scanner scanner) to permanently store the account after validation
