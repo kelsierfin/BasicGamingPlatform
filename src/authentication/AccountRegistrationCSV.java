@@ -9,7 +9,7 @@ public class AccountRegistrationCSV {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Welcome to the Game Platform!");
+        System.out.println("Welcome!");
 
         // Loop to allow multiple account creations
         while (true) {
@@ -38,17 +38,28 @@ public class AccountRegistrationCSV {
     public static void createNewAccount(Scanner scanner) throws IOException {
         // Load existing accounts from the CSV file into a map
         Map<String, String[]> accounts = loadAccounts();
-
+        int attempts = 0;
         while (true) {
             System.out.print("Enter Username: ");
             String username = scanner.nextLine();
 
-            // Check if the username is already taken
+            // Check if the username is already taken & Allow for Loop over 3 times.
             if (accounts.containsKey(username)) {
+                attempts++;
                 System.out.println("Error: Username already exists. Try again.");
+
+                if (attempts >= 3) {
+                    System.out.println("Too many failed attempts. Exiting account creation.");
+                    return; // Exit the method after 3 failed attempts
+                }
+
                 continue;
             }
 
+            System.out.println("Password Requirements:");
+            System.out.println("- 8+ characters");
+            System.out.println("- 1 number, 1 capital letter");
+            System.out.println("- No spaces");
             System.out.print("Enter Password: ");
             String password = scanner.nextLine();
 
