@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.StackPane?>
-<?import ca.ucalgary.seng.p3.MenuPopup?>
 <?import ca.ucalgary.seng.p3.NavigationBar?>
 <?import javafx.scene.control.MenuBar?>
 <fx:root type="StackPane" xmlns:fx="http://javafx.com/fxml">
