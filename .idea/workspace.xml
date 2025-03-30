@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="updated navigation bar in start game pages">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/SettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/SettingsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/match_history.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/match_history.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/settings.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/match_history.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/match_history.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/settings.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="navigation bar updated in settings, ; screen sizes for profile and match settings adjusted" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -163,7 +156,7 @@
       <workItem from="1743224203506" duration="829000" />
       <workItem from="1743229579285" duration="9476000" />
       <workItem from="1743267200746" duration="795000" />
-      <workItem from="1743268139636" duration="17880000" />
+      <workItem from="1743268139636" duration="18188000" />
     </task>
     <task id="LOCAL-00001" summary="Added connect4.fxml and connect 4.css, started working on connect 4 game page">
       <option name="closed" value="true" />
@@ -373,7 +366,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743289961140</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="navigation bar updated in settings, ; screen sizes for profile and match settings adjusted">
+      <option name="closed" value="true" />
+      <created>1743294616078</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1743294616079</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -415,7 +416,8 @@
     <MESSAGE value="dashboard navigation to game pages" />
     <MESSAGE value="navigation functionality from landing to dashboard added" />
     <MESSAGE value="updated navigation bar in start game pages" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated navigation bar in start game pages" />
+    <MESSAGE value="navigation bar updated in settings, ; screen sizes for profile and match settings adjusted" />
+    <option name="LAST_COMMIT_MESSAGE" value="navigation bar updated in settings, ; screen sizes for profile and match settings adjusted" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
