@@ -29,7 +29,7 @@
                 <!-- Left column with user details -->
                 <VBox spacing="10" HBox.hgrow="ALWAYS">
                     <Label text="Username" />
-                    <TextField fx:id="usernameField" editable="false" promptText="Username" />
+                    <TextField fx:id="usernameField" promptText="Username" />
 
                     <Label text="Email" />
                     <TextField fx:id="emailField" promptText="Email" />

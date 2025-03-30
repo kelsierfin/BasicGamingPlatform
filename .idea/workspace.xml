@@ -4,24 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="navigation functionality from landing to dashboard added">
+    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="updated navigation bar in start game pages">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GameApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GameApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/StartGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/StartGameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/SettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/SettingsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/match_history.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/match_history.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/settings.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/startgame_chess.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/startgame_chess.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/startgame_connect4.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/startgame_connect4.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/startgame_go.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/startgame_go.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/startgame_tictactoe.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/startgame_tictactoe.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/GameApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/GameApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/StartGameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/StartGameController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/match_history.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/match_history.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/settings.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/startgame_chess.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/startgame_chess.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/startgame_connect4.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/startgame_connect4.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/startgame_go.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/startgame_go.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/startgame_tictactoe.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/startgame_tictactoe.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +163,7 @@
       <workItem from="1743224203506" duration="829000" />
       <workItem from="1743229579285" duration="9476000" />
       <workItem from="1743267200746" duration="795000" />
-      <workItem from="1743268139636" duration="15701000" />
+      <workItem from="1743268139636" duration="17880000" />
     </task>
     <task id="LOCAL-00001" summary="Added connect4.fxml and connect 4.css, started working on connect 4 game page">
       <option name="closed" value="true" />
@@ -376,7 +365,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743272270951</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="updated navigation bar in start game pages">
+      <option name="closed" value="true" />
+      <created>1743289961140</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1743289961140</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -417,7 +414,8 @@
     <MESSAGE value="added go player page" />
     <MESSAGE value="dashboard navigation to game pages" />
     <MESSAGE value="navigation functionality from landing to dashboard added" />
-    <option name="LAST_COMMIT_MESSAGE" value="navigation functionality from landing to dashboard added" />
+    <MESSAGE value="updated navigation bar in start game pages" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated navigation bar in start game pages" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
