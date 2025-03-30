@@ -4,14 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="handleLeaderBoard replaced with stub for now">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-22_5_18_p_m__[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-22_5_18_p_m___Changes_.xml" beforeDir="false" />
+    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="java fx version updated from 21.0.2 to 23.0.1 in pom.xml">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/hidePassword.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/seePassword.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/signUp.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/SettingsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/SettingsController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/StartGameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/StartGameController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GameApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GameApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/SignUpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/signUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/signUp.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/GameApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/GameApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/SignUpController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/SignUpController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/signUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/signUp.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,9 +25,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="module-info" />
-        <option value="CSS File" />
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -77,9 +80,9 @@
       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\p3\target\classes" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources\icons" />
       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources" />
       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\java\ca\ucalgary\seng\p3" />
-      <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources\icons" />
       <recent name="C:\Users\sagek\SENG300\seng300-w25-project\src\main\resources\icons" />
       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources\images" />
     </key>
@@ -165,7 +168,8 @@
       <workItem from="1743229579285" duration="9476000" />
       <workItem from="1743267200746" duration="795000" />
       <workItem from="1743268139636" duration="18457000" />
-      <workItem from="1743295051289" duration="275000" />
+      <workItem from="1743295051289" duration="2455000" />
+      <workItem from="1743306843404" duration="14582000" />
     </task>
     <task id="LOCAL-00001" summary="Added connect4.fxml and connect 4.css, started working on connect 4 game page">
       <option name="closed" value="true" />
@@ -399,7 +403,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743294881167</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="java fx version updated from 21.0.2 to 23.0.1 in pom.xml">
+      <option name="closed" value="true" />
+      <created>1743295377873</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1743295377873</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -417,7 +429,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added a draft UI screen for the Connect 4 game interface" />
     <MESSAGE value="Added connect4.fxml and connect 4.css, started working on connect 4 game page" />
     <MESSAGE value="made a basic layout for the connect4.fxml" />
     <MESSAGE value="created settigns.fxml" />
@@ -442,7 +453,8 @@
     <MESSAGE value="updated navigation bar in start game pages" />
     <MESSAGE value="navigation bar updated in settings, ; screen sizes for profile and match settings adjusted" />
     <MESSAGE value="handleLeaderBoard replaced with stub for now" />
-    <option name="LAST_COMMIT_MESSAGE" value="handleLeaderBoard replaced with stub for now" />
+    <MESSAGE value="java fx version updated from 21.0.2 to 23.0.1 in pom.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="java fx version updated from 21.0.2 to 23.0.1 in pom.xml" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
