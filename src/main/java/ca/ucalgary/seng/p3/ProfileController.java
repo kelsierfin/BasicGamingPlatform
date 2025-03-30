@@ -46,6 +46,7 @@ public class ProfileController {
     private void handleChangeAvatar() {
         System.out.println("Change Avatar button clicked");
 
+
     }
 
     @FXML
