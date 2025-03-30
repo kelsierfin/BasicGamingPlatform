@@ -26,11 +26,6 @@ public class StartGameController {
     private void initialize() {
         gameType = HomeController.selectedGameType;
 
-        // Check that the gameType has been set
-        if (gameType == null || gameType.isEmpty()) {
-            return;
-        }
-
         String imagePath = "";
         // Determine the start game screen image and the actual game page fxml
         if ("tictactoe".equalsIgnoreCase(gameType)) {
@@ -52,15 +47,10 @@ public class StartGameController {
 
         // Load the appropriate image for the start game screen
         boardImage.setImage(new Image(getClass().getResource(imagePath).toExternalForm()));
-
-        // Set the action for the "FIND A MATCH" button using a method reference
-        findMatchButton.setOnAction(this::handleFindMatch);
     }
 
+    @FXML
     private void handleFindMatch(ActionEvent event) {
-        // Use PageNavigator to navigate to the actual game page for now instead of matchmaking logic
-        if (targetPage != null && !targetPage.isEmpty()) {
-            PageNavigator.navigateTo(targetPage);
-        }
+        PageNavigator.navigateTo(targetPage);
     }
 }
