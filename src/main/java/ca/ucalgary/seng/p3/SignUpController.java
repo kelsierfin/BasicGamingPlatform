@@ -35,6 +35,12 @@ public class SignUpController {
         private String email; //final email sent back to authentication
         private boolean credentialsValid; //final verification before signing up.
 
+        private String password;  //final password sent back to authentication
+        private String confirmedPassword; //confirmed password
+        private String username;  //final password sent back to authentication
+        private String email; //final email sent back to authentication
+        private boolean credentialsValid; //final verification before signing up.
+
         public void initialize() {
                 // Sets prompt text of all input fields
                 usernameInput.setPromptText("Username");
