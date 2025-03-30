@@ -23,20 +23,6 @@ public class HomeController {
 
     @FXML
     private ScrollPane scrollPane;
-    @FXML
-    private VBox menuPopup = new VBox();
-    @FXML
-    private VBox profilePopup = new VBox();
-    @FXML
-    private VBox notificationPopup = new VBox();
-
-    @FXML
-    private Button profileButton, bellButton;
-
-    @FXML
-    private Circle notificationDot;
-
-    private List<String> notifications = new ArrayList<>();
 
     @FXML
     private Button btnPrev, btnNext;
@@ -66,16 +52,13 @@ public class HomeController {
     @FXML
     private Button playConnectButton;
 
+    @FXML
+    private NavigationBar navBar;
 
     @FXML
     public void initialize() {
         btnPrev.setOnAction(event -> scrollLeft());
         btnNext.setOnAction(event -> scrollRight());
-        menuPopup.setVisible(false);
-        profilePopup.setVisible(false);
-        notificationPopup.setVisible(false);
-        notifications.add("Welcome user!");
-        notifications.add("Match invite from: ...");
 
         List<ImageView> icons = List.of(chessIcon, goIcon, tttIcon, connectIcon);
 
@@ -88,8 +71,6 @@ public class HomeController {
 
             icon.setClip(rect);
         }
-
-        updateNotificationDot();
     }
 
     private void scrollLeft() {
@@ -101,113 +82,6 @@ public class HomeController {
         double currentScroll = scrollPane.getHvalue();
         scrollPane.setHvalue(Math.min(currentScroll + scrollStep, 1)); // Move right
     }
-
-    // Called when the menu button is clicked
-    @FXML
-    private void handleMenuButton() {
-        // Toggle visibility of the popup
-        menuPopup.setVisible(!menuPopup.isVisible());
-        if(notificationPopup.isVisible()) {
-            notificationPopup.setVisible(false);
-        }
-        if(profilePopup.isVisible()) {
-            profilePopup.setVisible(false);
-        }
-    }
-
-    // More event handlers for other buttons, unfinished:
-    @FXML
-    private void handleProfileButton() {
-        // Toggle visibility of the popup
-        profilePopup.setVisible(!profilePopup.isVisible());
-        if(notificationPopup.isVisible()) {
-            notificationPopup.setVisible(false);
-        }
-        if(menuPopup.isVisible()) {
-            menuPopup.setVisible(false);
-        }
-    }
-
-    @FXML
-    private void handleBellButton() {
-        // Toggle visibility of the popup
-        updateNotificationDot();
-
-        for(String notification: notifications) {
-            Button btn = new Button(notification);
-            btn.getStyleClass().add("notification-button");
-            notificationPopup.getChildren().add(btn);
-        }
-
-        notificationPopup.setVisible(!notificationPopup.isVisible());
-        if (profilePopup.isVisible()) {
-            profilePopup.setVisible(false);
-        }
-        if (menuPopup.isVisible()) {
-            menuPopup.setVisible(false);
-        }
-
-        notifications = new ArrayList<>();
-
-    }
-
-    private void updateNotificationDot() {
-        notificationDot.setVisible(!notifications.isEmpty());
-    }
-
-    @FXML
-    private void handleEditProfileButton() {
-        PageNavigator.navigateTo("settings");
-    }
-
-    @FXML
-    private void handleLogOutButton() {
-        Alert logOutVerification = new Alert(Alert.AlertType.CONFIRMATION);
-        logOutVerification.setTitle("Log out");
-        logOutVerification.setHeaderText("Are you sure you want to log out?");
-        ButtonType logOutButton = new ButtonType("Log Out");
-        ButtonType cancelButton = ButtonType.CANCEL;
-
-        logOutVerification.getButtonTypes().setAll(cancelButton, logOutButton);
-        logOutVerification.showAndWait().ifPresent(response -> {
-            if (response == logOutButton) {
-                // Perform the log-out action here
-                PageNavigator.navigateTo("landing");
-                logOutVerification.close();
-            }else{
-                logOutVerification.close();
-            }
-        });
-    }
-
-
-
-
-    @FXML
-    private void handleDashboardButton() {
-        PageNavigator.navigateTo("home");
-    }
-
-    @FXML
-    private void handleLeaderboardButton() {
-        //main leaderboard
-
-    }
-
-    @FXML
-    private void handleFindAPlayerButton() {
-        //player look up page
-    }
-
-    @FXML
-    private void handleSettingsButton() {
-        PageNavigator.navigateTo("settings");
-    }
-    @FXML
-    private void handleGameRulesButton() {
-        //game rules page
-    }
-
 
     @FXML
     private void handlePlayChessButton() {
