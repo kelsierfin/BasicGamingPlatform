@@ -36,13 +36,6 @@ public class LeaderBoardController extends StackPane {
         }
         navBar.setTitle(label);
         navBar.setUsername("User 1");
-//        btnUserProfile.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/icons/avatar.png"))));
-//        btnUserProfile.setOnAction(e->{
-//            // Create pop up
-//            ProfilePopUp popup = new ProfilePopUp();
-//            popup.setTitle("Profile");
-//            popup.show();
-//        });
 
 //        btnBack.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/icons/back-arrow.png"))));
 //        btnBack.setOnAction(e->{
@@ -51,7 +44,11 @@ public class LeaderBoardController extends StackPane {
 
         //first medal
         rankList.add(new ImageView(new Image(getClass().getResourceAsStream("/icons/first-medal.png"))), 0,1);
-        rankList.add(new ImageView(new Image(getClass().getResourceAsStream("/icons/avatar.png"))), 1,1);
+        ImageView avatar = new ImageView(new Image(getClass().getResourceAsStream("/icons/avatar.png")));
+//        Button button = new Button();
+//        button.setGraphic(avatar);
+//        button.setBackground(new Background(new BackgroundFill()));
+        rankList.add(avatar, 1,1);
         //add name, i: column 2, i1: row 1
         Label nameLabel = new Label("Pie");
         nameLabel.setStyle("-fx-font-size: 20");
@@ -68,6 +65,21 @@ public class LeaderBoardController extends StackPane {
         winRateLabel.setStyle("-fx-font-size: 20");
         winRateLabel.setTextFill(new Color(1,1,1,1));
         rankList.add(winRateLabel, 4, 1);
+
+        //set pop up
+        avatar.setOnMouseClicked(e->{
+
+            ProfilePopUp popup = new ProfilePopUp();
+            popup.setTitle("Profile");
+            popup.setUserName("Pie");
+            popup.setBio("\"I love choco pie \"");
+            popup.setAvatar("/icons/avatar.png");
+
+            popup.setMatches("150");
+            popup.setWinnings("100");
+            popup.setLosses("50");
+            popup.show();
+        });
     }
     @FXML
     private Button btnUserProfile;

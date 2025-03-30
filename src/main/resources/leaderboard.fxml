@@ -11,13 +11,14 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import ca.ucalgary.seng.p3.NavigationBar?>
-<?import javafx.scene.control.MenuBar?>
-<fx:root type="StackPane" xmlns:fx="http://javafx.com/fxml">
+<?import javafx.scene.layout.AnchorPane?>
 
-    <VBox  spacing="20.0" >
+<fx:root type="StackPane" xmlns:fx="http://javafx.com/fxml" maxHeight="600" maxWidth="900" minHeight="600" minWidth="900" prefHeight="600.0"
+         prefWidth="900.0" alignment="TOP_CENTER">
+    <VBox  spacing="20.0">
 
         <padding>
-            <Insets bottom="20.0" top="160"/>
+            <Insets bottom="20.0" top="120"/>
         </padding>
 
         <GridPane  fx:id="rankList" vgap="20" style="-fx-padding: 40 0 0 0" >

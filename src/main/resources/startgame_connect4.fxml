@@ -9,7 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import ca.ucalgary.seng.p3.NavigationBar?>
-<StackPane fx:id="root" prefHeight="600" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng.p3.StartGameController">
+<StackPane fx:id="root" prefHeight="600" prefWidth="900.0" alignment="TOP_CENTER"
+           xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="ca.ucalgary.seng.p3.StartGameController">
 
     <BorderPane fx:id="mainBorderPane">
 
