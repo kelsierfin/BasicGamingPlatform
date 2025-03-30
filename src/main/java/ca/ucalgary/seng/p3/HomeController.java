@@ -3,16 +3,22 @@ package ca.ucalgary.seng.p3;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.stage.Popup;
 
 import javax.swing.text.Style;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 public class HomeController {
 
     @FXML
@@ -96,7 +102,7 @@ public class HomeController {
         scrollPane.setHvalue(Math.min(currentScroll + scrollStep, 1)); // Move right
     }
 
-   // Called when the menu button is clicked
+    // Called when the menu button is clicked
     @FXML
     private void handleMenuButton() {
         // Toggle visibility of the popup
@@ -151,30 +157,55 @@ public class HomeController {
 
     @FXML
     private void handleEditProfileButton() {
+        PageNavigator.navigateTo("settings");
     }
 
     @FXML
     private void handleLogOutButton() {
+        Alert logOutVerification = new Alert(Alert.AlertType.CONFIRMATION);
+        logOutVerification.setTitle("Log out");
+        logOutVerification.setHeaderText("Are you sure you want to log out?");
+        ButtonType logOutButton = new ButtonType("Log Out");
+        ButtonType cancelButton = ButtonType.CANCEL;
+
+        logOutVerification.getButtonTypes().setAll(cancelButton, logOutButton);
+        logOutVerification.showAndWait().ifPresent(response -> {
+            if (response == logOutButton) {
+                // Perform the log-out action here
+                PageNavigator.navigateTo("landing");
+                logOutVerification.close();
+            }else{
+                logOutVerification.close();
+            }
+        });
     }
+
+
 
 
     @FXML
     private void handleDashboardButton() {
+        PageNavigator.navigateTo("home");
     }
 
     @FXML
     private void handleLeaderboardButton() {
+        //main leaderboard
+
     }
 
     @FXML
     private void handleFindAPlayerButton() {
+        //player look up page
     }
 
     @FXML
     private void handleSettingsButton() {
+        PageNavigator.navigateTo("settings");
     }
     @FXML
     private void handleGameRulesButton() {
+        //game rules page
     }
 
 
@@ -199,6 +230,3 @@ public class HomeController {
     }
 
 }
-
-
-

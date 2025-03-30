@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="Added a new folder for game assets. Added some code for a chat" />
+    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="handleLeaderBoard replaced with stub for now">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-22_5_18_p_m__[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-22_5_18_p_m___Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/SettingsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/SettingsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/StartGameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/StartGameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,9 +22,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="module-info" />
+        <option value="CSS File" />
         <option value="FxmlFile" />
         <option value="Class" />
-        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -69,11 +77,11 @@
       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\p3\target\classes" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources" />
+      <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\java\ca\ucalgary\seng\p3" />
       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources\icons" />
       <recent name="C:\Users\sagek\SENG300\seng300-w25-project\src\main\resources\icons" />
       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources\images" />
-      <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources" />
-      <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources\fonts" />
     </key>
   </component>
   <component name="RunManager" selected="Application.GameApplication">
@@ -155,6 +163,9 @@
       <workItem from="1743181913814" duration="17224000" />
       <workItem from="1743224203506" duration="829000" />
       <workItem from="1743229579285" duration="9476000" />
+      <workItem from="1743267200746" duration="795000" />
+      <workItem from="1743268139636" duration="18457000" />
+      <workItem from="1743295051289" duration="275000" />
     </task>
     <task id="LOCAL-00001" summary="Added connect4.fxml and connect 4.css, started working on connect 4 game page">
       <option name="closed" value="true" />
@@ -340,23 +351,55 @@
       <option name="project" value="LOCAL" />
       <updated>1743201080776</updated>
     </task>
-    <task id="LOCAL-00024" summary="Updated TicTacToe controller class with actionevents and some logic for the tic tac toe player turn functionality">
+    <task id="LOCAL-00024" summary="navigation functionality from landing to dashboard added">
       <option name="closed" value="true" />
-      <created>1743265131719</created>
+      <created>1743272253640</created>
       <option name="number" value="00024" />
       <option name="presentableId" value="LOCAL-00024" />
       <option name="project" value="LOCAL" />
-      <updated>1743265131719</updated>
+      <updated>1743272253640</updated>
     </task>
-    <task id="LOCAL-00025" summary="Added a new folder for game assets. Added some code for a chat">
+    <task id="LOCAL-00025" summary="navigation functionality from landing to dashboard added">
       <option name="closed" value="true" />
-      <created>1743268498758</created>
+      <created>1743272270951</created>
       <option name="number" value="00025" />
       <option name="presentableId" value="LOCAL-00025" />
       <option name="project" value="LOCAL" />
-      <updated>1743268498758</updated>
+      <updated>1743272270951</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="updated navigation bar in start game pages">
+      <option name="closed" value="true" />
+      <created>1743289961140</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1743289961140</updated>
+    </task>
+    <task id="LOCAL-00027" summary="navigation bar updated in settings, ; screen sizes for profile and match settings adjusted">
+      <option name="closed" value="true" />
+      <created>1743294616078</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1743294616079</updated>
+    </task>
+    <task id="LOCAL-00028" summary="navigation bar updated in settings, ; screen sizes for profile and match settings adjusted">
+      <option name="closed" value="true" />
+      <created>1743294647928</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1743294647928</updated>
+    </task>
+    <task id="LOCAL-00029" summary="handleLeaderBoard replaced with stub for now">
+      <option name="closed" value="true" />
+      <created>1743294881167</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1743294881167</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -374,7 +417,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="project successfully restructured" />
     <MESSAGE value="Added a draft UI screen for the Connect 4 game interface" />
     <MESSAGE value="Added connect4.fxml and connect 4.css, started working on connect 4 game page" />
     <MESSAGE value="made a basic layout for the connect4.fxml" />
@@ -396,9 +438,11 @@
     <MESSAGE value="Changed image location for the start game screens, added game request notification button, edited menu buttons list" />
     <MESSAGE value="added go player page" />
     <MESSAGE value="dashboard navigation to game pages" />
-    <MESSAGE value="Updated TicTacToe controller class with actionevents and some logic for the tic tac toe player turn functionality" />
-    <MESSAGE value="Added a new folder for game assets. Added some code for a chat" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a new folder for game assets. Added some code for a chat" />
+    <MESSAGE value="navigation functionality from landing to dashboard added" />
+    <MESSAGE value="updated navigation bar in start game pages" />
+    <MESSAGE value="navigation bar updated in settings, ; screen sizes for profile and match settings adjusted" />
+    <MESSAGE value="handleLeaderBoard replaced with stub for now" />
+    <option name="LAST_COMMIT_MESSAGE" value="handleLeaderBoard replaced with stub for now" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

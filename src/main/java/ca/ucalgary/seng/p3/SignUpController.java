@@ -25,4 +25,19 @@ public class SignUpController {
 
         @FXML
         private Hyperlink logInLink;
+
+        public void initialize() {
+        }
+
+        public void handleBackButton() {
+                PageNavigator.navigateTo("landing");
+        }
+
+        public void handleSignUpButton() {
+                PageNavigator.navigateTo("logIn");
+        }
+
+        public void handleLogInLink() {
+                PageNavigator.navigateTo("logIn");
+        }
 }
