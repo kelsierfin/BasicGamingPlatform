@@ -95,7 +95,7 @@ public class SettingsController {
 
     @FXML
     private void handleLeaderboardButton() {
-        PageNavigator.navigateTo("leaderboard");
+        PageNavigator.navigateTo("leaderboard_home");
     }
 
     @FXML

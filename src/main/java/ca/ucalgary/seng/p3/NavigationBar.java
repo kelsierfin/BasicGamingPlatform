@@ -45,8 +45,8 @@ public class NavigationBar extends AnchorPane {
 
     @FXML
     private Button menuButton;
-    @FXML
-    private Button backButton;
+//    @FXML
+//    private Button backButton;
     @FXML
     private Label titleLabel;
     @FXML
@@ -100,6 +100,30 @@ public class NavigationBar extends AnchorPane {
         editProfileButton.setOnAction(e -> handleEditProfileButton());
         dashboardButton.setOnAction(e -> handleDashboardButton());
         settingsButton.setOnAction(e->handleSettingsButton());
+        leaderboardButton.setOnAction(e -> handleLeaderboardButton());
+    }
+
+    private void handleLeaderboardButton() {
+        if (gameType.get() == null) {
+            PageNavigator.navigateTo("leaderboard_home");
+        } else {
+            switch (gameType.get()) {
+                case "connect4":
+                    LeaderBoardHome.toConnect4LeaderBoard();
+                    break;
+                case "go":
+                    LeaderBoardHome.toGoLeaderBoard();
+                    break;
+                case "tictactoe":
+                    LeaderBoardHome.toTTTLeaderBoard();
+                    break;
+                case "chess":
+                    LeaderBoardHome.toChessLeaderBoard();
+                    break;
+                default:
+
+            }
+        }
     }
 
     private void handleSettingsButton() {

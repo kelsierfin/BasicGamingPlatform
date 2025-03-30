@@ -30,47 +30,12 @@ public class HomeController {
     private final double scrollStep = 0.5; // Adjust sliding speed
 
     @FXML
-    private ImageView chessIcon;
-    @FXML
-    private ImageView goIcon;
-
-    @FXML
-    private ImageView tttIcon;
-
-    @FXML
-    private ImageView connectIcon;
-
-    @FXML
-    private Button playChessButton;
-
-    @FXML
-    private Button playGoButton;
-
-    @FXML
-    private Button playTttButton;
-
-    @FXML
-    private Button playConnectButton;
-
-    @FXML
     private NavigationBar navBar;
 
     @FXML
     public void initialize() {
         btnPrev.setOnAction(event -> scrollLeft());
         btnNext.setOnAction(event -> scrollRight());
-
-        List<ImageView> icons = List.of(chessIcon, goIcon, tttIcon, connectIcon);
-
-        for (ImageView icon : icons) {
-            Rectangle rect = new Rectangle();
-            rect.setWidth(icon.getFitWidth());
-            rect.setHeight(icon.getFitHeight());
-            rect.setArcWidth(20);
-            rect.setArcHeight(20);
-
-            icon.setClip(rect);
-        }
     }
 
     private void scrollLeft() {

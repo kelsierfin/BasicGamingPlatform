@@ -16,10 +16,11 @@
 <?import javafx.scene.text.Font?>
 
 <?import ca.ucalgary.seng.p3.NavigationBar?>
+<?import ca.ucalgary.seng.p3.GameCard?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
             prefWidth="900.0" stylesheets="card.css" xmlns="http://javafx.com/javafx/23.0.1"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng.p3.HomeController">
-   <NavigationBar/>
+   <NavigationBar title="Dashboard"/>
    <Button fx:id="btnNext" layoutX="552.0" layoutY="380.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="32.0"
            styleClass="nav-button" text="&gt;"/>
    <Button fx:id="btnPrev" layoutX="511.0" layoutY="380.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="32.0"
@@ -28,145 +29,22 @@
    <ScrollPane fx:id="scrollPane" fitToHeight="true" hbarPolicy="NEVER" layoutX="43.0" layoutY="413.0"
                prefHeight="138.0" prefWidth="541.0"
                style="-fx-border-color: transparent; -fx-background-color: transparent;" vbarPolicy="NEVER">
-      <content>
-         <HBox fx:id="gameContainer" alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity"
-               prefHeight="138.0" prefWidth="850.0" spacing="10" style="-fx-spacing: 5px; -fx-padding: 10px;">
+      <HBox fx:id="gameContainer" alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="138.0" prefWidth="850.0" spacing="10" style="-fx-spacing: 5px; -fx-padding: 10px;">
 
-            <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="149.0" prefWidth="197.0">
-               <StackPane styleClass="card">
-                  <Rectangle fx:id="clip" arcHeight="40" arcWidth="40" height="100.0" width="150.0"/>
-
-                  <ImageView fx:id="connectIcon" fitHeight="112.0" fitWidth="191.0" pickOnBounds="true"
-                             preserveRatio="false">
-                     <image>
-                        <Image url="@icons/connect4.png"/>
-                     </image>
-                  </ImageView>
-                  <VBox alignment="BOTTOM_CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0"
-                        prefWidth="150.0" spacing="10">
-                     <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="67.0" prefHeight="55.0"
-                           prefWidth="300.0">
-                        <children>
-                           <Label text="   "/>
-                           <Button fx:id="playConnectButton" alignment="CENTER" maxHeight="-Infinity"
-                                   maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                                   onAction="#handlePlayConnectButton" prefHeight="30.0" prefWidth="100.0"
-                                   styleClass="card-button" text="Play Now">
-                              <font>
-                                 <Font size="10.0"/>
-                              </font>
-                           </Button>
-                        </children>
-                     </HBox>
-                  </VBox>
-               </StackPane>
-
-            </AnchorPane>
-            <AnchorPane layoutX="20.0" layoutY="20.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="149.0"
-                        prefWidth="197.0">
-               <children>
-                  <StackPane styleClass="card">
-                     <children>
-                        <Rectangle fx:id="clip1" arcHeight="40" arcWidth="40" height="100.0" width="150.0"/>
-                        <ImageView fx:id="tttIcon" fitHeight="112.0" fitWidth="191.0" pickOnBounds="true"
-                                   preserveRatio="false">
-                           <image>
-                              <Image url="@icons/tic tac toe.png"/>
-                           </image>
-                        </ImageView>
-                        <VBox alignment="BOTTOM_CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0"
-                              prefWidth="150.0" spacing="10">
-                           <children>
-                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="67.0" prefHeight="55.0"
-                                    prefWidth="300.0">
-                                 <children>
-                                    <Label text="   "/>
-                                    <Button fx:id="playTttButton" alignment="CENTER" maxHeight="-Infinity"
-                                            maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                                            onAction="#handlePlayTttButton" prefHeight="30.0" prefWidth="100.0"
-                                            styleClass="card-button" text="Play Now">
-                                       <font>
-                                          <Font size="10.0"/>
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </VBox>
-                     </children>
-                  </StackPane>
-               </children>
-            </AnchorPane>
-            <AnchorPane layoutX="222.0" layoutY="20.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="149.0"
-                        prefWidth="197.0">
-               <children>
-                  <StackPane styleClass="card">
-                     <children>
-                        <Rectangle fx:id="clip11" arcHeight="40" arcWidth="40" height="100.0" width="150.0"/>
-                        <ImageView fx:id="chessIcon" fitHeight="112.0" fitWidth="191.0" pickOnBounds="true"
-                                   preserveRatio="false">
-                           <image>
-                              <Image url="@icons/chess.png"/>
-                           </image>
-                        </ImageView>
-                        <VBox alignment="BOTTOM_CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0"
-                              prefWidth="150.0" spacing="10">
-                           <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="300.0">
-                                 <children>
-                                    <Label text="   "/>
-                                    <Button fx:id="playChessButton" alignment="CENTER" maxHeight="-Infinity"
-                                            maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                                            onAction="#handlePlayChessButton" prefHeight="30.0" prefWidth="100.0"
-                                            styleClass="card-button" text="Play Now">
-                                       <font>
-                                          <Font size="10.0"/>
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </VBox>
-                     </children>
-                  </StackPane>
-               </children>
-            </AnchorPane>
-            <AnchorPane layoutX="425.0" layoutY="20.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="149.0"
-                        prefWidth="197.0">
-               <children>
-                  <StackPane styleClass="card">
-                     <children>
-                        <Rectangle fx:id="clip111" arcHeight="40" arcWidth="40" height="100.0" width="150.0"/>
-                        <ImageView fx:id="goIcon" fitHeight="112.0" fitWidth="191.0" pickOnBounds="true"
-                                   preserveRatio="false">
-                           <image>
-                              <Image url="@icons/go.png"/>
-                           </image>
-                        </ImageView>
-                        <VBox alignment="BOTTOM_CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="98.0"
-                              prefWidth="191.0" spacing="10">
-                           <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="300.0">
-                                 <children>
-                                    <Label text="   "/>
-                                    <Button fx:id="playGoButton" alignment="CENTER" maxHeight="-Infinity"
-                                            maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                                            onAction="#handlePlayGoButton" prefHeight="30.0" prefWidth="100.0"
-                                            styleClass="card-button" text="Play Now">
-                                       <font>
-                                          <Font size="10.0"/>
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </VBox>
-                     </children>
-                  </StackPane>
-               </children>
-            </AnchorPane>
-         </HBox>
-      </content>
+         <GameCard minHeight="-Infinity" minWidth="-Infinity" prefHeight="149.0" prefWidth="197.0"
+                   url="@icons/connect4.png" onPlayButton="#handlePlayConnectButton"
+                   buttonTitle="Play now"/>
+         <GameCard layoutX="20.0" layoutY="20.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="149.0"
+                   prefWidth="197.0" url="@icons/tic tac toe.png" onPlayButton="#handlePlayTttButton"
+                   buttonTitle="Play now"/>
+         <GameCard layoutX="222.0" layoutY="20.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="149.0"
+                   prefWidth="197.0" url="@icons/chess.png" onPlayButton="#handlePlayChessButton"
+                   buttonTitle="Play now"/>
+         <GameCard layoutX="425.0" layoutY="20.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="149.0"
+                   prefWidth="197.0" url="@icons/go.png" onPlayButton="#handlePlayGoButton"
+                   buttonTitle="Play now"/>
+      </HBox>
    </ScrollPane>
 
    <Label layoutX="60.0" layoutY="353.0" style="-fx-font-weight: bold;" text="Games">
