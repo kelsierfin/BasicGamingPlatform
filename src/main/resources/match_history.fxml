@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng.p3.MatchHistoryController">
     <padding>
@@ -24,18 +25,17 @@
                 <ComboBox fx:id="timeFilterComboBox" promptText="Last 30 Days" />
             </HBox>
 
+            <!-- Stats summary panel - now with stats aligned horizontally -->
             <BorderPane style="-fx-background-color: #f5f5f5; -fx-background-radius: 5; -fx-padding: 15;">
                 <left>
-                    <VBox>
-                        <Label style="-fx-font-weight: bold;" text="Total Games: 48" />
-                        <Label text="Wins: 23" />
-                    </VBox>
+                    <Label style="-fx-font-weight: bold;" text="Total Games: 48" />
                 </left>
                 <center>
-                    <VBox alignment="CENTER_LEFT">
+                    <HBox alignment="CENTER" spacing="15">
+                        <Label  text="Wins: 23"/>
                         <Label text="Losses: 19" />
                         <Label text="Draw: 06" />
-                    </VBox>
+                    </HBox>
                 </center>
                 <right>
                     <Label style="-fx-font-weight: bold;" text="Win Rate: 47.92%" />
@@ -49,18 +49,19 @@
                 <Insets top="10" />
             </padding>
 
+            <!-- Match entries will be added dynamically using the MatchHistory data -->
             <!-- Match 1 -->
             <BorderPane style="-fx-border-color: #e0e0e0; -fx-border-radius: 5; -fx-padding: 10;">
                 <left>
                     <VBox>
-                        <Label style="-fx-font-weight: bold;" text="Alexander vs. C4king" />
+                        <Label style="-fx-font-weight: bold;" text="vs. C4king" />
                         <Label style="-fx-text-fill: #666666;" text="Connect Four • March 5, 2025 • 16:32" />
                     </VBox>
                 </left>
                 <right>
                     <HBox alignment="CENTER_RIGHT" spacing="10">
                         <Label style="-fx-text-fill: #ff5252;" text="Loss" />
-                        <Button style="-fx-background-color: #6495ED; -fx-text-fill: white; -fx-background-radius: 5;" text="Rematch" />
+                        <Button onAction="#handleRematchButton" style="-fx-background-color: #6495ED; -fx-text-fill: white; -fx-background-radius: 5;" text="Rematch" />
                     </HBox>
                 </right>
             </BorderPane>
@@ -69,14 +70,14 @@
             <BorderPane style="-fx-border-color: #e0e0e0; -fx-border-radius: 5; -fx-padding: 10;">
                 <left>
                     <VBox>
-                        <Label style="-fx-font-weight: bold;" text="AstroidDestroyer vs. liab009" />
+                        <Label style="-fx-font-weight: bold;" text="vs. liab009" />
                         <Label style="-fx-text-fill: #666666;" text="Chess • March 3, 2025 • 09:45" />
                     </VBox>
                 </left>
                 <right>
                     <HBox alignment="CENTER_RIGHT" spacing="10">
                         <Label style="-fx-text-fill: #4CAF50;" text="Win" />
-                        <Button style="-fx-background-color: #6495ED; -fx-text-fill: white; -fx-background-radius: 5;" text="Rematch" />
+                        <Button onAction="#handleRematchButton" style="-fx-background-color: #6495ED; -fx-text-fill: white; -fx-background-radius: 5;" text="Rematch" />
                     </HBox>
                 </right>
             </BorderPane>
@@ -85,14 +86,14 @@
             <BorderPane style="-fx-border-color: #e0e0e0; -fx-border-radius: 5; -fx-padding: 10;">
                 <left>
                     <VBox>
-                        <Label style="-fx-font-weight: bold;" text="knighowl vs. 505Arctic" />
+                        <Label style="-fx-font-weight: bold;" text="vs. 505Arctic" />
                         <Label style="-fx-text-fill: #666666;" text="Tic Tac Toe • March 1, 2025 • 14:20" />
                     </VBox>
                 </left>
                 <right>
                     <HBox alignment="CENTER_RIGHT" spacing="10">
                         <Label style="-fx-text-fill: #4CAF50;" text="Win" />
-                        <Button style="-fx-background-color: #6495ED; -fx-text-fill: white; -fx-background-radius: 5;" text="Rematch" />
+                        <Button onAction="#handleRematchButton" style="-fx-background-color: #6495ED; -fx-text-fill: white; -fx-background-radius: 5;" text="Rematch" />
                     </HBox>
                 </right>
             </BorderPane>
