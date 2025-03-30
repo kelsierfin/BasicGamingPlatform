@@ -17,26 +17,32 @@ public class StartGameController {
     @FXML
     private NavigationBar navBar;
 
-    // Field to store the target fxml page for the actual game
     private String targetPage;
+
+    private String gameType;
+
 
     @FXML
     private void initialize() {
-        // Retrieve game type from the NavigationBar
-        String game = navBar.getGameType();
+        gameType = HomeController.selectedGameType;
+
+        // Check that the gameType has been set
+        if (gameType == null || gameType.isEmpty()) {
+            return;
+        }
 
         String imagePath = "";
         // Determine the start game screen image and the actual game page fxml
-        if ("tictactoe".equalsIgnoreCase(game)) {
+        if ("tictactoe".equalsIgnoreCase(gameType)) {
             imagePath = "/icons/tictactoe.png";
             targetPage = "tictactoe";      // Navigates to tictactoe.fxml
-        } else if ("chess".equalsIgnoreCase(game)) {
+        } else if ("chess".equalsIgnoreCase(gameType)) {
             imagePath = "/icons/chessimage.jpg";
             targetPage = "Chess";          // Navigates to Chess.fxml
-        } else if ("connect4".equalsIgnoreCase(game)) {
+        } else if ("connect4".equalsIgnoreCase(gameType)) {
             imagePath = "/icons/connect4image.png";
             targetPage = "connect4";       // Navigates to connect4.fxml
-        } else if ("go".equalsIgnoreCase(game)) {
+        } else if ("go".equalsIgnoreCase(gameType)) {
             imagePath = "/icons/gogameimage.png";
             targetPage = "go";             // Navigates to go.fxml
         } else {
