@@ -5,7 +5,7 @@ import java.util.HashMap;
 /**
  * This class is a stub for the database.
  * The real database will likely combine all the database classes that we have.
- * Making this class more represent a table in the database with the LeaderboardData class more representing the schema and data in this table.
+ * Making this class more represent a table in the database that holds the leaderboards with the LeaderboardData class more representing the schema and data in this table.
  */
 public class LeaderboardDatabase {
 
@@ -47,7 +47,7 @@ public class LeaderboardDatabase {
     /**
      * returns the leaderboard data for a game
      * @param gametype
-     * @return
+     * @return LeaderboardData
      */
     public LeaderboardData getLeaderboard(String gametype){
         return leaderboard.get(gametype);
