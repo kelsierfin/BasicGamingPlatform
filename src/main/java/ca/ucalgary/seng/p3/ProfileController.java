@@ -33,21 +33,16 @@ public class ProfileController {
     private Button logoutButton;
 
     @FXML
-    private Button backButton;
+    private Button saveButton;
 
     @FXML
-    private void handleBack() throws IOException {
-        Stage stage = (Stage) backButton.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/settings.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root, 400, 300);
-        stage.setScene(scene);
-    }
+    private Button deleteAccountButton;
+
 
     @FXML
     private void handleChangeAvatar() {
-        // Placeholder for avatar change functionality
         System.out.println("Change Avatar button clicked");
+
     }
 
     @FXML
@@ -57,17 +52,53 @@ public class ProfileController {
         alert.setHeaderText("Are you sure you want to logout?");
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
-                // Authentication team to add logout logic here
                 PageNavigator.navigateTo("landing"); // Navigate to landing page
             }
         });
     }
     @FXML
     private void handleSave() {
+        System.out.println("Save button clicked");
+
+        // Validate inputs
+        boolean isValid = true;
+        String username = usernameField.getText().trim();
+        String email = emailField.getText().trim();
+        String currentPassword = currentPassField.getText();
+        String newPassword = newPassField.getText();
+
+        // Basic validation
+        if (username.isEmpty()) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Username cannot be empty.");
+            isValid = false;
+        }
+
+        if (email.isEmpty() || !email.contains("@")) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Please enter a valid email address.");
+            isValid = false;
+        }
+
+        // If user is trying to change password, require current password
+        if (!newPassword.isEmpty() && currentPassword.isEmpty()) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Current password is required to set a new password.");
+            isValid = false;
+        }
+
+        if (isValid) {
+            System.out.println("Saving profile changes: Email=" + email +
+                    ", Bio=" + bioArea.getText() +
+                    ", New Password=" + (newPassword.isEmpty() ? "unchanged" : "changed"));
+
+            // In a real application, this would connect to a service to update the profile
+            showAlert(Alert.AlertType.INFORMATION, "Success", "Profile updated successfully!");
+
+            // Clear the password fields after successful update
+            currentPassField.clear();
+            newPassField.clear();
+        }
         System.out.println("Saving profile changes: Email=" + emailField.getText() +
                 ", Bio=" + bioArea.getText() +
                 ", New Password=" + (newPassField.getText().isEmpty() ? "unchanged" : "changed"));
-        // Authentication team to add save logic here
     }
 
     @FXML
@@ -77,10 +108,17 @@ public class ProfileController {
         alert.setHeaderText("Are you sure you want to delete your account? This cannot be undone.");
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
-                System.out.println("Delete Account requested");
-                // Authentication team to add deletion logic here
-                PageNavigator.navigateTo("landing"); // Navigate to landing after deletion
+                System.out.println("Delete Account requested - awaiting integration");
+                PageNavigator.navigateTo("landing");
             }
         });
+    }
+
+    private void showAlert(Alert.AlertType type, String title, String content) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }
