@@ -8,5 +8,7 @@
   </binary>
   <binary>
     <option name="BEFORE_PATH" value="target/classes/ca/ucalgary/seng/p3/DashboardController.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
   </binary>
 </changelist>

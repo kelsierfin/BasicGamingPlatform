@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -14,9 +15,6 @@ import java.awt.*;
 import java.io.IOException;
 
 public class SettingsController {
-
-    @FXML
-    private Button backButton;
 
     @FXML
     private Button profileTab;
@@ -35,16 +33,9 @@ public class SettingsController {
     private void initialize() {
         // Set Profile as the default tab to load
         handleProfileTab();
-
         menuPopup.setVisible(false);
 
     }
-
-    @FXML
-    private void handleBack() {
-        PageNavigator.navigateTo("dashboard"); // Navigate back to dashboard
-    }
-
 
     @FXML
     private void handleProfileTab() {
@@ -57,6 +48,10 @@ public class SettingsController {
             profileTab.getStyleClass().add("selected-tab");
             matchHistoryTab.getStyleClass().remove("selected-tab");
         } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Failed to load Profile tab");
+            alert.showAndWait();
             e.printStackTrace();
         }
     }
@@ -72,6 +67,10 @@ public class SettingsController {
             matchHistoryTab.getStyleClass().add("selected-tab");
             profileTab.getStyleClass().remove("selected-tab");
         } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Failed to load Match History tab");
+            alert.showAndWait();
             e.printStackTrace();
         }
     }
@@ -96,21 +95,21 @@ public class SettingsController {
 
     @FXML
     private void handleLeaderboardButton() {
-        //main leaderboard
+        PageNavigator.navigateTo("leaderboard");
     }
 
     @FXML
     private void handleFindAPlayerButton() {
-        //player look up page
+        PageNavigator.navigateTo("findAPlayer");
     }
 
     @FXML
     private void handleSettingsButton() {
-        PageNavigator.navigateTo("settings");
+        PageNavigator.navigateTo("settings"); // Refreshes settings screen
     }
 
     @FXML
     private void handleGameRulesButton() {
-        //game rules page
+        PageNavigator.navigateTo("gameRules");
     }
 }
