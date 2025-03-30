@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="Added Functionality to delete button in ProfileController class">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/Connect4Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/Connect4Controller.java" afterDir="false" />
+    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="Updated The Connect4Controller.java and connect4.fxml">
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GameApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GameApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/ProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/connect4.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/connect4.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/ProfileController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/ProfileController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/connect4.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/connect4.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +153,7 @@
       <workItem from="1743268139636" duration="18457000" />
       <workItem from="1743295051289" duration="275000" />
       <workItem from="1743314463831" duration="12000" />
-      <workItem from="1743314496820" duration="5916000" />
+      <workItem from="1743314496820" duration="6245000" />
     </task>
     <task id="LOCAL-00001" summary="Added connect4.fxml and connect 4.css, started working on connect 4 game page">
       <option name="closed" value="true" />
@@ -433,7 +427,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743318177865</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Updated The Connect4Controller.java and connect4.fxml">
+      <option name="closed" value="true" />
+      <created>1743320533001</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1743320533001</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -451,7 +453,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added the profileController.java and SettingsController.java classes for the settings and profile fxml files" />
     <MESSAGE value="files moved in the right location" />
     <MESSAGE value="landing page added" />
     <MESSAGE value="logIn &amp; signUp pages added" />
@@ -476,7 +477,8 @@
     <MESSAGE value="testings some files" />
     <MESSAGE value="Added Functionality to HandleSave() button in ProfileController class" />
     <MESSAGE value="Added Functionality to delete button in ProfileController class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Functionality to delete button in ProfileController class" />
+    <MESSAGE value="Updated The Connect4Controller.java and connect4.fxml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated The Connect4Controller.java and connect4.fxml" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
