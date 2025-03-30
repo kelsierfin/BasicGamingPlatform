@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="Updated the SettingsController.java and settings.fxml so that it alligns functionality with the navigation bar">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-29_10_38_a_m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-29_10_38_a_m___Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_25_2025_5_00_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_25_2025_5_00_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_25_2025_5_21_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_25_2025_5_21_PM__Changes_.xml" afterDir="false" />
+    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="Updated some of the designs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GameApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GameApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/match_history.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/match_history.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/player_Finder.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/player_Finder.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/settings.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/PageNavigator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/PageNavigator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/settings.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/Connect4Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/MatchHistoryController.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,14 +117,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.23654.117" />
-        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-IU-243.23654.117" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -167,6 +157,8 @@
       <workItem from="1743267200746" duration="795000" />
       <workItem from="1743268139636" duration="18457000" />
       <workItem from="1743295051289" duration="275000" />
+      <workItem from="1743314463831" duration="12000" />
+      <workItem from="1743314496820" duration="425000" />
     </task>
     <task id="LOCAL-00001" summary="Added connect4.fxml and connect 4.css, started working on connect 4 game page">
       <option name="closed" value="true" />
@@ -408,7 +400,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743313569144</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Updated some of the designs">
+      <option name="closed" value="true" />
+      <created>1743314273459</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1743314273459</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -426,7 +426,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added connect4.fxml and connect 4.css, started working on connect 4 game page" />
     <MESSAGE value="made a basic layout for the connect4.fxml" />
     <MESSAGE value="created settigns.fxml" />
     <MESSAGE value="Added profile.fxml and made changes to it for the settings screen" />
@@ -451,7 +450,8 @@
     <MESSAGE value="navigation bar updated in settings, ; screen sizes for profile and match settings adjusted" />
     <MESSAGE value="handleLeaderBoard replaced with stub for now" />
     <MESSAGE value="Updated the SettingsController.java and settings.fxml so that it alligns functionality with the navigation bar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated the SettingsController.java and settings.fxml so that it alligns functionality with the navigation bar" />
+    <MESSAGE value="Updated some of the designs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated some of the designs" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
