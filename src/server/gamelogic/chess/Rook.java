@@ -1,11 +1,13 @@
 package server.gamelogic.chess;
 
-public class Rook extends CastledPiece {
-    public Square castleDest;
-    public Square castleKingDest;
+public class Rook extends PinnerPiece {
+    final Square castleDest;
+    final Square castleKingDest;
+    boolean hasMoved;
 
     public Rook(Player player, boolean isOnKingsSide) {
         super(player,5);
+        hasMoved = false;
 
         int rankIndex;
         int fileIndex;
@@ -33,6 +35,8 @@ public class Rook extends CastledPiece {
 
     public Rook(Player player, Square position) {
         super(player,3, position);
+        castleDest = null;
+        castleKingDest = null;
     }
 
     @Override

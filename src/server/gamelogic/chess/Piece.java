@@ -8,8 +8,8 @@ public abstract class Piece implements IPiece{
     final boolean isWhite;
     final int value;
     Square position;
+    PinnerPiece pinner;
     List<Square> moveOptions;
-    boolean moveOptionsUpdated;
     List<Square> attackedSquares;
 
     public Piece(Player player, int value) {
