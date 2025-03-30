@@ -4,17 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="java fx version updated from 21.0.2 to 23.0.1 in pom.xml">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/hidePassword.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/seePassword.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/signUp.css" afterDir="false" />
+    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="Sign up: input verification added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GameApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GameApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/SignUpController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/signUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/signUp.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/GameApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/GameApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/SignUpController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/SignUpController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/signUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/signUp.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +161,7 @@
       <workItem from="1743267200746" duration="795000" />
       <workItem from="1743268139636" duration="18457000" />
       <workItem from="1743295051289" duration="2455000" />
-      <workItem from="1743306843404" duration="14582000" />
+      <workItem from="1743306843404" duration="21280000" />
     </task>
     <task id="LOCAL-00001" summary="Added connect4.fxml and connect 4.css, started working on connect 4 game page">
       <option name="closed" value="true" />
@@ -411,7 +403,31 @@
       <option name="project" value="LOCAL" />
       <updated>1743295377873</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="edited signup page elements; added visibility toggle feature to the password fields">
+      <option name="closed" value="true" />
+      <created>1743368309954</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1743368309954</updated>
+    </task>
+    <task id="LOCAL-00032" summary="edited signup page elements; added visibility toggle feature to the password fields">
+      <option name="closed" value="true" />
+      <created>1743368372756</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1743368372756</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Sign up: input verification added">
+      <option name="closed" value="true" />
+      <created>1743374917507</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1743374917507</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -429,8 +445,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added connect4.fxml and connect 4.css, started working on connect 4 game page" />
-    <MESSAGE value="made a basic layout for the connect4.fxml" />
     <MESSAGE value="created settigns.fxml" />
     <MESSAGE value="Added profile.fxml and made changes to it for the settings screen" />
     <MESSAGE value="Added the profileController.java and SettingsController.java classes for the settings and profile fxml files" />
@@ -454,7 +468,9 @@
     <MESSAGE value="navigation bar updated in settings, ; screen sizes for profile and match settings adjusted" />
     <MESSAGE value="handleLeaderBoard replaced with stub for now" />
     <MESSAGE value="java fx version updated from 21.0.2 to 23.0.1 in pom.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="java fx version updated from 21.0.2 to 23.0.1 in pom.xml" />
+    <MESSAGE value="edited signup page elements; added visibility toggle feature to the password fields" />
+    <MESSAGE value="Sign up: input verification added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sign up: input verification added" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
