@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="testings some files">
+    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="Added Functionality to HandleSave() button in ProfileController class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/ProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/profile_settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/profile_settings.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/ProfileController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/ProfileController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/profile_settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/profile_settings.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +156,7 @@
       <workItem from="1743268139636" duration="18457000" />
       <workItem from="1743295051289" duration="275000" />
       <workItem from="1743314463831" duration="12000" />
-      <workItem from="1743314496820" duration="2465000" />
+      <workItem from="1743314496820" duration="3569000" />
     </task>
     <task id="LOCAL-00001" summary="Added connect4.fxml and connect 4.css, started working on connect 4 game page">
       <option name="closed" value="true" />
@@ -413,7 +414,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743314951649</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Added Functionality to HandleSave() button in ProfileController class">
+      <option name="closed" value="true" />
+      <created>1743317213877</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1743317213877</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -431,7 +440,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="created settigns.fxml" />
     <MESSAGE value="Added profile.fxml and made changes to it for the settings screen" />
     <MESSAGE value="Added the profileController.java and SettingsController.java classes for the settings and profile fxml files" />
     <MESSAGE value="files moved in the right location" />
@@ -456,7 +464,8 @@
     <MESSAGE value="Updated the SettingsController.java and settings.fxml so that it alligns functionality with the navigation bar" />
     <MESSAGE value="Updated some of the designs" />
     <MESSAGE value="testings some files" />
-    <option name="LAST_COMMIT_MESSAGE" value="testings some files" />
+    <MESSAGE value="Added Functionality to HandleSave() button in ProfileController class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Functionality to HandleSave() button in ProfileController class" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
