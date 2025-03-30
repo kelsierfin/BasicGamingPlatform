@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="Updated The Connect4Controller.java and connect4.fxml">
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GameApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GameApplication.java" afterDir="false" />
-    </list>
+    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="Updated start game screen controller class to load the image and button clicks" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -453,7 +451,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="files moved in the right location" />
     <MESSAGE value="landing page added" />
     <MESSAGE value="logIn &amp; signUp pages added" />
     <MESSAGE value="dashboard added with games" />
@@ -478,7 +475,8 @@
     <MESSAGE value="Added Functionality to HandleSave() button in ProfileController class" />
     <MESSAGE value="Added Functionality to delete button in ProfileController class" />
     <MESSAGE value="Updated The Connect4Controller.java and connect4.fxml" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated The Connect4Controller.java and connect4.fxml" />
+    <MESSAGE value="Updated start game screen controller class to load the image and button clicks" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated start game screen controller class to load the image and button clicks" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

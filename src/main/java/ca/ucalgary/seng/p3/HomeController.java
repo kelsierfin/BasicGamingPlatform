@@ -20,6 +20,8 @@ import java.util.List;
 import java.util.Optional;
 
 public class HomeController {
+    // Add a static variable to store the selected game type
+    public static String selectedGameType;
 
     @FXML
     private ScrollPane scrollPane;
@@ -50,21 +52,25 @@ public class HomeController {
 
     @FXML
     private void handlePlayChessButton() {
+        selectedGameType = "chess";
         PageNavigator.navigateTo("startgame_chess");
     }
 
     @FXML
     private void handlePlayGoButton() {
+        selectedGameType = "go";
         PageNavigator.navigateTo("startgame_go");
     }
 
     @FXML
     private void handlePlayTttButton() {
+        selectedGameType = "tictactoe";
         PageNavigator.navigateTo("startgame_tictactoe");
     }
 
     @FXML
     private void handlePlayConnectButton() {
+        selectedGameType = "connect4";
         PageNavigator.navigateTo("startgame_connect4");
     }
 
