@@ -190,7 +190,7 @@ public class HomeController {
 
     @FXML
     private void handleLeaderboardButton() {
-        PageNavigator.navigateTo("leaderboard");
+        //main leaderboard
 
     }
 

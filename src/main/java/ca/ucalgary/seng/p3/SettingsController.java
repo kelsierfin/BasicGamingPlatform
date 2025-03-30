@@ -96,7 +96,7 @@ public class SettingsController {
 
     @FXML
     private void handleLeaderboardButton() {
-        PageNavigator.navigateTo("leaderboard");
+        //main leaderboard
     }
 
     @FXML

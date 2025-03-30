@@ -180,7 +180,7 @@ public class StartGameController {
 
     @FXML
     private void handleLeaderboardButton() {
-        PageNavigator.navigateTo("leaderboard");
+        //main leaderboard
     }
 
     @FXML
