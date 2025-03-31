@@ -1,4 +1,4 @@
-package ca.ucalgary.seng.p3;
+package main.java.ca.ucalgary.seng.p3;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
