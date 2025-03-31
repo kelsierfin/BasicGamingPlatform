@@ -6,6 +6,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
@@ -194,8 +195,7 @@ public class HomeController {
 
     @FXML
     private void handleLeaderboardButton() {
-        //main leaderboard
-
+        PageNavigator.navigateTo("leaderboard_home");
     }
 
     @FXML

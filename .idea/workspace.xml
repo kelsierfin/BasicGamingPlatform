@@ -4,50 +4,69 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="navigation bar updated in settings, ; screen sizes for profile and match settings adjusted">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/AboutController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/ResetCredentialsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/about.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/BadeenDisplay-Regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/chess_logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/connect4_logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/css.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/go_logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/hidePassword.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/java.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/javafx.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/landinganimation1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/landinganimation2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/seePassword.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/ttt_logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/resetCredentials.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/signUp.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-22_5_18_p_m__[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-22_5_18_p_m___Changes_.xml" beforeDir="false" />
+    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="screens from landing up to dashboard completed. Last to do: dashboard">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/ChessController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/FriendFinderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LeaderBoardHome.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/NavigationBar.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Chat_popup.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Chess.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/leaderboard_home.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/navigationbar.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/player_Finder.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GameApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GameApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/Connect4Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/Connect4Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GameLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GameLauncher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LandingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LandingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LogInController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/SettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/SettingsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/SignUpController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/landing.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/landing.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/landing.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/landing.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/logIn.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logIn.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/signUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/signUp.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/GameApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/GameApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LeaderBoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LeaderBoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/PageNavigator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/PageNavigator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/ProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/ProfilePopUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/ProfilePopUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/TicTacToeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/TicTacToeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/connect4.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/icons/avatar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/icons/chess icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/icons/chess-background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/icons/chess.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/icons/chessimage.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/icons/connect4 icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/icons/connect4-background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/icons/connect4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/icons/connect4image.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/icons/first-medal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/icons/go icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/icons/go-background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/icons/go.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/icons/hidePassword.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/icons/second-medal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/icons/seePassword.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/icons/third-medal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/icons/tictactoe-background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/icons/tictactoeimage.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/icons/ttt icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/leaderboard.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/profile_pop_up.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/startgame_chess.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/startgame_connect4.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/startgame_go.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/startgame_tictactoe.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tictactoe.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tictactoe.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/Connect4Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/Connect4Controller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/HomeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/LandingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/LandingController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/LogInController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/LogInController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/SettingsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/SettingsController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/SignUpController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/SignUpController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/StartGameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/StartGameController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/landing.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/landing.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/landing.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/landing.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/logIn.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/logIn.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/signUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/signUp.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/LeaderBoardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/LeaderBoardController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/PageNavigator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/PageNavigator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/ProfileController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/ProfileController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/ProfilePopUp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/ProfilePopUp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/TicTacToeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/TicTacToeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/connect4.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/connect4.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leaderboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leaderboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/profile_pop_up.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/profile_pop_up.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/startgame_chess.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/startgame_chess.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/startgame_connect4.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/startgame_connect4.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/startgame_go.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/startgame_go.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/startgame_tictactoe.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/startgame_tictactoe.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tictactoe.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tictactoe.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +116,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "gui-landing-to-dashboard",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/ebose/OneDrive/Desktop/SENG 300/seng300-w25-project/target/classes",
+    "last_opened_file_path": "C:/Users/ebose/OneDrive/Desktop/SENG 300/seng300-w25-project/src/main/java/ca/ucalgary/seng/p3",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -113,14 +132,15 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\java\ca\ucalgary\seng\p3" />
       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\target\classes" />
       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\target\classes\ca\ucalgary\seng\p3" />
       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\p3\target\classes" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources" />
       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources\icons" />
       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources\fonts" />
-      <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources" />
       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\java\ca\ucalgary\seng\p3" />
       <recent name="C:\Users\sagek\SENG300\seng300-w25-project\src\main\resources\icons" />
     </key>
@@ -431,7 +451,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743294647928</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="screens from landing up to dashboard completed. Last to do: dashboard">
+      <option name="closed" value="true" />
+      <created>1743460313815</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1743460313817</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -461,7 +489,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="project successfully restructured" />
     <MESSAGE value="Added a draft UI screen for the Connect 4 game interface" />
     <MESSAGE value="Added connect4.fxml and connect 4.css, started working on connect 4 game page" />
     <MESSAGE value="made a basic layout for the connect4.fxml" />
@@ -486,7 +513,8 @@
     <MESSAGE value="navigation functionality from landing to dashboard added" />
     <MESSAGE value="updated navigation bar in start game pages" />
     <MESSAGE value="navigation bar updated in settings, ; screen sizes for profile and match settings adjusted" />
-    <option name="LAST_COMMIT_MESSAGE" value="navigation bar updated in settings, ; screen sizes for profile and match settings adjusted" />
+    <MESSAGE value="screens from landing up to dashboard completed. Last to do: dashboard" />
+    <option name="LAST_COMMIT_MESSAGE" value="screens from landing up to dashboard completed. Last to do: dashboard" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
