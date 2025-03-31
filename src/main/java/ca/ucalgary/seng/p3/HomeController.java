@@ -80,6 +80,10 @@ public class HomeController {
         List<ImageView> icons = List.of(chessIcon, goIcon, tttIcon, connectIcon);
 
         for (ImageView icon : icons) {
+            // AI Assistance Declaration: The following block of code was developed with AI(ChatGPT) guidance.
+            // AI provided recommendations on using JavaFX rectangles to clip images (game thumbnails)
+            // to fit within game cards on the homepage.
+
             Rectangle rect = new Rectangle();
             rect.setWidth(icon.getFitWidth());
             rect.setHeight(icon.getFitHeight());
@@ -171,7 +175,7 @@ public class HomeController {
         logOutVerification.getButtonTypes().setAll(cancelButton, logOutButton);
         logOutVerification.showAndWait().ifPresent(response -> {
             if (response == logOutButton) {
-                // Perform the log-out action here
+
                 PageNavigator.navigateTo("landing");
                 logOutVerification.close();
             }else{

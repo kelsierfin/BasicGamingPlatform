@@ -76,12 +76,6 @@ public class SettingsController {
         }
     }
 
-    public void handleProfileButton(ActionEvent actionEvent) {
-    }
-
-    public void handleBellButton(ActionEvent actionEvent) {
-    }
-
     // Called when the menu button is clicked
     @FXML
     private void handleMenuButton() {

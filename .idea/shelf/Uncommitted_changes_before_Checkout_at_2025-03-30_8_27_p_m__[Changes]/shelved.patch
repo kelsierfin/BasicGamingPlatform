@@ -1,0 +1,1264 @@
+Index: src/main/java/ca/ucalgary/seng/p3/LogInController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ca.ucalgary.seng.p3;\r\n\r\nimport javafx.application.Platform;\r\nimport javafx.fxml.FXML;\r\nimport javafx.scene.control.Button;\r\nimport javafx.scene.control.Hyperlink;\r\nimport javafx.scene.control.PasswordField;\r\nimport javafx.scene.control.TextField;\r\n\r\npublic class LogInController {\r\n\r\n    @FXML\r\n    private Button logInButton;\r\n\r\n    @FXML\r\n    private TextField usernameInput;\r\n\r\n    @FXML\r\n    private PasswordField passwordInput;\r\n\r\n    @FXML\r\n    private Button backButton;\r\n\r\n    @FXML\r\n    private TextField guestUsername;\r\n\r\n    @FXML\r\n    private Button guestLogInButton;\r\n\r\n    @FXML\r\n    private Hyperlink signUpLink;\r\n\r\n    public void initialize() {\r\n    }\r\n\r\n    public void handleBackButton() {\r\n        PageNavigator.navigateTo(\"landing\");\r\n    }\r\n\r\n    public void handleLogInButton() {\r\n        PageNavigator.navigateTo(\"home\");\r\n    }\r\n\r\n    public void handleGuestLogInButton() {\r\n        PageNavigator.navigateTo(\"home\");\r\n    }\r\n    public void handleSignUpLink() {\r\n        PageNavigator.navigateTo(\"signUp\");\r\n    }\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/ca/ucalgary/seng/p3/LogInController.java b/src/main/java/ca/ucalgary/seng/p3/LogInController.java
+--- a/src/main/java/ca/ucalgary/seng/p3/LogInController.java	(revision dd5c1663778abe83a4cdac111a1ff4e0f57b0b3f)
++++ b/src/main/java/ca/ucalgary/seng/p3/LogInController.java	(date 1743388031824)
+@@ -1,16 +1,17 @@
+ package ca.ucalgary.seng.p3;
+ 
+-import javafx.application.Platform;
+ import javafx.fxml.FXML;
+ import javafx.scene.control.Button;
+-import javafx.scene.control.Hyperlink;
+ import javafx.scene.control.PasswordField;
+ import javafx.scene.control.TextField;
++import javafx.scene.image.Image;
++import javafx.scene.image.ImageView;
++import javafx.scene.text.Text;
+ 
+ public class LogInController {
+ 
+     @FXML
+-    private Button logInButton;
++    Text errorMessage;
+ 
+     @FXML
+     private TextField usernameInput;
+@@ -19,26 +20,87 @@
+     private PasswordField passwordInput;
+ 
+     @FXML
+-    private Button backButton;
++    private TextField passwordVisibleField = new TextField();
+ 
+     @FXML
+-    private TextField guestUsername;
++    private Button visibilityToggle = new Button();
++
++    private String password;  //final password sent back to authentication
++    private String username;  //final password sent back to authentication
++
++    private boolean credentialsValid;
++    StringBuilder errorText;
++
++
++    public void initialize() {
++        usernameInput.setPromptText("Username");
++        passwordInput.setPromptText("Password");
++        passwordVisibleField.setPromptText("Password");
+ 
++        //listeners for all password fields (to update visible and invisible password field with current input)
++        passwordInput.textProperty().addListener((observable, oldValue, newValue) -> {
++            if (passwordVisibleField.isVisible()) {
++                passwordVisibleField.setText(newValue);
++            }
++        });
++
++        passwordVisibleField.textProperty().addListener((observable, oldValue, newValue) -> {
++            if (!passwordInput.isVisible()) {
++                passwordInput.setText(newValue);
++            }
++        });
++    }
++
++    //FUNCTIONS THAT HANDLE VISIBILITY OF TEXT IN PASSWORD FIELDS
+     @FXML
+-    private Button guestLogInButton;
++    private void handleVisibilityToggleEnter() {
++        // Set icon to open eye
++        ImageView eyeOpen = new ImageView(new Image(getClass().getResourceAsStream("/icons/seePassword.png")));
++        visibilityToggle.setGraphic(eyeOpen);
++        eyeOpen.setFitHeight(20);
++        eyeOpen.setFitWidth(20);
++        // Set visible password
++        passwordVisibleField.setText(passwordInput.getText());
++        passwordVisibleField.setVisible(true);
++        passwordVisibleField.setManaged(true);
++        passwordInput.setVisible(false);
++    }
+ 
+     @FXML
+-    private Hyperlink signUpLink;
++    private void handleVisibilityToggleExit() {
++        // Set icon back to closed eye
++        ImageView eyeClosed = new ImageView(new Image(getClass().getResourceAsStream("/icons/hidePassword.png")));
++        visibilityToggle.setGraphic(eyeClosed);
++        eyeClosed.setFitHeight(20);
++        eyeClosed.setFitWidth(20);
+ 
+-    public void initialize() {
++        // Hide the visible password and copy back the value to password input
++        passwordInput.setText(passwordVisibleField.getText());
++        passwordVisibleField.setVisible(false);
++        passwordVisibleField.setManaged(false);
++        passwordInput.setVisible(true);
+     }
++
++
++    //NAVIGATION FUNCTIONS THAT HANDLE PAGE EXIT
+ 
+     public void handleBackButton() {
+         PageNavigator.navigateTo("landing");
+     }
+ 
+     public void handleLogInButton() {
+-        PageNavigator.navigateTo("home");
++        errorText =  new StringBuilder();
++        credentialsValid = true;
++        usernameConfirmation();
++        passwordConfirmation();
++        if (credentialsValid) {
++            System.out.println("Log In Successful");
++            PageNavigator.navigateTo("home");
++        }
++        else{
++            errorMessage.setText(errorText.toString());
++            System.out.println("Log In Failed");
++        }
+     }
+ 
+     public void handleGuestLogInButton() {
+@@ -47,5 +109,88 @@
+     public void handleSignUpLink() {
+         PageNavigator.navigateTo("signUp");
+     }
++
++    public void handleResetCredentialsLink(){
++        PageNavigator.navigateTo("resetCredentials");
++    }
++
++    //HELPER FUNCTIONS
++
++    private void setUsername() {
++        username = usernameInput.getText();
++    }
++
++    private void setPassword() {
++        password = passwordInput.getText();
++    }
++
++    //CONFIRMATION OF CREDENTIALS
++
++    //TODO: ADD FUNCTIONALITY FROM AUTHENTICATION
++
++    /**
++     * Verifies password input.
++     * @return boolean credentialsValid (true if passwords match, false if input is empty or doesn't match)
++     */
++    private boolean passwordConfirmation() {
++        setPassword();
++
++        boolean passwordsValid = !password.isEmpty(); //add other conditions later
++
++        if (!passwordsValid) {
++            if (password.isEmpty()) {
++                highlightError(passwordInput, passwordVisibleField);
++                System.out.println("Missing Password.");
++                errorText.append(" Missing Password.");
++                credentialsValid = false;
++            }
++        } else{
++            resetBorderStyle(passwordInput, passwordVisibleField);
++        }
++        return credentialsValid;
++    }
++
++    /**
++     * Verifies username input.
++     * @return boolean credentialsValid (true if username is valid (username is unique), false otherwise)
++     */
++    private boolean usernameConfirmation() {
++        setUsername();
++        boolean validUsername = !username.isEmpty();
++
++        if (!validUsername) {
++            if(username.isEmpty()){
++                highlightError(usernameInput);
++                System.out.println("Missing Username.");
++                errorText.append(" Missing Username.");
++                credentialsValid = false;
++            }
++        } else{
++            resetBorderStyle(usernameInput);
++            return credentialsValid;
++        }
++        return credentialsValid;
++    }
++
++    /**
++     * Helper method to reset border styles
++     * @param fields text fields with invalid input
++     */
++    private void resetBorderStyle(TextField... fields) {
++        for (TextField field : fields) {
++            field.setStyle("-fx-border-color: transparent");
++        }
++    }
++
++    /**
++     * Helper method to highlight error fields
++     * @param fields text fields with invalid input
++     */
++    private void highlightError(TextField... fields) {
++        for (TextField field : fields) {
++            field.setStyle("-fx-border-color: red");
++        }
++    }
++
+ }
+ 
+Index: src/main/java/ca/ucalgary/seng/p3/ResetCredentialsController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/ca/ucalgary/seng/p3/ResetCredentialsController.java b/src/main/java/ca/ucalgary/seng/p3/ResetCredentialsController.java
+new file mode 100644
+--- /dev/null	(date 1743386950183)
++++ b/src/main/java/ca/ucalgary/seng/p3/ResetCredentialsController.java	(date 1743386950183)
+@@ -0,0 +1,4 @@
++package ca.ucalgary.seng.p3;
++
++public class ResetCredentialsController {
++}
+Index: src/main/java/ca/ucalgary/seng/p3/SignUpController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ca.ucalgary.seng.p3;\r\n\r\nimport javafx.fxml.FXML;\r\nimport javafx.scene.control.Button;\r\nimport javafx.scene.control.Hyperlink;\r\nimport javafx.scene.control.PasswordField;\r\nimport javafx.scene.control.TextField;\r\n\r\npublic class SignUpController {\r\n\r\n        @FXML\r\n        private Button signUpButton;\r\n\r\n        @FXML\r\n        private TextField usernameInput;\r\n\r\n        @FXML\r\n        private PasswordField passwordInput;\r\n\r\n        @FXML\r\n        private PasswordField repeatedPassInput;\r\n\r\n        @FXML\r\n        private Button backButton;\r\n\r\n        @FXML\r\n        private Hyperlink logInLink;\r\n\r\n        public void initialize() {\r\n        }\r\n\r\n        public void handleBackButton() {\r\n                PageNavigator.navigateTo(\"landing\");\r\n        }\r\n\r\n        public void handleSignUpButton() {\r\n                PageNavigator.navigateTo(\"logIn\");\r\n        }\r\n\r\n        public void handleLogInLink() {\r\n                PageNavigator.navigateTo(\"logIn\");\r\n        }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/ca/ucalgary/seng/p3/SignUpController.java b/src/main/java/ca/ucalgary/seng/p3/SignUpController.java
+--- a/src/main/java/ca/ucalgary/seng/p3/SignUpController.java	(revision dd5c1663778abe83a4cdac111a1ff4e0f57b0b3f)
++++ b/src/main/java/ca/ucalgary/seng/p3/SignUpController.java	(date 1743386605012)
+@@ -2,42 +2,287 @@
+ 
+ import javafx.fxml.FXML;
+ import javafx.scene.control.Button;
+-import javafx.scene.control.Hyperlink;
+ import javafx.scene.control.PasswordField;
+ import javafx.scene.control.TextField;
++import javafx.scene.image.Image;
++import javafx.scene.image.ImageView;
++import javafx.scene.text.Text;
++
+ 
+ public class SignUpController {
+ 
+         @FXML
+-        private Button signUpButton;
++        private Text errorMessage;
++
++        @FXML
++        private TextField usernameInput, emailInput;
+ 
+         @FXML
+-        private TextField usernameInput;
++        private PasswordField passwordInput, passwordInput1;
+ 
+         @FXML
+-        private PasswordField passwordInput;
++        private TextField passwordVisibleField = new TextField();
+ 
+         @FXML
+-        private PasswordField repeatedPassInput;
++        private TextField passwordVisibleField1 = new TextField();
+ 
+         @FXML
+-        private Button backButton;
++        private Button visibilityToggle = new Button();
+ 
+         @FXML
+-        private Hyperlink logInLink;
++        private Button visibilityToggle1 = new Button();
++
++        private String password;  //final password sent back to authentication
++        private String confirmedPassword; //confirmed password
++        private String username;  //final password sent back to authentication
++        private String email; //final email sent back to authentication
++        private boolean credentialsValid; //final verification before signing up.
++
++        StringBuilder errorText;
+ 
+         public void initialize() {
++                // Sets prompt text of all input fields
++                usernameInput.setPromptText("Username");
++                emailInput.setPromptText("Email");
++                passwordInput.setPromptText("Password");
++                passwordInput1.setPromptText("Confirm Password");
++                passwordVisibleField.setPromptText("Password");
++                passwordVisibleField1.setPromptText("Confirm Password");
++
++                //listeners for all password fields (to update visible and invisible password field with current input)
++                passwordInput.textProperty().addListener((observable, oldValue, newValue) -> {
++                        if (passwordVisibleField.isVisible()) {
++                                passwordVisibleField.setText(newValue);
++                        }
++                });
++                passwordInput1.textProperty().addListener((observable, oldValue, newValue) -> {
++                        if (passwordVisibleField1.isVisible()) {
++                                passwordVisibleField1.setText(newValue);
++                        }
++                });
++                passwordVisibleField.textProperty().addListener((observable, oldValue, newValue) -> {
++                        if (!passwordInput.isVisible()) {
++                                passwordInput.setText(newValue);
++                        }
++                });
++                passwordVisibleField1.textProperty().addListener((observable, oldValue, newValue) -> {
++                        if (!passwordInput1.isVisible()) {
++                                passwordInput1.setText(newValue);
++                        }
++                });
++        }
++
++        //FUNCTIONS THAT HANDLE VISIBILITY OF TEXT IN PASSWORD FIELDS
++        @FXML
++        private void handleVisibilityToggleEnter() {
++                // Set icon to open eye
++                ImageView eyeOpen = new ImageView(new Image(getClass().getResourceAsStream("/icons/seePassword.png")));
++                visibilityToggle.setGraphic(eyeOpen);
++                eyeOpen.setFitHeight(20);
++                eyeOpen.setFitWidth(20);
++                // Set visible password
++                passwordVisibleField.setText(passwordInput.getText());
++                passwordVisibleField.setVisible(true);
++                passwordVisibleField.setManaged(true);
++                passwordInput.setVisible(false);
+         }
+ 
++        @FXML
++        private void handleVisibilityToggleExit() {
++                // Set icon back to closed eye
++                ImageView eyeClosed = new ImageView(new Image(getClass().getResourceAsStream("/icons/hidePassword.png")));
++                visibilityToggle.setGraphic(eyeClosed);
++                eyeClosed.setFitHeight(20);
++                eyeClosed.setFitWidth(20);
++
++                // Hide the visible password and copy back the value to password input
++                passwordInput.setText(passwordVisibleField.getText());
++                passwordVisibleField.setVisible(false);
++                passwordVisibleField.setManaged(false);
++                passwordInput.setVisible(true);
++        }
++
++        @FXML
++        private void handleVisibilityToggle1Enter() {
++                // Set icon to open eye
++                ImageView eyeOpen = new ImageView(new Image(getClass().getResourceAsStream("/icons/seePassword.png")));
++                visibilityToggle1.setGraphic(eyeOpen);
++                eyeOpen.setFitHeight(20);
++                eyeOpen.setFitWidth(20);
++                // Set visible password
++                passwordVisibleField1.setText(passwordInput1.getText());
++                passwordVisibleField1.setVisible(true);
++                passwordVisibleField1.setManaged(true);
++                passwordInput1.setVisible(false);
++        }
++
++        @FXML
++        private void handleVisibilityToggle1Exit() {
++                ImageView eyeClosed = new ImageView(new Image(getClass().getResourceAsStream("/icons/hidePassword.png")));
++                // Set icon back to closed eye
++                visibilityToggle1.setGraphic(eyeClosed);
++                eyeClosed.setFitHeight(20);
++                eyeClosed.setFitWidth(20);
++                // Hide the visible password and copy back the value to password input
++                passwordInput1.setText(passwordVisibleField1.getText());
++                passwordVisibleField1.setVisible(false);
++                passwordVisibleField1.setManaged(false);
++                passwordInput1.setVisible(true);
++        }
++
++        //NAVIGATION FUNCTIONS THAT HANDLE PAGE EXIT
++
++        //directs user back to the Home Page
+         public void handleBackButton() {
+                 PageNavigator.navigateTo("landing");
+         }
+ 
++        //directs user to the logIn Page after sign up (confirmation log in)
+         public void handleSignUpButton() {
+-                PageNavigator.navigateTo("logIn");
++                errorText =  new StringBuilder();
++                credentialsValid = true;
++                emailConfirmation();
++                usernameConfirmation();
++                passwordConfirmation();
++                if (credentialsValid) {
++                        System.out.println("Sign Up Successful");
++                        PageNavigator.navigateTo("logIn");
++                }
++                else{
++                        errorMessage.setText(errorText.toString());
++                        System.out.println("Sign Up Failed");
++                }
+         }
+ 
++        //directs user to logInPage by link
+         public void handleLogInLink() {
+                 PageNavigator.navigateTo("logIn");
+         }
++
++
++        //HELPER FUNCTIONS
++
++        private void setUsername() {
++                username = usernameInput.getText();
++        }
++
++        private void setEmail() {
++                email = emailInput.getText();
++        }
++
++        private void setPassword() {
++                password = passwordInput.getText();
++        }
++
++        private void setSecondPassword() {
++                confirmedPassword = passwordInput1.getText();
++        }
++
++        //CONFIRMATION OF CREDENTIALS
++
++        //TODO: ADD FUNCTIONALITY FROM AUTHENTICATION
++
++        /**
++         * Verifies password input.
++         * @return boolean credentialsValid (true if passwords match, false if input is empty or doesn't match)
++         */
++        private boolean passwordConfirmation() {
++                setSecondPassword();
++                setPassword();
++
++                boolean passwordsMatch = !password.isEmpty() && !confirmedPassword.isEmpty() && password.equals(confirmedPassword);
++
++                if (!passwordsMatch) {
++                        if (password.isEmpty()) {
++                                highlightError(passwordInput, passwordVisibleField);
++                                System.out.println("Missing Password.");
++                                errorText.append(" Missing Password.");
++                                credentialsValid = false;
++                        } else if (confirmedPassword.isEmpty()) {
++                                highlightError(passwordInput1, passwordVisibleField1);
++                                System.out.println("Confirm Password.");
++                                errorText.append(" Confirm Password.");
++                                credentialsValid = false;
++                        } else {
++                                highlightError(passwordInput1, passwordVisibleField1);
++                                System.out.println("Passwords do not match.");
++                                errorText.append(" Passwords do not match.");
++                                credentialsValid = false;
++                        }
++                } else{
++                        resetBorderStyle(passwordInput,passwordInput1, passwordVisibleField, passwordVisibleField1);
++                }
++                return credentialsValid;
++        }
++
++        /**
++         * Verifies email input.
++         * @return boolean credentialsValid (true if email is valid (contains @ and .), false otherwise)
++         */
++        private boolean emailConfirmation() {
++                setEmail();
++                boolean validEmail = !email.isEmpty() && email.contains("@") && email.contains(".");
++
++                if (!validEmail) {
++                        if (email.isEmpty()) {
++                                highlightError(emailInput);
++                                System.out.println("Missing Email.");
++                                errorText.append(" Missing Email.");
++                                credentialsValid = false;
++                        } else if (!email.contains("@") || !email.contains(".")) {
++                                highlightError(emailInput);
++                                System.out.println("Invalid Email.");
++                                errorText.append(" Invalid Email.");
++                                credentialsValid = false;
++                        }
++                } else {
++                        resetBorderStyle(emailInput);
++                        return credentialsValid;
++                }
++
++                return credentialsValid;
++        }
++
++        /**
++         * Verifies username input.
++         * @return boolean credentialsValid (true if username is valid (username is unique), false otherwise)
++         */
++        private boolean usernameConfirmation() {
++                setUsername();
++                boolean validUsername = !username.isEmpty();
++
++                if (!validUsername) {
++                        if(username.isEmpty()){
++                                highlightError(usernameInput);
++                                System.out.println("Missing Username.");
++                                errorText.append(" Missing Username.");
++                                credentialsValid = false;
++                        }
++                } else{
++                        resetBorderStyle(usernameInput);
++                        return credentialsValid;
++                }
++                return credentialsValid;
++        }
++
++        /**
++         * Helper method to reset border styles
++         * @param fields text fields with invalid input
++         */
++        private void resetBorderStyle(TextField... fields) {
++                for (TextField field : fields) {
++                        field.setStyle("-fx-border-color: transparent");
++                }
++        }
++
++        /**
++         * Helper method to highlight error fields
++         * @param fields text fields with invalid input
++         */
++        private void highlightError(TextField... fields) {
++                for (TextField field : fields) {
++                        field.setStyle("-fx-border-color: red");
++                }
++        }
++
+ }
+Index: src/main/resources/signUp.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/signUp.css b/src/main/resources/signUp.css
+new file mode 100644
+--- /dev/null	(date 1743386605092)
++++ b/src/main/resources/signUp.css	(date 1743386605092)
+@@ -0,0 +1,34 @@
++.button{
++    -fx-background-color: #e8e8e8;
++    -fx-text-fill: rgb(5, 5, 5);
++    -fx-font-weight: bold;
++    -fx-border-radius: 5px;
++    -fx-background-radius: 5px;
++}
++
++.button:hover {
++    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0.3, 1, 1);
++}
++
++.backdrop{
++    -fx-border-radius: 10px;
++    -fx-background-radius: 10px;
++    -fx-border-color: transparent;
++    -fx-background-color: white;
++    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.3, 2, 2);
++}
++
++.text-field{
++    -fx-effect: null;
++    -fx-background-radius: 10px;
++    -fx-border-radius: 10px;
++    -fx-border-color: transparent;
++    -fx-focus-traversable: false;
++}
++
++.password-field{
++    -fx-effect: null;
++    -fx-background-radius: 10px;
++    -fx-border-radius: 10px;
++    -fx-border-color: transparent;
++}
+\ No newline at end of file
+Index: target/classes/logIn.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import javafx.scene.control.Button?>\r\n<?import javafx.scene.control.Hyperlink?>\r\n<?import javafx.scene.control.Label?>\r\n<?import javafx.scene.control.PasswordField?>\r\n<?import javafx.scene.control.TextField?>\r\n<?import javafx.scene.layout.AnchorPane?>\r\n<?import javafx.scene.layout.VBox?>\r\n\r\n<AnchorPane maxHeight=\"-Infinity\" maxWidth=\"-Infinity\" minHeight=\"-Infinity\" minWidth=\"-Infinity\" prefHeight=\"600.0\" prefWidth=\"900.0\" xmlns=\"http://javafx.com/javafx/23.0.1\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"ca.ucalgary.seng.p3.LogInController\">\r\n    <children>\r\n        <Button fx:id=\"logInButton\" layoutX=\"209.0\" layoutY=\"389.0\" mnemonicParsing=\"false\" onAction=\"#handleLogInButton\" prefHeight=\"35.0\" prefWidth=\"150.0\" text=\"Log In\" focusTraversable=\"false\"/>\r\n        <VBox layoutX=\"179.0\" layoutY=\"234.0\" prefHeight=\"173.0\" prefWidth=\"210.0\">\r\n            <children>\r\n                <Label text=\"Username\" />\r\n                <TextField fx:id=\"usernameInput\" prefHeight=\"35.0\" prefWidth=\"200.0\" />\r\n                <Label layoutX=\"10.0\" layoutY=\"10.0\" text=\"Password\" />\r\n                <PasswordField fx:id=\"passwordInput\" prefHeight=\"35.0\" prefWidth=\"210.0\" />\r\n            </children>\r\n        </VBox>\r\n        <VBox alignment=\"CENTER\" layoutX=\"179.0\" layoutY=\"133.0\" prefHeight=\"80.0\" prefWidth=\"229.0\">\r\n            <children>\r\n                <Label alignment=\"CENTER\" contentDisplay=\"CENTER\" text=\"Log In\" />\r\n            </children>\r\n        </VBox>\r\n        <Button fx:id=\"backButton\" layoutX=\"52.0\" layoutY=\"49.0\" mnemonicParsing=\"false\" onAction=\"#handleBackButton\" prefHeight=\"35.0\" prefWidth=\"118.0\" text=\"&lt; Back\" />\r\n      <VBox alignment=\"CENTER\" layoutX=\"568.0\" layoutY=\"152.0\" prefHeight=\"91.0\" prefWidth=\"229.0\">\r\n         <children>\r\n            <Label alignment=\"CENTER\" contentDisplay=\"CENTER\" text=\"Guest Log In\" />\r\n            <Label alignment=\"CENTER\" contentDisplay=\"CENTER\" layoutX=\"10.0\" layoutY=\"10.0\" />\r\n         </children>\r\n      </VBox>\r\n      <VBox layoutX=\"578.0\" layoutY=\"260.0\" prefHeight=\"80.0\" prefWidth=\"210.0\">\r\n         <children>\r\n            <Label text=\"Username\" />\r\n            <TextField fx:id=\"guestUsername\" prefHeight=\"35.0\" prefWidth=\"200.0\" />\r\n         </children>\r\n      </VBox>\r\n      <Button fx:id=\"guestLogInButton\" layoutX=\"600.0\" layoutY=\"353.0\" mnemonicParsing=\"false\" onAction=\"#handleGuestLogInButton\" prefHeight=\"35.0\" prefWidth=\"150.0\" text=\"Log In as Guest\" />\r\n          <Label alignment=\"CENTER\" contentDisplay=\"CENTER\" layoutX=\"192.0\" layoutY=\"439.0\" text=\"Don't have an account yet?\" />\r\n          <Hyperlink fx:id=\"signUpLink\" layoutX=\"334.0\" layoutY=\"436.0\" onAction=\"#handleSignUpLink\" text=\"Sign Up\" />\r\n    </children>\r\n</AnchorPane>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/classes/logIn.fxml b/target/classes/logIn.fxml
+--- a/target/classes/logIn.fxml	(revision dd5c1663778abe83a4cdac111a1ff4e0f57b0b3f)
++++ b/target/classes/logIn.fxml	(date 1743386605079)
+@@ -1,44 +1,95 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ 
++<?import javafx.geometry.Insets?>
+ <?import javafx.scene.control.Button?>
+ <?import javafx.scene.control.Hyperlink?>
+ <?import javafx.scene.control.Label?>
+ <?import javafx.scene.control.PasswordField?>
+ <?import javafx.scene.control.TextField?>
++<?import javafx.scene.image.Image?>
++<?import javafx.scene.image.ImageView?>
+ <?import javafx.scene.layout.AnchorPane?>
++<?import javafx.scene.layout.HBox?>
++<?import javafx.scene.layout.StackPane?>
+ <?import javafx.scene.layout.VBox?>
++<?import javafx.scene.shape.Line?>
++<?import javafx.scene.text.Font?>
++<?import javafx.scene.text.Text?>
+ 
+-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng.p3.LogInController">
++<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@signUp.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng.p3.LogInController">
+     <children>
+-        <Button fx:id="logInButton" layoutX="209.0" layoutY="389.0" mnemonicParsing="false" onAction="#handleLogInButton" prefHeight="35.0" prefWidth="150.0" text="Log In" focusTraversable="false"/>
+-        <VBox layoutX="179.0" layoutY="234.0" prefHeight="173.0" prefWidth="210.0">
+-            <children>
+-                <Label text="Username" />
+-                <TextField fx:id="usernameInput" prefHeight="35.0" prefWidth="200.0" />
+-                <Label layoutX="10.0" layoutY="10.0" text="Password" />
+-                <PasswordField fx:id="passwordInput" prefHeight="35.0" prefWidth="210.0" />
+-            </children>
+-        </VBox>
+-        <VBox alignment="CENTER" layoutX="179.0" layoutY="133.0" prefHeight="80.0" prefWidth="229.0">
+-            <children>
+-                <Label alignment="CENTER" contentDisplay="CENTER" text="Log In" />
+-            </children>
+-        </VBox>
+-        <Button fx:id="backButton" layoutX="52.0" layoutY="49.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="35.0" prefWidth="118.0" text="&lt; Back" />
+-      <VBox alignment="CENTER" layoutX="568.0" layoutY="152.0" prefHeight="91.0" prefWidth="229.0">
+-         <children>
+-            <Label alignment="CENTER" contentDisplay="CENTER" text="Guest Log In" />
+-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" />
+-         </children>
+-      </VBox>
+-      <VBox layoutX="578.0" layoutY="260.0" prefHeight="80.0" prefWidth="210.0">
+-         <children>
+-            <Label text="Username" />
+-            <TextField fx:id="guestUsername" prefHeight="35.0" prefWidth="200.0" />
++        <Button fx:id="backButton" layoutX="52.0" layoutY="49.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="35.0" prefWidth="118.0" text="&lt; Back" />
++      <VBox alignment="CENTER" layoutX="235.0" layoutY="111.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="451.0" prefWidth="450.0" styleClass="backdrop" stylesheets="@signUp.css">
++         <padding>
++            <Insets left="100.0" right="100.0" />
++         </padding>
++         <children>
++              <VBox alignment="CENTER" prefHeight="80.0" prefWidth="229.0">
++                  <children>
++                      <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-font-weight: bold;" text="Log In">
++                     <font>
++                        <Font size="33.0" />
++                     </font>
++                  </Label>
++                  <Text fx:id="errorMessage" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" />
++                  </children>
++              </VBox>
++              <VBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="148.0" prefWidth="250.0">
++                  <children>
++                      <Label />
++                      <TextField fx:id="usernameInput" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="250.0" styleClass="text-field" />
++                      <Label layoutX="10.0" layoutY="10.0" />
++                  <StackPane alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="250.0">
++                     <children>
++                            <PasswordField fx:id="passwordInput" prefHeight="35.0" prefWidth="210.0" styleClass="password-field" />
++                        <TextField fx:id="passwordVisibleField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="250.0" />
++                        <Button fx:id="visibilityToggle" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseEntered="#handleVisibilityToggleEnter" onMouseExited="#handleVisibilityToggleExit" prefHeight="20.0" prefWidth="20.0" style="-fx-background-color: transparent;">
++                           <graphic>
++                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
++                                 <image>
++                                    <Image url="@icons/hidePassword.png" />
++                                 </image>
++                              </ImageView>
++                           </graphic>
++                        </Button>
++                     </children>
++                  </StackPane>
++                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
++                     <children>
++                        <Hyperlink fx:id="resetCredentialsLink" alignment="CENTER" onAction="#handleResetCredentialsLink" text="Forgot your username or password?" />
++                     </children>
++                  </HBox>
++                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="115.0" prefHeight="100.0" prefWidth="200.0" />
++                  </children>
++              </VBox>
++              <Button fx:id="logInButton" focusTraversable="false" mnemonicParsing="false" onAction="#handleLogInButton" prefHeight="35.0" prefWidth="150.0" text="Log In">
++               <VBox.margin>
++                  <Insets />
++               </VBox.margin>
++            </Button>
++            <HBox alignment="CENTER" prefHeight="56.0" prefWidth="248.0">
++               <children>
++                      <Label contentDisplay="CENTER" text="Don't have an account yet?">
++                     <font>
++                        <Font size="13.0" />
++                     </font>
++                  </Label>
++                      <Hyperlink fx:id="signUpLink" alignment="TOP_RIGHT" contentDisplay="RIGHT" onAction="#handleSignUpLink" text="Sign Up" />
++               </children>
++            </HBox>
++            <HBox alignment="CENTER" prefHeight="25.0" prefWidth="248.0">
++               <children>
++                  <Line startX="-100.0" stroke="#978e8e" />
++                  <Text fill="#978e8e" strokeType="OUTSIDE" strokeWidth="0.0" text="    OR    " />
++                  <Line layoutX="111.0" layoutY="11.0" startX="-100.0" stroke="#978e8e" />
++               </children>
++            </HBox>
++            <Button fx:id="logInButton1" focusTraversable="false" layoutX="160.0" layoutY="222.0" mnemonicParsing="false" onAction="#handleGuestLogInButton" prefHeight="35.0" prefWidth="150.0" text="Log In As Guest">
++               <VBox.margin>
++                  <Insets top="20.0" />
++               </VBox.margin>
++            </Button>
+          </children>
+       </VBox>
+-      <Button fx:id="guestLogInButton" layoutX="600.0" layoutY="353.0" mnemonicParsing="false" onAction="#handleGuestLogInButton" prefHeight="35.0" prefWidth="150.0" text="Log In as Guest" />
+-          <Label alignment="CENTER" contentDisplay="CENTER" layoutX="192.0" layoutY="439.0" text="Don't have an account yet?" />
+-          <Hyperlink fx:id="signUpLink" layoutX="334.0" layoutY="436.0" onAction="#handleSignUpLink" text="Sign Up" />
+     </children>
+ </AnchorPane>
+Index: target/classes/signUp.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import javafx.scene.control.Button?>\r\n<?import javafx.scene.control.Hyperlink?>\r\n<?import javafx.scene.control.Label?>\r\n<?import javafx.scene.control.PasswordField?>\r\n<?import javafx.scene.control.TextField?>\r\n<?import javafx.scene.layout.AnchorPane?>\r\n<?import javafx.scene.layout.VBox?>\r\n\r\n<AnchorPane maxHeight=\"-Infinity\" maxWidth=\"-Infinity\" minHeight=\"-Infinity\" minWidth=\"-Infinity\" prefHeight=\"600.0\" prefWidth=\"900.0\" xmlns=\"http://javafx.com/javafx/23.0.1\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"ca.ucalgary.seng.p3.SignUpController\">\r\n   <children>\r\n      <Button fx:id=\"signUpButton\" layoutX=\"383.0\" layoutY=\"418.0\" mnemonicParsing=\"false\" onAction=\"#handleSignUpButton\" prefHeight=\"35.0\" prefWidth=\"150.0\" text=\"Sign Up\" />\r\n      <VBox layoutX=\"353.0\" layoutY=\"213.0\" prefHeight=\"173.0\" prefWidth=\"210.0\">\r\n         <children>\r\n            <Label text=\"Username\" />\r\n            <TextField fx:id=\"usernameInput\" prefHeight=\"35.0\" prefWidth=\"200.0\" />\r\n            <Label layoutX=\"10.0\" layoutY=\"10.0\" text=\"Password\" />\r\n            <PasswordField fx:id=\"passwordInput\" prefHeight=\"35.0\" prefWidth=\"210.0\" />\r\n            <Label layoutX=\"10.0\" layoutY=\"27.0\" text=\"Repeat Password\" />\r\n            <PasswordField fx:id=\"repeatedpassInput\" layoutX=\"10.0\" layoutY=\"80.0\" prefHeight=\"35.0\" prefWidth=\"210.0\" />\r\n         </children>\r\n      </VBox>\r\n      <VBox alignment=\"CENTER\" layoutX=\"343.0\" layoutY=\"97.0\" prefHeight=\"108.0\" prefWidth=\"229.0\">\r\n         <children>\r\n            <Label alignment=\"CENTER\" contentDisplay=\"CENTER\" text=\"Sign Up\" />\r\n         </children>\r\n      </VBox>\r\n      <Button fx:id=\"backButton\" layoutX=\"52.0\" layoutY=\"49.0\" mnemonicParsing=\"false\" onAction=\"#handleBackButton\" prefHeight=\"35.0\" prefWidth=\"118.0\" text=\"&lt; Back\" />\r\n      <Label alignment=\"CENTER\" contentDisplay=\"CENTER\" layoutX=\"365.0\" layoutY=\"468.0\" text=\"Already have an account ?\" />\r\n      <Hyperlink fx:id=\"logInLink\" layoutX=\"512.0\" layoutY=\"465.0\" onAction=\"#handleLogInLink\" text=\"Log In\" />\r\n   </children>\r\n</AnchorPane>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/classes/signUp.fxml b/target/classes/signUp.fxml
+--- a/target/classes/signUp.fxml	(revision dd5c1663778abe83a4cdac111a1ff4e0f57b0b3f)
++++ b/target/classes/signUp.fxml	(date 1743386854286)
+@@ -1,33 +1,92 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ 
++<?import javafx.geometry.Insets?>
+ <?import javafx.scene.control.Button?>
+ <?import javafx.scene.control.Hyperlink?>
+ <?import javafx.scene.control.Label?>
+ <?import javafx.scene.control.PasswordField?>
+ <?import javafx.scene.control.TextField?>
++<?import javafx.scene.image.Image?>
++<?import javafx.scene.image.ImageView?>
+ <?import javafx.scene.layout.AnchorPane?>
++<?import javafx.scene.layout.HBox?>
++<?import javafx.scene.layout.StackPane?>
+ <?import javafx.scene.layout.VBox?>
++<?import javafx.scene.text.Font?>
++<?import javafx.scene.text.Text?>
+ 
+-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng.p3.SignUpController">
++<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@signUp.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng.p3.SignUpController">
+    <children>
+-      <Button fx:id="signUpButton" layoutX="383.0" layoutY="418.0" mnemonicParsing="false" onAction="#handleSignUpButton" prefHeight="35.0" prefWidth="150.0" text="Sign Up" />
+-      <VBox layoutX="353.0" layoutY="213.0" prefHeight="173.0" prefWidth="210.0">
++      <VBox alignment="TOP_CENTER" layoutX="225.0" layoutY="109.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="450.0" styleClass="backdrop">
+          <children>
+-            <Label text="Username" />
+-            <TextField fx:id="usernameInput" prefHeight="35.0" prefWidth="200.0" />
+-            <Label layoutX="10.0" layoutY="10.0" text="Password" />
+-            <PasswordField fx:id="passwordInput" prefHeight="35.0" prefWidth="210.0" />
+-            <Label layoutX="10.0" layoutY="27.0" text="Repeat Password" />
+-            <PasswordField fx:id="repeatedpassInput" layoutX="10.0" layoutY="80.0" prefHeight="35.0" prefWidth="210.0" />
+-         </children>
+-      </VBox>
+-      <VBox alignment="CENTER" layoutX="343.0" layoutY="97.0" prefHeight="108.0" prefWidth="229.0">
+-         <children>
+-            <Label alignment="CENTER" contentDisplay="CENTER" text="Sign Up" />
++            <VBox alignment="CENTER" prefHeight="108.0" prefWidth="229.0">
++               <children>
++                  <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-font-weight: bold;" text="Sign Up">
++                     <font>
++                        <Font size="33.0" />
++                     </font>
++                  </Label>
++                  <Text fx:id="errorMessage" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" />
++               </children>
++            </VBox>
++            <VBox prefHeight="224.0" prefWidth="250.0">
++               <children>
++                  <TextField fx:id="emailInput" layoutX="10.0" layoutY="27.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="210.0" styleClass="text-field" />
++                  <Label />
++                  <TextField fx:id="usernameInput" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="250.0" styleClass="text-field" />
++                  <Label layoutX="10.0" layoutY="10.0" />
++                  <StackPane alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="250.0">
++                     <children>
++                        <TextField fx:id="passwordVisibleField" minHeight="-Infinity" prefHeight="35.0" prefWidth="250.0" />
++                        <PasswordField fx:id="passwordInput" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="250.0" styleClass="password-field" />
++                        <Button fx:id="visibilityToggle" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseEntered="#handleVisibilityToggleEnter" onMouseExited="#handleVisibilityToggleExit" prefHeight="20.0" prefWidth="20.0" style="-fx-background-color: transparent;">
++                           <graphic>
++                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
++                                 <image>
++                                    <Image url="@icons/hidePassword.png" />
++                                 </image>
++                              </ImageView>
++                           </graphic>
++                        </Button>
++                     </children>
++                  </StackPane>
++                  <Label layoutX="10.0" layoutY="98.0" />
++                  <StackPane alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="250.0">
++                     <children>
++                        <TextField fx:id="passwordVisibleField1" minHeight="-Infinity" prefHeight="35.0" prefWidth="250.0" />
++                        <PasswordField fx:id="passwordInput1" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="250.0" styleClass="password-field" />
++                        <Button fx:id="visibilityToggle1" mnemonicParsing="false" onMouseEntered="#handleVisibilityToggle1Enter" onMouseExited="#handleVisibilityToggle1Exit" style="-fx-background-color: transparent;">
++                           <graphic>
++                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
++                                 <image>
++                                    <Image url="@icons/hidePassword.png" />
++                                 </image>
++                              </ImageView>
++                           </graphic>
++                        </Button>
++                     </children>
++                  </StackPane>
++               </children>
++            </VBox>
++            <Button fx:id="signUpButton" mnemonicParsing="false" onAction="#handleSignUpButton" prefHeight="35.0" prefWidth="150.0" text="Sign Up" />
++            <HBox alignment="CENTER" prefHeight="25.0" prefWidth="364.0">
++               <children>
++                  <Label alignment="CENTER" contentDisplay="CENTER" text="Already have an account ?">
++                     <font>
++                        <Font size="13.0" />
++                     </font>
++                  </Label>
++                  <Hyperlink fx:id="logInLink" alignment="CENTER" contentDisplay="CENTER" onAction="#handleLogInLink" prefHeight="23.0" prefWidth="45.0" text="Log In" />
++               </children>
++               <padding>
++                  <Insets top="10.0" />
++               </padding>
++            </HBox>
+          </children>
++         <padding>
++            <Insets left="100.0" right="100.0" />
++         </padding>
+       </VBox>
+       <Button fx:id="backButton" layoutX="52.0" layoutY="49.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="35.0" prefWidth="118.0" text="&lt; Back" />
+-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="365.0" layoutY="468.0" text="Already have an account ?" />
+-      <Hyperlink fx:id="logInLink" layoutX="512.0" layoutY="465.0" onAction="#handleLogInLink" text="Log In" />
+    </children>
+ </AnchorPane>
+Index: src/main/java/ca/ucalgary/seng/p3/GameApplication.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ca.ucalgary.seng.p3;\r\nimport javafx.application.Application;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.Scene;\r\nimport javafx.stage.Stage;\r\n\r\nimport java.io.IOException;\r\n\r\npublic class GameApplication extends Application{\r\n    @Override\r\n    public void start(Stage stage) throws IOException {\r\n        FXMLLoader fxmlLoader = new FXMLLoader(GameApplication.class.getResource(\"/home.fxml\"));\r\n        Scene scene = new Scene(fxmlLoader.load(), 900, 600);\r\n\r\n        stage.setTitle(\"Placeholder Title\");\r\n        stage.setScene(scene);\r\n        stage.show();\r\n    }\r\n\r\n    public static void main(String[] args) {\r\n        launch();\r\n    }\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/ca/ucalgary/seng/p3/GameApplication.java b/src/main/java/ca/ucalgary/seng/p3/GameApplication.java
+--- a/src/main/java/ca/ucalgary/seng/p3/GameApplication.java	(revision dd5c1663778abe83a4cdac111a1ff4e0f57b0b3f)
++++ b/src/main/java/ca/ucalgary/seng/p3/GameApplication.java	(date 1743386604972)
+@@ -9,7 +9,7 @@
+ public class GameApplication extends Application{
+     @Override
+     public void start(Stage stage) throws IOException {
+-        FXMLLoader fxmlLoader = new FXMLLoader(GameApplication.class.getResource("/home.fxml"));
++        FXMLLoader fxmlLoader = new FXMLLoader(GameApplication.class.getResource("/landing.fxml"));
+         Scene scene = new Scene(fxmlLoader.load(), 900, 600);
+ 
+         stage.setTitle("Placeholder Title");
+Index: src/main/resources/resetCredentials.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/resetCredentials.fxml b/src/main/resources/resetCredentials.fxml
+new file mode 100644
+--- /dev/null	(date 1743386605067)
++++ b/src/main/resources/resetCredentials.fxml	(date 1743386605067)
+@@ -0,0 +1,14 @@
++<?xml version="1.0" encoding="UTF-8"?>
++
++<?import java.lang.*?>
++<?import java.util.*?>
++<?import javafx.scene.*?>
++<?import javafx.scene.control.*?>
++<?import javafx.scene.layout.*?>
++
++<AnchorPane xmlns="http://javafx.com/javafx"
++            xmlns:fx="http://javafx.com/fxml"
++            fx:controller="ca.ucalgary.seng.p3.ResetCredentialsController"
++            prefHeight="400.0" prefWidth="600.0">
++
++</AnchorPane>
+Index: src/main/resources/signUp.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import javafx.scene.control.Button?>\r\n<?import javafx.scene.control.Hyperlink?>\r\n<?import javafx.scene.control.Label?>\r\n<?import javafx.scene.control.PasswordField?>\r\n<?import javafx.scene.control.TextField?>\r\n<?import javafx.scene.layout.AnchorPane?>\r\n<?import javafx.scene.layout.VBox?>\r\n\r\n<AnchorPane maxHeight=\"-Infinity\" maxWidth=\"-Infinity\" minHeight=\"-Infinity\" minWidth=\"-Infinity\" prefHeight=\"600.0\" prefWidth=\"900.0\" xmlns=\"http://javafx.com/javafx/23.0.1\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"ca.ucalgary.seng.p3.SignUpController\">\r\n   <children>\r\n      <Button fx:id=\"signUpButton\" layoutX=\"383.0\" layoutY=\"418.0\" mnemonicParsing=\"false\" onAction=\"#handleSignUpButton\" prefHeight=\"35.0\" prefWidth=\"150.0\" text=\"Sign Up\" />\r\n      <VBox layoutX=\"353.0\" layoutY=\"213.0\" prefHeight=\"173.0\" prefWidth=\"210.0\">\r\n         <children>\r\n            <Label text=\"Username\" />\r\n            <TextField fx:id=\"usernameInput\" prefHeight=\"35.0\" prefWidth=\"200.0\" />\r\n            <Label layoutX=\"10.0\" layoutY=\"10.0\" text=\"Password\" />\r\n            <PasswordField fx:id=\"passwordInput\" prefHeight=\"35.0\" prefWidth=\"210.0\" />\r\n            <Label layoutX=\"10.0\" layoutY=\"27.0\" text=\"Repeat Password\" />\r\n            <PasswordField fx:id=\"repeatedpassInput\" layoutX=\"10.0\" layoutY=\"80.0\" prefHeight=\"35.0\" prefWidth=\"210.0\" />\r\n         </children>\r\n      </VBox>\r\n      <VBox alignment=\"CENTER\" layoutX=\"343.0\" layoutY=\"97.0\" prefHeight=\"108.0\" prefWidth=\"229.0\">\r\n         <children>\r\n            <Label alignment=\"CENTER\" contentDisplay=\"CENTER\" text=\"Sign Up\" />\r\n         </children>\r\n      </VBox>\r\n      <Button fx:id=\"backButton\" layoutX=\"52.0\" layoutY=\"49.0\" mnemonicParsing=\"false\" onAction=\"#handleBackButton\" prefHeight=\"35.0\" prefWidth=\"118.0\" text=\"&lt; Back\" />\r\n      <Label alignment=\"CENTER\" contentDisplay=\"CENTER\" layoutX=\"365.0\" layoutY=\"468.0\" text=\"Already have an account ?\" />\r\n      <Hyperlink fx:id=\"logInLink\" layoutX=\"512.0\" layoutY=\"465.0\" onAction=\"#handleLogInLink\" text=\"Log In\" />\r\n   </children>\r\n</AnchorPane>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/signUp.fxml b/src/main/resources/signUp.fxml
+--- a/src/main/resources/signUp.fxml	(revision dd5c1663778abe83a4cdac111a1ff4e0f57b0b3f)
++++ b/src/main/resources/signUp.fxml	(date 1743386854286)
+@@ -1,33 +1,92 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ 
++<?import javafx.geometry.Insets?>
+ <?import javafx.scene.control.Button?>
+ <?import javafx.scene.control.Hyperlink?>
+ <?import javafx.scene.control.Label?>
+ <?import javafx.scene.control.PasswordField?>
+ <?import javafx.scene.control.TextField?>
++<?import javafx.scene.image.Image?>
++<?import javafx.scene.image.ImageView?>
+ <?import javafx.scene.layout.AnchorPane?>
++<?import javafx.scene.layout.HBox?>
++<?import javafx.scene.layout.StackPane?>
+ <?import javafx.scene.layout.VBox?>
++<?import javafx.scene.text.Font?>
++<?import javafx.scene.text.Text?>
+ 
+-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng.p3.SignUpController">
++<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@signUp.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng.p3.SignUpController">
+    <children>
+-      <Button fx:id="signUpButton" layoutX="383.0" layoutY="418.0" mnemonicParsing="false" onAction="#handleSignUpButton" prefHeight="35.0" prefWidth="150.0" text="Sign Up" />
+-      <VBox layoutX="353.0" layoutY="213.0" prefHeight="173.0" prefWidth="210.0">
++      <VBox alignment="TOP_CENTER" layoutX="225.0" layoutY="109.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="450.0" styleClass="backdrop">
+          <children>
+-            <Label text="Username" />
+-            <TextField fx:id="usernameInput" prefHeight="35.0" prefWidth="200.0" />
+-            <Label layoutX="10.0" layoutY="10.0" text="Password" />
+-            <PasswordField fx:id="passwordInput" prefHeight="35.0" prefWidth="210.0" />
+-            <Label layoutX="10.0" layoutY="27.0" text="Repeat Password" />
+-            <PasswordField fx:id="repeatedpassInput" layoutX="10.0" layoutY="80.0" prefHeight="35.0" prefWidth="210.0" />
+-         </children>
+-      </VBox>
+-      <VBox alignment="CENTER" layoutX="343.0" layoutY="97.0" prefHeight="108.0" prefWidth="229.0">
+-         <children>
+-            <Label alignment="CENTER" contentDisplay="CENTER" text="Sign Up" />
++            <VBox alignment="CENTER" prefHeight="108.0" prefWidth="229.0">
++               <children>
++                  <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-font-weight: bold;" text="Sign Up">
++                     <font>
++                        <Font size="33.0" />
++                     </font>
++                  </Label>
++                  <Text fx:id="errorMessage" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" />
++               </children>
++            </VBox>
++            <VBox prefHeight="224.0" prefWidth="250.0">
++               <children>
++                  <TextField fx:id="emailInput" layoutX="10.0" layoutY="27.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="210.0" styleClass="text-field" />
++                  <Label />
++                  <TextField fx:id="usernameInput" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="250.0" styleClass="text-field" />
++                  <Label layoutX="10.0" layoutY="10.0" />
++                  <StackPane alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="250.0">
++                     <children>
++                        <TextField fx:id="passwordVisibleField" minHeight="-Infinity" prefHeight="35.0" prefWidth="250.0" />
++                        <PasswordField fx:id="passwordInput" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="250.0" styleClass="password-field" />
++                        <Button fx:id="visibilityToggle" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseEntered="#handleVisibilityToggleEnter" onMouseExited="#handleVisibilityToggleExit" prefHeight="20.0" prefWidth="20.0" style="-fx-background-color: transparent;">
++                           <graphic>
++                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
++                                 <image>
++                                    <Image url="@icons/hidePassword.png" />
++                                 </image>
++                              </ImageView>
++                           </graphic>
++                        </Button>
++                     </children>
++                  </StackPane>
++                  <Label layoutX="10.0" layoutY="98.0" />
++                  <StackPane alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="250.0">
++                     <children>
++                        <TextField fx:id="passwordVisibleField1" minHeight="-Infinity" prefHeight="35.0" prefWidth="250.0" />
++                        <PasswordField fx:id="passwordInput1" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="250.0" styleClass="password-field" />
++                        <Button fx:id="visibilityToggle1" mnemonicParsing="false" onMouseEntered="#handleVisibilityToggle1Enter" onMouseExited="#handleVisibilityToggle1Exit" style="-fx-background-color: transparent;">
++                           <graphic>
++                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
++                                 <image>
++                                    <Image url="@icons/hidePassword.png" />
++                                 </image>
++                              </ImageView>
++                           </graphic>
++                        </Button>
++                     </children>
++                  </StackPane>
++               </children>
++            </VBox>
++            <Button fx:id="signUpButton" mnemonicParsing="false" onAction="#handleSignUpButton" prefHeight="35.0" prefWidth="150.0" text="Sign Up" />
++            <HBox alignment="CENTER" prefHeight="25.0" prefWidth="364.0">
++               <children>
++                  <Label alignment="CENTER" contentDisplay="CENTER" text="Already have an account ?">
++                     <font>
++                        <Font size="13.0" />
++                     </font>
++                  </Label>
++                  <Hyperlink fx:id="logInLink" alignment="CENTER" contentDisplay="CENTER" onAction="#handleLogInLink" prefHeight="23.0" prefWidth="45.0" text="Log In" />
++               </children>
++               <padding>
++                  <Insets top="10.0" />
++               </padding>
++            </HBox>
+          </children>
++         <padding>
++            <Insets left="100.0" right="100.0" />
++         </padding>
+       </VBox>
+       <Button fx:id="backButton" layoutX="52.0" layoutY="49.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="35.0" prefWidth="118.0" text="&lt; Back" />
+-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="365.0" layoutY="468.0" text="Already have an account ?" />
+-      <Hyperlink fx:id="logInLink" layoutX="512.0" layoutY="465.0" onAction="#handleLogInLink" text="Log In" />
+    </children>
+ </AnchorPane>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"4c541496-94b3-4c69-933a-cd960206f3dd\" name=\"Changes\" comment=\"navigation bar updated in settings, ; screen sizes for profile and match settings adjusted\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/HomeController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/HomeController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/SettingsController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/SettingsController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/StartGameController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/StartGameController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/HomeController.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/HomeController.class\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"module-info\" />\r\n        <option value=\"CSS File\" />\r\n        <option value=\"FxmlFile\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProblemsViewState\">\r\n    <option name=\"selectedTabId\" value=\"Security Analysis\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 3\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2uai3ajYYOM7IGmzLD9DKS5CMGd\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Application.GameApplication.executor\": \"Run\",\r\n    \"Application.HelloApplication.executor\": \"Run\",\r\n    \"Application.Main.executor\": \"Run\",\r\n    \"Application.ca.ucalgary.seng.p3.GameApplication.executor\": \"Run\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"RunOnceActivity.git.unshallow\": \"true\",\r\n    \"git-widget-placeholder\": \"gui\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"last_opened_file_path\": \"C:/Users/ebose/OneDrive/Desktop/SENG 300/seng300-w25-project/target/classes\",\r\n    \"list.type.of.created.stylesheet\": \"CSS\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"project.structure.last.edited\": \"Modules\",\r\n    \"project.structure.proportion\": \"0.15\",\r\n    \"project.structure.side.proportion\": \"0.2\",\r\n    \"settings.editor.selected.configurable\": \"preferences.JavaFX\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\ebose\\OneDrive\\Desktop\\SENG 300\\seng300-w25-project\\target\\classes\" />\r\n      <recent name=\"C:\\Users\\ebose\\OneDrive\\Desktop\\SENG 300\\seng300-w25-project\\target\\classes\\ca\\ucalgary\\seng\\p3\" />\r\n      <recent name=\"C:\\Users\\ebose\\OneDrive\\Desktop\\SENG 300\\seng300-w25-project\\p3\\target\\classes\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\ebose\\OneDrive\\Desktop\\SENG 300\\seng300-w25-project\\src\\main\\resources\" />\r\n      <recent name=\"C:\\Users\\ebose\\OneDrive\\Desktop\\SENG 300\\seng300-w25-project\\src\\main\\java\\ca\\ucalgary\\seng\\p3\" />\r\n      <recent name=\"C:\\Users\\ebose\\OneDrive\\Desktop\\SENG 300\\seng300-w25-project\\src\\main\\resources\\icons\" />\r\n      <recent name=\"C:\\Users\\sagek\\SENG300\\seng300-w25-project\\src\\main\\resources\\icons\" />\r\n      <recent name=\"C:\\Users\\ebose\\OneDrive\\Desktop\\SENG 300\\seng300-w25-project\\src\\main\\resources\\images\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.GameApplication\">\r\n    <configuration name=\"GameApplication\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"ca.ucalgary.seng.p3.GameApplication\" />\r\n      <module name=\"seng-w25-project\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"ca.ucalgary.seng.p3.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"ca.ucalgary.seng.p3.Main\" />\r\n      <module name=\"seng-w25-project\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"ca.ucalgary.seng.p3.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.GameApplication\" />\r\n        <item itemvalue=\"Application.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.23654.117\" />\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-IU-243.23654.117\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"4c541496-94b3-4c69-933a-cd960206f3dd\" name=\"Changes\" comment=\"\" />\r\n      <created>1742492887818</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1742492887818</updated>\r\n      <workItem from=\"1742492889197\" duration=\"3602000\" />\r\n      <workItem from=\"1742496867294\" duration=\"1846000\" />\r\n      <workItem from=\"1742506365183\" duration=\"791000\" />\r\n      <workItem from=\"1742514355024\" duration=\"1100000\" />\r\n      <workItem from=\"1742515484635\" duration=\"1203000\" />\r\n      <workItem from=\"1742516716496\" duration=\"1736000\" />\r\n      <workItem from=\"1742518498573\" duration=\"332000\" />\r\n      <workItem from=\"1742518846711\" duration=\"683000\" />\r\n      <workItem from=\"1742519561240\" duration=\"632000\" />\r\n      <workItem from=\"1742521471913\" duration=\"467000\" />\r\n      <workItem from=\"1742524021227\" duration=\"1448000\" />\r\n      <workItem from=\"1742531710659\" duration=\"7000\" />\r\n      <workItem from=\"1742531730916\" duration=\"46000\" />\r\n      <workItem from=\"1742531779689\" duration=\"19000\" />\r\n      <workItem from=\"1742531810516\" duration=\"1402000\" />\r\n      <workItem from=\"1742622003354\" duration=\"1510000\" />\r\n      <workItem from=\"1742693866100\" duration=\"1004000\" />\r\n      <workItem from=\"1742695138037\" duration=\"1627000\" />\r\n      <workItem from=\"1742708928094\" duration=\"7487000\" />\r\n      <workItem from=\"1742781694738\" duration=\"13037000\" />\r\n      <workItem from=\"1742939451631\" duration=\"7000\" />\r\n      <workItem from=\"1742939470987\" duration=\"3222000\" />\r\n      <workItem from=\"1742943710814\" duration=\"823000\" />\r\n      <workItem from=\"1743048768859\" duration=\"21000\" />\r\n      <workItem from=\"1743141125349\" duration=\"3640000\" />\r\n      <workItem from=\"1743144979172\" duration=\"8359000\" />\r\n      <workItem from=\"1743181913814\" duration=\"17224000\" />\r\n      <workItem from=\"1743224203506\" duration=\"829000\" />\r\n      <workItem from=\"1743229579285\" duration=\"9476000\" />\r\n      <workItem from=\"1743267200746\" duration=\"795000\" />\r\n      <workItem from=\"1743268139636\" duration=\"18399000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Added connect4.fxml and connect 4.css, started working on connect 4 game page\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742532772017</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742532772017</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"made a basic layout for the connect4.fxml\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742533212766</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742533212766</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"created settigns.fxml\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742623190016</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742623190016</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Added profile.fxml and made changes to it for the settings screen\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742623267821</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742623267821</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Added profile.fxml and made changes to it for the settings screen\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742623318001</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742623318001</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Added the profileController.java and SettingsController.java classes for the settings and profile fxml files\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742623471939</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742623471939</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"files moved in the right location\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742685852513</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742685852513</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"landing page added\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742689484749</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742689484749</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"logIn &amp; signUp pages added\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742694853294</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742694853294</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"logIn &amp; signUp pages added\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742694864153</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742694864153</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"dashboard added with games\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742788888846</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742788888846</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"dashboard added with games\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742788903961</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742788903961</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00013\" summary=\"Used PageNavigator class to add the functionality of using the back button in SettingsController.java\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742941312206</created>\r\n      <option name=\"number\" value=\"00013\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742941312206</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00014\" summary=\"Added functionality to handle save and logout buttons using the page navigator class\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742941601330</created>\r\n      <option name=\"number\" value=\"00014\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742941601330</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00015\" summary=\"Updated the handleLogout() method\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742941639144</created>\r\n      <option name=\"number\" value=\"00015\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00015\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742941639144</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00016\" summary=\"updated the PageNavigator.java for testing\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742941831550</created>\r\n      <option name=\"number\" value=\"00016\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00016\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742941831550</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00017\" summary=\"Tested settings screen implementation, username is not showing up. haven't handled avatar yet, functionality for save, delete, lacks logic\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742942224104</created>\r\n      <option name=\"number\" value=\"00017\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00017\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742942224104</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00018\" summary=\"tested connect4 game play screen, need to implement the chat logic, new game logic and abort game logic\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742942333000</created>\r\n      <option name=\"number\" value=\"00018\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00018\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742942333000</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00019\" summary=\"testing files\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742943597538</created>\r\n      <option name=\"number\" value=\"00019\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00019\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742943597538</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00020\" summary=\"testing files\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742943621385</created>\r\n      <option name=\"number\" value=\"00020\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00020\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742943621385</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00021\" summary=\"Changed image location for the start game screens, added game request notification button, edited menu buttons list\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742961049245</created>\r\n      <option name=\"number\" value=\"00021\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00021\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742961049245</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00022\" summary=\"added go player page\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1743157614958</created>\r\n      <option name=\"number\" value=\"00022\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00022\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1743157614958</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00023\" summary=\"dashboard navigation to game pages\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1743201080776</created>\r\n      <option name=\"number\" value=\"00023\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00023\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1743201080776</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00024\" summary=\"navigation functionality from landing to dashboard added\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1743272253640</created>\r\n      <option name=\"number\" value=\"00024\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00024\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1743272253640</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00025\" summary=\"navigation functionality from landing to dashboard added\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1743272270951</created>\r\n      <option name=\"number\" value=\"00025\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00025\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1743272270951</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00026\" summary=\"updated navigation bar in start game pages\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1743289961140</created>\r\n      <option name=\"number\" value=\"00026\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00026\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1743289961140</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00027\" summary=\"navigation bar updated in settings, ; screen sizes for profile and match settings adjusted\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1743294616078</created>\r\n      <option name=\"number\" value=\"00027\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00027\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1743294616079</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00028\" summary=\"navigation bar updated in settings, ; screen sizes for profile and match settings adjusted\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1743294647928</created>\r\n      <option name=\"number\" value=\"00028\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00028\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1743294647928</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"29\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"project successfully restructured\" />\r\n    <MESSAGE value=\"Added a draft UI screen for the Connect 4 game interface\" />\r\n    <MESSAGE value=\"Added connect4.fxml and connect 4.css, started working on connect 4 game page\" />\r\n    <MESSAGE value=\"made a basic layout for the connect4.fxml\" />\r\n    <MESSAGE value=\"created settigns.fxml\" />\r\n    <MESSAGE value=\"Added profile.fxml and made changes to it for the settings screen\" />\r\n    <MESSAGE value=\"Added the profileController.java and SettingsController.java classes for the settings and profile fxml files\" />\r\n    <MESSAGE value=\"files moved in the right location\" />\r\n    <MESSAGE value=\"landing page added\" />\r\n    <MESSAGE value=\"logIn &amp; signUp pages added\" />\r\n    <MESSAGE value=\"dashboard added with games\" />\r\n    <MESSAGE value=\"testing some files\" />\r\n    <MESSAGE value=\"Used PageNavigator class to add the functionality of using the back button in SettingsController.java\" />\r\n    <MESSAGE value=\"Added functionality to handle save and logout buttons using the page navigator class\" />\r\n    <MESSAGE value=\"Updated the handleLogout() method\" />\r\n    <MESSAGE value=\"updated the PageNavigator.java for testing\" />\r\n    <MESSAGE value=\"Tested settings screen implementation, username is not showing up. haven't handled avatar yet, functionality for save, delete, lacks logic\" />\r\n    <MESSAGE value=\"tested connect4 game play screen, need to implement the chat logic, new game logic and abort game logic\" />\r\n    <MESSAGE value=\"testing files\" />\r\n    <MESSAGE value=\"Changed image location for the start game screens, added game request notification button, edited menu buttons list\" />\r\n    <MESSAGE value=\"added go player page\" />\r\n    <MESSAGE value=\"dashboard navigation to game pages\" />\r\n    <MESSAGE value=\"navigation functionality from landing to dashboard added\" />\r\n    <MESSAGE value=\"updated navigation bar in start game pages\" />\r\n    <MESSAGE value=\"navigation bar updated in settings, ; screen sizes for profile and match settings adjusted\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"navigation bar updated in settings, ; screen sizes for profile and match settings adjusted\" />\r\n  </component>\r\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\r\n    <expand />\r\n    <select />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision dd5c1663778abe83a4cdac111a1ff4e0f57b0b3f)
++++ b/.idea/workspace.xml	(date 1743386958237)
+@@ -5,11 +5,26 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="navigation bar updated in settings, ; screen sizes for profile and match settings adjusted">
++      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/ResetCredentialsController.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/hidePassword.png" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/seePassword.png" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/resetCredentials.fxml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/signUp.css" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/HomeController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/SettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/SettingsController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/StartGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/StartGameController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/HomeController.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GameApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GameApplication.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LogInController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/SignUpController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/logIn.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logIn.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/signUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/signUp.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/GameApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/GameApplication.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/LogInController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/LogInController.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/SettingsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/SettingsController.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/SignUpController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/SignUpController.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/StartGameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/StartGameController.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/logIn.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/logIn.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/signUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/signUp.fxml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -27,6 +42,11 @@
+     </option>
+   </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="dd5c1663778abe83a4cdac111a1ff4e0f57b0b3f" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="MarkdownSettingsMigration">
+@@ -52,7 +72,7 @@
+     "RunOnceActivity.OpenProjectViewOnStart": "true",
+     "RunOnceActivity.ShowReadmeOnStart": "true",
+     "RunOnceActivity.git.unshallow": "true",
+-    "git-widget-placeholder": "gui",
++    "git-widget-placeholder": "gui-signup-and-navigation",
+     "kotlin-language-version-configured": "true",
+     "last_opened_file_path": "C:/Users/ebose/OneDrive/Desktop/SENG 300/seng300-w25-project/target/classes",
+     "list.type.of.created.stylesheet": "CSS",
+@@ -75,9 +95,9 @@
+       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\p3\target\classes" />
+     </key>
+     <key name="MoveFile.RECENT_KEYS">
++      <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources\icons" />
+       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources" />
+       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\java\ca\ucalgary\seng\p3" />
+-      <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources\icons" />
+       <recent name="C:\Users\sagek\SENG300\seng300-w25-project\src\main\resources\icons" />
+       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources\images" />
+     </key>
+@@ -399,7 +419,19 @@
+       <map>
+         <entry key="MAIN">
+           <value>
+-            <State />
++            <State>
++              <option name="FILTERS">
++                <map>
++                  <entry key="branch">
++                    <value>
++                      <list>
++                        <option value="gui" />
++                      </list>
++                    </value>
++                  </entry>
++                </map>
++              </option>
++            </State>
+           </value>
+         </entry>
+       </map>
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><project xmlns=\"http://maven.apache.org/POM/4.0.0\"\r\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">\r\n    <modelVersion>4.0.0</modelVersion>\r\n\r\n    <groupId>ca.ucalgary.seng.p3</groupId>\r\n    <artifactId>seng-w25-project</artifactId>\r\n    <version>1.0-SNAPSHOT</version>\r\n\r\n    <properties>\r\n        <java.version>23</java.version>\r\n        <maven.compiler.source>23</maven.compiler.source>\r\n        <maven.compiler.target>23</maven.compiler.target>\r\n    </properties>\r\n\r\n    <dependencies>\r\n        <!-- JavaFX Dependencies -->\r\n        <dependency>\r\n            <groupId>org.openjfx</groupId>\r\n            <artifactId>javafx-base</artifactId>\r\n            <version>21.0.2</version>\r\n        </dependency>\r\n\r\n        <dependency>\r\n            <groupId>org.openjfx</groupId>\r\n            <artifactId>javafx-controls</artifactId>\r\n            <version>21.0.2</version>\r\n        </dependency>\r\n\r\n        <dependency>\r\n            <groupId>org.openjfx</groupId>\r\n            <artifactId>javafx-fxml</artifactId>\r\n            <version>21.0.2</version>\r\n        </dependency>\r\n\r\n        <dependency>\r\n            <groupId>org.openjfx</groupId>\r\n            <artifactId>javafx-graphics</artifactId>\r\n            <version>21.0.2</version>\r\n        </dependency>\r\n    </dependencies>\r\n\r\n    <build>\r\n        <plugins>\r\n            <!-- JavaFX Maven Plugin (Allows running JavaFX applications with Maven) -->\r\n            <plugin>\r\n                <groupId>org.openjfx</groupId>\r\n                <artifactId>javafx-maven-plugin</artifactId>\r\n                <version>0.0.8</version>\r\n                <executions>\r\n                    <execution>\r\n                        <goals>\r\n                            <goal>run</goal>\r\n                        </goals>\r\n                    </execution>\r\n                </executions>\r\n                <configuration>\r\n                    <mainClass>ca.ucalgary.seng.p3.Main</mainClass>\r\n                </configuration>\r\n            </plugin>\r\n        </plugins>\r\n    </build>\r\n</project>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pom.xml b/pom.xml
+--- a/pom.xml	(revision dd5c1663778abe83a4cdac111a1ff4e0f57b0b3f)
++++ b/pom.xml	(date 1743386604988)
+@@ -18,25 +18,25 @@
+         <dependency>
+             <groupId>org.openjfx</groupId>
+             <artifactId>javafx-base</artifactId>
+-            <version>21.0.2</version>
++            <version>23.0.1</version>
+         </dependency>
+ 
+         <dependency>
+             <groupId>org.openjfx</groupId>
+             <artifactId>javafx-controls</artifactId>
+-            <version>21.0.2</version>
++            <version>23.0.1</version>
+         </dependency>
+ 
+         <dependency>
+             <groupId>org.openjfx</groupId>
+             <artifactId>javafx-fxml</artifactId>
+-            <version>21.0.2</version>
++            <version>23.0.1</version>
+         </dependency>
+ 
+         <dependency>
+             <groupId>org.openjfx</groupId>
+             <artifactId>javafx-graphics</artifactId>
+-            <version>21.0.2</version>
++            <version>23.0.1</version>
+         </dependency>
+     </dependencies>
+ 
+Index: src/main/resources/logIn.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import javafx.scene.control.Button?>\r\n<?import javafx.scene.control.Hyperlink?>\r\n<?import javafx.scene.control.Label?>\r\n<?import javafx.scene.control.PasswordField?>\r\n<?import javafx.scene.control.TextField?>\r\n<?import javafx.scene.layout.AnchorPane?>\r\n<?import javafx.scene.layout.VBox?>\r\n\r\n<AnchorPane maxHeight=\"-Infinity\" maxWidth=\"-Infinity\" minHeight=\"-Infinity\" minWidth=\"-Infinity\" prefHeight=\"600.0\" prefWidth=\"900.0\" xmlns=\"http://javafx.com/javafx/23.0.1\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"ca.ucalgary.seng.p3.LogInController\">\r\n    <children>\r\n        <Button fx:id=\"logInButton\" layoutX=\"209.0\" layoutY=\"389.0\" mnemonicParsing=\"false\" onAction=\"#handleLogInButton\" prefHeight=\"35.0\" prefWidth=\"150.0\" text=\"Log In\" focusTraversable=\"false\"/>\r\n        <VBox layoutX=\"179.0\" layoutY=\"234.0\" prefHeight=\"173.0\" prefWidth=\"210.0\">\r\n            <children>\r\n                <Label text=\"Username\" />\r\n                <TextField fx:id=\"usernameInput\" prefHeight=\"35.0\" prefWidth=\"200.0\" />\r\n                <Label layoutX=\"10.0\" layoutY=\"10.0\" text=\"Password\" />\r\n                <PasswordField fx:id=\"passwordInput\" prefHeight=\"35.0\" prefWidth=\"210.0\" />\r\n            </children>\r\n        </VBox>\r\n        <VBox alignment=\"CENTER\" layoutX=\"179.0\" layoutY=\"133.0\" prefHeight=\"80.0\" prefWidth=\"229.0\">\r\n            <children>\r\n                <Label alignment=\"CENTER\" contentDisplay=\"CENTER\" text=\"Log In\" />\r\n            </children>\r\n        </VBox>\r\n        <Button fx:id=\"backButton\" layoutX=\"52.0\" layoutY=\"49.0\" mnemonicParsing=\"false\" onAction=\"#handleBackButton\" prefHeight=\"35.0\" prefWidth=\"118.0\" text=\"&lt; Back\" />\r\n      <VBox alignment=\"CENTER\" layoutX=\"568.0\" layoutY=\"152.0\" prefHeight=\"91.0\" prefWidth=\"229.0\">\r\n         <children>\r\n            <Label alignment=\"CENTER\" contentDisplay=\"CENTER\" text=\"Guest Log In\" />\r\n            <Label alignment=\"CENTER\" contentDisplay=\"CENTER\" layoutX=\"10.0\" layoutY=\"10.0\" />\r\n         </children>\r\n      </VBox>\r\n      <VBox layoutX=\"578.0\" layoutY=\"260.0\" prefHeight=\"80.0\" prefWidth=\"210.0\">\r\n         <children>\r\n            <Label text=\"Username\" />\r\n            <TextField fx:id=\"guestUsername\" prefHeight=\"35.0\" prefWidth=\"200.0\" />\r\n         </children>\r\n      </VBox>\r\n      <Button fx:id=\"guestLogInButton\" layoutX=\"600.0\" layoutY=\"353.0\" mnemonicParsing=\"false\" onAction=\"#handleGuestLogInButton\" prefHeight=\"35.0\" prefWidth=\"150.0\" text=\"Log In as Guest\" />\r\n          <Label alignment=\"CENTER\" contentDisplay=\"CENTER\" layoutX=\"192.0\" layoutY=\"439.0\" text=\"Don't have an account yet?\" />\r\n          <Hyperlink fx:id=\"signUpLink\" layoutX=\"334.0\" layoutY=\"436.0\" onAction=\"#handleSignUpLink\" text=\"Sign Up\" />\r\n    </children>\r\n</AnchorPane>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/logIn.fxml b/src/main/resources/logIn.fxml
+--- a/src/main/resources/logIn.fxml	(revision dd5c1663778abe83a4cdac111a1ff4e0f57b0b3f)
++++ b/src/main/resources/logIn.fxml	(date 1743386605079)
+@@ -1,44 +1,95 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ 
++<?import javafx.geometry.Insets?>
+ <?import javafx.scene.control.Button?>
+ <?import javafx.scene.control.Hyperlink?>
+ <?import javafx.scene.control.Label?>
+ <?import javafx.scene.control.PasswordField?>
+ <?import javafx.scene.control.TextField?>
++<?import javafx.scene.image.Image?>
++<?import javafx.scene.image.ImageView?>
+ <?import javafx.scene.layout.AnchorPane?>
++<?import javafx.scene.layout.HBox?>
++<?import javafx.scene.layout.StackPane?>
+ <?import javafx.scene.layout.VBox?>
++<?import javafx.scene.shape.Line?>
++<?import javafx.scene.text.Font?>
++<?import javafx.scene.text.Text?>
+ 
+-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng.p3.LogInController">
++<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@signUp.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng.p3.LogInController">
+     <children>
+-        <Button fx:id="logInButton" layoutX="209.0" layoutY="389.0" mnemonicParsing="false" onAction="#handleLogInButton" prefHeight="35.0" prefWidth="150.0" text="Log In" focusTraversable="false"/>
+-        <VBox layoutX="179.0" layoutY="234.0" prefHeight="173.0" prefWidth="210.0">
+-            <children>
+-                <Label text="Username" />
+-                <TextField fx:id="usernameInput" prefHeight="35.0" prefWidth="200.0" />
+-                <Label layoutX="10.0" layoutY="10.0" text="Password" />
+-                <PasswordField fx:id="passwordInput" prefHeight="35.0" prefWidth="210.0" />
+-            </children>
+-        </VBox>
+-        <VBox alignment="CENTER" layoutX="179.0" layoutY="133.0" prefHeight="80.0" prefWidth="229.0">
+-            <children>
+-                <Label alignment="CENTER" contentDisplay="CENTER" text="Log In" />
+-            </children>
+-        </VBox>
+-        <Button fx:id="backButton" layoutX="52.0" layoutY="49.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="35.0" prefWidth="118.0" text="&lt; Back" />
+-      <VBox alignment="CENTER" layoutX="568.0" layoutY="152.0" prefHeight="91.0" prefWidth="229.0">
+-         <children>
+-            <Label alignment="CENTER" contentDisplay="CENTER" text="Guest Log In" />
+-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" />
+-         </children>
+-      </VBox>
+-      <VBox layoutX="578.0" layoutY="260.0" prefHeight="80.0" prefWidth="210.0">
+-         <children>
+-            <Label text="Username" />
+-            <TextField fx:id="guestUsername" prefHeight="35.0" prefWidth="200.0" />
++        <Button fx:id="backButton" layoutX="52.0" layoutY="49.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="35.0" prefWidth="118.0" text="&lt; Back" />
++      <VBox alignment="CENTER" layoutX="235.0" layoutY="111.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="451.0" prefWidth="450.0" styleClass="backdrop" stylesheets="@signUp.css">
++         <padding>
++            <Insets left="100.0" right="100.0" />
++         </padding>
++         <children>
++              <VBox alignment="CENTER" prefHeight="80.0" prefWidth="229.0">
++                  <children>
++                      <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-font-weight: bold;" text="Log In">
++                     <font>
++                        <Font size="33.0" />
++                     </font>
++                  </Label>
++                  <Text fx:id="errorMessage" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" />
++                  </children>
++              </VBox>
++              <VBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="148.0" prefWidth="250.0">
++                  <children>
++                      <Label />
++                      <TextField fx:id="usernameInput" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="250.0" styleClass="text-field" />
++                      <Label layoutX="10.0" layoutY="10.0" />
++                  <StackPane alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="250.0">
++                     <children>
++                            <PasswordField fx:id="passwordInput" prefHeight="35.0" prefWidth="210.0" styleClass="password-field" />
++                        <TextField fx:id="passwordVisibleField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="250.0" />
++                        <Button fx:id="visibilityToggle" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseEntered="#handleVisibilityToggleEnter" onMouseExited="#handleVisibilityToggleExit" prefHeight="20.0" prefWidth="20.0" style="-fx-background-color: transparent;">
++                           <graphic>
++                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
++                                 <image>
++                                    <Image url="@icons/hidePassword.png" />
++                                 </image>
++                              </ImageView>
++                           </graphic>
++                        </Button>
++                     </children>
++                  </StackPane>
++                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
++                     <children>
++                        <Hyperlink fx:id="resetCredentialsLink" alignment="CENTER" onAction="#handleResetCredentialsLink" text="Forgot your username or password?" />
++                     </children>
++                  </HBox>
++                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="115.0" prefHeight="100.0" prefWidth="200.0" />
++                  </children>
++              </VBox>
++              <Button fx:id="logInButton" focusTraversable="false" mnemonicParsing="false" onAction="#handleLogInButton" prefHeight="35.0" prefWidth="150.0" text="Log In">
++               <VBox.margin>
++                  <Insets />
++               </VBox.margin>
++            </Button>
++            <HBox alignment="CENTER" prefHeight="56.0" prefWidth="248.0">
++               <children>
++                      <Label contentDisplay="CENTER" text="Don't have an account yet?">
++                     <font>
++                        <Font size="13.0" />
++                     </font>
++                  </Label>
++                      <Hyperlink fx:id="signUpLink" alignment="TOP_RIGHT" contentDisplay="RIGHT" onAction="#handleSignUpLink" text="Sign Up" />
++               </children>
++            </HBox>
++            <HBox alignment="CENTER" prefHeight="25.0" prefWidth="248.0">
++               <children>
++                  <Line startX="-100.0" stroke="#978e8e" />
++                  <Text fill="#978e8e" strokeType="OUTSIDE" strokeWidth="0.0" text="    OR    " />
++                  <Line layoutX="111.0" layoutY="11.0" startX="-100.0" stroke="#978e8e" />
++               </children>
++            </HBox>
++            <Button fx:id="logInButton1" focusTraversable="false" layoutX="160.0" layoutY="222.0" mnemonicParsing="false" onAction="#handleGuestLogInButton" prefHeight="35.0" prefWidth="150.0" text="Log In As Guest">
++               <VBox.margin>
++                  <Insets top="20.0" />
++               </VBox.margin>
++            </Button>
+          </children>
+       </VBox>
+-      <Button fx:id="guestLogInButton" layoutX="600.0" layoutY="353.0" mnemonicParsing="false" onAction="#handleGuestLogInButton" prefHeight="35.0" prefWidth="150.0" text="Log In as Guest" />
+-          <Label alignment="CENTER" contentDisplay="CENTER" layoutX="192.0" layoutY="439.0" text="Don't have an account yet?" />
+-          <Hyperlink fx:id="signUpLink" layoutX="334.0" layoutY="436.0" onAction="#handleSignUpLink" text="Sign Up" />
+     </children>
+ </AnchorPane>
