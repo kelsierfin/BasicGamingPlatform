@@ -3,116 +3,54 @@ package ca.ucalgary.seng.p3;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
 
 public class StartGameController {
-
-    @FXML
-    private Label titleLabel;
-
-    @FXML
-    private VBox menuPopup;
-
-    @FXML
-    private Button menuButton;
-
-    @FXML
-    private Button profileButton;
 
     @FXML
     private Button findMatchButton;
 
     @FXML
-    private Button dashboardButton;
-
-    @FXML
-    private Button leaderboardButton;
-
-    @FXML
-    private Button findAPlayerButton;
-
-    @FXML
-    private Button settingsButton;
-
-    @FXML
-    private Button gameRulesButton;
-
-    @FXML
-    private Button bellButton;
-
-    @FXML
     private ImageView boardImage;
 
     @FXML
-    private void initialize() {
-        menuPopup.setVisible(false);
-    }
+    private NavigationBar navBar;
 
-    // Called when the menu button is clicked
+    private String targetPage;
+
+    private String gameType;
+
+
     @FXML
-    private void handleMenuButton() {
-        // Toggle visibility of the popup
-        menuPopup.setVisible(!menuPopup.isVisible());
-    }
+    private void initialize() {
+        gameType = HomeController.selectedGameType;
 
-    // Method to load the appropriate image based on the game
-    private void loadGameImage(String gameType) {
         String imagePath = "";
-
-        // Set the image path based on the current game type
-        if ("tictactoe".equals(gameType)) {
-            imagePath = "/icons/tictactoeimage.png";  // Path for Tic Tac Toe image
-        } else if ("go".equals(gameType)) {
-            imagePath = "/icons/goimage.png";  // Path for Go image
-        } else if ("chess".equals(gameType)) {
-            imagePath = "/icons/chessimage.png";  // Path for Chess image
-        } else if ("connect4".equals(gameType)) {
-            imagePath = "/icons/connect4image.png";  // Path for Connect 4 image
+        // Determine the start game screen image and the actual game page fxml
+        if ("tictactoe".equalsIgnoreCase(gameType)) {
+            imagePath = "/icons/tictactoe.png";
+            targetPage = "tictactoe";      // Navigates to tictactoe.fxml
+        } else if ("chess".equalsIgnoreCase(gameType)) {
+            imagePath = "/icons/chessimage.jpg";
+            targetPage = "Chess";          // Navigates to Chess.fxml
+        } else if ("connect4".equalsIgnoreCase(gameType)) {
+            imagePath = "/icons/connect4image.png";
+            targetPage = "connect4";       // Navigates to connect4.fxml
+        } else if ("go".equalsIgnoreCase(gameType)) {
+            imagePath = "/icons/gogameimage.png";
+            targetPage = "go";             // Navigates to go.fxml
+        } else {
+            // Unknown game type; do nothing, currently no error messages
+            return;
         }
 
-        // Load the image and set it to the ImageView
-        Image gameImage = new Image(getClass().getResource(imagePath).toExternalForm());
-        boardImage.setImage(gameImage);
-    }
-
-    // Method to handle page navigation and load the appropriate image
-    public void handleGamePage(String gameType) {
-        loadGameImage(gameType);  // Load the appropriate image for the game
-    }
-
-    // More event handlers for other buttons, unfinished:
-    @FXML
-    private void handleProfileButton() {
+        // Load the appropriate image for the start game screen
+        boardImage.setImage(new Image(getClass().getResource(imagePath).toExternalForm()));
     }
 
     @FXML
-    private void handleFindMatch() {
-    }
-
-    @FXML
-    private void handleDashboardButton() {
-    }
-
-    @FXML
-    private void handleLeaderboardButton() {
-    }
-
-    @FXML
-    private void handleFindAPlayerButton() {
-    }
-
-    @FXML
-    private void handleSettingsButton() {
-    }
-
-    @FXML
-    private void handleGameRulesButton() {
-    }
-
-    @FXML
-    private void handleBellButton() {
+    private void handleFindMatch(ActionEvent event) {
+        PageNavigator.navigateTo(targetPage);
     }
 }

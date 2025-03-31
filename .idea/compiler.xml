@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="seng-w25-project" target="21" />
+      <module name="seng-w25-project" target="23" />
     </bytecodeTargetLevel>
   </component>
 </project>

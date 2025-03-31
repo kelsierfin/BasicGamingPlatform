@@ -40,6 +40,7 @@ public class MatchHistoryController {
     private void handleRematchButton() {
         // This method would be connected to the rematch buttons
         System.out.println("Rematch requested");
-        // In a real implementation, this would initiate a rematch request
+        // Integration team - this should initiate a rematch request
     }
+
 }

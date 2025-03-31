@@ -4,8 +4,229 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="Changed image location for the start game screens, added game request notification button, edited menu buttons list">
+    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="Deleted `dashboard.fxml` and outdated IntelliJ project files to clean up the repository. These files were no longer being utilized and were unnecessarily cluttering the project structure.">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2025-03-30_7_43_p_m__[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2025-03-30_7_43_p_m___Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2025-03-30_7_29_p_m__[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2025-03-30_7_29_p_m___Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2025-03-30_7_37_p_m__[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2025-03-30_7_37_p_m__[Changes]1/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2025-03-30_7_37_p_m___Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2025-03-30_7_37_p_m___Changes_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2025-03-30_7_47_p_m__[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2025-03-30_7_47_p_m___Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-25_7_47_p_m__[Changes]/GameApplication.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-25_7_47_p_m__[Changes]/LandingController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-25_7_47_p_m__[Changes]/LeaderBoardController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-25_7_47_p_m__[Changes]/LogInController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-25_7_47_p_m__[Changes]/PageNavigator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-25_7_47_p_m__[Changes]/SignUpController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-25_7_47_p_m__[Changes]/chess.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-25_7_47_p_m__[Changes]/connect4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-25_7_47_p_m__[Changes]/go.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-25_7_47_p_m__[Changes]/profile.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-25_7_47_p_m__[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-25_7_47_p_m__[Changes]/tictactoe.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-26_9_23_a_m__[Changes]/Connect4Controller.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-26_9_23_a_m__[Changes]/GameApplication.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-26_9_23_a_m__[Changes]/PageNavigator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-26_9_23_a_m__[Changes]/ProfileController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-26_9_23_a_m__[Changes]/SettingsController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-26_9_23_a_m__[Changes]/TicTacToeController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-26_9_23_a_m__[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-26_9_23_a_m__[Changes]1/Connect4Controller.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-26_9_23_a_m__[Changes]1/GameApplication.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-26_9_23_a_m__[Changes]1/PageNavigator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-26_9_23_a_m__[Changes]1/ProfileController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-26_9_23_a_m__[Changes]1/SettingsController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-26_9_23_a_m__[Changes]1/TicTacToeController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-26_9_23_a_m__[Changes]1/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-26_9_23_a_m___Changes_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-29_10_38_a_m__[Changes]/HomeController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-29_10_38_a_m__[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-29_10_38_a_m___Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-29_11_10_a_m__[Changes]/Chess Bishop Selected.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-29_11_10_a_m__[Changes]/Chess Bishop.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-29_11_10_a_m__[Changes]/Chess Castle Selected.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-29_11_10_a_m__[Changes]/Chess Castle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-29_11_10_a_m__[Changes]/Chess Horse Selected.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-29_11_10_a_m__[Changes]/Chess Horse.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-29_11_10_a_m__[Changes]/Chess Pawn Selected.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-29_11_10_a_m__[Changes]/Chess Pawn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-29_11_10_a_m__[Changes]/Chess Queen Selected.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-29_11_10_a_m__[Changes]/Chess Queen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-29_11_10_a_m__[Changes]/Chess king Selected.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-29_11_10_a_m__[Changes]/Chess king.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-29_3_15_a_m__[Changes]/Chess Bishop Selected.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-29_3_15_a_m__[Changes]/Chess Bishop.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-29_3_15_a_m__[Changes]/Chess Castle Selected.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-29_3_15_a_m__[Changes]/Chess Castle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-29_3_15_a_m__[Changes]/Chess Horse Selected.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-29_3_15_a_m__[Changes]/Chess Horse.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-29_3_15_a_m__[Changes]/Chess Pawn Selected.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-29_3_15_a_m__[Changes]/Chess Pawn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-29_3_15_a_m__[Changes]/Chess Queen Selected.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-29_3_15_a_m__[Changes]/Chess Queen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-29_3_15_a_m__[Changes]/Chess king Selected.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-29_3_15_a_m__[Changes]/Chess king.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-30_7_39_p_m__[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-30_7_39_p_m___Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_25_2025_5_00_PM_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_25_2025_5_00_PM__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_25_2025_5_21_PM_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_25_2025_5_21_PM__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/ChessController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/FriendFinderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GameCard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GameLauncher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/HomeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LeaderBoardHome.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/NavigationBar.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Chess.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Game Assets/Chess Bishop Selected.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Game Assets/Chess Bishop.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Game Assets/Chess Castle Selected.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Game Assets/Chess Castle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Game Assets/Chess Horse Selected.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Game Assets/Chess Horse.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Game Assets/Chess Pawn Selected.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Game Assets/Chess Pawn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Game Assets/Chess Queen Selected.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Game Assets/Chess Queen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Game Assets/Chess king Selected.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Game Assets/Chess king.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/card.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/game_card.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/go.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/home.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/chess.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/connect4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/go.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/hidePassword.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/seePassword.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/tic tac toe.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/leaderboard_home.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/navigationbar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/navigationbar.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/player_Finder.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/signUp.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/target/classes/icons/hidePassword.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/target/classes/icons/seePassword.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Chess.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/ChessGUI.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Game Assets/Chess Bishop Selected.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Game Assets/Chess Bishop.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Game Assets/Chess Castle Selected.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Game Assets/Chess Castle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Game Assets/Chess Horse Selected.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Game Assets/Chess Horse.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Game Assets/Chess Pawn Selected.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Game Assets/Chess Pawn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Game Assets/Chess Queen Selected.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Game Assets/Chess Queen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Game Assets/Chess king Selected.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Game Assets/Chess king.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/ChessController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/FriendFinderController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/GameCard.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/GameLauncher.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/HomeController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/LeaderBoardHome.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/MatchHistoryController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/NavigationBar.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/card.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/game_card.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/home.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/leaderboard_home.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/match_history.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/navigationbar.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/player_Finder.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/profile_settings.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/settings.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/signUp.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-20_10_58_p_m__[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-20_10_58_p_m___Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-20_11_00_p_m__[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-20_11_00_p_m___Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-22_5_18_p_m__[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-22_5_18_p_m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-26_9_23_a_m___Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-25_7_47_p_m___Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/Connect4Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/Connect4Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GameApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GameApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LandingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LandingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LeaderBoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LeaderBoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LogInController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/MatchHistoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/MatchHistoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/PageNavigator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/PageNavigator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/ProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/ProfilePopUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/ProfilePopUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/SettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/SettingsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/SignUpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/StartGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/StartGameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/TicTacToeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/TicTacToeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/connect4.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/landing.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/connect4.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/connect4.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/dashboard.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/landing.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/landing.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/leaderboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/leaderboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/logIn.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logIn.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/match_history.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/match_history.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/profile_pop_up.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/profile_pop_up.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/profile_settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/profile_settings.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/settings.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/signUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/signUp.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/startgame_chess.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/startgame_chess.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/startgame_connect4.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/startgame_connect4.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/startgame_go.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/startgame_go.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/startgame_tictactoe.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/startgame_tictactoe.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/target/classes/ca/ucalgary/seng/p3/DashboardController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/target/classes/ca/ucalgary/seng/p3/LeaderBoardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/target/classes/ca/ucalgary/seng/p3/LeaderBoardController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/target/classes/ca/ucalgary/seng/p3/LogInController.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/target/classes/ca/ucalgary/seng/p3/LogInController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/target/classes/ca/ucalgary/seng/p3/PageNavigator.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/target/classes/ca/ucalgary/seng/p3/PageNavigator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/target/classes/ca/ucalgary/seng/p3/ProfilePopUp.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/target/classes/ca/ucalgary/seng/p3/ProfilePopUp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/target/classes/ca/ucalgary/seng/p3/SignUpController.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/target/classes/ca/ucalgary/seng/p3/SignUpController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/target/classes/ca/ucalgary/seng/p3/StartGameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/target/classes/ca/ucalgary/seng/p3/StartGameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/target/classes/ca/ucalgary/seng/p3/TicTacToeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/target/classes/ca/ucalgary/seng/p3/TicTacToeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/target/classes/dashboard.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/target/classes/icons/avatar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/target/classes/icons/back-arrow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/target/classes/icons/chess icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-25_7_47_p_m__[Changes]/chess_icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/target/classes/icons/chess-background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/target/classes/icons/connect4 icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/target/classes/icons/connect4-background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/target/classes/icons/first-medal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/target/classes/icons/go icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/target/classes/icons/go-background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/target/classes/icons/second-medal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/target/classes/icons/third-medal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/target/classes/icons/tictactoe-background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/target/classes/icons/ttt icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/target/classes/leaderboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/target/classes/leaderboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/target/classes/logIn.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/target/classes/logIn.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/target/classes/profile_pop_up.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/target/classes/profile_pop_up.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/target/classes/signUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/target/classes/signUp.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/target/classes/startgame_chess.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/target/classes/startgame_chess.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/target/classes/startgame_connect4.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/target/classes/startgame_connect4.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/target/classes/startgame_go.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/target/classes/startgame_go.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/target/classes/startgame_tictactoe.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/target/classes/startgame_tictactoe.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/target/classes/tictactoe.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/Connect4Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/Connect4Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/GameApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/GameApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/LandingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/LandingController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/ProfileController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/ProfileController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/SettingsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/SettingsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/connect4.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/landing.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/connect4.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/connect4.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/icons/chess icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/icons/chess icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/landing.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/landing.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,15 +237,14 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="module-info" />
-        <option value="CSS File" />
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -49,33 +269,34 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Integration",
+    "git-widget-placeholder": "Merging Integration",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/sagek/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Scene Builder/SceneBuilder.lnk",
+    "last_opened_file_path": "C:/Users/mateo/IdeaProjects/jdk-21_windows-x64_bin",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.JavaFX",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.testRunning",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\target\classes" />
       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\target\classes\ca\ucalgary\seng\p3" />
       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\p3\target\classes" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\sagek\SENG300\seng300-w25-project\src\main\resources\icons" />
       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources\icons" />
-      <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources\images" />
       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources" />
-      <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources\fonts" />
+      <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\java\ca\ucalgary\seng\p3" />
+      <recent name="C:\Users\sagek\SENG300\seng300-w25-project\src\main\resources\icons" />
+      <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources\images" />
     </key>
   </component>
   <component name="RunManager" selected="Application.GameApplication">
@@ -105,8 +326,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="chatroom-server" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="chatroom-server" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.GameApplication" />
         <item itemvalue="Application.GameApplication" />
         <item itemvalue="Application.Main" />
       </list>
@@ -151,6 +385,16 @@
       <workItem from="1742939451631" duration="7000" />
       <workItem from="1742939470987" duration="3222000" />
       <workItem from="1742943710814" duration="823000" />
+      <workItem from="1743048768859" duration="21000" />
+      <workItem from="1743141125349" duration="3640000" />
+      <workItem from="1743144979172" duration="8359000" />
+      <workItem from="1743181913814" duration="17224000" />
+      <workItem from="1743224203506" duration="829000" />
+      <workItem from="1743229579285" duration="9476000" />
+      <workItem from="1743267200746" duration="795000" />
+      <workItem from="1743268139636" duration="18457000" />
+      <workItem from="1743295051289" duration="2455000" />
+      <workItem from="1743306843404" duration="21280000" />
     </task>
     <task id="LOCAL-00001" summary="Added connect4.fxml and connect 4.css, started working on connect 4 game page">
       <option name="closed" value="true" />
@@ -320,7 +564,103 @@
       <option name="project" value="LOCAL" />
       <updated>1742961049245</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="added go player page">
+      <option name="closed" value="true" />
+      <created>1743157614958</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1743157614958</updated>
+    </task>
+    <task id="LOCAL-00023" summary="dashboard navigation to game pages">
+      <option name="closed" value="true" />
+      <created>1743201080776</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1743201080776</updated>
+    </task>
+    <task id="LOCAL-00024" summary="navigation functionality from landing to dashboard added">
+      <option name="closed" value="true" />
+      <created>1743272253640</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1743272253640</updated>
+    </task>
+    <task id="LOCAL-00025" summary="navigation functionality from landing to dashboard added">
+      <option name="closed" value="true" />
+      <created>1743272270951</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1743272270951</updated>
+    </task>
+    <task id="LOCAL-00026" summary="updated navigation bar in start game pages">
+      <option name="closed" value="true" />
+      <created>1743289961140</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1743289961140</updated>
+    </task>
+    <task id="LOCAL-00027" summary="navigation bar updated in settings, ; screen sizes for profile and match settings adjusted">
+      <option name="closed" value="true" />
+      <created>1743294616078</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1743294616079</updated>
+    </task>
+    <task id="LOCAL-00028" summary="navigation bar updated in settings, ; screen sizes for profile and match settings adjusted">
+      <option name="closed" value="true" />
+      <created>1743294647928</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1743294647928</updated>
+    </task>
+    <task id="LOCAL-00029" summary="handleLeaderBoard replaced with stub for now">
+      <option name="closed" value="true" />
+      <created>1743294881167</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1743294881167</updated>
+    </task>
+    <task id="LOCAL-00030" summary="java fx version updated from 21.0.2 to 23.0.1 in pom.xml">
+      <option name="closed" value="true" />
+      <created>1743295377873</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1743295377873</updated>
+    </task>
+    <task id="LOCAL-00031" summary="edited signup page elements; added visibility toggle feature to the password fields">
+      <option name="closed" value="true" />
+      <created>1743368309954</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1743368309954</updated>
+    </task>
+    <task id="LOCAL-00032" summary="edited signup page elements; added visibility toggle feature to the password fields">
+      <option name="closed" value="true" />
+      <created>1743368372756</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1743368372756</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Sign up: input verification added">
+      <option name="closed" value="true" />
+      <created>1743374917507</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1743374917507</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -338,11 +678,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="project successfully restructured" />
-    <MESSAGE value="Added a draft UI screen for the Connect 4 game interface" />
-    <MESSAGE value="Added connect4.fxml and connect 4.css, started working on connect 4 game page" />
-    <MESSAGE value="made a basic layout for the connect4.fxml" />
-    <MESSAGE value="created settigns.fxml" />
     <MESSAGE value="Added profile.fxml and made changes to it for the settings screen" />
     <MESSAGE value="Added the profileController.java and SettingsController.java classes for the settings and profile fxml files" />
     <MESSAGE value="files moved in the right location" />
@@ -357,8 +692,18 @@
     <MESSAGE value="Tested settings screen implementation, username is not showing up. haven't handled avatar yet, functionality for save, delete, lacks logic" />
     <MESSAGE value="tested connect4 game play screen, need to implement the chat logic, new game logic and abort game logic" />
     <MESSAGE value="testing files" />
+    <MESSAGE value="added go player page" />
+    <MESSAGE value="dashboard navigation to game pages" />
+    <MESSAGE value="navigation functionality from landing to dashboard added" />
+    <MESSAGE value="updated navigation bar in start game pages" />
+    <MESSAGE value="navigation bar updated in settings, ; screen sizes for profile and match settings adjusted" />
+    <MESSAGE value="handleLeaderBoard replaced with stub for now" />
+    <MESSAGE value="java fx version updated from 21.0.2 to 23.0.1 in pom.xml" />
+    <MESSAGE value="edited signup page elements; added visibility toggle feature to the password fields" />
+    <MESSAGE value="Sign up: input verification added" />
     <MESSAGE value="Changed image location for the start game screens, added game request notification button, edited menu buttons list" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed image location for the start game screens, added game request notification button, edited menu buttons list" />
+    <MESSAGE value="Deleted `dashboard.fxml` and outdated IntelliJ project files to clean up the repository. These files were no longer being utilized and were unnecessarily cluttering the project structure." />
+    <option name="LAST_COMMIT_MESSAGE" value="Deleted `dashboard.fxml` and outdated IntelliJ project files to clean up the repository. These files were no longer being utilized and were unnecessarily cluttering the project structure." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

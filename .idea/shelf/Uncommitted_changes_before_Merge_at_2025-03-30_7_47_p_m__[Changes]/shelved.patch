@@ -1,0 +1,16 @@
+Index: src/main/java/ca/ucalgary/seng/p3/SignUpController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ca.ucalgary.seng.p3;\r\n\r\nimport javafx.fxml.FXML;\r\nimport javafx.scene.control.Button;\r\nimport javafx.scene.control.Hyperlink;\r\nimport javafx.scene.control.PasswordField;\r\nimport javafx.scene.control.TextField;\r\n\r\npublic class SignUpController {\r\n\r\n        @FXML\r\n        private Button signUpButton;\r\n\r\n        @FXML\r\n        private TextField usernameInput;\r\n\r\n        @FXML\r\n        private PasswordField passwordInput;\r\n\r\n        @FXML\r\n        private PasswordField repeatedPassInput;\r\n\r\n        @FXML\r\n        private Button backButton;\r\n\r\n        @FXML\r\n        private Hyperlink logInLink;\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/ca/ucalgary/seng/p3/SignUpController.java b/src/main/java/ca/ucalgary/seng/p3/SignUpController.java
+--- a/src/main/java/ca/ucalgary/seng/p3/SignUpController.java	(revision 82a96be84367e65969bde4e87ac4e0ad0a3e9890)
++++ b/src/main/java/ca/ucalgary/seng/p3/SignUpController.java	(date 1743385645998)
+@@ -1,4 +1,4 @@
+-package ca.ucalgary.seng.p3;
++package main.java.ca.ucalgary.seng.p3;
+ 
+ import javafx.fxml.FXML;
+ import javafx.scene.control.Button;
