@@ -2,6 +2,7 @@ package ca.ucalgary.seng.p3;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.Node;
@@ -36,6 +37,7 @@ public class GoController {
     }
 
     public void handleExit(ActionEvent actionEvent) {
+        PageNavigator.navigateTo("startgame_go");
     }
 
     public void handleSend(ActionEvent actionEvent) {

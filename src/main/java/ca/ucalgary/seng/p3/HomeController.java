@@ -66,6 +66,8 @@ public class HomeController {
     @FXML
     private Button playConnectButton;
 
+    // Add a static variable to store the selected game type
+    public static String selectedGameType;
 
     @FXML
     public void initialize() {
@@ -74,8 +76,6 @@ public class HomeController {
         menuPopup.setVisible(false);
         profilePopup.setVisible(false);
         notificationPopup.setVisible(false);
-        notifications.add("Welcome user!");
-        notifications.add("Match invite from: ...");
 
         List<ImageView> icons = List.of(chessIcon, goIcon, tttIcon, connectIcon);
 
@@ -106,6 +106,7 @@ public class HomeController {
         scrollPane.setHvalue(Math.min(currentScroll + scrollStep, 1)); // Move right
     }
 
+    //NAVIGATION BAR FUNCTIONALITY - DON'T EDIT
     // Called when the menu button is clicked
     @FXML
     private void handleMenuButton() {
@@ -184,9 +185,6 @@ public class HomeController {
         });
     }
 
-
-
-
     @FXML
     private void handleDashboardButton() {
         PageNavigator.navigateTo("home");
@@ -194,13 +192,12 @@ public class HomeController {
 
     @FXML
     private void handleLeaderboardButton() {
-        //main leaderboard
-
+        PageNavigator.navigateTo("leaderboard_home");
     }
 
     @FXML
     private void handleFindAPlayerButton() {
-        //player look up page
+        PageNavigator.navigateTo("player_Finder");
     }
 
     @FXML
@@ -211,26 +208,31 @@ public class HomeController {
     private void handleGameRulesButton() {
         //game rules page
     }
-
+    //END OF NAVIGATION BAR FUNCTIONALITY
 
     @FXML
     private void handlePlayChessButton() {
+        selectedGameType = "Chess";
         PageNavigator.navigateTo("startgame_chess");
     }
 
     @FXML
     private void handlePlayGoButton() {
+        selectedGameType = "go";
         PageNavigator.navigateTo("startgame_go");
     }
 
     @FXML
     private void handlePlayTttButton() {
+        selectedGameType = "tictactoe";
         PageNavigator.navigateTo("startgame_tictactoe");
     }
 
     @FXML
     private void handlePlayConnectButton() {
+        selectedGameType = "connect4";
         PageNavigator.navigateTo("startgame_connect4");
     }
+
 
 }

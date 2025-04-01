@@ -100,10 +100,7 @@ public class TicTacToeController {
     // Handler for the exit button
     @FXML
     private void handleExit(ActionEvent event) {
-        // For now, simply close the stage.
-        Stage stage = (Stage) exitButton.getScene().getWindow();
-        stage.close();
-        // Future implementation: navigate to a different screen.
+        PageNavigator.navigateTo("startgame_tictactoe");
     }
 
     // Handler for the send button. Appends text from the text field to the chat area.

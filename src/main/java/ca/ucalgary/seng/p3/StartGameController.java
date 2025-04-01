@@ -30,10 +30,8 @@ public class StartGameController {
     @FXML
     private Button profileButton, bellButton;
 
-
     @FXML
     private Button menuButton;
-
 
     @FXML
     private Button findMatchButton;
@@ -54,19 +52,67 @@ public class StartGameController {
     private Button gameRulesButton;
 
     @FXML
-    private ImageView boardImage;
-
-    @FXML
     private Circle notificationDot;
 
     private List<String> notifications = new ArrayList<>();
+
+    @FXML
+    private ImageView boardImage;
+
+    private String targetPage;
+    private String gameType;
 
     @FXML
     private void initialize() {
         menuPopup.setVisible(false);
         notificationPopup.setVisible(false);
         profilePopup.setVisible(false);
+
+        gameType = HomeController.selectedGameType;
+
+        String imagePath = "";
+        // Determine the start game screen image and the actual game page fxml
+        if ("tictactoe".equalsIgnoreCase(gameType)) {
+            imagePath = "/icons/tictactoeimage.png";
+            targetPage = "tictactoe";      // Navigates to tictactoe.fxml
+        } else if ("chess".equalsIgnoreCase(gameType)) {
+            imagePath = "/icons/chessimage.jpg";
+            targetPage = "chess";          // Navigates to chess.fxml
+        } else if ("connect4".equalsIgnoreCase(gameType)) {
+            imagePath = "/icons/connect4image.png";
+            targetPage = "connect4";       // Navigates to connect4.fxml
+        } else if ("go".equalsIgnoreCase(gameType)) {
+            imagePath = "/icons/gogameimage.jpg";
+            targetPage = "go";             // Navigates to go.fxml
+        } else {
+            // Unknown game type; do nothing, currently no error messages
+            return;
+        }
+
+        // Load the appropriate image for the start game screen
+        boardImage.setImage(new Image(getClass().getResource(imagePath).toExternalForm()));
+
     }
+
+
+
+    @FXML
+    private void handleFindMatch(ActionEvent event) {
+        if ("tictactoe".equalsIgnoreCase(gameType)) {
+            targetPage = "tictactoe";      // Navigates to tictactoe.fxml
+        } else if ("chess".equalsIgnoreCase(gameType)) {
+            targetPage = "chess";          // Navigates to chess.fxml
+        } else if ("connect4".equalsIgnoreCase(gameType)) {
+            targetPage = "connect4";       // Navigates to connect4.fxml
+        } else if ("go".equalsIgnoreCase(gameType)) {
+            targetPage = "go";             // Navigates to go.fxml
+        } else {
+            // Unknown game type; do nothing, currently no error messages
+            return;
+        }
+            PageNavigator.navigateTo(targetPage);
+    }
+
 
     // Called when the menu button is clicked
     @FXML
@@ -180,12 +226,12 @@ public class StartGameController {
 
     @FXML
     private void handleLeaderboardButton() {
-        //main leaderboard
+        PageNavigator.navigateTo("leaderboard_home");
     }
 
     @FXML
     private void handleFindAPlayerButton() {
-        //player look up page
+        PageNavigator.navigateTo("player_Finder");
     }
 
     @FXML
