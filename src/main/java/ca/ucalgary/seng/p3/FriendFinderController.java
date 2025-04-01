@@ -197,5 +197,6 @@ public class FriendFinderController {
     }
 
     public void change_List(InputMethodEvent inputMethodEvent) {
+
     }
 }
