@@ -1,6 +1,5 @@
 package ca.ucalgary.seng.p3;
 
-
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -166,6 +165,7 @@ public class HomeController {
         notifications = new ArrayList<>();
 
     }
+
 
     private void updateNotificationDot() {
         notificationDot.setVisible(!notifications.isEmpty());
