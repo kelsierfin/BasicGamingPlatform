@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="navigation between pages works, except for individual leaderboard">
+    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment=".">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Chess.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Chess.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Chess.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Chess.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/HomeController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +37,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="Security Analysis" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -45,31 +47,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.GameApplication.executor": "Run",
-    "Application.HelloApplication.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.ca.ucalgary.seng.p3.GameApplication.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "gui-navigationfix",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/ebose/OneDrive/Desktop/SENG 300/seng300-w25-project/src/main/resources/icons",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.JavaFX",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.GameApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ca.ucalgary.seng.p3.GameApplication.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;gui-navigationfix&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ebose/OneDrive/Desktop/SENG 300/seng300-w25-project/src/main/resources/icons&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources\icons" />
@@ -449,7 +451,23 @@
       <option name="project" value="LOCAL" />
       <updated>1743534514862</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="navigation between pages works, except for individual leaderboard">
+      <option name="closed" value="true" />
+      <created>1743534656223</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1743534656223</updated>
+    </task>
+    <task id="LOCAL-00037" summary="navigation between pages works, except for individual leaderboard">
+      <option name="closed" value="true" />
+      <created>1743534745972</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1743534745972</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -479,7 +497,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="created settigns.fxml" />
     <MESSAGE value="Added profile.fxml and made changes to it for the settings screen" />
     <MESSAGE value="Added the profileController.java and SettingsController.java classes for the settings and profile fxml files" />
     <MESSAGE value="files moved in the right location" />
@@ -504,7 +521,8 @@
     <MESSAGE value="name change" />
     <MESSAGE value="Merge branch 'detached2' into gui2&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/ca/ucalgary/seng/p3/ChessController.java&#10;#&#9;src/main/java/ca/ucalgary/seng/p3/Connect4Controller.java&#10;#&#9;src/main/java/ca/ucalgary/seng/p3/FriendFinderController.java&#10;#&#9;src/main/java/ca/ucalgary/seng/p3/HomeController.java&#10;#&#9;src/main/java/ca/ucalgary/seng/p3/LeaderBoardController.java&#10;#&#9;src/main/java/ca/ucalgary/seng/p3/LeaderBoardHome.java&#10;#&#9;src/main/java/ca/ucalgary/seng/p3/StartGameController.java&#10;#&#9;src/main/resources/leaderboard.fxml&#10;#&#9;src/main/resources/leaderboard_home.fxml&#10;#&#9;src/main/resources/player_Finder.fxml&#10;#&#9;target/classes/ca/ucalgary/seng/p3/ChessController.class&#10;#&#9;target/classes/ca/ucalgary/seng/p3/Connect4Controller.class&#10;#&#9;target/classes/ca/ucalgary/seng/p3/FriendFinderController.class&#10;#&#9;target/classes/ca/ucalgary/seng/p3/GoController.class&#10;#&#9;target/classes/ca/ucalgary/seng/p3/HomeController.class&#10;#&#9;target/classes/ca/ucalgary/seng/p3/LeaderBoardController.class&#10;#&#9;target/classes/ca/ucalgary/seng/p3/LeaderBoardHome.class&#10;#&#9;target/classes/ca/ucalgary/seng/p3/PageNavigator.class&#10;#&#9;target/classes/ca/ucalgary/seng/p3/StartGameController.class&#10;#&#9;target/classes/leaderboard.fxml&#10;#&#9;target/classes/leaderboard_home.fxml&#10;#&#9;target/classes/player_Finder.fxml" />
     <MESSAGE value="navigation between pages works, except for individual leaderboard" />
-    <option name="LAST_COMMIT_MESSAGE" value="navigation between pages works, except for individual leaderboard" />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
