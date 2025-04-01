@@ -425,7 +425,31 @@
       <option name="project" value="LOCAL" />
       <updated>1743534240628</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="navigation between pages works, except for individual leaderboard">
+      <option name="closed" value="true" />
+      <created>1743534269023</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1743534269023</updated>
+    </task>
+    <task id="LOCAL-00034" summary="navigation between pages works, except for individual leaderboard">
+      <option name="closed" value="true" />
+      <created>1743534502973</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1743534502974</updated>
+    </task>
+    <task id="LOCAL-00035" summary="navigation between pages works, except for individual leaderboard">
+      <option name="closed" value="true" />
+      <created>1743534514862</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1743534514862</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
