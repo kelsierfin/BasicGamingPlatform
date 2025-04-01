@@ -4,19 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="name change">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="navigation between pages works, except for individual leaderboard">
       <change beforePath="$PROJECT_DIR$/src/main/resources/Chess.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Chess.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/startgame_chess.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/startgame_chess.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/startgame_connect4.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/startgame_connect4.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/startgame_go.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/startgame_go.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/startgame_tictactoe.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/startgame_tictactoe.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Chess.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Chess.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/GoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/GoController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/startgame_chess.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/startgame_chess.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/startgame_connect4.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/startgame_connect4.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/startgame_go.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/startgame_go.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/startgame_tictactoe.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/startgame_tictactoe.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -427,7 +417,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743478509394</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="navigation between pages works, except for individual leaderboard">
+      <option name="closed" value="true" />
+      <created>1743534240627</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1743534240628</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -457,8 +455,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added connect4.fxml and connect 4.css, started working on connect 4 game page" />
-    <MESSAGE value="made a basic layout for the connect4.fxml" />
     <MESSAGE value="created settigns.fxml" />
     <MESSAGE value="Added profile.fxml and made changes to it for the settings screen" />
     <MESSAGE value="Added the profileController.java and SettingsController.java classes for the settings and profile fxml files" />
@@ -482,7 +478,9 @@
     <MESSAGE value="navigation bar updated in settings, ; screen sizes for profile and match settings adjusted" />
     <MESSAGE value="Navigation across pages works. Individual leaderboards aren't loading. (commented them out for now), something in the css styling of player_Finder.fxml is causing a warning in the terminal." />
     <MESSAGE value="name change" />
-    <option name="LAST_COMMIT_MESSAGE" value="name change" />
+    <MESSAGE value="Merge branch 'detached2' into gui2&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/ca/ucalgary/seng/p3/ChessController.java&#10;#&#9;src/main/java/ca/ucalgary/seng/p3/Connect4Controller.java&#10;#&#9;src/main/java/ca/ucalgary/seng/p3/FriendFinderController.java&#10;#&#9;src/main/java/ca/ucalgary/seng/p3/HomeController.java&#10;#&#9;src/main/java/ca/ucalgary/seng/p3/LeaderBoardController.java&#10;#&#9;src/main/java/ca/ucalgary/seng/p3/LeaderBoardHome.java&#10;#&#9;src/main/java/ca/ucalgary/seng/p3/StartGameController.java&#10;#&#9;src/main/resources/leaderboard.fxml&#10;#&#9;src/main/resources/leaderboard_home.fxml&#10;#&#9;src/main/resources/player_Finder.fxml&#10;#&#9;target/classes/ca/ucalgary/seng/p3/ChessController.class&#10;#&#9;target/classes/ca/ucalgary/seng/p3/Connect4Controller.class&#10;#&#9;target/classes/ca/ucalgary/seng/p3/FriendFinderController.class&#10;#&#9;target/classes/ca/ucalgary/seng/p3/GoController.class&#10;#&#9;target/classes/ca/ucalgary/seng/p3/HomeController.class&#10;#&#9;target/classes/ca/ucalgary/seng/p3/LeaderBoardController.class&#10;#&#9;target/classes/ca/ucalgary/seng/p3/LeaderBoardHome.class&#10;#&#9;target/classes/ca/ucalgary/seng/p3/PageNavigator.class&#10;#&#9;target/classes/ca/ucalgary/seng/p3/StartGameController.class&#10;#&#9;target/classes/leaderboard.fxml&#10;#&#9;target/classes/leaderboard_home.fxml&#10;#&#9;target/classes/player_Finder.fxml" />
+    <MESSAGE value="navigation between pages works, except for individual leaderboard" />
+    <option name="LAST_COMMIT_MESSAGE" value="navigation between pages works, except for individual leaderboard" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
