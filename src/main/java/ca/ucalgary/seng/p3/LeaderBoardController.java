@@ -2,6 +2,7 @@ package ca.ucalgary.seng.p3;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -33,7 +34,6 @@ public class LeaderBoardController extends StackPane {
         } catch (IOException e) {
 
         }
-
 
 //        btnBack.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/icons/back-arrow.png"))));
 //        btnBack.setOnAction(e->{

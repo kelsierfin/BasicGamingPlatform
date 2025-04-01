@@ -4,6 +4,7 @@ package ca.ucalgary.seng.p3;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
@@ -54,17 +55,19 @@ public class HomeController {
     @FXML
     private ImageView connectIcon;
 
-    @FXML
-    private Button playChessButton;
+    //PROFILE SECTION
+    //TODO: Initialize with information from database from Auth & Leaderboard/Match
+   @FXML
+    public ImageView avatarImage;
+   @FXML
+   public Label username;
+   @FXML
+   public Label winRate;
+   @FXML
+   public Label gamesPlayed;
+   @FXML
+   public Label rank;
 
-    @FXML
-    private Button playGoButton;
-
-    @FXML
-    private Button playTttButton;
-
-    @FXML
-    private Button playConnectButton;
 
     // Add a static variable to store the selected game type
     public static String selectedGameType;
@@ -76,6 +79,11 @@ public class HomeController {
         menuPopup.setVisible(false);
         profilePopup.setVisible(false);
         notificationPopup.setVisible(false);
+         //TODO: Placeholders for now. set text information from database.
+        username.setText("Username");
+        gamesPlayed.setText("0");
+        winRate.setText("0%");
+        rank.setText("0");
 
         List<ImageView> icons = List.of(chessIcon, goIcon, tttIcon, connectIcon);
 
@@ -92,6 +100,9 @@ public class HomeController {
 
             icon.setClip(rect);
         }
+
+        Circle circle = new Circle(75, 75, 75);
+        avatarImage.setClip(circle);
 
         updateNotificationDot();
     }
@@ -234,5 +245,13 @@ public class HomeController {
         PageNavigator.navigateTo("startgame_connect4");
     }
 
+    @FXML
+    private void handleEditAvatar(){
+        PageNavigator.navigateTo("settings");
+    }
 
+    @FXML void handleUsernameClick(){
+        PageNavigator.navigateTo("settings");
+    }
 }
+

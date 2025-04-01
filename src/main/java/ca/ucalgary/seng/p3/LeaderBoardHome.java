@@ -12,7 +12,9 @@ import javafx.scene.shape.Circle;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class LeaderBoardHome {
+
     private static final String CHESS_TITLE = "Chess Leaderboard";
     private static final String CHESS_BCKGRND = "/icons/chess-background.png";
     private static final String GO_TITLE = "Go Leaderboard";
@@ -21,8 +23,10 @@ public class LeaderBoardHome {
     private static final String CONNECT_BCKGRND = "/icons/connect4-background.png";
     private static final String TTT_TITLE = "TicTacToe Leaderboard";
     private static final String TTT_BCKGRND = "/icons/tictactoe-background.png";
+
     @FXML
     public AnchorPane root;
+
 
     //NAVIGATION BAR ELEMENTS - DONT EDIT
     @FXML
@@ -54,6 +58,7 @@ public class LeaderBoardHome {
 
     @FXML
     private void chess() {
+
         toChessLeaderBoard();
     }
 
@@ -76,16 +81,16 @@ public class LeaderBoardHome {
     // -> GUI-Leaderboard Team need to work on implementing individual leaderboards ensure proper
     // -> navigation to each leaderboard
 
-    public static void toChessLeaderBoard() {
+    public void toChessLeaderBoard() {
     }
 
-    public static void toGoLeaderBoard() {
+    public void toGoLeaderBoard() {
     }
 
-    public static void toTTTLeaderBoard() {
+    public void toTTTLeaderBoard() {
     }
 
-    public static void toConnect4LeaderBoard() {
+    public void toConnect4LeaderBoard() {
     }
 
     //NAVIGATION BAR FUNCTIONALITY - DON'T EDIT

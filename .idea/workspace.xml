@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="name change" />
+    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="name change">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/defaultAvatar.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LeaderBoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LeaderBoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LeaderBoardHome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LeaderBoardHome.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/leaderboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/leaderboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/HomeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/LeaderBoardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/LeaderBoardController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/LeaderBoardHome.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/LeaderBoardHome.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leaderboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leaderboard.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,9 +27,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="module-info" />
-        <option value="CSS File" />
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -42,31 +55,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.GameApplication.executor": "Run",
-    "Application.HelloApplication.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.ca.ucalgary.seng.p3.GameApplication.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "f5112ad9",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/ebose/OneDrive/Desktop/SENG 300/seng300-w25-project/src/main/resources/icons",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.JavaFX",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.GameApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ca.ucalgary.seng.p3.GameApplication.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;detached2&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ebose/OneDrive/Desktop/SENG 300/seng300-w25-project/src/main/resources/icons&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources\icons" />
@@ -82,7 +95,7 @@
       <recent name="C:\Users\sagek\SENG300\seng300-w25-project\src\main\resources\icons" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.GameApplication">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="GameApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ca.ucalgary.seng.p3.GameApplication" />
       <module name="seng-w25-project" />
@@ -111,8 +124,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.GameApplication" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.GameApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -163,6 +176,8 @@
       <workItem from="1743229579285" duration="9476000" />
       <workItem from="1743267200746" duration="795000" />
       <workItem from="1743268139636" duration="18399000" />
+      <workItem from="1743480344703" duration="1501000" />
+      <workItem from="1743521870411" duration="10384000" />
     </task>
     <task id="LOCAL-00001" summary="Added connect4.fxml and connect 4.css, started working on connect 4 game page">
       <option name="closed" value="true" />
