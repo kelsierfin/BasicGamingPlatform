@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="Navigation across pages works. Individual leaderboards aren't loading. (commented them out for now), something in the css styling of player_Finder.fxml is causing a warning in the terminal.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/FriendFinderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/FriendFinderController.java" afterDir="false" />
-    </list>
+    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="name change" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,7 +51,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "7c102874",
+    "git-widget-placeholder": "f5112ad9",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/ebose/OneDrive/Desktop/SENG 300/seng300-w25-project/src/main/resources/icons",
     "list.type.of.created.stylesheet": "CSS",
@@ -407,7 +404,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743477158431</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="name change">
+      <option name="closed" value="true" />
+      <created>1743478509393</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1743478509394</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -437,7 +442,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added a draft UI screen for the Connect 4 game interface" />
     <MESSAGE value="Added connect4.fxml and connect 4.css, started working on connect 4 game page" />
     <MESSAGE value="made a basic layout for the connect4.fxml" />
     <MESSAGE value="created settigns.fxml" />
@@ -462,7 +466,8 @@
     <MESSAGE value="updated navigation bar in start game pages" />
     <MESSAGE value="navigation bar updated in settings, ; screen sizes for profile and match settings adjusted" />
     <MESSAGE value="Navigation across pages works. Individual leaderboards aren't loading. (commented them out for now), something in the css styling of player_Finder.fxml is causing a warning in the terminal." />
-    <option name="LAST_COMMIT_MESSAGE" value="Navigation across pages works. Individual leaderboards aren't loading. (commented them out for now), something in the css styling of player_Finder.fxml is causing a warning in the terminal." />
+    <MESSAGE value="name change" />
+    <option name="LAST_COMMIT_MESSAGE" value="name change" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
