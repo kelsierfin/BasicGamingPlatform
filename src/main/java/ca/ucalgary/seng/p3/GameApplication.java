@@ -14,6 +14,8 @@ public class GameApplication extends Application{
 
         stage.setTitle("Board Games");
         stage.setScene(scene);
+        stage.setFullScreen(false);
+        stage.setResizable(false);
         stage.show();
     }
 

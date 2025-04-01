@@ -27,6 +27,9 @@ public class ChessController {
     private Label turnLabel;
 
     @FXML
+    public void initialize() {}
+
+    @FXML
     void handleExit(ActionEvent event) {
 
     }
@@ -37,4 +40,7 @@ public class ChessController {
     }
 
 
+    public void handleExit(javafx.event.ActionEvent actionEvent) {
+        PageNavigator.navigateTo("startgame_chess");
+    }
 }

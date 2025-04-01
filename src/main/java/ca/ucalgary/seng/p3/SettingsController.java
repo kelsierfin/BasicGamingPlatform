@@ -90,12 +90,12 @@ public class SettingsController {
 
     @FXML
     private void handleLeaderboardButton() {
-        //main leaderboard
+        PageNavigator.navigateTo("leaderboard_home");
     }
 
     @FXML
     private void handleFindAPlayerButton() {
-        //player look up page
+        PageNavigator.navigateTo("player_Finder");
     }
 
     @FXML

@@ -24,6 +24,7 @@ public class PageNavigator {
 
             stage.setScene(scene);
             stage.setTitle(pageName.substring(0, 1).toUpperCase() + pageName.substring(1));
+            stage.setResizable(false);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

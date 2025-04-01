@@ -18,9 +18,9 @@ public class Connect4Controller {
     @FXML private TextArea chatArea;
     @FXML private GridPane gameBoardGrid;
     @FXML private Circle player1Icon;
-    @FXML private Circle player2Icon;
+//    @FXML private Circle player2Icon;
     @FXML private Label player1Name;
-    @FXML private Label player2Name;
+//    @FXML private Label player2Name;
 
     private boolean isLocalPlayerTurn = true;
 
@@ -30,7 +30,7 @@ public class Connect4Controller {
             chatArea.setEditable(false);
         }
         player1Name.setText("PLAYER 1");
-        player2Name.setText("PLAYER 2");
+//        player2Name.setText("PLAYER 2");
         setupGameBoard();
         updateTurnIndicator();
         timer.setText("10:00");
@@ -81,8 +81,7 @@ public class Connect4Controller {
 
     @FXML
     private void handleExit() {
-        Stage stage = (Stage) exitButton.getScene().getWindow();
-        stage.close();
+        PageNavigator.navigateTo("startgame_connect4");
     }
 
     @FXML
@@ -105,9 +104,9 @@ public class Connect4Controller {
     private void updateTurnIndicator() {
         if (isLocalPlayerTurn) {
             player1Icon.setStroke(javafx.scene.paint.Color.BLACK);
-            player2Icon.setStroke(null);
+//            player2Icon.setStroke(null);
         } else {
-            player2Icon.setStroke(javafx.scene.paint.Color.BLACK);
+//            player2Icon.setStroke(javafx.scene.paint.Color.BLACK);
             player1Icon.setStroke(null);
         }
     }
@@ -115,10 +114,10 @@ public class Connect4Controller {
     public void setupMatchedPlayers(String localPlayerName, String remotePlayerName, boolean isPlayerOne) {
         if (isPlayerOne) {
             player1Name.setText(localPlayerName);
-            player2Name.setText(remotePlayerName);
+//            player2Name.setText(remotePlayerName);
         } else {
             player1Name.setText(remotePlayerName);
-            player2Name.setText(localPlayerName);
+//            player2Name.setText(localPlayerName);
         }
         setupGameBoard();
     }
