@@ -4,12 +4,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
-
-import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,12 +26,16 @@ public class FriendFinderController {
 
     @FXML
     private ListView<String> player_List = new ListView<>();
+    ObservableList<String> players = FXCollections.observableArrayList("King_Author", "xXHunterXx", "Bob", "guest233539", "TheONe");
+    String selected_Player;
 
     @FXML
     private TextField player_Search;
 
     @FXML
     private Label users_Name;
+
+
 
     @FXML
     private VBox request_People;
@@ -59,19 +60,9 @@ public class FriendFinderController {
         menuPopup.setVisible(false);
         profilePopup.setVisible(false);
         notificationPopup.setVisible(false);
+        request_People.setVisible(false);
+        player_List.setItems(players);
     }
-    /*@FXML
-    public void set_Other_Player_Name() {
-        other_Player_Name.setText(other_Player_Name.getName());
-    } */
-
-    /* @FXML
-    public void set_UserName() {
-        users_Name.setText(users_Name.getName()); */
-
-    //}
-
-    ObservableList<String> players = FXCollections.observableArrayList("King_Author", "xXHunterXx", "Bob", "guest233539", "TheONe");
 
     @FXML
     private void name_on_Click_Pop_out() {
@@ -187,16 +178,57 @@ public class FriendFinderController {
     //END OF NAVIGATION BAR FUNCTIONALITY
 
     @FXML
-    void open_Request_Menu(MouseEvent event) {
-
+    private void toggle_Request_People() {
+        request_People.setVisible(!request_People.isVisible());
     }
 
+    // Handles the visibility of the request menu when name is pressed
     @FXML
-    void send_Text(MouseEvent event) {
+    public void open_Request_Menu(javafx.scene.input.MouseEvent mouseEvent) {
+        selected_Player = player_List.getSelectionModel().getSelectedItem();
+        System.out.println(selected_Player);
+        toggle_Request_People();
 
     }
 
     public void change_List(InputMethodEvent inputMethodEvent) {
 
     }
+
+
+    @FXML
+    void handlePlayerProfileButton() {
+        PageNavigator.navigateTo("settings");
+    }
+
+    @FXML
+    void handleChatPopupButton() {
+        PageNavigator.navigateTo("chat_Popup");
+    }
+
+    @FXML
+    void handleFriendRequestButton() {
+        PageNavigator.navigateTo("settings");
+    }
+
+    @FXML
+    void handleChallangeRequestButton() {
+        PageNavigator.navigateTo("settings");
+    }
+
+    @FXML
+    void handleSelectedPlayerLeaderboardButton() {
+        PageNavigator.navigateTo("settings");
+    }
+
+    @FXML
+    void handleBlockButton() {
+        PageNavigator.navigateTo("settings");
+    }
+
+    @FXML
+    private void open_Chat_Button(){
+        PageNavigator.navigateTo("settings");
+    }
+
 }
