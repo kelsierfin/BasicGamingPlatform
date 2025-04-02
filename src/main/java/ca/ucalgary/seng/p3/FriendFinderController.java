@@ -12,8 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FriendFinderController {
-    @FXML
-    private Label other_Player_Name;
 
     @FXML
     private TextArea player_Chat;
@@ -26,7 +24,7 @@ public class FriendFinderController {
 
     @FXML
     private ListView<String> player_List = new ListView<>();
-    ObservableList<String> players = FXCollections.observableArrayList("King_Author", "xXHunterXx", "Bob", "guest233539", "TheONe");
+    private ObservableList<String> players = FXCollections.observableArrayList("King_Author", "xXHunterXx", "Bob", "guest233539", "TheONe");
     String selected_Player;
 
     @FXML
@@ -67,10 +65,6 @@ public class FriendFinderController {
     @FXML
     private void name_on_Click_Pop_out() {
         request_People.setVisible(!request_People.isVisible());
-    }
-
-    private void load_Opponent_Name(){
-        other_Player_Name.setText(players.toString());
     }
 
     //NAVIGATION BAR FUNCTIONALITY - DON'T EDIT
@@ -186,24 +180,25 @@ public class FriendFinderController {
     @FXML
     public void open_Request_Menu(javafx.scene.input.MouseEvent mouseEvent) {
         selected_Player = player_List.getSelectionModel().getSelectedItem();
-        System.out.println(selected_Player);
         toggle_Request_People();
 
     }
 
+    // Read entered text and filter list according to what was written
     public void change_List(InputMethodEvent inputMethodEvent) {
+        String player_Name = player_Search.getText();
 
     }
 
 
     @FXML
     void handlePlayerProfileButton() {
-        PageNavigator.navigateTo("settings");
+        PageNavigator.navigateTo("profile");
     }
 
     @FXML
     void handleChatPopupButton() {
-        PageNavigator.navigateTo("chat_Popup");
+        PageNavigator.chatWindow("chat_Popup");
     }
 
     @FXML
