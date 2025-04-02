@@ -3,7 +3,11 @@ package server.gamelogic.connect4;
 public class Connect4_Board {
     private final int ROWS = 6;
     private final int COLUMNS = 7;
+
+    // Board holds the main game grid the game is played on.
     private String[][] Board;
+
+
 
     public Connect4_Board(){
         this.Board = new String[ROWS][COLUMNS];
@@ -12,6 +16,7 @@ public class Connect4_Board {
         int x = 0;
         int y;
 
+        // Nested for loop fills Board matrix with empty cells.
         while(x < ROWS){
             y = 0;
             while(y < COLUMNS){
@@ -24,25 +29,29 @@ public class Connect4_Board {
                 }
 
                 y++;
-                //System.out.println("y = " + y);
             }
 
 
             x++;
-            //System.out.println("x = " + x);
         }
 
 
     }
 
+    // Returns game board when called.
     public String[][] getBoard(){
         return this.Board;
     }
+
+    /* placeDisc(int column, Disc disc) takes in a disc object and the column in which it is placed in.
+    *  After determining the full cell coordinates of the disc, the  symbol of the
+    *  disc is added to the cell. */
 
     public void placeDisc(int column, Disc disc){
 
         int row = 0;
 
+        // while loop used to calculate the row the disc will be placed in.
         while(Board[row][column].equals("[ ]") || Board[row][column].equals("[ ]\n") ){
 
             row++;
@@ -56,6 +65,7 @@ public class Connect4_Board {
         row--;
 
 
+        // Adding disc to board
         System.out.println("row = " + row + " column = " + column);
         this.Board[row][column] = "["+ disc.getSymbol() +"]";
 
@@ -64,11 +74,16 @@ public class Connect4_Board {
         }
     }
 
+
+    // Used to remove a disc from the game grid
     public void removeDisc(int row, int column){
         this.Board[row][column] = " ";
 
     }
 
+
+    /* validMove(int column) checks if the column chosen by the player is with in the bounds
+      of the game grid. Also check if a column is currently full. */
     public boolean validMove(int column){
 
         if( column < 0 || column > 6){
@@ -81,6 +96,10 @@ public class Connect4_Board {
         }
 
     }
+
+    /* checkWin(String sym) Iterates over the game board and checks if four discs
+    *  represented by a particular symbol are placed together horizontally, diagonally
+    *  or vertically. */
 
     public boolean checkWin(String sym){
         int index_row = 0;
@@ -145,7 +164,7 @@ public class Connect4_Board {
             index_column++;
         }
 
-        // Checking for diagonal win
+        // Checking for diagonal wins starting from the top left corner.
         System.out.println("Executing column diagonal check");
 
         prevSymbol = getSymbol(Board[0][0]);
@@ -193,6 +212,8 @@ public class Connect4_Board {
 
         System.out.println("Executing row diagonal check");
 
+        // Checking for diagonal win by iterating over each row of the game board.
+
         while(start_row < ROWS){
             index_row = start_row;
 
@@ -226,6 +247,7 @@ public class Connect4_Board {
         return false;
     }
 
+    /*  isColumnFull() Checks if any of the columns in the board are full.*/
     public boolean isColumnFull(){
         int i = 0;
 
@@ -248,7 +270,7 @@ public class Connect4_Board {
 
 
 
-
+    /* printBoard() prints the current  state of the board. */
 
     public void printBoard(){
         int x = 0;
@@ -265,6 +287,8 @@ public class Connect4_Board {
         }
 
     }
+
+    /* getSymbol(String x) returns the symbol placed in the cell. */
 
     public String getSymbol(String x){
         String[] array = x.split("");

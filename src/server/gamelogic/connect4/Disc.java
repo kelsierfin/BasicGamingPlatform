@@ -1,5 +1,8 @@
 package server.gamelogic.connect4;
 
+
+/* Disc class is used to represent each disc that is placed by a player on the board */
+
 public class Disc {
 
     private String symbol;

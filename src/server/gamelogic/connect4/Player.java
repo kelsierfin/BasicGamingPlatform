@@ -1,5 +1,9 @@
 package server.gamelogic.connect4;
 
+/* Player class is used to represent  individual players playing the game.
+*  Keeps track of player stats such as name, selected symbol, number of discs placed and
+*  number of wins. */
+
 public class Player {
     private String name;
     private String selectedSymbol;
