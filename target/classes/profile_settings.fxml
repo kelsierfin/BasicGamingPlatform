@@ -20,7 +20,7 @@
         <HBox alignment="CENTER_LEFT">
             <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Profile Settings" />
             <Region HBox.hgrow="ALWAYS" />
-            <Button fx:id="deleteAccountButton" style="-fx-background-color: #ff5252; -fx-text-fill: white; -fx-background-radius: 5;" text="Delete Account" />
+            <Button fx:id="deleteAccountButton" onAction="#handleDeleteAccount" style="-fx-background-color: #ff5252; -fx-text-fill: white; -fx-background-radius: 5;" text="Delete Account" />
         </HBox>
     </top>
     <center>
@@ -48,7 +48,7 @@
                     <PasswordField fx:id="newPassField" promptText="New Password" />
 
                     <HBox alignment="CENTER_RIGHT">
-                        <Button fx:id="saveButton" style="-fx-background-color: #666666; -fx-text-fill: white; -fx-background-radius: 5;" text="Save" />
+                        <Button fx:id="saveButton" onAction="#handleSave" style="-fx-background-color: #666666; -fx-text-fill: white; -fx-background-radius: 5;" text="Save" />
                     </HBox>
                 </VBox>
 
