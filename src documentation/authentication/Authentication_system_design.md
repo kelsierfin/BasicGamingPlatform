@@ -1,4 +1,3 @@
-```markdown
 # Authentication System Documentation
 
 ## Table of Contents
