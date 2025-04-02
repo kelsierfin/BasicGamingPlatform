@@ -205,15 +205,6 @@ Guest38472
 | Data Transmission     | TLS recommended           |
 | MFA                   | Time-based OTP simulation  |
 
-## Integration Points
-
-1. **Game Client** → `UserLogin`
-   - Login/guest session initiation
-2. **Leaderboard** → `ViewPlayerProfile`
-   - Player stats display
-3. **Matchmaking** → `FailedLogin`
-   - Account status verification
-
 ## Error Handling
 
 | Error Case               | User Feedback                  | System Action                     |
