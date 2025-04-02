@@ -1,86 +1,104 @@
-# Authentication System Design Document
+```markdown
+# Authentication System Documentation
 
 ## Table of Contents
-1. [System Overview](#system-overview)
-2. [Core Components](#core-components)
-3. [API Specifications](#api-specifications)
-4. [Data Flow](#data-flow)
-5. [Security Implementation](#security-implementation)
-6. [Error Handling](#error-handling)
-7. [Integration Points](#integration-points)
-8. [Testing Protocol](#testing-protocol)
-9. [Database Schema](#database-schema)
-10. [Sequence Diagrams](#sequence-diagrams)
+1. [System Architecture](#system-architecture)
+2. [Component Deep Dive](#component-deep-dive)
+3. [Data Flow](#data-flow)
+4. [Security Model](#security-model)
+5. [Error Handling](#error-handling)
+6. [Testing Strategy](#testing-strategy)
+7. [Database Schema](#database-schema)
+8. [Integration Guide](#integration-guide)
+9. [Future Roadmap](#future-roadmap)
 
 ---
 
-## System Overview
+## System Architecture
+
+### Overview
+The authentication system provides:
+- User account lifecycle management
+- Secure credential storage
+- Session handling
+- Multi-factor authentication
+- Profile services
+
 ```mermaid
 flowchart TD
-    A[User] --> B[Registration]
+    A[Client] --> B[Registration]
     A --> C[Login]
-    A --> D[Profile Management]
+    A --> D[Profile Mgmt]
     B --> E[AccountStorage]
-    C --> F[SessionManagement]
-    D --> G[DataValidation]
+    C --> F[Session Mgmt]
+    D --> G[Data Validation]
     E --> H[CSV Database]
-    F --> I[SessionTokens]
+    F --> I[Session Tracking]
 ```
-
-## Core Components
-
-### 1. Account Management
-| Class | Purpose |
-|-------|---------|
-| `AccountRegistrationCSV` | Handles new user registration |
-| `AccountDeletion` | Manages account removal |
-| `ResetCredentials` | Password/username recovery |
-
-### 2. Authentication
-| Class | Purpose |
-|-------|---------|
-| `UserLogin` | Main login handler |
-| `FailedLogin` | Brute-force protection |
-| `MultifactorAuthentication` | 2FA implementation |
-
-### 3. Profile Services
-| Class | Purpose |
-|-------|---------|
-| `ProfileEditor` | Profile modification |
-| `ViewPlayerProfile` | Profile display |
-
-### 4. Session Management
-| Class | Purpose |
-|-------|---------|
-| `UserLogin` | Session creation |
-| `UserLogout` | Session termination |
 
 ---
 
-## API Specifications
+## Component Deep Dive
 
-### Registration API
+### 1. Account Registration (`AccountRegistrationCSV.java`)
+**Responsibilities**:
+- Validates new account credentials
+- Enforces password policies
+- Stores accounts in CSV format
+
+**Key Methods**:
 ```java
-public class AccountRegistrationCSV {
-    public static void createNewAccount(Scanner scanner) throws IOException;
-    public static Map<String, String[]> loadAccounts() throws IOException;
+public static void createNewAccount(Scanner scanner) {
+    // Implements multi-step registration:
+    // 1. Username uniqueness check
+    // 2. Password complexity verification
+    // 3. Email format validation
+    // 4. CSV append operation
 }
 ```
 
-### Authentication API
-```java
-public class UserLogin {
-    public static void login(Scanner scanner);
-    public static void guestLogin();
-    public static Map<String, String> loadAccounts();
-}
+**Password Requirements**:
+1. Minimum 8 characters
+2. At least 1 uppercase letter
+3. At least 1 digit
+4. No whitespace
+
+---
+
+### 2. Login System (`UserLogin.java`)
+**Authentication Flow**:
+1. Credential validation
+2. Failed attempt tracking
+3. MFA triggering (when enabled)
+4. Session creation
+
+```mermaid
+sequenceDiagram
+    User->>UserLogin: Enter credentials
+    UserLogin->>FailedLogin: Verify attempts
+    alt Valid credentials
+        UserLogin->>MultifactorAuthentication: Start MFA
+        MultifactorAuthentication-->>UserLogin: Verification result
+        UserLogin->>SessionFile: Create entry
+    else Invalid
+        FailedLogin-->>UserLogin: Increment counter
+    end
 ```
 
-### MFA API
+---
+
+### 3. Multi-Factor Authentication (`MultifactorAuthentication.java`)
+**Implementation Details**:
+- Generates 6-digit OTP codes
+- Valid for 60 minutes
+- Maximum 3 attempts
+- Simulated email delivery
+
+**Code Generation**:
 ```java
-public class MultifactorAuthentication {
-    public static boolean startMFAProcess(Scanner scanner, String username);
-    private static String generateOneTimeCode(int length);
+private static String generateOneTimeCode(int length) {
+    // Uses SecureRandom for cryptographic safety
+    // Format: 6 numeric digits (0-9)
 }
 ```
 
@@ -88,143 +106,97 @@ public class MultifactorAuthentication {
 
 ## Data Flow
 
-### Registration Flow
-```mermaid
-sequenceDiagram
-    User->>GUI: Submit credentials
-    GUI->>AccountRegistrationCSV: createNewAccount()
-    AccountRegistrationCSV->>CSV: Validate & store
-    CSV-->>AccountRegistrationCSV: Success
-    AccountRegistrationCSV-->>GUI: Confirmation
-```
+### Registration Process
+1. Client submits credentials
+2. System validates inputs
+3. Password is hashed (BCrypt)
+4. Record appended to CSV
 
-### Login Flow
-```mermaid
-sequenceDiagram
-    User->>UserLogin: Enter credentials
-    UserLogin->>FailedLogin: Validate attempts
-    FailedLogin-->>UserLogin: AuthResult
-    UserLogin->>MultifactorAuthentication: Verify (if enabled)
-    MultifactorAuthentication-->>UserLogin: MFA status
-    UserLogin->>SessionFile: Create session
+```csv
+username,hashed_password,email,mfa_enabled
+testuser,$2a$10$N9qo...,user@test.com,true
 ```
 
 ---
 
-## Security Implementation
+## Security Model
 
-### Password Handling
-```java
-// In PasswordHasher
-public static String hashPassword(String password);
-public static boolean verifyPassword(String input, String storedHash);
-```
+### Protection Mechanisms
+1. **Brute Force Prevention**:
+   - Account lock after 5 failed attempts
+   - 15 minute lockout period
 
-### Brute Force Protection
-```java
-// In FailedLogin
-private final Map<String, Integer> failedAttempts;
-private static final int MAX_ATTEMPTS = 5;
-private static final long LOCK_DURATION = 15*60*1000; // 15 minutes
-```
+2. **Data Protection**:
+   - Password hashing with BCrypt
+   - Session file isolation
 
-### MFA Implementation
-- 6-digit one-time codes
-- Valid for 1 hour
-- 3 attempt limit
+3. **MFA Security**:
+   - Time-limited OTP codes
+   - Attempt throttling
 
 ---
 
 ## Error Handling
 
-| Error Case | Handling Mechanism |
-|------------|--------------------|
-| Duplicate username | Immediate rejection |
-| Invalid password | Attempt counter |
-| Locked account | 15-minute timeout |
-| MFA failure | Session termination |
+### Common Scenarios
+| Error Case | Handling | User Feedback |
+|------------|----------|---------------|
+| Duplicate username | Reject registration | "Username taken" |
+| Weak password | Reject input | Show requirements |
+| MFA failure | Terminate flow | "Too many attempts" |
 
 ---
 
-## Integration Points
-
-### With Game Systems
-```java
-// Sample integration
-if (UserLogin.isUserLoggedIn(username)) {
-    gameSession.start();
-} else {
-    showLoginPrompt();
-}
-```
-
-### With Leaderboard
-```java
-// In ViewPlayerProfile
-matchHistory.displayMatchHistoryForPlayer(playerStats);
-```
-
----
-
-## Testing Protocol
+## Testing Strategy
 
 ### Unit Tests
 ```java
 @Test
 void testPasswordHashing() {
-    String hash = PasswordHasher.hashPassword("test123");
-    assertTrue(PasswordHasher.verifyPassword("test123", hash));
-}
-
-@Test
-void testAccountDeletion() {
-    assertTrue(AccountDeletion.deleteAccount("test", "pass"));
+    String hash = PasswordHasher.hashPassword("Secure123!");
+    assertTrue(PasswordHasher.verifyPassword("Secure123!", hash));
 }
 ```
 
 ### Integration Tests
-1. Full registration → login → gameplay flow
-2. MFA failure scenarios
-3. Concurrent access tests
+1. Complete registration → login → gameplay flow
+2. Concurrent access scenarios
+3. MFA failure paths
 
 ---
 
-## Database
+## Database Schema
 
 ### accounts.csv
-```
-username,hashed_password,email,mfa_enabled
-testuser,$2a$10$N9qo8uLO...,user@test.com,true
-```
+| Column | Type | Description |
+|--------|------|-------------|
+| username | String | Primary key |
+| password | String | BCrypt hash |
+| email | String | User contact |
+| mfa_enabled | Boolean | MFA flag |
 
 ### session.csv
-```
-username
-timestamp
-```
+| Column | Description |
+|--------|-------------|
+| username | Active sessions |
 
 ---
 
-## Sequence Diagrams
+## Integration Guide
 
-### Profile Update
-```mermaid
-sequenceDiagram
-    User->>ProfileEditor: Request change
-    ProfileEditor->>MultifactorAuthentication: Verify identity
-    MultifactorAuthentication-->>ProfileEditor: Confirmation
-    ProfileEditor->>CSV: Update record
-    CSV-->>ProfileEditor: Success
-    ProfileEditor-->>User: Confirmation
+### For Game Servers
+```java
+// Verify active session
+if (UserLogin.isUserLoggedIn(username)) {
+    // Grant game access
+}
 ```
 
-### Account Recovery
-```mermaid
-sequenceDiagram
-    User->>ResetCredentials: Initiate recovery
-    ResetCredentials->>EmailService: Send code
-    EmailService-->>User: One-time code
-    User->>ResetCredentials: Submit code
-    ResetCredentials->>CSV: Update credentials
-    CSV-->>ResetCredentials: Success
+### For Leaderboards
+```java
+// Fetch player stats
+ViewPlayerProfile profile = new ViewPlayerProfile(username);
+profile.display();
 ```
+
+---
