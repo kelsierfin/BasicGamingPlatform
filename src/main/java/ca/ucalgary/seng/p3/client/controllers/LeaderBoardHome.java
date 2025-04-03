@@ -26,7 +26,6 @@ public class LeaderBoardHome {
     @FXML
     public AnchorPane root;
 
-
     //NAVIGATION BAR ELEMENTS - DONT EDIT
     @FXML
     private Circle notificationDot;
@@ -41,7 +40,7 @@ public class LeaderBoardHome {
 
     @FXML
     private Button profileButton, bellButton;
-    //END OF NAVIGATION BAR ELEMENTS
+
 
     @FXML
     public void initialize() {
@@ -76,23 +75,23 @@ public class LeaderBoardHome {
         toConnect4LeaderBoard();
     }
 
-    //TODO:currently not working
-    // -> GUI-Leaderboard Team need to work on implementing individual leaderboards ensure proper
-    // -> navigation to each leaderboard
-
-    public void toChessLeaderBoard() {
+    public static void toChessLeaderBoard() {
+        PageNavigator.navigateTo(new LeaderBoardController(CHESS_TITLE, CHESS_BCKGRND), CHESS_TITLE);
     }
 
-    public void toGoLeaderBoard() {
+    public static void toGoLeaderBoard() {
+        PageNavigator.navigateTo(new LeaderBoardController(GO_TITLE, GO_BCKGRND), GO_TITLE);
     }
 
-    public void toTTTLeaderBoard() {
+    public static void toTTTLeaderBoard() {
+        PageNavigator.navigateTo(new LeaderBoardController(TTT_TITLE, TTT_BCKGRND), TTT_TITLE);
     }
 
-    public void toConnect4LeaderBoard() {
+    public static void toConnect4LeaderBoard() {
+        PageNavigator.navigateTo(new LeaderBoardController(CONNECT_TITLE, CONNECT_BCKGRND), CONNECT_TITLE);
     }
 
-    //NAVIGATION BAR FUNCTIONALITY - DON'T EDIT
+    //NAVIGATION BAR FUNCTIONALITY - DON'T EDIT FCK WHO WRITE THIS
     // Called when the menu button is clicked
     @FXML
     private void handleMenuButton() {

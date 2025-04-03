@@ -48,4 +48,20 @@ public class PageNavigator {
         }
     }
 
+    /***
+     * For LeaderBoard pages, DON'T EDIT
+     */
+    public static void navigateTo(Parent root, String pageName) {
+        Scene scene = new Scene(root, 900, 600);
+
+        // Close the current stage if any
+        if (Stage.getWindows().size() > 0) {
+            Stage currentStage = (Stage) Stage.getWindows().get(0);
+            currentStage.close();
+        }
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle(pageName.substring(0, 1).toUpperCase() + pageName.substring(1));
+        stage.show();
+    }
 }
