@@ -6,8 +6,8 @@ public class PlayerVsPlayer {
 
     @Override
     public Game execute(Board board) {
-        Player player1 = new Player(input, "x");
-        Player player2 = new Player(input, "o");
+        Player player1 = new HumanPlayer(input, "x");
+        Player player2 = new HumanPlayer(input, "o");
         return new Game(board, player1, player2);
     }
 

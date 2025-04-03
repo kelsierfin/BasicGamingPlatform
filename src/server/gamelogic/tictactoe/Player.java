@@ -1,5 +1,7 @@
 public interface Player extends Menu {
     String getMarker();
-    int getMove();
+
+    int getMove(Game game);
+
     String title();
 }
