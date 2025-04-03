@@ -102,7 +102,6 @@ public static void guestLogin() {
 **Purpose**: Implements account lockout security  
 **Mechanisms**:
 - Tracks failed attempts (`MAX_ALLOWED_ATTEMPTS = 5`)
-- Locks accounts for 15 minutes after threshold
 - Uses concurrent collections for thread safety
 
 ### 4. MultifactorAuthentication
