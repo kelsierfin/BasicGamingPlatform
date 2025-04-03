@@ -6,9 +6,97 @@
   <component name="ChangeListManager">
     <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment=".">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/AboutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/AboutController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/ChessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/ChessController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/Connect4Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/Connect4Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/FriendFinderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/FriendFinderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GameApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/GameApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GameCard.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GameLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/GameLauncher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/GoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/GoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LandingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/LandingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LeaderBoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/LeaderBoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LeaderBoardHome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/LeaderBoardHome.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/LogInController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/MatchHistoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/MatchHistoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/PageNavigator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/PageNavigator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/ProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/ProfilePopUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/ProfilePopUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/ResetCredentialsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/ResetCredentialsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/SettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/SettingsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/SignUpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/StartGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/StartGameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/TicTacToeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/TicTacToeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/chatPopupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/chatPopupController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Chess.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Chess.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/about.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/about.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/connect4.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/connect4.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/go.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/go.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/landing.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/landing.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/leaderboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/leaderboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/leaderboard_home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/leaderboard_home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/logIn.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logIn.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/match_history.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/match_history.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/player_Finder.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/player_Finder.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/profile_settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/profile_settings.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resetCredentials.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resetCredentials.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/settings.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/signUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/signUp.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/startgame_chess.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/startgame_chess.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/startgame_connect4.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/startgame_connect4.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/startgame_go.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/startgame_go.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/startgame_tictactoe.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/startgame_tictactoe.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tictactoe.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tictactoe.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Chat_popup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Chat_popup.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Chess.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Chess.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/HomeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/about.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/about.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/AboutController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/ChessController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/Connect4Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/FriendFinderController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/GameApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/GameCard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/GameLauncher.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/GoController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/HomeController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/LandingController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/LeaderBoardController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/LeaderBoardHome.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/LogInController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/MatchHistoryController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/PageNavigator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/ProfileController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/ProfilePopUp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/ResetCredentialsController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/SettingsController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/SignUpController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/StartGameController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/TicTacToeController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/connect4.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/connect4.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/go.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/go.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/landing.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/landing.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leaderboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leaderboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leaderboard_home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leaderboard_home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/logIn.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/logIn.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/match_history.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/match_history.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/player_Finder.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/player_Finder.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/profile_settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/profile_settings.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/resetCredentials.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/resetCredentials.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/settings.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/signUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/signUp.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/startgame_chess.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/startgame_chess.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/startgame_connect4.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/startgame_connect4.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/startgame_go.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/startgame_go.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/startgame_tictactoe.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/startgame_tictactoe.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tictactoe.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tictactoe.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,31 +135,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.GameApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ca.ucalgary.seng.p3.GameApplication.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;gui-navigationfix&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ebose/OneDrive/Desktop/SENG 300/seng300-w25-project/src/main/resources/icons&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.GameApplication.executor": "Run",
+    "Application.HelloApplication.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.ca.ucalgary.seng.p3.GameApplication.executor": "Run",
+    "Application.ca.ucalgary.seng.p3.client.Main.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "gui-navigationfix",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/ebose/OneDrive/Desktop/SENG 300/seng300-w25-project/src/main/resources/icons",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.JavaFX",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources\icons" />
@@ -87,26 +176,13 @@
       <recent name="C:\Users\sagek\SENG300\seng300-w25-project\src\main\resources\icons" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="GameApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ca.ucalgary.seng.p3.GameApplication" />
+  <component name="RunManager">
+    <configuration name="ca.ucalgary.seng.p3.client.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ca.ucalgary.seng.p3.client.Main" />
       <module name="seng-w25-project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ca.ucalgary.seng.p3.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ca.ucalgary.seng.p3.Main" />
-      <module name="seng-w25-project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ca.ucalgary.seng.p3.*" />
+          <option name="PATTERN" value="ca.ucalgary.seng.p3.client.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -116,8 +192,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Application.GameApplication" />
+        <item itemvalue="Application.ca.ucalgary.seng.p3.client.Main" />
       </list>
     </recent_temporary>
   </component>

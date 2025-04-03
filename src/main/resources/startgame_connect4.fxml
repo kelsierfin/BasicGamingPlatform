@@ -11,7 +11,7 @@
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
-<StackPane fx:id="root" prefHeight="600" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng.p3.StartGameController">
+<StackPane fx:id="root" prefHeight="600" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng.p3.client.controllers.StartGameController">
 
     <BorderPane fx:id="mainBorderPane">
 

@@ -55,7 +55,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>ca.ucalgary.seng.p3.Main</mainClass>
+                    <mainClass>ca.ucalgary.seng.p3.client.Main</mainClass>
                 </configuration>
             </plugin>
         </plugins>

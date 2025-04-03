@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="card.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng.p3.LeaderBoardHome">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="card.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng.p3.client.controllers.LeaderBoardHome">
     <HBox alignment="CENTER" layoutX="-2.0" layoutY="550" prefHeight="50.0" prefWidth="900.0" spacing="20">
         <Button alignment="CENTER" onAction="#connect4" prefHeight="21.0" prefWidth="75.0" styleClass="card-button" text="Connect 4">
             <font><Font size="10.0" /></font>

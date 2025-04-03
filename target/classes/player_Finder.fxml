@@ -13,11 +13,11 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng.p3.FriendFinderController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng.p3.client.controllers.FriendFinderController">
    <children>
       <AnchorPane layoutX="141.0" layoutY="63.0" prefHeight="48.0" prefWidth="618.0" AnchorPane.bottomAnchor="490.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="60.0">
          <children>
-            <TextField fx:id="player_Search" layoutX="73.0" layoutY="11.0" onAction="#enterKeyPressed" onInputMethodTextChanged="#change_List" prefHeight="25.0" prefWidth="524.0" promptText="Search for friend here" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="73.39999999999998" />
+            <TextField fx:id="player_Search" layoutX="73.0" layoutY="11.0" onInputMethodTextChanged="#change_List" prefHeight="25.0" prefWidth="524.0" promptText="Search for friend here" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="73.39999999999998" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="18.4" layoutY="120.0" prefHeight="461.0" prefWidth="862.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="120.0">
