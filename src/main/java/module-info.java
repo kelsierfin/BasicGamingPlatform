@@ -1,4 +1,4 @@
-module ca.ucalgary.seng.p3 {
+module ca.ucalgary.seng.p3.client{
     requires javafx.base;
     requires javafx.controls;
     requires javafx.fxml;

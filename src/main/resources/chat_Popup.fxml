@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane prefHeight="339.0" prefWidth="351.0" style="-fx-background-color: #e0e0e0; -fx-border-width: 1; -fx-effect: dropshadow; -fx-border-color: #999; -fx-padding: 20; -fx-background-radius: 15; -fx-border-radius: 15;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<Pane prefHeight="339.0" prefWidth="351.0" style="-fx-background-color: #e0e0e0; -fx-border-width: 1; -fx-effect: dropshadow; -fx-border-color: #999; -fx-padding: 20; -fx-background-radius: 15; -fx-border-radius: 15;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng.p3.client.controllers.chatPopupController">
    <children>
       <AnchorPane prefHeight="339.0" prefWidth="351.0">
          <children>
