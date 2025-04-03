@@ -1,4 +1,4 @@
-public class PlayerVsPlayer {
+public class PlayerVsPlayer implements GameType{
     private final Input input;
     public PlayerVsPlayer(Input input) {
         this.input = input;
