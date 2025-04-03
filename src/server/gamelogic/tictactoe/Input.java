@@ -1,25 +1,40 @@
+import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Scanner;
 
 public class Input {
-    private Integer selectedMove = null;
-    private String message = "";
+    private final Scanner input;
+    private final Print print;
 
-    public void setSelectedMove(int move) {
-        this.selectedMove = move;
+    public Input(Scanner input, Print print) {
+        this.input = input;
+        this.print = print;
     }
 
-    public int validateSelection(List<Integer> validOptions) {
-        while (selectedMove == null || !validOptions.contains(selectedMove)) {
-            Thread.onSpinWait();
+    public int validateSelection(List<Integer> options) {
+        int selection = getInteger();
+        if (options.contains(selection)) {
+            return selection;
+        } else {
+            print.invalidSelection();
+            return validateSelection(options);
         }
-        int move = selectedMove;
-        selectedMove = null;
-        return move;
     }
-    public String getMessage() {
-        return message;
+    public List<Integer> validSelection(List<? extends Menu> options) {
+        List<Integer> selection = new ArrayList<>();
+        for (int i = 1; i <= options.size() + 1; i++) {
+            selection.add(i);
+        }
+        return selection;
     }
-    public void setMessage(String message) {
-        this.message = message;
+    int getInteger() {
+        try {
+            return input.nextInt();
+        } catch (InputMismatchException e) {
+            print.invalidSelection();
+            input.nextLine();
+            return getInteger();
+        }
     }
 }
