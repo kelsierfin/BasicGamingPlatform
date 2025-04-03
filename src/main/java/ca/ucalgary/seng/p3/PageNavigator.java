@@ -31,4 +31,21 @@ public class PageNavigator {
         }
     }
 
+    public static void chatWindow(String pageName){
+        try {
+            Stage stage = new Stage();
+            String fxmlPath = "/" + pageName + ".fxml";
+            FXMLLoader loader = new FXMLLoader(PageNavigator.class.getResource(fxmlPath));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+
+            stage.setScene(scene);
+            stage.setTitle(pageName.substring(0, 1).toUpperCase() + pageName.substring(1));
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

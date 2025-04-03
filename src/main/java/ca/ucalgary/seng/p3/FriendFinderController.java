@@ -7,7 +7,6 @@ import javafx.scene.control.*;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -178,7 +177,7 @@ public class FriendFinderController {
 
     // Handles the visibility of the request menu when name is pressed
     @FXML
-    public void open_Request_Menu(javafx.scene.input.MouseEvent mouseEvent) {
+    public void open_Request_Menu() {
         selected_Player = player_List.getSelectionModel().getSelectedItem();
         toggle_Request_People();
 
