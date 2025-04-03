@@ -195,7 +195,7 @@
                      <graphic>
                         <ImageView fitWidth="60.0" pickOnBounds="true">
                            <image>
-                              <Image url="@../../src/main/Game%20Photos/Chess%20Pawn.png" />
+                              <Image url="@Game Assets/Chess Pawn.png" />
                            </image>
                         </ImageView>
                      </graphic></Button>
@@ -231,7 +231,7 @@
                      <graphic>
                         <ImageView pickOnBounds="true">
                            <image>
-                              <Image url="@../../src/main/Game%20Photos/Chess%20Pawn.png" />
+                              <Image url="@Game Assets/Chess Pawn.png" />
                            </image>
                         </ImageView>
                      </graphic></Button>

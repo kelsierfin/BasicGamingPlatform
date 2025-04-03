@@ -462,7 +462,23 @@
       <option name="project" value="LOCAL" />
       <updated>1743656576747</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="merge attempt 2">
+      <option name="closed" value="true" />
+      <created>1743656694952</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1743656694952</updated>
+    </task>
+    <task id="LOCAL-00040" summary="merge attempt 2">
+      <option name="closed" value="true" />
+      <created>1743656812561</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1743656812561</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
