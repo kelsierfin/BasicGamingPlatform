@@ -4,10 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="merge attempt 2">
+    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="merging with navigationfix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Chess.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Chess.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/chess.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/leaderboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/leaderboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/leaderboard_home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/leaderboard_home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/navigationbar.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/player_Finder.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/player_Finder.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/settings.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/startgame_chess.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/startgame_chess.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/startgame_connect4.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/startgame_connect4.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/startgame_go.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/startgame_go.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/startgame_tictactoe.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/startgame_tictactoe.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Chess.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Chess.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/LogInController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/LogInController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leaderboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leaderboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leaderboard_home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leaderboard_home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/navigationbar.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/player_Finder.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/player_Finder.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/settings.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/startgame_chess.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/startgame_chess.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/startgame_connect4.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/startgame_connect4.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/startgame_go.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/startgame_go.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/startgame_tictactoe.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/startgame_tictactoe.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +78,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;gui-navigationfix&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;gui&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/ebose/OneDrive/Desktop/SENG 300/seng300-w25-project/src/main/resources/icons&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
@@ -81,10 +103,10 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources" />
+      <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources\screens" />
+      <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources\styles" />
       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\java\ca\ucalgary\seng\p3" />
       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources\icons" />
-      <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources\fonts" />
-      <recent name="C:\Users\sagek\SENG300\seng300-w25-project\src\main\resources\icons" />
     </key>
   </component>
   <component name="RunManager">
@@ -157,6 +179,8 @@
       <workItem from="1743268139636" duration="18399000" />
       <workItem from="1743480344703" duration="1501000" />
       <workItem from="1743521870411" duration="10384000" />
+      <workItem from="1743659093157" duration="469000" />
+      <workItem from="1743659578502" duration="1043000" />
     </task>
     <task id="LOCAL-00001" summary="Added connect4.fxml and connect 4.css, started working on connect 4 game page">
       <option name="closed" value="true" />

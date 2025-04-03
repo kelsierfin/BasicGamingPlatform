@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="900.0" stylesheets="card.css"  xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="ca.ucalgary.seng.p3.client.controllers.LeaderBoardController">
+<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="900.0" stylesheets="card.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng.p3.client.controllers.LeaderBoardController">
 
     <StackPane>
         <VBox alignment="TOP_CENTER" layoutX="90.0" layoutY="62.0" prefHeight="464.0" prefWidth="720.0" spacing="20.0">
@@ -45,6 +45,7 @@
                         <RowConstraints />
                     </rowConstraints>
                 </GridPane>
+        </VBox>
         </VBox>
     </StackPane>
 
