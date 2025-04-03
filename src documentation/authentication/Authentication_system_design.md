@@ -45,7 +45,6 @@ classDiagram
     
     class FailedLogin {
         +authenticate()
-        +lockAccount()
     }
     
     class MultifactorAuthentication {
@@ -208,7 +207,6 @@ Guest38472
 | Error Case               | User Feedback                  | System Action                     |
 |--------------------------|--------------------------------|-----------------------------------|
 | Invalid credentials      | "Invalid username/password"    | Increments failed attempt counter |
-| Locked account           | "Account locked for 15 min"    | Blocks login attempts             |
 | MFA failure              | "Incorrect verification code"  | Allows retries (max 3)            |
 
 ## Session Management
