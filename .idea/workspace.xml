@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment=".">
+    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="merge attempt 2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/chat_Popup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/chat_Popup.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/chess.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/chess.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/chess.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/chess.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Chess.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Chess.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Chess.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Chess.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -457,7 +454,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743534745972</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="merge attempt 2">
+      <option name="closed" value="true" />
+      <created>1743656576747</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1743656576747</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -487,7 +492,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added profile.fxml and made changes to it for the settings screen" />
     <MESSAGE value="Added the profileController.java and SettingsController.java classes for the settings and profile fxml files" />
     <MESSAGE value="files moved in the right location" />
     <MESSAGE value="landing page added" />
@@ -512,7 +516,8 @@
     <MESSAGE value="Merge branch 'detached2' into gui2&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/ca/ucalgary/seng/p3/ChessController.java&#10;#&#9;src/main/java/ca/ucalgary/seng/p3/Connect4Controller.java&#10;#&#9;src/main/java/ca/ucalgary/seng/p3/FriendFinderController.java&#10;#&#9;src/main/java/ca/ucalgary/seng/p3/HomeController.java&#10;#&#9;src/main/java/ca/ucalgary/seng/p3/LeaderBoardController.java&#10;#&#9;src/main/java/ca/ucalgary/seng/p3/LeaderBoardHome.java&#10;#&#9;src/main/java/ca/ucalgary/seng/p3/StartGameController.java&#10;#&#9;src/main/resources/leaderboard.fxml&#10;#&#9;src/main/resources/leaderboard_home.fxml&#10;#&#9;src/main/resources/player_Finder.fxml&#10;#&#9;target/classes/ca/ucalgary/seng/p3/ChessController.class&#10;#&#9;target/classes/ca/ucalgary/seng/p3/Connect4Controller.class&#10;#&#9;target/classes/ca/ucalgary/seng/p3/FriendFinderController.class&#10;#&#9;target/classes/ca/ucalgary/seng/p3/GoController.class&#10;#&#9;target/classes/ca/ucalgary/seng/p3/HomeController.class&#10;#&#9;target/classes/ca/ucalgary/seng/p3/LeaderBoardController.class&#10;#&#9;target/classes/ca/ucalgary/seng/p3/LeaderBoardHome.class&#10;#&#9;target/classes/ca/ucalgary/seng/p3/PageNavigator.class&#10;#&#9;target/classes/ca/ucalgary/seng/p3/StartGameController.class&#10;#&#9;target/classes/leaderboard.fxml&#10;#&#9;target/classes/leaderboard_home.fxml&#10;#&#9;target/classes/player_Finder.fxml" />
     <MESSAGE value="navigation between pages works, except for individual leaderboard" />
     <MESSAGE value="." />
-    <option name="LAST_COMMIT_MESSAGE" value="." />
+    <MESSAGE value="merge attempt 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="merge attempt 2" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
