@@ -14,6 +14,7 @@ public class Connect4 {
         String player1_input;
         String player2_symbol;
 
+
         boolean moveValid = false;
 
         boolean gameEnd = false;
