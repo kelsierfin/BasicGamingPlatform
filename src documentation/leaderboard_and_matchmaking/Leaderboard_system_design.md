@@ -4,7 +4,7 @@
 1. [System Overview](#system-overview)
 2. [Class Diagram](#class-diagram)
 3. [Detailed Class Specifications](#detailed-class-specifications)
-4. [Key APIs](#key-apis)
+4. [Integration Points](#integration_points)
 5. [Data Storage](#data-storage)
 6. [Error Handling](#error-handling)
 
@@ -145,16 +145,29 @@ public static LeaderboardData getLeaderboard(String gameType){
 - Updates ELO based on outcome and rank difference of both players
 
 
-## Key APIs
+## Integration Points
 
+1. **Game Logic** → `matchPlayers`
+   - Begin game if matching is successful
+2. **Profile** → `ViewPlayerProfile`
+   - Player stats display
+3. **Authentication** → `FailedLogin`
+   - Account status verification
 
 
 ## Data Storage
 
+### stats.csv
+```
+username,chess stats,connect4 stats,go stats,tictactoe stats
+
+```
 
 
 
 ## Error Handling
-
-
+| Error Case               | User Feedback                  | System Action                     |
+|--------------------------|--------------------------------|-----------------------------------|
+| No stats for user        | "No stats found for player ..."    | Throw exception                   |
+| No player to match with  | "No match found for player with ELO ..."| End matchmaking              |
 
