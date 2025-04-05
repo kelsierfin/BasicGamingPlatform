@@ -69,12 +69,12 @@ classDiagram
 ### 1. DatabaseStub
 **Purpose**: Stub for database. Stores game stats and rankings in a cvs file
 - Stores game stats in CSV format:  
-  `games played,games won,ELO,rank`
-- User stats stored in CSV format:
+  `games played,games won,ELO,rank`  
+- User stats stored in CSV format:  
   `username,chess stats,connect4 stats,go stats,tictactoe stats`
 
 ### 2. GameStats
-**Purpose**: Stores info on player's game stats for each specific game
+**Purpose**: Stores info on player's game stats for each specific game  
 **Data**: 
 - Games played
 - Games won
@@ -105,7 +105,7 @@ public static LeaderboardData getLeaderboard(String gameType){
 ```
 
 ### 4. LeaderboardData
-**Purpose**: Data structure for each games leaderboard
+**Purpose**: Data structure for each games leaderboard  
 **Data**: 
 - Player ID
 - Player score
@@ -114,7 +114,7 @@ public static LeaderboardData getLeaderboard(String gameType){
 **Purpose**: Tests leaderboard functionality
 
 ### 6. MatchData
-**Purpose**: Stores data of finished match
+**Purpose**: Stores data of finished match  
 **Data**: 
 - Player username
 - Opponent username
@@ -122,14 +122,14 @@ public static LeaderboardData getLeaderboard(String gameType){
 - Number of turns
 
 ### 7. MatchmakingLogic
-**Purpose**: Matches player to an opponent within skill range
+**Purpose**: Matches player to an opponent within skill range  
 **Operations**:
 - Player is added to matchmaking system
 - If another player within a certain skill range(based on ELO) is also in system, match players
 - If not, player is not matched with anyone
 
 ### 8. PlayerStatData
-**Purpose**: Stores data on overall game stats
+**Purpose**: Stores data on overall game stats  
 **Data**: 
 - Overall games played
 - Overall games won
@@ -138,7 +138,7 @@ public static LeaderboardData getLeaderboard(String gameType){
 - Match history
 
 ### 9. PlayerStats
-**Purpose**: Updates database and player stats after a game is completed
+**Purpose**: Updates database and player stats after a game is completed  
 **Operations**:
 - Updates leaderboard
 - Updates both players stats for the given game
