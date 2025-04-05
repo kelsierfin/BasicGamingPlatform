@@ -5,7 +5,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
-import java.util.Optional;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
 
 public class ProfileController {
 
@@ -36,11 +40,48 @@ public class ProfileController {
     @FXML
     private Button deleteAccountButton;
 
+    private static final String FILE_NAME = "accounts.csv";
+    private static final String CURRENT_SESSION = "session.csv";
+
+    /**
+     * Loads data from account into the settings GUI by looking at the users session.csv
+     */
+
+    @FXML
+    private void initialize(){
+        String username;
+        File file = new File(CURRENT_SESSION);
+
+        //Set name to current session login
+        try (BufferedReader name_Read = new BufferedReader(new FileReader(file))){
+            username = name_Read.readLine();
+            String[] details = getAccountDetails(username);
+            usernameField.setText(username);
+            emailField.setText(details[1]);
+            currentPassField.setText(details[2]);
+
+        } catch (IOException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error retrieving account information");
+            alert.setHeaderText(e.getMessage());
+            alert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    PageNavigator.navigateTo("landing"); // Navigate to landing page
+                }
+            });
+
+        }
+    }
+
+    String[] getAccountDetails(String username) throws IOException {
+        Map<String, String[]> accounts = loadAccounts();
+        return accounts.get(username);
+    }
+
 
     @FXML
     private void handleChangeAvatar() {
         System.out.println("Change Avatar button clicked");
-
 
     }
 
@@ -57,7 +98,6 @@ public class ProfileController {
     }
     @FXML
     private void handleSave() {
-        System.out.println("Save button clicked");
 
         // Validate inputs
         boolean isValid = true;
@@ -142,7 +182,6 @@ public class ProfileController {
 
             if (passwordResult.isPresent() && !passwordField.getText().trim().isEmpty()) {
                 // Authentication team - Here you have to verify the password against the user's actual password
-                System.out.println("Delete Account confirmed with password");
 
                 Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
                 successAlert.setTitle("Account Deleted");
@@ -170,4 +209,56 @@ public class ProfileController {
         alert.setContentText(content);
         alert.showAndWait();
     }
+
+    /**
+     * Loads user accounts from the CSV file.
+     */
+
+    private static  Map<String, String[]> loadAccounts() throws IOException {
+        Map<String, String[]> accounts = new HashMap<>();
+        File file = new File(FILE_NAME);
+
+        // If file does not exist then treat is as if the server failed to connect
+        if (!file.exists()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Server failed to connect");
+            alert.setHeaderText("The server is having connection issues. Please try again in a little bit");
+            alert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    PageNavigator.navigateTo("landing"); // Navigate to landing page
+                }
+            });
+            return accounts;
+        }
+
+        // If file exists try finding the username
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length >= 3) {
+                    String username = parts[0];
+                    String[] details = new String[]{
+                            parts[1], // password
+                            parts[2],  // email
+                            parts.length > 3 ? parts[3] : "disabled" // mfa status
+                    };
+                    accounts.put(username, details);
+                }
+            }
+
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error retrieving account information");
+            alert.setHeaderText(e.getMessage());
+            alert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    PageNavigator.navigateTo("landing"); // Navigate to landing page
+                }
+            });
+        }
+
+        return accounts;
+    }
+
 }
