@@ -57,7 +57,7 @@ public class Board {
         return (space > 0 && space <= totalSpaces);
     }
 
-    private boolean isMoveAllowed(int space) {
+    public boolean isMoveAllowed(int space) {
         return (isSpaceOnBoard(space) && isSpaceAvailable(space));
     }
 
