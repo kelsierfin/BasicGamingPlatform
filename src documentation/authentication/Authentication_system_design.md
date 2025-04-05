@@ -192,6 +192,15 @@ username2
 Guest38472
 ```
 
+## Integration Points
+
+1. **Game Client** → `UserLogin`
+   - Login/guest session initiation
+2. **Leaderboard** → `ViewPlayerProfile`
+   - Player stats display
+3. **Matchmaking** → `FailedLogin`
+   - Account status verification
+   
 ## Security Considerations
 
 | Feature               | Implementation              |
