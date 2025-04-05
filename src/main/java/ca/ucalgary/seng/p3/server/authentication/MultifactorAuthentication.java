@@ -106,7 +106,7 @@ public class MultifactorAuthentication {
      * @param username The username whose email we want
      * @return The email as a string if found, otherwise null
      */
-    private static String fetchUserEmail(String username) {
+    public static String fetchUserEmail(String username) {
         File file = new File(FILE_NAME);
 
         if (!file.exists()) {
@@ -138,7 +138,7 @@ public class MultifactorAuthentication {
      * @param length Number of digits for the code
      * @return A string representing the numeric code
      */
-    private static String generateOneTimeCode(int length) {
+    public static String generateOneTimeCode(int length) {
         Random random = new Random();
         StringBuilder codeBuilder = new StringBuilder(length);
         for (int i = 0; i < length; i++) {

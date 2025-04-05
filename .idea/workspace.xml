@@ -5,24 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="merge worked. Note: branch off from here, for further changes">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/server/authentication/AccountDeletion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/server/authentication/AccountRegistrationCSV.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/server/authentication/FailedLogin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/server/authentication/MatchHistory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/server/authentication/MultifactorAuthentication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/server/authentication/PasswordHasher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/server/authentication/ProfileEditor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/server/authentication/ResetCredentials.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/server/authentication/UserLogin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/server/authentication/UserLogout.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/server/authentication/ViewPlayerProfile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/server/authentication/authentication_design.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/UserSessionManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts.csv" beforeDir="false" afterPath="$PROJECT_DIR$/accounts.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/GameApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/GameApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/FriendFinderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/FriendFinderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/LeaderBoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/LeaderBoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/LogInController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/SignUpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/server/authentication/AccountRegistrationCSV.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/server/authentication/AccountRegistrationCSV.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/server/authentication/FailedLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/server/authentication/FailedLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/server/authentication/MultifactorAuthentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/server/authentication/MultifactorAuthentication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/logIn.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logIn.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/signUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/signUp.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ca/ucalgary/seng/p3/server/authentication/FailedLoginTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ca/ucalgary/seng/p3/server/authentication/MultifactorAuthenticationTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ca/ucalgary/seng/p3/server/authentication/ProfileEditorTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ca/ucalgary/seng/p3/server/authentication/ResetCredentialsTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ca/ucalgary/seng/p3/server/authentication/UserLoginTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ca/ucalgary/seng/p3/server/authentication/UserLogoutTest.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Chess.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Chess.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/LeaderBoardHome.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/LeaderBoardHome.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/NavigationBar.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/GameApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/GameApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/FriendFinderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/FriendFinderController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/LeaderBoardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/LeaderBoardController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/LogInController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/LogInController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/SignUpController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/SignUpController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/server/authentication/AccountRegistrationCSV.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/server/authentication/AccountRegistrationCSV.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/server/authentication/FailedLogin$AuthResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/server/authentication/FailedLogin$AuthResult.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/server/authentication/FailedLogin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/server/authentication/FailedLogin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/server/authentication/MultifactorAuthentication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/server/authentication/MultifactorAuthentication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/logIn.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/logIn.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/signUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/signUp.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,15 +48,15 @@
       <list>
         <option value="module-info" />
         <option value="FxmlFile" />
-        <option value="Class" />
         <option value="CSS File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="gui" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -61,36 +75,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.AccountRegistrationCSV.executor": "Run",
-    "Application.GameApplication.executor": "Run",
-    "Application.HelloApplication.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.UserLogin.executor": "Run",
-    "Application.ca.ucalgary.seng.p3.GameApplication.executor": "Run",
-    "Application.ca.ucalgary.seng.p3.client.Main.executor": "Run",
-    "JUnit.MultifactorAuthenticationTest.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "gui-auth-integration",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/ebose/OneDrive/Desktop/SENG 300/seng300-w25-project/src/main/resources/icons",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.JavaFX",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.AccountRegistrationCSV.executor&quot;: &quot;Run&quot;,
+    &quot;Application.GameApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.UserLogin.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ca.ucalgary.seng.p3.GameApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ca.ucalgary.seng.p3.client.Main.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MultifactorAuthenticationTest.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;gui-auth-integration&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ebose/OneDrive/Desktop/SENG 300/seng300-w25-project/src/main/resources/icons&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources\icons" />
@@ -106,7 +120,7 @@
       <recent name="C:\Users\ebose\OneDrive\Desktop\SENG 300\seng300-w25-project\src\main\resources\screens" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.AccountRegistrationCSV">
+  <component name="RunManager" selected="Application.ca.ucalgary.seng.p3.client.Main">
     <configuration name="AccountRegistrationCSV" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ca.ucalgary.seng.p3.server.authentication.AccountRegistrationCSV" />
       <module name="seng-w25-project" />
@@ -163,10 +177,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ca.ucalgary.seng.p3.client.Main" />
         <item itemvalue="Application.AccountRegistrationCSV" />
         <item itemvalue="JUnit.MultifactorAuthenticationTest" />
         <item itemvalue="Application.UserLogin" />
-        <item itemvalue="Application.ca.ucalgary.seng.p3.client.Main" />
         <item itemvalue="Application.ca.ucalgary.seng.p3.client.Main" />
       </list>
     </recent_temporary>

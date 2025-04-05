@@ -80,6 +80,7 @@ public class LeaderBoardController extends StackPane {
     }
     @FXML
     private Button btnUserProfile;
+
     @FXML
     private GridPane rankList;
 

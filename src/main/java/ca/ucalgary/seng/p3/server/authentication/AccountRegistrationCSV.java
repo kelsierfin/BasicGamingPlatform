@@ -72,7 +72,7 @@ public class AccountRegistrationCSV {
         }
         // Exit the loop after successful account creation
 
-    private static boolean isProperPassword(String password) {
+    public static boolean isProperPassword(String password) {
         return password.length() >= 8 && password.matches(".*\\d.*") && password.matches(".*[A-Z].*")
                 && !password.contains(" ") && password != null;
     }
@@ -105,7 +105,8 @@ public class AccountRegistrationCSV {
 
         return accounts;
     }
-    private static boolean isValidEmail(String email) {
+
+    public static boolean isValidEmail(String email) {
         if (email == null || email.isEmpty()) return false;
         String[] parts = email.split("@");
         return parts.length == 2 &&
@@ -120,7 +121,7 @@ public class AccountRegistrationCSV {
      * @param password The user's password (not encrypted here)
      * @param email The user's email address
      */
-    private static void saveAccount(String username, String password, String email) throws IOException {
+    public static void saveAccount(String username, String password, String email) throws IOException {
         // Open the file in append mode and write the account details
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_NAME, true))) {
             String hashed_password= PasswordHasher.generateStorablePassword(password);

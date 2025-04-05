@@ -1,38 +1,66 @@
 package ca.ucalgary.seng.p3.client.controllers;
+import ca.ucalgary.seng.p3.server.authentication.*;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+
+import java.awt.*;
+import java.io.IOException;
+import java.util.Map;
+import java.util.Scanner;
+
 
 public class LogInController {
 
+    //GUI (FXML) ELEMENTS VISIBLE TO THE USER -> used to collect and display info//
+
     @FXML
-    Text errorMessage;
+    private Text errorMessage; //displays message to indicate invalid input
 
     @FXML
     private TextField usernameInput;
 
     @FXML
-    private PasswordField passwordInput;
+    private PasswordField passwordInput; //stores invisible password input
 
     @FXML
-    private TextField passwordVisibleField = new TextField();
+    private TextField passwordVisibleField = new TextField();  //stores visible password input
 
     @FXML
     private Button visibilityToggle = new Button();
 
+
     private String password;  //final password sent back to authentication
     private String username;  //final password sent back to authentication
 
-    private boolean credentialsValid;
-    StringBuilder errorText;
+    private String generatedCode;
+    private long codeGenerationTime;
+    private int mfaAttempts = 0;
+    private static final int MAX_ATTEMPTS = 3;
+    private static final long CODE_VALIDITY_DURATION_MS = 3600000;
+    private int failedAttempts = 0;
 
+    private static Map<String, String[]> accounts; //stores all accounts (locally in SignUpController)
+
+    @FXML
+    private Text mfaMessageLabel;
+    @FXML
+    private TextField mfaCodeInput;
+
+    @FXML
+    private VBox mfaCard;
+
+    @FXML
+    private VBox logInCard;
 
     public void initialize() {
+        checkIfUserIsLocked();
         usernameInput.setPromptText("Username");
         passwordInput.setPromptText("Password");
         passwordVisibleField.setPromptText("Password");
@@ -49,6 +77,9 @@ public class LogInController {
                 passwordInput.setText(newValue);
             }
         });
+
+        mfaCard.setVisible(false);
+
     }
 
     //FUNCTIONS THAT HANDLE VISIBILITY OF TEXT IN PASSWORD FIELDS
@@ -94,20 +125,106 @@ public class LogInController {
     }
 
 
-    public void handleLogInButton() {
-        errorText =  new StringBuilder();
-        credentialsValid = true;
-        usernameConfirmation();
-        passwordConfirmation();
-        if (credentialsValid) {
-            System.out.println("Log In Successful");
-            PageNavigator.navigateTo("home");
+    public void handleLogInButton() throws IOException {
+        setUsername();
+        setPassword();
+
+        // Prevent double-login
+        if (UserSessionManager.isUserOnline(username)) {
+            errorMessage.setText("User is already logged in.");
+            return;
         }
-        else{
-            errorMessage.setText(errorText.toString());
-            System.out.println("Log In Failed");
+
+        FailedLogin loginManager = FailedLogin.getInstance();
+        accounts = AccountRegistrationCSV.loadAccounts();
+
+        if (username.isEmpty()) {
+            errorMessage.setText("Enter Username.");
+        } else if (!accounts.containsKey(username)) {
+            errorMessage.setText("Account does not exist.");
+        } else {
+            // Check lock before proceeding with login attempt
+            FailedLogin.AuthResult result = loginManager.authenticate(username, password);
+
+            if (result.isSuccess()) {
+                // Login successful
+                if (UserLogin.isMFAEnabled(username)) {
+                    logInCard.setVisible(false);
+                    mfaCard.setVisible(true);
+                    startMFAProcess(username);
+                } else {
+                    UserLogin.saveSession(username);
+                    UserSessionManager.addUser(username);
+                    PageNavigator.navigateTo("home");
+                }
+            } else {
+                // Login failed
+                if (result.getMessage().contains("locked")) {
+                    // Account is locked, handle lock logic
+                    errorMessage.setText(result.getMessage());
+                } else {
+                    // Handle failed login attempts
+                    errorMessage.setText(result.getMessage());
+                    System.out.println("Login failed: " + result.getMessage());
+                }
+                highlightError(usernameInput, passwordInput);
+            }
         }
     }
+
+
+
+    public void checkIfUserIsLocked() {
+        String username = usernameInput.getText();
+        if (username == null || username.isEmpty()) return;
+
+        FailedLogin loginManager = FailedLogin.getInstance();
+        FailedLogin.AuthResult result = loginManager.authenticate(username, ""); // dummy password
+
+        if (!result.isSuccess() && result.getMessage().contains("locked")) {
+            errorMessage.setText(result.getMessage());
+        }
+    }
+
+    public void checkIfUserIsOnline() {
+
+    }
+
+    public void handleSubmitMfaCode() {
+        String userInput = mfaCodeInput.getText().trim();
+        mfaAttempts++;
+
+        if (System.currentTimeMillis() - codeGenerationTime > CODE_VALIDITY_DURATION_MS) {
+            mfaMessageLabel.setText("Code expired. Please request a new one.");
+            return;
+        }
+        if (userInput.equals(generatedCode)) {
+            mfaMessageLabel.setText("MFA successful!");
+            UserSessionManager.addUser(username);
+            UserLogin.saveSession(username);
+            PageNavigator.navigateTo("home");
+        } else {
+            if (mfaAttempts >= MAX_ATTEMPTS) {
+                Alert failedMFA = new Alert(Alert.AlertType.CONFIRMATION);
+                failedMFA.setTitle("MFA Failed");
+                failedMFA.setHeaderText("MFA failed. Too many incorrect attempts.");
+                ButtonType exit= new ButtonType("Exit");
+
+                failedMFA.getButtonTypes().setAll(exit);
+                failedMFA.showAndWait().ifPresent(response -> {
+                    if (response == exit) {
+                        PageNavigator.navigateTo("logIn");
+                        failedMFA.close();
+                    }else{
+                        failedMFA.close();
+                    }
+                });
+            } else {
+                mfaMessageLabel.setText("Incorrect code. Attempt " + mfaAttempts + " of " + MAX_ATTEMPTS + ".");
+            }
+        }
+    }
+
 
     public void handleGuestLogInButton() {
         PageNavigator.navigateTo("home");
@@ -132,49 +249,18 @@ public class LogInController {
 
     //CONFIRMATION OF CREDENTIALS
 
-    //TODO: ADD FUNCTIONALITY FROM AUTHENTICATION
-
-    /**
-     * Verifies password input.
-     * @return boolean credentialsValid (true if passwords match, false if input is empty or doesn't match)
-     */
-    private boolean passwordConfirmation() {
-        setPassword();
-
-        boolean passwordsValid = !password.isEmpty(); //add other conditions later
-
-        if (!passwordsValid) {
-            if (password.isEmpty()) {
-                highlightError(passwordInput, passwordVisibleField);
-                System.out.println("Missing Password.");
-                errorText.append(" Missing Password.");
-                credentialsValid = false;
-            }
-        } else{
-            resetBorderStyle(passwordInput, passwordVisibleField);
+    public void startMFAProcess(String username) {
+        mfaCard.setVisible(true);
+        logInCard.setVisible(false);
+        String email = MultifactorAuthentication.fetchUserEmail(username);
+        if (email == null) {
+            mfaMessageLabel.setText("No email found for this user.");
+            mfaMessageLabel.setVisible(true);
+            return;
         }
-        return credentialsValid;
-    }
-
-    /**
-     * Verifies username input.
-     * @return boolean credentialsValid (true if username is valid (username is unique), false otherwise)
-     */
-    private boolean usernameConfirmation() {
-        setUsername();
-        boolean validUsername = !username.isEmpty();
-
-        if (!validUsername) {
-            if(username.isEmpty()){
-                highlightError(usernameInput);
-                System.out.println("Missing Username.");
-                errorText.append(" Missing Username.");
-                credentialsValid = false;
-            }
-        } else{
-            resetBorderStyle(usernameInput);
-        }
-        return credentialsValid;
+        generatedCode = MultifactorAuthentication.generateOneTimeCode(6);
+        codeGenerationTime = System.currentTimeMillis();
+        mfaMessageLabel.setText("MFA code sent to: " + email + "\nCode: " + generatedCode);
     }
 
     /**

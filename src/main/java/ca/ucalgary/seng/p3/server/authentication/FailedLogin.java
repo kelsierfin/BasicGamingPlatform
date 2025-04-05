@@ -8,6 +8,15 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class FailedLogin {
 
+    private static FailedLogin instance;
+
+    public static FailedLogin getInstance() {
+        if (instance == null) {
+            instance = new FailedLogin();
+        }
+        return instance;
+    }
+
     public static void main(String username) {
         FailedLogin manager = new FailedLogin();
         Scanner scanner = new Scanner(System.in);

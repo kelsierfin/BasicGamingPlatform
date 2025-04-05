@@ -136,7 +136,6 @@ public class FriendFinderController {
         logOutVerification.getButtonTypes().setAll(cancelButton, logOutButton);
         logOutVerification.showAndWait().ifPresent(response -> {
             if (response == logOutButton) {
-
                 PageNavigator.navigateTo("landing");
                 logOutVerification.close();
             }else{
