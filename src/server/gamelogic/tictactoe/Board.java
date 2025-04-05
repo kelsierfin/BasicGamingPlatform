@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
+// Represents the game board and provides utilities to manage and query game state.
 public class Board {
     int numberOfRows;
     int totalSpaces;
@@ -15,6 +16,7 @@ public class Board {
         assignValuesToSpaces();
     }
 
+    // Places a marker (X/O) at the specified space if it's a valid move.
     public void placeMarker(int space, String marker) {
         if (isMoveAllowed(space)) {
             getSpaces().set(space - offset, marker);
@@ -29,7 +31,8 @@ public class Board {
     public List<String> getSpaces() {
         return spaces;
     }
-    
+
+    // Returns a list of all unoccupied space numbers.
     public List<Integer> getAvailableSpaces() {
         List<Integer> availableSpaces = new ArrayList<>();
         for (int i = offset; i < getSpaces().size() + offset; i++) {
@@ -54,10 +57,11 @@ public class Board {
         return (space > 0 && space <= totalSpaces);
     }
 
-    private boolean isMoveAllowed(int space) {
+    public boolean isMoveAllowed(int space) {
         return (isSpaceOnBoard(space) && isSpaceAvailable(space));
     }
 
+    // Splits board into horizontal rows for win detection.
     ArrayList<ArrayList<String>> getRows() {
         ArrayList<ArrayList<String>> rows = new ArrayList<>(numberOfRows);
         for (int i = 0; i < numberOfRows; i++) {
@@ -65,6 +69,8 @@ public class Board {
         }
         return rows;
     }
+
+    // Splits board into vertical columns for win detection.
     ArrayList<ArrayList<String>> getColumns() {
         ArrayList<ArrayList<String>> columns = new ArrayList<>(numberOfRows);
         for (int i = 0; i < numberOfRows; i++) {
@@ -76,7 +82,8 @@ public class Board {
         }
         return columns;
     }
-    
+
+    // Extracts top-left to bottom-right diagonal.
     ArrayList<String> getLeftDiagonal() {
         ArrayList<String> leftDiagonal = new ArrayList<>(numberOfRows);
         for (int i = 0; i < numberOfRows; i++) {
@@ -85,6 +92,7 @@ public class Board {
         return leftDiagonal;
     }
 
+    // Extracts top-right to bottom-left diagonal.
     ArrayList<String> getRightDiagonal() {
         ArrayList<String> rightDiagonal = new ArrayList<>(numberOfRows);
         for (int i = 0; i < numberOfRows; i++) {
