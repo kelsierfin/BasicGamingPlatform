@@ -6,9 +6,10 @@
 3. [Detailed Class Specifications](#detailed-class-specifications)
 4. [Key APIs](#key-apis)
 5. [Data Storage](#data-storage)
-6. [Security Considerations](#security-considerations)
-7. [Error Handling](#error-handling)
-8. [Session Management](#session-management)
+6. [Integration Points]($integration-points)
+7. [Security Considerations](#security-considerations)
+8. [Error Handling](#error-handling)
+9. [Session Management](#session-management)
 
 ## System Overview
 The authentication system provides:
