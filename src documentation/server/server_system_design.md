@@ -60,8 +60,8 @@ classDiagram
     }
     
     NetworkManager --> Connection
-    Connection <|-- TCPConnection
-    Connection <|-- UDPConnection
+    Connection <-- TCPConnection
+    Connection <-- UDPConnection
     ChatRoom --> User
     ChatRoom --> Message
 ```
@@ -179,7 +179,7 @@ public class ChatRoom {
 
 1. **Authentication → User Creation**
    ```java
-   // After successful login:
+   // After a successful login:
    User user = new TCPUser(username, handler);
    chatRoom.join(user);
    ```
@@ -192,7 +192,7 @@ public class ChatRoom {
 
 3. **Monitoring → System Metrics**
    ```java
-   // In TCPserverLoadTester:
+   // In the class TCPserverLoadTester:
    cpuLabel.setText("CPU: " + osBean.getSystemCpuLoad());
    ```
 
