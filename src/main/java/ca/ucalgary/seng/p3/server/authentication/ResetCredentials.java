@@ -17,10 +17,10 @@ public class ResetCredentials {
 
         switch (choice) { // Determines which credential to reset
             case "password":
-                resetPassword(scanner);
+//                resetPassword(scanner);
                 break;
             case "username":
-                resetUsername(scanner);
+//                resetUsername(scanner);
                 break;
             default:
                 System.out.println("Invalid choice.");
@@ -28,84 +28,85 @@ public class ResetCredentials {
         scanner.close();
     }
 
-    /**
-     * Resets the user's password after verifying their email.
-     */
-    static void resetPassword(Scanner scanner) {
-        List<String[]> accounts = loadAccounts();
+//    /**
+//     * Resets the user's password after verifying their email.
+//     */
+//    public static void resetPassword(Scanner scanner) {
+//        List<String[]> accounts = loadAccounts();
+//
+//        System.out.print("Enter your registered email: ");
+//        String email = scanner.nextLine().trim();
+//
+//        String[] account = findAccountByEmail(accounts, email);
+//        if (account == null) {
+//            System.out.println("Email not found.");
+//            return;
+//        }
+//
+//
+//        if (!verifyEmailWithCode(scanner, email)) { // Email verification process
+//            System.out.println("Email verification failed.");
+//            return;
+//        }
+//
+//        String newPassword;
+//        do {
+//            System.out.print("Enter a new password: "); // Prompta user for a new password
+//            newPassword = scanner.nextLine();
+//
+//            if (!isValidPassword(newPassword)) {
+//                System.out.println("Password must be at least 8 characters long, contain at least one number, one uppercase letter, and have no spaces.");
+//            }
+//        } while (!isValidPassword(newPassword));
+//
+//        account[1] = PasswordHasher.generateStorablePassword(newPassword);  // Update password in memory
+//        saveAccounts(accounts); // Saves updated account information
+//        System.out.println("Password successfully reset. You can now log in with your new password.");
+//    }
+//
+//    /**
+//     * Resets the user's username after verifying their email.
+//     */
+//    public static void resetUsername(Scanner scanner) {
+//        List<String[]> accounts = loadAccounts();
+//
+//        System.out.print("Enter your registered email: ");
+//        String email = scanner.nextLine().trim();
+//
+//        String[] account = findAccountByEmail(accounts, email);
+//        if (account == null) {
+//            System.out.println("Email not found.");
+//            return;
+//        }
+//
+//        if (!verifyEmailWithCode(scanner, email)) {
+//            System.out.println("Email verification failed."); // Email verification process
+//            return;
+//        }
+//
+//        String newUsername;
+//        do {
+//            System.out.print("Enter a new username: "); // Prompts user for a valid new username
+//            newUsername = scanner.nextLine().trim();
+//
+//            if (isUsernameTaken(accounts, newUsername)) {
+//                System.out.println("This username is already taken. Please choose a different one.");
+//            }
+//        } while (isUsernameTaken(accounts, newUsername));
+//
+//        account[0] = newUsername;  // Update username in memory
+//        saveAccounts(accounts); // Saves updated account information
+//        System.out.println("Username successfully changed. You can now log in with your new username.");
+//    }
 
-        System.out.print("Enter your registered email: ");
-        String email = scanner.nextLine().trim();
-
-        String[] account = findAccountByEmail(accounts, email);
-        if (account == null) {
-            System.out.println("Email not found.");
-            return;
-        }
-
-        if (!verifyEmailWithCode(scanner, email)) { // Email verification process
-            System.out.println("Email verification failed.");
-            return;
-        }
-
-        String newPassword;
-        do {
-            System.out.print("Enter a new password: "); // Prompta user for a new password
-            newPassword = scanner.nextLine();
-
-            if (!isValidPassword(newPassword)) {
-                System.out.println("Password must be at least 8 characters long, contain at least one number, one uppercase letter, and have no spaces.");
-            }
-        } while (!isValidPassword(newPassword));
-
-        account[1] = PasswordHasher.generateStorablePassword(newPassword);  // Update password in memory
-        saveAccounts(accounts); // Saves updated account information
-        System.out.println("Password successfully reset. You can now log in with your new password.");
-    }
-
-    /**
-     * Resets the user's username after verifying their email.
-     */
-    static void resetUsername(Scanner scanner) {
-        List<String[]> accounts = loadAccounts();
-
-        System.out.print("Enter your registered email: ");
-        String email = scanner.nextLine().trim();
-
-        String[] account = findAccountByEmail(accounts, email);
-        if (account == null) {
-            System.out.println("Email not found.");
-            return;
-        }
-
-        if (!verifyEmailWithCode(scanner, email)) {
-            System.out.println("Email verification failed."); // Email verification process
-            return;
-        }
-
-        String newUsername;
-        do {
-            System.out.print("Enter a new username: "); // Prompts user for a valid new username
-            newUsername = scanner.nextLine().trim();
-
-            if (isUsernameTaken(accounts, newUsername)) {
-                System.out.println("This username is already taken. Please choose a different one.");
-            }
-        } while (isUsernameTaken(accounts, newUsername));
-
-        account[0] = newUsername;  // Update username in memory
-        saveAccounts(accounts); // Saves updated account information
-        System.out.println("Username successfully changed. You can now log in with your new username.");
-    }
-
-    static boolean isValidPassword(String password) {
+    public static boolean isValidPassword(String password) {
         return password.length() >= 8 && password.matches(".*\\d.*") && password.matches(".*[A-Z].*") && !password.contains(" ");
     }
 
     /**
      * Checks if a username is already taken.
      */
-    static boolean isUsernameTaken(List<String[]> accounts, String username) {
+    public static boolean isUsernameTaken(List<String[]> accounts, String username) {
         for (String[] account : accounts) {
             if (account[0].equalsIgnoreCase(username)) {
                 return true;
@@ -117,7 +118,7 @@ public class ResetCredentials {
     /**
      * Loads user accounts from the CSV file.
      */
-    static List<String[]> loadAccounts() {
+    public static List<String[]> loadAccounts() {
         List<String[]> accounts = new ArrayList<>();
         File file = new File(FILE_NAME);
 
@@ -144,7 +145,7 @@ public class ResetCredentials {
     /**
      * Saves user accounts back to the CSV file.
      */
-    static void saveAccounts(List<String[]> accounts) {
+    public static void saveAccounts(List<String[]> accounts) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME))) {
             for (String[] account : accounts) {
                 writer.write(String.join(",", account) + "\n");
@@ -157,7 +158,7 @@ public class ResetCredentials {
     /**
      * Finds a user account based on the provided email.
      */
-    static String[] findAccountByEmail(List<String[]> accounts, String email) {
+    public static String[] findAccountByEmail(List<String[]> accounts, String email) {
         for (String[] account : accounts) {
             if (account[2].equalsIgnoreCase(email)) {
                 return account;
@@ -169,13 +170,12 @@ public class ResetCredentials {
     /**
      * Simulates email verification by generating a one-time code and prompting the user to enter it.
      */
-    static boolean verifyEmailWithCode(Scanner scanner, String email) {
-        String code = generateOneTimeCode(6);
+    public static boolean verifyEmailWithCode(Scanner scanner, String email, String code) {
         System.out.println("A one-time verification code has been sent to: " + email);
         System.out.println("(For simulation purposes, your code is: " + code + ")");
 
-        for (int attempt = 1; attempt <= 3; attempt++) {
-            System.out.print("Enter the verification code (Attempt " + attempt + " of 3): ");
+//        for (int attempt = 1; attempt <= 3; attempt++) {
+//            System.out.print("Enter the verification code (Attempt " + attempt + " of 3): ");
             String userInput = scanner.nextLine().trim();
 
             if (userInput.equals(code)) {
@@ -183,17 +183,18 @@ public class ResetCredentials {
                 return true;
             } else {
                 System.out.println("Incorrect code. Please try again.");
+                return false;
             }
-        }
-
-        System.out.println("Too many failed attempts. Verification failed.");
-        return false;
+//        }
+//
+//        System.out.println("Too many failed attempts. Verification failed.");
+//        return false;
     }
 
     /**
      * Generates a random numeric one-time code of a specified length.
      */
-    static String generateOneTimeCode(int length) {
+    public static String generateOneTimeCode(int length) {
         Random random = new Random();
         StringBuilder codeBuilder = new StringBuilder(length);
         for (int i = 0; i < length; i++) {

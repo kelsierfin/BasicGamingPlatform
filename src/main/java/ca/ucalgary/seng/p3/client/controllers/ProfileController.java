@@ -54,9 +54,10 @@ public class ProfileController {
 
         //Set name to current session login
         try (BufferedReader name_Read = new BufferedReader(new FileReader(file))){
-            username = name_Read.readLine();
-            String[] details = getAccountDetails(username);
-            usernameField.setText(username);
+//            username = name_Read.readLine();
+            CurrentUser currentUser = CurrentUser.getInstance(LogInController.getCurrentUsername());
+            String[] details = getAccountDetails(LogInController.getCurrentUsername());
+            usernameField.setText(LogInController.getCurrentUsername());
             emailField.setText(details[1]);
             currentPassField.setText(details[2]);
 

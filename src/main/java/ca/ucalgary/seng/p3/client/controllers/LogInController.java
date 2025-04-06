@@ -38,6 +38,7 @@ public class LogInController {
 
 
     private String password;  //final password sent back to authentication
+
     private static String username;  //currentUser
 
     //Variables for MFA Process -> same as MFA Class in Authentication
@@ -155,6 +156,7 @@ public class LogInController {
                     startMFAProcess(username);
                 } else {
                     UserLogin.saveSession(username);
+                    new CurrentUser(username);
                     PageNavigator.navigateTo("home");
                 }
             } else {
@@ -197,6 +199,7 @@ public class LogInController {
         if (userInput.equals(generatedCode)) {
             mfaMessageLabel.setText("MFA successful!");
             UserLogin.saveSession(username);
+            new CurrentUser(username);
             PageNavigator.navigateTo("home");
         } else {
             if (mfaAttempts >= MAX_ATTEMPTS) {
@@ -222,7 +225,6 @@ public class LogInController {
 
 
     public void handleGuestLogInButton() {
-
         username = UserLogin.guestLogin();
         // Navigate to the home page
         PageNavigator.navigateTo("home");
