@@ -95,6 +95,7 @@ public class ProfileController {
         alert.setHeaderText("Are you sure you want to logout?");
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
+                LogInController.performLogout().
                 PageNavigator.navigateTo("landing"); // Navigate to landing page
             }
         });
