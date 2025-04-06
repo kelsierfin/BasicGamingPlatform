@@ -13,6 +13,7 @@ import javafx.scene.text.Text;
 import java.awt.*;
 import java.io.IOException;
 import java.util.Map;
+import java.util.Random;
 import java.util.Scanner;
 
 
@@ -159,7 +160,6 @@ public class LogInController {
             } else {
                 // Login failed
                 if (result.getMessage().contains("locked")) {
-                    // Account is locked, handle lock logic
                     errorMessage.setText(result.getMessage());
                 } else {
                     // Handle failed login attempts
@@ -222,6 +222,9 @@ public class LogInController {
 
 
     public void handleGuestLogInButton() {
+
+        username = UserLogin.guestLogin();
+        // Navigate to the home page
         PageNavigator.navigateTo("home");
     }
     public void handleSignUpLink() {

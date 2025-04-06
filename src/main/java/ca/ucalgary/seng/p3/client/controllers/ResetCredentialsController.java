@@ -17,6 +17,7 @@ public class ResetCredentialsController {
 
     @FXML
     public void initialize() {
+
         emailInput.setPromptText("Enter your email address");
     }
 

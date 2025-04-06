@@ -80,14 +80,21 @@ public class UserLogin {
     }
 
     // Handles guest login by saving a session under the name "Guest" + randomNumber.
-    public static void guestLogin() {
+    //Edit by Gui team -> return username as string, so that it can be stored on the gui side,
+    // added checking for duplicate usernames
+    public static String guestLogin() {
         Random random = new Random();
         StringBuilder randomNumbers = new StringBuilder();
-        for (int i = 0; i < 5; i++) { // Generates 5 random numbers and store them in a string
-            randomNumbers.append(random.nextInt(9) + 1); // Generates numbers from 1 to 9
-        }
+
+        do {
+            for (int i = 0; i < 5; i++) { // Generates 5 random numbers and store them in a string
+                randomNumbers.append(random.nextInt(9) + 1); // Generates numbers from 1 to 9
+            }
+        }while(UserLogout.getSessionUsers().contains("Guest" + randomNumbers));
+
         saveSession("Guest" + randomNumbers); // Save session with guest details
         System.out.println("Welcome! Guest" + randomNumbers + "!");
+        return "Guest" + randomNumbers;
     }
 
     /**

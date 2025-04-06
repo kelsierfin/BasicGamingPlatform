@@ -4,27 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="merge worked. Note: branch off from here, for further changes">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-29_10_38_a_m__[Changes]/HomeController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-29_10_38_a_m__[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-29_10_38_a_m___Changes_.xml" beforeDir="false" />
+    <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="log in now properly works with sessions file, logs out user automatically when they close the screen, or log out from dashboard">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts.csv" beforeDir="false" afterPath="$PROJECT_DIR$/accounts.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/session.csv" beforeDir="false" afterPath="$PROJECT_DIR$/session.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/GameApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/GameApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/HomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/LogInController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/PageNavigator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/PageNavigator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/UserSessionManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/server/authentication/FailedLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/server/authentication/FailedLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/ResetCredentialsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/ResetCredentialsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/server/authentication/UserLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/server/authentication/UserLogin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Chess.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Chess.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/GameApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/GameApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/HomeController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/LogInController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/LogInController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/PageNavigator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/PageNavigator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/ProfileController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/ProfileController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/server/authentication/FailedLogin$AuthResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/server/authentication/FailedLogin$AuthResult.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/server/authentication/FailedLogin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/server/authentication/FailedLogin.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -555,7 +541,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743660717498</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="log in now properly works with sessions file, logs out user automatically when they close the screen, or log out from dashboard">
+      <option name="closed" value="true" />
+      <created>1743960100651</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1743960100651</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -585,7 +579,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="files moved in the right location" />
     <MESSAGE value="landing page added" />
     <MESSAGE value="logIn &amp; signUp pages added" />
     <MESSAGE value="dashboard added with games" />
@@ -610,7 +603,8 @@
     <MESSAGE value="." />
     <MESSAGE value="merge attempt 2" />
     <MESSAGE value="merge worked. Note: branch off from here, for further changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="merge worked. Note: branch off from here, for further changes" />
+    <MESSAGE value="log in now properly works with sessions file, logs out user automatically when they close the screen, or log out from dashboard" />
+    <option name="LAST_COMMIT_MESSAGE" value="log in now properly works with sessions file, logs out user automatically when they close the screen, or log out from dashboard" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
