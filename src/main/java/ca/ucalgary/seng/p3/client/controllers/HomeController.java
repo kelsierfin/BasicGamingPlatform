@@ -174,7 +174,6 @@ public class HomeController {
     @FXML
     private void handleLogOutButton() {
        LogInController.performLogout();
-       PageNavigator.navigateTo("landing");
     }
 
     @FXML

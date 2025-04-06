@@ -292,13 +292,13 @@ public class LogInController {
             logOutVerification.setHeaderText("Are you sure you want to log out?");
             ButtonType logOutButton = new ButtonType("Log Out");
             ButtonType cancelButton = ButtonType.CANCEL;
-
             logOutVerification.getButtonTypes().setAll(cancelButton, logOutButton);
             logOutVerification.showAndWait().ifPresent(response -> {
                 if (response == logOutButton) {
                     try {
                         String username = getCurrentUsername();
                         UserLogout.clearSession(username); // backend method
+                        PageNavigator.navigateTo("landing");
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

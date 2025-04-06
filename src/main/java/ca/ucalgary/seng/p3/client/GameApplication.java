@@ -29,27 +29,6 @@ public class GameApplication extends Application{
             }
         });
 
-        // Load first window (Player 1)
-        FXMLLoader fxmlLoader2 = new FXMLLoader(GameApplication.class.getResource("/landing.fxml"));
-        Scene scene2 = new Scene(fxmlLoader2.load(), 900, 600);
-        Stage stage2 = new Stage();
-        stage2.setTitle("Player 2 - Board Games");
-        stage2.setScene(scene2);
-        stage2.setFullScreen(false);
-        stage2.setResizable(false);
-        stage2.show();
-
-        //logs user out automatically when they exit screen
-        stage2.setOnCloseRequest(event -> {
-            try {
-                LogInController.performLogout();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-
-
-
     }
 
     public static void main(String[] args) {
