@@ -5,38 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="merge worked. Note: branch off from here, for further changes">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/UserSessionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-29_10_38_a_m__[Changes]/HomeController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-29_10_38_a_m__[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-03-29_10_38_a_m___Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/accounts.csv" beforeDir="false" afterPath="$PROJECT_DIR$/accounts.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/session.csv" beforeDir="false" afterPath="$PROJECT_DIR$/session.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/GameApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/GameApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/FriendFinderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/FriendFinderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/LeaderBoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/LeaderBoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/HomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/LogInController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/SignUpController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/server/authentication/AccountRegistrationCSV.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/server/authentication/AccountRegistrationCSV.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/PageNavigator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/PageNavigator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/client/controllers/UserSessionManager.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/server/authentication/FailedLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/server/authentication/FailedLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/server/authentication/MultifactorAuthentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/seng/p3/server/authentication/MultifactorAuthentication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/logIn.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logIn.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/signUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/signUp.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ca/ucalgary/seng/p3/server/authentication/FailedLoginTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ca/ucalgary/seng/p3/server/authentication/MultifactorAuthenticationTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ca/ucalgary/seng/p3/server/authentication/ProfileEditorTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ca/ucalgary/seng/p3/server/authentication/ResetCredentialsTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ca/ucalgary/seng/p3/server/authentication/UserLoginTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ca/ucalgary/seng/p3/server/authentication/UserLogoutTest.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Chess.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Chess.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/NavigationBar.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/GameApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/GameApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/FriendFinderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/FriendFinderController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/LeaderBoardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/LeaderBoardController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/HomeController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/LogInController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/LogInController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/SignUpController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/SignUpController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/server/authentication/AccountRegistrationCSV.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/server/authentication/AccountRegistrationCSV.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/PageNavigator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/PageNavigator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/ProfileController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/ProfileController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/server/authentication/FailedLogin$AuthResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/server/authentication/FailedLogin$AuthResult.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/server/authentication/FailedLogin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/server/authentication/FailedLogin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/server/authentication/MultifactorAuthentication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/server/authentication/MultifactorAuthentication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/logIn.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/logIn.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/signUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/signUp.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

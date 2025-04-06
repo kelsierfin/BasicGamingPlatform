@@ -1,0 +1,9 @@
+<changelist name="Uncommitted_changes_before_Checkout_at_2025-04-05_4_08_p_m__[Changes]1" date="1743890964778" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2025-04-05_4_08_p_m__[Changes]1/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 2025-04-05 4:08 p.m. [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/ca/ucalgary/seng/p3/client/GameApplication.class" />
+    <option name="AFTER_PATH" value="target/classes/ca/ucalgary/seng/p3/client/GameApplication.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2025-04-05_4_08_p_m__[Changes]1/GameApplication.class" />
+  </binary>
+</changelist>

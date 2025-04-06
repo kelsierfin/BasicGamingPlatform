@@ -1,4 +1,5 @@
 package ca.ucalgary.seng.p3.client;
+import ca.ucalgary.seng.p3.client.controllers.LogInController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -18,6 +19,16 @@ public class GameApplication extends Application{
         stage1.setFullScreen(false);
         stage1.setResizable(false);
         stage1.show();
+
+        //logs user out automatically when they exit screen
+        stage1.setOnCloseRequest(event -> {
+            try {
+                LogInController.performLogout();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
     }
 
     public static void main(String[] args) {

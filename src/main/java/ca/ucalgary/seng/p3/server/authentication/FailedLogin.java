@@ -79,7 +79,6 @@ public class FailedLogin {
                     (MAX_ALLOWED_ATTEMPTS - attempts) + " attempt(s) left.");
         }
         failedAttempts.remove(username);
-        UserLogin.saveSession(username);
         return new AuthResult(true, "Login successful.");
     }
 

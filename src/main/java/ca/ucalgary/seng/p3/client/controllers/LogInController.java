@@ -37,14 +37,14 @@ public class LogInController {
 
 
     private String password;  //final password sent back to authentication
-    private String username;  //final password sent back to authentication
+    private static String username;  //currentUser
 
+    //Variables for MFA Process -> same as MFA Class in Authentication
     private String generatedCode;
     private long codeGenerationTime;
     private int mfaAttempts = 0;
     private static final int MAX_ATTEMPTS = 3;
     private static final long CODE_VALIDITY_DURATION_MS = 3600000;
-    private int failedAttempts = 0;
 
     private static Map<String, String[]> accounts; //stores all accounts (locally in SignUpController)
 
@@ -130,7 +130,7 @@ public class LogInController {
         setPassword();
 
         // Prevent double-login
-        if (UserSessionManager.isUserOnline(username)) {
+        if (UserLogout.getSessionUsers().contains(username)) {
             errorMessage.setText("User is already logged in.");
             return;
         }
@@ -154,7 +154,6 @@ public class LogInController {
                     startMFAProcess(username);
                 } else {
                     UserLogin.saveSession(username);
-                    UserSessionManager.addUser(username);
                     PageNavigator.navigateTo("home");
                 }
             } else {
@@ -186,9 +185,6 @@ public class LogInController {
         }
     }
 
-    public void checkIfUserIsOnline() {
-
-    }
 
     public void handleSubmitMfaCode() {
         String userInput = mfaCodeInput.getText().trim();
@@ -200,7 +196,6 @@ public class LogInController {
         }
         if (userInput.equals(generatedCode)) {
             mfaMessageLabel.setText("MFA successful!");
-            UserSessionManager.addUser(username);
             UserLogin.saveSession(username);
             PageNavigator.navigateTo("home");
         } else {
@@ -283,5 +278,39 @@ public class LogInController {
         }
     }
 
+    public static void performLogout() {
+        //TODO: Add this to log out button handlers for the all the other pages, before navigating away from page
+
+        if(!UserLogout.getSessionUsers().isEmpty() && UserLogout.getSessionUsers().contains(username)) {
+            Alert logOutVerification = new Alert(Alert.AlertType.CONFIRMATION);
+            logOutVerification.setTitle("Logging out User: " + username);
+            logOutVerification.setHeaderText("Are you sure you want to log out?");
+            ButtonType logOutButton = new ButtonType("Log Out");
+            ButtonType cancelButton = ButtonType.CANCEL;
+
+            logOutVerification.getButtonTypes().setAll(cancelButton, logOutButton);
+            logOutVerification.showAndWait().ifPresent(response -> {
+                if (response == logOutButton) {
+                    try {
+                        String username = getCurrentUsername();
+                        UserLogout.clearSession(username); // backend method
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    logOutVerification.close();
+                } else {
+                    logOutVerification.close();
+                }
+            });
+        }
+
+    }
+
+
+    public static String getCurrentUsername(){
+        return username;
+        //TODO: Make it so that this returns the current username of whichever screen is being interacted with.
+        // Shouldn't log out the wrong person.
+    }
 }
 

@@ -72,8 +72,9 @@ public class HomeController {
         menuPopup.setVisible(false);
         profilePopup.setVisible(false);
         notificationPopup.setVisible(false);
-         //TODO: Placeholders for now. set text information from database.
-        username.setText("Username");
+        username.setText(LogInController.getCurrentUsername());
+
+        //TODO: Placeholders for now. set text information from database.
         gamesPlayed.setText("0");
         winRate.setText("0%");
         rank.setText("0");
@@ -172,22 +173,8 @@ public class HomeController {
 
     @FXML
     private void handleLogOutButton() {
-        Alert logOutVerification = new Alert(Alert.AlertType.CONFIRMATION);
-        logOutVerification.setTitle("Log out");
-        logOutVerification.setHeaderText("Are you sure you want to log out?");
-        ButtonType logOutButton = new ButtonType("Log Out");
-        ButtonType cancelButton = ButtonType.CANCEL;
-
-        logOutVerification.getButtonTypes().setAll(cancelButton, logOutButton);
-        logOutVerification.showAndWait().ifPresent(response -> {
-            if (response == logOutButton) {
-
-                PageNavigator.navigateTo("landing");
-                logOutVerification.close();
-            }else{
-                logOutVerification.close();
-            }
-        });
+       LogInController.performLogout();
+       PageNavigator.navigateTo("landing");
     }
 
     @FXML
