@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4c541496-94b3-4c69-933a-cd960206f3dd" name="Changes" comment="merging with navigationfix">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Chess.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Chess.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/LeaderBoardHome.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/LeaderBoardHome.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/LogInController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/ucalgary/seng/p3/client/controllers/LogInController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2025-03-30_8_03_p_m___Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2025-03-30_8_27_p_m___Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/chess.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/chess.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +27,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="gui" />
+        <entry key="$PROJECT_DIR$" value="gui-auth-integration" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -61,7 +58,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "gui",
+    "git-widget-placeholder": "gui-leadmatch-integration",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/ebose/OneDrive/Desktop/SENG 300/seng300-w25-project/src/main/resources/icons",
     "list.type.of.created.stylesheet": "CSS",
