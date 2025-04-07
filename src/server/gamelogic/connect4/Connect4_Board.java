@@ -198,6 +198,7 @@ public class Connect4_Board {
                 }
                 index_column++;
                 index_row++;
+                //
 
 
             }
