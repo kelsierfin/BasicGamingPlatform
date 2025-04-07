@@ -30,7 +30,31 @@ flowchart TD
     E --> G[LeaderboardHome]
     E --> H[PlayerFinder]
     E --> I[Settings]
-    
+    E --> J[StartGame]
+    G --> E
+    G --> H
+    G --> I
+    G --> K[GameLeaderboard]
+    K --> G
+    H --> E
+    H --> G
+    H --> I
+    I --> E
+    I --> G
+    I --> H
+    J --> L[TicTacToe]
+    J --> M[Connect4]
+    J --> N[Chess]
+    J --> O[Go]
+    L --> E
+    M --> E
+    N --> E
+    O --> E
+    G --> P[LogOut]
+    H --> P[LogOut]
+    I --> P[LogOut]
+    J --> P[LogOut]
+    P --> A
     
 ```
 
