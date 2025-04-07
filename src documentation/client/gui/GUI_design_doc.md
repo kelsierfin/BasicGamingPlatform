@@ -80,4 +80,5 @@ flowchart TD
 
 
 ## Error Handling
-
+- Errors should be handled by backend
+- GUI may display error message 
