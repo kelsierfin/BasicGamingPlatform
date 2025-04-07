@@ -62,6 +62,7 @@ public class ProfileController {
             currentPassField.setText(details[2]);
 
         } catch (IOException e){
+            // If the profile doesn't exist
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error retrieving account information");
             alert.setHeaderText(e.getMessage());
@@ -74,6 +75,7 @@ public class ProfileController {
         }
     }
 
+    // load accounts from Account.csv
     String[] getAccountDetails(String username) throws IOException {
         Map<String, String[]> accounts = loadAccounts();
         return accounts.get(username);
@@ -86,6 +88,7 @@ public class ProfileController {
 
     }
 
+
     @FXML
     private void handleLogout() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -93,10 +96,11 @@ public class ProfileController {
         alert.setHeaderText("Are you sure you want to logout?");
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
-                PageNavigator.navigateTo("landing"); // Navigate to landing page
+                LogInController.performLogout();
             }
         });
     }
+
     @FXML
     private void handleSave() {
 
@@ -143,7 +147,6 @@ public class ProfileController {
 
     @FXML
     private void handleDeleteAccount() {
-
 
         Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
         confirmAlert.setTitle("Delete Account");
