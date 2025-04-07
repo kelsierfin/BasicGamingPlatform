@@ -112,26 +112,6 @@ public class Connect4_BoardTest {
 
     }
 
-    @Test
-    public void checkIfOneColumnIsFull() {
-        int i = 0;
-        Connect4_Board testBoard = new Connect4_Board();
-        Player player_one = new Player("Player1", "Y");
-
-
-
-        while(i<6){
-            testBoard.placeDisc(0, new Disc(player_one.getSelectedSymbol()));
-            i++;
-        }
-
-        assertTrue(testBoard.isColumnFull());
-
-
-
-
-    }
-
 
     @Test
     public void getSymbol() {

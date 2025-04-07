@@ -9,6 +9,7 @@ public class Player {
     private String selectedSymbol;
     private int numberOfDiscPlaced;
     private int numberOfWins;
+    private int numberOfTurns;
 
     public Player(String name, String selectedSymbol){
         this.name = name;
@@ -20,6 +21,15 @@ public class Player {
     public void addWin(){
         this.numberOfWins++;
     }
+
+    public void addTurn(){
+        this.numberOfTurns++;
+    }
+
+    public int getNumberOfTurns(){
+        return this.numberOfTurns;
+    }
+
 
 
     public String getSelectedSymbol(){

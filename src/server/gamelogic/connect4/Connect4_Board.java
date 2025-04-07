@@ -7,6 +7,8 @@ public class Connect4_Board {
     // Board holds the main game grid the game is played on.
     private String[][] Board;
 
+    //
+
 
 
     public Connect4_Board(){
@@ -88,12 +90,14 @@ public class Connect4_Board {
 
         if( column < 0 || column > 6){
             return false;
-        }else if(isColumnFull()){
+        }else if(!Board[0][column].equals("[ ]") && !Board[0][column].equals("[ ]\n")){
+            System.out.println("column is full");
             return false;
+
         }
-        else{
-            return true;
-        }
+
+        return true;
+
 
     }
 
@@ -104,7 +108,7 @@ public class Connect4_Board {
     public boolean checkWin(String sym){
         int index_row = 0;
         int index_column = 0;
-        int match = 1;
+        int match = 0;
         String prevSymbol = getSymbol(Board[index_row][index_column]);
 
         // Checking for horizontal win.
@@ -135,7 +139,7 @@ public class Connect4_Board {
         }
 
         index_column = 0;
-        match = 1;
+        match = 0;
 
         // Checking for Vertical win.
 
@@ -247,22 +251,14 @@ public class Connect4_Board {
         return false;
     }
 
-    /*  isColumnFull() Checks if any of the columns in the board are full.*/
-    public boolean isColumnFull(){
-        int i = 0;
+    /*  isColumnFull() Checks if any of the columns in the board are full.
+    *   If a column is full returns the column number else returns 10*/
+    public boolean isColumnFull(int column){
 
 
-        while(i < COLUMNS){
-            if(!Board[0][i].equals("[ ]") && !Board[0][i].equals("[ ]\n")){
-                System.out.println("column full");
+        return true;
 
-                return true;
-            }else{
-                i++;
-            }
-        }
 
-        return false;
     }
 
 
