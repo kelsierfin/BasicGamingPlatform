@@ -1,4 +1,4 @@
-# Authentication System Design Document
+# Leaderboard & Matchmaking System Design Document
 
 ## Table of Contents
 1. [System Overview](#system-overview)
