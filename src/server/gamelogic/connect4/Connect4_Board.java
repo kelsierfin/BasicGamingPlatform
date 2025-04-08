@@ -271,7 +271,7 @@ public class Connect4_Board {
 
 
 
-            while(index_column < COLUMNS && index_row >= 0){
+            while(index_column < COLUMNS-3 && index_row >= 0){
                 String symbol = getSymbol(Board[index_row][index_column]);
 
                 if(prevSymbol.equals(symbol) && symbol.equals(sym)){
@@ -279,7 +279,7 @@ public class Connect4_Board {
                     match++;
                     System.out.println("match = " + match);
 
-                    if(match == 4){
+                    if(match == 3){
                         return true;
                     }
 
@@ -326,7 +326,7 @@ public class Connect4_Board {
                     match++;
                     System.out.println("match = " + match);
 
-                    if(match == 4){
+                    if(match == 3){
                         return true;
                     }
 
