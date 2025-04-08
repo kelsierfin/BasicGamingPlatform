@@ -108,7 +108,7 @@ public class Connect4_Board {
     public boolean checkWin(String sym){
         int index_row = 0;
         int index_column = 0;
-        int match = 1;
+        int match = 0;
         String prevSymbol = getSymbol(Board[index_row][index_column]);
 
         // Checking for horizontal win.
@@ -279,7 +279,7 @@ public class Connect4_Board {
                     match++;
                     System.out.println("match = " + match);
 
-                    if(match == 3){
+                    if(match == 4){
                         return true;
                     }
 
@@ -326,7 +326,7 @@ public class Connect4_Board {
                     match++;
                     System.out.println("match = " + match);
 
-                    if(match == 3){
+                    if(match == 4){
                         return true;
                     }
 
