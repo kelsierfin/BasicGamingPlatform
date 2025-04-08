@@ -1,5 +1,6 @@
 package server.gamelogic.connect4;
 
+
 public class Connect4_Board {
     private final int ROWS = 6;
     private final int COLUMNS = 7;
@@ -46,8 +47,8 @@ public class Connect4_Board {
     }
 
     /* placeDisc(int column, Disc disc) takes in a disc object and the column in which it is placed in.
-    *  After determining the full cell coordinates of the disc, the  symbol of the
-    *  disc is added to the cell. */
+     *  After determining the full cell coordinates of the disc, the  symbol of the
+     *  disc is added to the cell. */
 
     public void placeDisc(int column, Disc disc){
 
@@ -139,7 +140,7 @@ public class Connect4_Board {
         }
 
         index_column = 0;
-        match = 1;
+        match = 0;
 
         // Checking for Vertical win.
 
@@ -168,187 +169,180 @@ public class Connect4_Board {
             index_column++;
         }
 
-        // Checking for diagonal wins starting from the top left corner.
-        System.out.println("Executing column diagonal check");
 
-        prevSymbol = getSymbol(Board[0][0]);
-        index_column = 0;
-        int start_column = 0;
+
         match = 0;
+        int searched_rows = 0;
+        int searched_columns = 0;
+        index_row = ROWS-3;
 
-
-        while(start_column < COLUMNS){
-            index_row = 0;
-            index_column = start_column;
-
-
-
-            while(index_column < COLUMNS && index_row < ROWS){
-                String symbol = getSymbol(Board[index_row][index_column]);
-
-                if(prevSymbol.equals(symbol) && symbol.equals(sym)){
-                    System.out.println("Execute");
-                    match++;
-                    System.out.println("match = " + match);
-
-                    if(match == 3){
-                        return true;
-                    }
-
-                }else{
-                    match = 0;
-                    prevSymbol = symbol;
-
-                }
-
-                index_column++;
-                index_row++;
-                //System.out.println("row = " + index_row + " column = " + index_column);
-
-
-
-            }
-
-            start_column++;
-
-
-
-        }
-
-        prevSymbol = getSymbol(Board[1][0]);
-        index_column = 0;
-
-
-        int start_row = 0;
-
-        System.out.println("Executing row diagonal check");
-
-        // Checking for diagonal win by iterating over each row of the game board.
-
-        while(start_row < ROWS){
-            index_row = start_row;
-
-            while(index_column < COLUMNS && index_row < ROWS){
-                String symbol = getSymbol(Board[index_row][index_column]);
-
-                if(prevSymbol.equals(symbol) && prevSymbol.equals(sym)){
-                    match++;
-                    System.out.println();
-
-                    if(match == 3){
-                        return true;
-                    }
-
-                }else{
-                    match = 0;
-                    prevSymbol = symbol;
-                }
-                index_column++;
-                index_row++;
-
-
-            }
-
-            start_row++;
-
-
-
-        }
-
-
-        // Checking for diagonal wins starting from the bottom left corner.
-        System.out.println("Executing column diagonal check");
-
-        prevSymbol = getSymbol(Board[0][0]);
-        index_column = 0;
-        start_column = 0;
-        match = 0;
-
-
-        while(start_column < COLUMNS){
-            index_row = 5;
-            index_column = start_column;
-
-
-
-            while(index_column < COLUMNS-3 && index_row >= 0){
-                String symbol = getSymbol(Board[index_row][index_column]);
-
-                if(prevSymbol.equals(symbol) && symbol.equals(sym)){
-                    System.out.println("Execute");
-                    match++;
-                    System.out.println("match = " + match);
-
-                    if(match == 3){
-                        return true;
-                    }
-
-                }else{
-                    match = 0;
-                    prevSymbol = symbol;
-
-                }
-
-                index_column++;
-                index_row--;
-                //System.out.println("row = " + index_row + " column = " + index_column + " symbol = " + symbol + " sym symbol = " + sym);
-
-
-
-            }
-
-            start_column++;
-
-
-
-        }
-
-
-        // Checking for diagonal wins starting from the bottom left corner and moving up a row each time.
-
-        prevSymbol = getSymbol(Board[0][0]);
-        index_column = 0;
-        start_column = 0;
-        match = 0;
-
-
-        while(start_column < COLUMNS){
-            index_row = 4;
-            index_column = start_column;
+        while(searched_rows <= 3){
+            index_column = 0;
+            index_row = (ROWS-3)  + searched_rows;
 
 
 
             while(index_column < COLUMNS && index_row >= 0){
+
                 String symbol = getSymbol(Board[index_row][index_column]);
+                //System.out.println("index row = " + index_row + " index_column = "+ index_column);
 
-                if(prevSymbol.equals(symbol) && symbol.equals(sym)){
-                    System.out.println("Execute");
+                if(prevSymbol.equals(symbol) && prevSymbol.equals(sym)) {
+
                     match++;
-                    System.out.println("match = " + match);
 
-                    if(match == 3){
+                    if (match == 3) {
                         return true;
                     }
 
                 }else{
                     match = 0;
-                    prevSymbol = symbol;
 
                 }
-
+                prevSymbol = getSymbol(Board[index_row][index_column]);
                 index_column++;
                 index_row--;
 
-
-
             }
 
-            start_column++;
+            searched_rows++;
+
+            if(searched_rows == 3){
+                break;
+            }
 
 
 
         }
 
+        match = 0;
+        searched_rows = 0;
+        searched_columns = 0;
+        index_row = ROWS-1;
+        index_column = 0;
+
+
+        while(searched_columns < 4){
+            index_column = index_column + searched_columns;
+
+            while(index_row >= 0 && index_column <COLUMNS){
+
+
+                String symbol = getSymbol(Board[index_row][index_column]);
+                //System.out.println("index row = " + index_row + " index_column = "+ index_column);
+
+                if(prevSymbol.equals(symbol) && prevSymbol.equals(sym)) {
+
+                    match++;
+
+                    if (match == 3) {
+                        return true;
+                    }
+
+                }else{
+                    match = 0;
+
+                }
+
+                prevSymbol = getSymbol(Board[index_row][index_column]);
+                index_row--;
+                index_column++;
+            }
+
+
+
+            searched_columns++;
+            index_column = 0;
+            index_row = ROWS-1;
+            match = 0;
+
+
+        }
+
+
+        searched_rows = 2;
+        match= 0;
+
+        while(searched_rows >=0){
+            index_row= searched_rows;
+
+            while(index_row < ROWS && index_column < COLUMNS-1){
+
+
+
+                String symbol = getSymbol(Board[index_row][index_column]);
+                //System.out.println("index row = " + index_row + " index_column = "+ index_column);
+
+                if(prevSymbol.equals(symbol) && prevSymbol.equals(sym)) {
+
+                    match++;
+
+                    if (match == 3) {
+                        return true;
+                    }
+
+                }else{
+                    match = 0;
+
+                }
+
+                prevSymbol = getSymbol(Board[index_row][index_column]);
+                index_row++;
+                index_column++;
+            }
+
+
+            index_row = 0;
+            index_column = 0;
+
+
+            searched_rows--;
+        }
+
+
+        searched_columns = 1;
+        match = 0;
+
+
+        while(searched_columns < 4){
+            index_column = index_row + searched_columns;
+
+            while(index_row < ROWS && index_column < COLUMNS){
+
+
+                String symbol = getSymbol(Board[index_row][index_column]);
+                //System.out.println("index row = " + index_row + " index_column = "+ index_column + " symbol = " + symbol);
+
+                if(prevSymbol.equals(symbol) && prevSymbol.equals(sym)) {
+
+                    match++;
+
+                    if (match == 3) {
+                        return true;
+                    }
+
+                }else{
+                    match = 0;
+
+                }
+
+
+
+
+
+
+                prevSymbol = getSymbol(Board[index_row][index_column]);
+                index_row++;
+                index_column++;
+            }
+
+
+
+
+            index_row = 0;
+            index_column = 0;
+            searched_columns++;
+        }
 
 
 
@@ -356,8 +350,12 @@ public class Connect4_Board {
 
         return false;
     }
+
+
+
+
     /*  isColumnFull() Checks if any of the columns in the board are full.
-    *   If a column is full returns the column number else returns 10*/
+     *   If a column is full returns the column number else returns 10*/
     public boolean isColumnFull(int column){
 
 
