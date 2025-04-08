@@ -64,19 +64,33 @@ flowchart TD
 
 ## Detailed Class Specifications
 
-### 1. GameApplication
+### 1. GUI Controllers
 
-### 2. Main
+| Controller Name              | Purpose                    |
+|------------------------------|----------------------------|
+| AboutController              | Display info about project |
+| ChessController              | Displays chess game        | 
+| Connect4Controller           | Displays connect4 game     | 
+| FriendFinderController       | Displays friend finder screen|
+| GoController                 | Displays go game           |  
+| HomeController               | Displays home screen       | 
+| LandingController            | Displays landing screen    |
+| LeaderBoardController        | Displays leaderboard       |
+| LogInController              | Displays log in screen     |
+| MatchHistoryController       | Displays match history     |  
+| ProfileController            | Displays user's profile    | 
+| ResetCredentialsController   | Displays reset credentials screen| 
+| SettingsController           | Displays settings screen   |
+| SignUpController             | Displays screen for user to sign up|
+| StartGameController          | Displays all game options for user to begin game| 
+| TicTacToeController          | Displays tictactoe game    | 
 
-### 3. AboutController
+Pop-ups
 
-### 4. ChessController
-
-### 5. Connect4Controller
-
-### 6.
-## Integration Points
-
+| Controller Name              | Purpose                    |
+|------------------------------|----------------------------|
+| ProfilePopUp                 | Display player profile     |
+| chatPopUpController          | UI for users to chat with each other| 
 
 
 ## Error Handling
