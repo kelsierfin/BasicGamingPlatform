@@ -85,12 +85,18 @@ flowchart TD
 | StartGameController          | Displays all game options for user to begin game| 
 | TicTacToeController          | Displays tictactoe game    | 
 
-Pop-ups
+### Pop-ups
 
 | Controller Name              | Purpose                    |
 |------------------------------|----------------------------|
 | ProfilePopUp                 | Display player profile     |
 | chatPopUpController          | UI for users to chat with each other| 
+
+### 2. Main
+Purpose: To run program
+
+### 3. GameApplication
+Purpose: To launch GUI
 
 
 ## Error Handling
