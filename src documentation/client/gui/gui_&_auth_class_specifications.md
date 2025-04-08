@@ -198,3 +198,9 @@ public class AuthResponse {
 ---
 
 ## Error Handling
+| Class | Error Scenario | Handling Mechanism |
+|-------|----------------|--------------------|
+| `UserLogin` | Invalid credentials | Delegates to `FailedLogin` |
+| `MultifactorAuthentication` | Expired OTP | Auto-generates new code |
+| `ProfileController` | Concurrent edits | Optimistic locking |
+| `PageNavigator` | Session timeout | Force logout redirect 
