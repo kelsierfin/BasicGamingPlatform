@@ -181,7 +181,6 @@ public class Connect4_Board {
             index_row = (ROWS-3)  + searched_rows;
 
 
-            //prevSymbol = getSymbol(Board[index_row][index_column]);
 
             while(index_column < COLUMNS && index_row >= 0){
 
@@ -192,7 +191,7 @@ public class Connect4_Board {
 
                     match++;
 
-                    if (match == 4) {
+                    if (match == 3) {
                         return true;
                     }
 
@@ -226,7 +225,6 @@ public class Connect4_Board {
 
         while(searched_columns < 4){
             index_column = index_column + searched_columns;
-            //prevSymbol = getSymbol(Board[index_row][index_column]);
 
             while(index_row >= 0 && index_column <COLUMNS){
 
@@ -258,6 +256,7 @@ public class Connect4_Board {
             index_column = 0;
             index_row = ROWS-1;
             match = 0;
+            prevSymbol = "[ ]";
 
 
         }
@@ -268,14 +267,14 @@ public class Connect4_Board {
 
         while(searched_rows >=0){
             index_row= searched_rows;
-            //prevSymbol = getSymbol(Board[index_row][index_column]);
+
 
             while(index_row < ROWS && index_column < COLUMNS-1){
 
 
 
                 String symbol = getSymbol(Board[index_row][index_column]);
-                //System.out.println("index row = " + index_row + " index_column = "+ index_column);
+                //System.out.println("index row = " + index_row + " index_column = "+ index_column + " symobl = " + symbol + " match = " + match);
 
                 if(prevSymbol.equals(symbol) && prevSymbol.equals(sym)) {
 
@@ -294,11 +293,11 @@ public class Connect4_Board {
                 index_row++;
                 index_column++;
             }
-
-
             index_row = 0;
             index_column = 0;
             match = 0;
+            prevSymbol = "[ ]";
+
 
 
 
@@ -313,7 +312,7 @@ public class Connect4_Board {
 
         while(searched_columns < 4){
             index_column = index_row + searched_columns;
-            //prevSymbol = getSymbol(Board[index_row][index_column]);
+
             while(index_row < ROWS && index_column < COLUMNS){
 
 
@@ -339,8 +338,12 @@ public class Connect4_Board {
 
 
                 prevSymbol = getSymbol(Board[index_row][index_column]);
+
+
                 index_row++;
                 index_column++;
+
+
             }
 
 
@@ -350,6 +353,7 @@ public class Connect4_Board {
             index_column = 0;
             searched_columns++;
             match=0;
+            prevSymbol = "[ ]";
 
         }
 
