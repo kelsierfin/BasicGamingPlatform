@@ -293,12 +293,13 @@ public class Connect4_Board {
                 prevSymbol = getSymbol(Board[index_row][index_column]);
                 index_row++;
                 index_column++;
-                match = 0;
             }
 
 
             index_row = 0;
             index_column = 0;
+            match = 0;
+
 
 
             searched_rows--;
