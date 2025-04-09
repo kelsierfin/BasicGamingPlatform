@@ -1,5 +1,7 @@
 package ca.ucalgary.seng.p3.client.controllers;
 
+import ca.ucalgary.seng.p3.server.leadmatch.Leaderboard;
+import ca.ucalgary.seng.p3.server.leadmatch.LeaderboardData;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
@@ -22,9 +24,10 @@ import java.util.List;
  * Scene scene = new Scene(page.root, 900, 600);
  */
 public class LeaderBoardController extends AnchorPane {
+    String gameType;
 
-    public LeaderBoardController(String label, String background){
-
+    public LeaderBoardController(String gameType, String background){
+        this.gameType= gameType;
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(LeaderBoardController.class.getResource("/leaderboard.fxml"));
@@ -50,32 +53,56 @@ public class LeaderBoardController extends AnchorPane {
         editProfileButton.setOnAction(e -> handleEditProfileButton());
         logOutButton.setOnAction(e -> handleLogOutButton());
         //first medal
-        rankList.add(new ImageView(new Image(getClass().getResourceAsStream("/icons/first-medal.png"))), 0,1);
+        loadData();
+
+    }
+
+    private void putPlayer(String playerID, Integer playerScore, int rank) {
+
+        int lastRow = rankList.getRowCount();
+        Image img = null;
+        if(rank==0){//have 1 player
+            img = new Image(getClass().getResourceAsStream("/icons/first-medal.png"));
+        }else if(rank==1){//having 2 players
+            img =  new Image(getClass().getResourceAsStream("/icons/second-medal.png"));
+        }else if(rank==2){//having 3 players
+            img =  new Image(getClass().getResourceAsStream("/icons/third-medal.png"));
+        }
+
+        if(img!=null){
+            rankList.add(new ImageView(img), 0,lastRow);
+        } else{
+            Label ranking = new Label(String.valueOf(rank+1));
+            ranking.setStyle("-fx-font-size: 20");
+            ranking.setTextFill(new Color(1,1,1,1));
+            rankList.add(ranking,0,lastRow);
+        }
+
         ImageView avatar = new ImageView(new Image(getClass().getResourceAsStream("/icons/avatar.png")));
-        rankList.add(avatar, 1,1);
+        rankList.add(avatar, 1,lastRow);
         //add name, i: column 2, i1: row 1
-        Label nameLabel = new Label("Pie");
+        Label nameLabel = new Label(playerID);
         nameLabel.setStyle("-fx-font-size: 20");
         nameLabel.setTextFill(new Color(1,1,1,1));
-        rankList.add(nameLabel,2,1);
+        rankList.add(nameLabel,2,lastRow);
 
         //add points
-        Label pointsLabel = new Label("1000pts");
+        Label pointsLabel = new Label(String.valueOf(playerScore));
         pointsLabel.setStyle("-fx-font-size: 20" );
         pointsLabel.setTextFill(new Color(1,1,1,1));
-        rankList.add(pointsLabel, 3, 1);
+        rankList.add(pointsLabel, 3, lastRow);
         //add winning rate
         Label winRateLabel = new Label("87%");
         winRateLabel.setStyle("-fx-font-size: 20");
         winRateLabel.setTextFill(new Color(1,1,1,1));
-        rankList.add(winRateLabel, 4, 1);
+        rankList.add(winRateLabel, 4, lastRow);
 
         //set pop up
         avatar.setOnMouseClicked(e->{
 
             ProfilePopUp popup = new ProfilePopUp();
             popup.setTitle("Profile");
-            popup.setUserName("Pie");
+            popup.setUserName(playerID);
             popup.setBio("\"I love choco pie \"");
             popup.setAvatar("/icons/avatar.png");
 
@@ -209,5 +236,18 @@ public class LeaderBoardController extends AnchorPane {
     @FXML
     private void handleGameRulesButton() {
         //game rules page
+    }
+
+
+    public void loadData(){
+        try {
+            LeaderboardData data = Leaderboard.getLeaderboard(gameType);
+            for (int i = 0; i < data.getlast(); i++) {
+                putPlayer(data.getPlayerIds().get(i),data.getPlayerScores().get(i),i);
+
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
