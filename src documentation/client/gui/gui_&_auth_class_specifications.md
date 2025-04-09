@@ -193,7 +193,22 @@ public class AuthResponse {
 ---
 
 ## Class Relationships (Diagram)
-
+```mermaid
+flowchart
+    LogInController --> UserLogin
+    LogInController --> FailedLogin
+    LogInController --> MultifactorAuthentication
+    
+    SignUpController --> AccountRegistrationCSV
+    
+    ProfileController --> ProfileEditor
+    ProfileController --> MultifactorAuthentication
+    
+    UserLogin --> SessionManager
+    UserLogin --> CurrentUser
+    
+    FailedLogin --> AccountLockoutService
+```
 
 ---
 
