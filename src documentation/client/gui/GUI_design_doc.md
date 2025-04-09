@@ -96,34 +96,34 @@ Purpose: To launch GUI
 
 ## Integration Points
 
-1. **Game Logic** → `StartGameController`
-   - Begin game of user's choice
-    1.1 **Chess Logic** → `ChessContoller`
-        - Chess game recieves input from user
-    1.2 **Connect 4 Logic** → `Connect4Contoller`
-        - Connect 4 game recieves input from user
-    1.3 **Go Logic** → `GoContoller`
-        - Go game recieves input from user
-    1.4 **TicTacToe Logic** → `TicTacToeContoller`
-        - TicTacToe game recieves input from user
-2. **Authentication and Profile** → `LogInController`
-   - Ensures that user input matches profile in database
-   → `ProfileController`
-   - User can view profile info
-   → `SettingsController`
-   - User can change profile info via GUI
-   → `ResetCredentialsController`
-   - Allows user to reset password via GUI
-   → `SignUpController`
-   - Allows user to create new account via GUI
-   → `FriendFinderController`
-   - Allows user to find friend via GUI
-3. **Matchmaking and Leaderboard** → `LeaderboardController`
-   - User can view leaderboard for all games
-   → `MatchHistoryController`
-   - User can view match history for all games
-   → `ProfileController`
-   - User can view game stats in profile
+1. **Game Logic** → `StartGameController`  
+   - Begin game of user's choice  
+    1.1 **Chess Logic** → `ChessContoller`  
+        - Chess game recieves input from user  
+    1.2 **Connect 4 Logic** → `Connect4Contoller`  
+        - Connect 4 game recieves input from user  
+    1.3 **Go Logic** → `GoContoller`  
+        - Go game recieves input from user  
+    1.4 **TicTacToe Logic** → `TicTacToeContoller`  
+        - TicTacToe game recieves input from user  
+2. **Authentication and Profile** → `LogInController`  
+   - Ensures that user input matches profile in database  
+   → `ProfileController`  
+   - User can view profile info  
+   → `SettingsController`  
+   - User can change profile info via GUI  
+   → `ResetCredentialsController`  
+   - Allows user to reset password via GUI  
+   → `SignUpController`  
+   - Allows user to create new account via GUI  
+   → `FriendFinderController`  
+   - Allows user to find friend via GUI  
+3. **Matchmaking and Leaderboard** → `LeaderboardController`  
+   - User can view leaderboard for all games  
+   → `MatchHistoryController`  
+   - User can view match history for all games  
+   → `ProfileController`  
+   - User can view game stats in profile  
 
 ## Error Handling
 - Errors should be handled by backend
