@@ -97,7 +97,7 @@ Purpose: To launch GUI
 
 1. **Game Logic** → `StartGameController`  
    - Begin game of user's choice  
-    1.1) **Chess Logic** → `ChessContoller`  
+        1.1) **Chess Logic** → `ChessContoller`  
         - Chess game recieves input from user  
     1.2) **Connect 4 Logic** → `Connect4Contoller`  
         - Connect 4 game recieves input from user  
