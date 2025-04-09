@@ -226,11 +226,11 @@ public class ProfileEditor {
     }
 
     // Masking methods
-    String getPassword() {
+    public String getPassword() {
         return "********";
     }
 
-    String getEmail(String email) {
+    public String getEmail(String email) {
         if (email == null || email.isEmpty()) return "";
 
         String[] parts = email.split("@");
@@ -249,12 +249,12 @@ public class ProfileEditor {
     }
 
     // Account operations
-    String[] getAccountDetails(String username) throws IOException {
+    public String[] getAccountDetails(String username) throws IOException {
         Map<String, String[]> accounts = loadAccounts();
         return accounts.get(username);
     }
 
-    boolean updateUsername(String currentUsername, String newUsername) throws IOException {
+    public boolean updateUsername(String currentUsername, String newUsername) throws IOException {
         Map<String, String[]> accounts = loadAccounts();
 
         if (accounts.containsKey(newUsername) && !currentUsername.equals(newUsername)) {
@@ -269,7 +269,7 @@ public class ProfileEditor {
         return true;
     }
 
-    void updateEmail(String username, String newEmail) throws IOException {
+    public void updateEmail(String username, String newEmail) throws IOException {
         if (!isValidEmail(newEmail)) {
             throw new IllegalArgumentException("Invalid email format");
         }
@@ -282,7 +282,7 @@ public class ProfileEditor {
         writeAllAccounts(accounts);
     }
 
-    void updatePassword(String username, String newPassword) throws IOException {
+    public void updatePassword(String username, String newPassword) throws IOException {
         if (!isValidPassword(newPassword)) {
             throw new IllegalArgumentException("Password doesn't meet requirements");
         }
@@ -296,7 +296,7 @@ public class ProfileEditor {
     }
 
     // File operations
-    void writeAllAccounts(Map<String, String[]> accounts) throws IOException {
+    public void writeAllAccounts(Map<String, String[]> accounts) throws IOException {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))) {
             for (Map.Entry<String, String[]> entry : accounts.entrySet()) {
                 String username = entry.getKey();
@@ -345,7 +345,7 @@ public class ProfileEditor {
     }
 
     // Validation methods
-    boolean isValidEmail(String email) {
+    public boolean isValidEmail(String email) {
         if (email == null || email.isEmpty()) return false;
         String[] parts = email.split("@");
         return parts.length == 2 &&
@@ -353,7 +353,7 @@ public class ProfileEditor {
                 !parts[1].isEmpty();
     }
 
-    boolean isValidPassword(String password) {
+    public boolean isValidPassword(String password) {
         if (password == null || password.length() < 8) return false;
 
         boolean hasNumber = false;

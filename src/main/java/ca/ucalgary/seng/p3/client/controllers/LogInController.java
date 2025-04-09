@@ -61,7 +61,7 @@ public class LogInController {
     @FXML
     private VBox logInCard;
 
-    public void initialize() {
+    public void initialize() throws IOException {
         checkIfUserIsLocked();
         usernameInput.setPromptText("Username");
         passwordInput.setPromptText("Password");
@@ -175,12 +175,12 @@ public class LogInController {
 
 
 
-    public void checkIfUserIsLocked() {
+    public void checkIfUserIsLocked() throws IOException {
         String username = usernameInput.getText();
         if (username == null || username.isEmpty()) return;
 
         FailedLogin loginManager = FailedLogin.getInstance();
-        FailedLogin.AuthResult result = loginManager.authenticate(username, ""); // dummy password
+        FailedLogin.AuthResult result = loginManager.authenticate(username, password);
 
         if (!result.isSuccess() && result.getMessage().contains("locked")) {
             errorMessage.setText(result.getMessage());
@@ -311,9 +311,14 @@ public class LogInController {
 
     }
 
-
     public static String getCurrentUsername(){
         return username;
+        //TODO: Make it so that this returns the current username of whichever screen is being interacted with.
+        // Shouldn't log out the wrong person.
+    }
+
+    public static void setCurrentUsername(String newUsername){
+        username = newUsername ;
         //TODO: Make it so that this returns the current username of whichever screen is being interacted with.
         // Shouldn't log out the wrong person.
     }

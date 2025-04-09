@@ -6,14 +6,14 @@ import java.util.*;
 public class UserLogout {
     public static final String SESSION_FILE = "session.csv"; // stores active user sessions
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         logout(); // Initiates logout process
     }
 
     /**
      * Handles the logout process.
      */
-    public static void logout() {
+    public static void logout() throws IOException {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Are you sure you want to log out? (yes/no): ");
         String confirmation = scanner.nextLine().trim().toLowerCase();
@@ -96,7 +96,7 @@ public class UserLogout {
         }
     }
 
-    public static void redirectToLogin() {
+    public static void redirectToLogin() throws IOException {
         System.out.println("Redirecting to the login page");
         UserLogin.main(null);
     }

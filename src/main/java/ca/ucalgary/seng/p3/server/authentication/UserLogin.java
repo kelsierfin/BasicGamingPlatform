@@ -7,7 +7,7 @@ public class UserLogin {
     public static final String FILE_NAME = "accounts.csv"; // Stores registered user credentials
     public static final String SESSION_FILE = "session.csv"; // Stores session data
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
             System.out.println("Choose an option: \nLogin \nGuest Login \nRegister \nForget Password or Username \nExit"); // Displays menu options to the user
             String choice = scanner.nextLine().trim().toLowerCase();
@@ -41,7 +41,7 @@ public class UserLogin {
      * Handles user login by verifying credentials from the accounts.csv file.
      * @param scanner Scanner object for user input.
      */
-    public static void login(Scanner scanner) {
+    public static void login(Scanner scanner) throws IOException {
         Map<String, String> accounts = loadAccounts();
 
         if (accounts.isEmpty()) {
