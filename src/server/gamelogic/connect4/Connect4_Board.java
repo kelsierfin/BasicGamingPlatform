@@ -154,7 +154,7 @@ public class Connect4_Board {
 
                     match++;
 
-                    if (match == 4) {
+                    if (match == 3) {
                         return true;
                     }
 
@@ -317,7 +317,7 @@ public class Connect4_Board {
 
 
                 String symbol = getSymbol(Board[index_row][index_column]);
-                System.out.println("index row = " + index_row + " index_column = "+ index_column + " symbol = " + symbol);
+                //System.out.println("index row = " + index_row + " index_column = "+ index_column + " symbol = " + symbol);
 
                 if(prevSymbol.equals(symbol) && prevSymbol.equals(sym)) {
 
