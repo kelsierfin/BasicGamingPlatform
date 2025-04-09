@@ -93,6 +93,19 @@ Purpose: To run program
 ### 3. GameApplication
 Purpose: To launch GUI
 
+### 4. CurrentUser
+Purpose: Creates instance of current user
+
+### 5. PageNavigator
+Purpose: Displays page navigator
+
+### 6. Game Launcher
+!Not currently in use!
+
+### 7. LeaderboardHome
+Purpose: Redirects user to individual game leaderboards
+
+
 ## Integration Points
 
 1. **Game Logic** → `StartGameController`  
