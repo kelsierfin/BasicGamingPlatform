@@ -18,10 +18,11 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #1E90FF, #8A2BE2);" stylesheets="@signUp.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng.p3.client.controllers.LogInController">
     <children>
-      <VBox alignment="CENTER" layoutX="235.0" layoutY="111.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="451.0" prefWidth="450.0" styleClass="backdrop" stylesheets="@signUp.css">
+      <VBox fx:id="logInCard" alignment="CENTER" layoutX="225.0" layoutY="107.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="449.0" prefWidth="450.0" styleClass="backdrop" stylesheets="@signUp.css">
          <padding>
             <Insets left="100.0" right="100.0" />
          </padding>
@@ -79,7 +80,7 @@
                       <Hyperlink fx:id="signUpLink" alignment="TOP_RIGHT" contentDisplay="RIGHT" onAction="#handleSignUpLink" text="Sign Up" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="25.0" prefWidth="248.0">
+            <HBox alignment="CENTER" prefHeight="32.0" prefWidth="248.0">
                <children>
                   <Line startX="-100.0" stroke="#978e8e" />
                   <Text fill="#978e8e" strokeType="OUTSIDE" strokeWidth="0.0" text="    OR    " />
@@ -119,5 +120,36 @@
             </GridPane>
          </children>
       </HBox>
+      <VBox fx:id="mfaCard" layoutX="170.0" layoutY="232.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="560.0" styleClass="backdrop" stylesheets="@signUp.css">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-font-weight: bold;" text="Multi-factor Authentication">
+               <font>
+                  <Font size="33.0" />
+               </font>
+            </Label>
+            <VBox prefHeight="96.0" prefWidth="558.0">
+               <children>
+                  <TextFlow prefHeight="80.0" prefWidth="508.0">
+                     <children>
+                        <Text fx:id="mfaMessageLabel" strokeType="OUTSIDE" strokeWidth="0.0" />
+                     </children>
+                  </TextFlow>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="mfaCodeInput" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="250.0" styleClass="text-field" />
+                        <HBox prefHeight="58.0" prefWidth="36.0" />
+                        <Button fx:id="mfaCodeButton" focusTraversable="false" mnemonicParsing="false" onAction="#handleSubmitMfaCode" prefHeight="35.0" prefWidth="101.0" text="Enter Code" />
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets left="50.0" top="20.0" />
+         </padding>
+      </VBox>
     </children>
 </AnchorPane>

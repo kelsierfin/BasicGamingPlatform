@@ -1,9 +1,13 @@
 package ca.ucalgary.seng.p3.client.controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+
+import ca.ucalgary.seng.p3.server.authentication.*;
+import javafx.scene.layout.VBox;
+
+import java.util.List;
+import java.util.Optional;
 
 public class ResetCredentialsController {
 
@@ -12,54 +16,143 @@ public class ResetCredentialsController {
     public TextField emailInput;
     String email;
 
-    String password;
-    String username;
 
     @FXML
     public void initialize() {
         emailInput.setPromptText("Enter your email address");
     }
 
-    public void handleRequestButton() {
+    public void handleResetButton() {
         email = emailInput.getText();
-        boolean validEmail = true; //email is in database or not(false)
+        String[] credentials = ResetCredentials.findAccountByEmail(ResetCredentials.loadAccounts(), email);
+        boolean validEmail = credentials != null;
+
         if (validEmail) {
-            //TODO: RETRIEVE PASSWORD
-            Alert credentials = new Alert(Alert.AlertType.CONFIRMATION);
-            credentials.setTitle("Credentials");
-            credentials.setHeaderText("These are your account details, save them before exiting.");
-            credentials.setContentText("Username: " + username + " Password: "+ password);
-            ButtonType logInButton = new ButtonType("Log In");
-            ButtonType cancelButton = ButtonType.CANCEL;
+            String oneTimeCode = ResetCredentials.generateOneTimeCode(5);
+            boolean verified = false;
+            int attempts = 3;
 
-            credentials.getButtonTypes().setAll(cancelButton, logInButton);
-            credentials.showAndWait().ifPresent(response -> {
-                if (response == logInButton) {
+            while (attempts > 0 && !verified) {
+                TextField codeField = new TextField();
+                codeField.setPromptText("Enter one-time code");
 
-                    PageNavigator.navigateTo("logIn");
-                    credentials.close();
+                VBox content = new VBox(10);
+                content.getChildren().addAll(codeField);
+
+                Alert codeAlert = new Alert(Alert.AlertType.CONFIRMATION);
+                codeAlert.setTitle("Verifying credentials reset");
+                codeAlert.setHeaderText("Code sent to: " + email + "\n(For simulation purposes, use code: " + oneTimeCode + ")\nAttempts left: " + attempts);
+                codeAlert.getDialogPane().setContent(content);
+
+                ButtonType verify = new ButtonType("Verify Code");
+                codeAlert.getButtonTypes().setAll(ButtonType.CANCEL, verify);
+
+                Optional<ButtonType> result = codeAlert.showAndWait();
+                if (result.isPresent() && result.get() == verify) {
+                    String input = codeField.getText().trim();
+                    verified = input.equals(oneTimeCode);
+
+                    if (!verified) {
+                        attempts--;
+                    }
                 } else {
-                    credentials.close();
+                    return;
                 }
-            });
-        }else{
-            Alert credentials = new Alert(Alert.AlertType.CONFIRMATION);
-            credentials.setTitle("Credentials");
-            credentials.setHeaderText("Seems like you don't have an account yet.");
+            }
+
+            if (verified) {
+                allowReset();
+            } else {
+                Alert fail = new Alert(Alert.AlertType.ERROR);
+                fail.setTitle("Verification Failed");
+                fail.setHeaderText("All verification attempts used. Please try again later.");
+                fail.showAndWait();
+            }
+        } else {
+            Alert accountMissing = new Alert(Alert.AlertType.CONFIRMATION);
+            accountMissing.setTitle("Credentials");
+            accountMissing.setHeaderText("No account found with this email.");
             ButtonType signUp = new ButtonType("Create Account");
-            ButtonType cancelButton = ButtonType.CANCEL;
-
-            credentials.getButtonTypes().setAll(cancelButton, signUp);
-            credentials.showAndWait().ifPresent(response -> {
+            accountMissing.getButtonTypes().setAll(ButtonType.CANCEL, signUp);
+            accountMissing.showAndWait().ifPresent(response -> {
                 if (response == signUp) {
-
                     PageNavigator.navigateTo("SignUp");
-                    credentials.close();
-                } else {
-                    credentials.close();
                 }
             });
         }
+    }
+
+
+    public void allowReset() {
+        boolean success = false;
+
+        while (!success) {
+            Alert resetAlert = new Alert(Alert.AlertType.CONFIRMATION);
+            resetAlert.setTitle("Reset Credentials");
+            resetAlert.setHeaderText("Enter new username and/or password");
+
+            TextField usernameField = new TextField();
+            usernameField.setPromptText("New Username");
+
+            TextField passwordField = new TextField();
+            passwordField.setPromptText("New Password");
+
+            VBox content = new VBox(10);
+            content.getChildren().addAll(usernameField, passwordField);
+            resetAlert.getDialogPane().setContent(content);
+
+            ButtonType resetButton = new ButtonType("Reset");
+            resetAlert.getButtonTypes().setAll(ButtonType.CANCEL, resetButton);
+
+            Optional<ButtonType> response = resetAlert.showAndWait();
+            if (response.isPresent() && response.get() == resetButton) {
+                String newUsername = usernameField.getText().trim();
+                String newPassword = passwordField.getText().trim();
+
+                if (newUsername.isEmpty() && newPassword.isEmpty()) {
+                    showWarning("Please enter a new username or password to reset.");
+                    continue; // retry
+                }
+
+                List<String[]> accounts = ResetCredentials.loadAccounts();
+                String[] account = ResetCredentials.findAccountByEmail(accounts, email);
+
+                if (!newUsername.isEmpty()) {
+                    if (ResetCredentials.isUsernameTaken(accounts, newUsername)) {
+                        showWarning("Username already taken.");
+                        continue; // retry
+                    }
+                    account[0] = newUsername;
+                }
+
+                if (!newPassword.isEmpty()) {
+                    if (!ResetCredentials.isValidPassword(newPassword)) {
+                        showWarning("Password must be at least 8 characters, include an uppercase letter and a digit.");
+                        continue; // retry
+                    }
+                    account[1] = PasswordHasher.generateStorablePassword(newPassword);
+                }
+
+                ResetCredentials.saveAccounts(accounts);
+
+                Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                successAlert.setTitle("Success");
+                successAlert.setHeaderText("Credentials updated successfully!");
+                successAlert.showAndWait();
+
+                success = true;
+            } else {
+                // User cancelled reset
+                break;
+            }
+        }
+    }
+
+    private void showWarning(String message) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Invalid Input");
+        alert.setHeaderText(message);
+        alert.showAndWait();
     }
 
 

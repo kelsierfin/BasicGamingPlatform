@@ -25,6 +25,16 @@ public class PageNavigator {
             stage.setScene(scene);
             stage.setTitle(pageName.substring(0, 1).toUpperCase() + pageName.substring(1));
             stage.setResizable(false);
+
+            //Logs out user everytime app is closed
+            stage.setOnCloseRequest(event -> {
+                try {
+                    LogInController.performLogout(); //central logout method
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
+
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
