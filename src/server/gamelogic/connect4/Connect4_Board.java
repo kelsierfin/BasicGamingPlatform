@@ -154,7 +154,7 @@ public class Connect4_Board {
 
                     match++;
 
-                    if (match == 3) {
+                    if (match == 4) {
                         return true;
                     }
 
@@ -191,7 +191,7 @@ public class Connect4_Board {
 
                     match++;
 
-                    if (match == 3) {
+                    if (match == 4) {
                         return true;
                     }
 
@@ -235,7 +235,7 @@ public class Connect4_Board {
 
                     match++;
 
-                    if (match == 3) {
+                    if (match == 4) {
                         return true;
                     }
 
@@ -277,7 +277,7 @@ public class Connect4_Board {
 
                     match++;
 
-                    if (match == 3) {
+                    if (match == 4) {
                         return true;
                     }
 
@@ -317,7 +317,7 @@ public class Connect4_Board {
 
                     match++;
 
-                    if (match == 3) {
+                    if (match == 4) {
                         return true;
                     }
 
