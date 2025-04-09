@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -92,7 +93,6 @@ public class Board {
         int blackTerritory = 0;
         int whiteTerritory = 0;
         boolean[][] visited = new boolean[19][19];
-
         // Count stones.
         for (int i = 0; i < 19; i++) {
             for (int j = 0; j < 19; j++) {
@@ -143,7 +143,6 @@ public class Board {
 
         int color = matrix[x][y].getColor();
         if (color != 0) {
-            // 遇到棋子边界
             if (color == 1) result.isWhiteTerritory = false;
             if (color == 2) result.isBlackTerritory = false;
             return;
