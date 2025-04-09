@@ -2,10 +2,9 @@
 
 ## Table of Contents
 1. [System Overview](#system-overview)
-2. [Class Diagram](#class-diagram)
-3. [Detailed Class Specifications](#detailed-class-specifications)
-4. [Integration Points](#integration_points)
-5. [Error Handling](#error-handling)
+2. [Detailed Class Specifications](#detailed-class-specifications)
+3. [Integration Points](#integration_points)
+4. [Error Handling](#error-handling)
 
 ## System Overview
 The GUI system provides:
@@ -98,13 +97,13 @@ Purpose: To launch GUI
 
 1. **Game Logic** → `StartGameController`  
    - Begin game of user's choice  
-    1.1 **Chess Logic** → `ChessContoller`  
+    1.1) **Chess Logic** → `ChessContoller`  
         - Chess game recieves input from user  
-    1.2 **Connect 4 Logic** → `Connect4Contoller`  
+    1.2) **Connect 4 Logic** → `Connect4Contoller`  
         - Connect 4 game recieves input from user  
-    1.3 **Go Logic** → `GoContoller`  
+    1.3) **Go Logic** → `GoContoller`  
         - Go game recieves input from user  
-    1.4 **TicTacToe Logic** → `TicTacToeContoller`  
+    1.4) **TicTacToe Logic** → `TicTacToeContoller`  
         - TicTacToe game recieves input from user  
 2. **Authentication and Profile** → `LogInController`  
    - Ensures that user input matches profile in database  
