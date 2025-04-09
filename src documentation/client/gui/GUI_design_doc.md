@@ -99,7 +99,7 @@ Purpose: Creates instance of current user
 ### 5. PageNavigator
 Purpose: Displays page navigator
 
-### 6. Game Launcher
+### 6. GameLauncher
 !Not currently in use!
 
 ### 7. LeaderboardHome
