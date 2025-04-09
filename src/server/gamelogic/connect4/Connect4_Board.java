@@ -135,7 +135,7 @@ public class Connect4_Board {
                 prevSymbol = getSymbol(Board[index_row][index_column]);
                 index_column++;
             }
-            match = 0;
+
             index_row++;
         }
 
