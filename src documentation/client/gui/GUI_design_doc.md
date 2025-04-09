@@ -97,14 +97,14 @@ Purpose: To launch GUI
 
 1. **Game Logic** → `StartGameController`  
    - Begin game of user's choice  
-        1.1) **Chess Logic** → `ChessContoller`  
-        - Chess game recieves input from user  
-    1.2) **Connect 4 Logic** → `Connect4Contoller`  
-        - Connect 4 game recieves input from user  
-    1.3) **Go Logic** → `GoContoller`  
-        - Go game recieves input from user  
-    1.4) **TicTacToe Logic** → `TicTacToeContoller`  
-        - TicTacToe game recieves input from user  
+1.1) **Chess Logic** → `ChessContoller`  
+    - Chess game recieves input from user  
+1.2) **Connect 4 Logic** → `Connect4Contoller`  
+    - Connect 4 game recieves input from user  
+1.3) **Go Logic** → `GoContoller`  
+    - Go game recieves input from user  
+1.4) **TicTacToe Logic** → `TicTacToeContoller`  
+    - TicTacToe game recieves input from user  
 2. **Authentication and Profile** → `LogInController`  
    - Ensures that user input matches profile in database  
    → `ProfileController`  
