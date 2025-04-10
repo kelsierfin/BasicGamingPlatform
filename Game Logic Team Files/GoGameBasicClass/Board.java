@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +29,7 @@ public class Board {
                 if ((color == 1 || color == 2) && !checked[i][j]) {
                     boolean[][] visited = new boolean[19][19];
                     if (!hasLiberty(i, j, color, visited)) {
-                        clearGroup(i, j, color);
+                        List<int[]> eatenCoords = clearGroup(i, j, color);
                         checked[i][j] = true;
                     }
                 }
@@ -39,14 +38,10 @@ public class Board {
     }
 
     private boolean isSurrounded(int x, int y, int color) {
-        // Implement flood fill or similar algorithm to check if the group is surrounded
-        // This is a simplified version, you may need to implement a more complex logic
         boolean[][] visited = new boolean[19][19];
         return dfs(x, y, color, visited);
     }
-    //Asked AI for help, this method was really hard and I struggled for more than 1 hour
-    //with no result.This method is used to check if a block of stones got surrounded by enemies.
-    //If so, clarify the area and make the area forbidden to be placed.
+
     private boolean dfs(int x, int y, int color, boolean[][] visited) {
         if (x < 0 || x >= 19 || y < 0 || y >= 19 || visited[x][y]) {
             return true;
@@ -65,15 +60,23 @@ public class Board {
     }
 
     //Clear the stones which got surrounded.
-    private void clearGroup(int x, int y, int color) {
+    private List<int[]> clearGroup(int x, int y, int color) {
+        List<int[]> cleared = new ArrayList<>();
+        clearGroupHelper(x, y, color, cleared);
+        return cleared;
+    }
+
+    private void clearGroupHelper(int x, int y, int color, List<int[]> cleared) {
         if (x < 0 || x >= 19 || y < 0 || y >= 19) return;
         if (matrix[x][y].getColor() != color) return;
 
         matrix[x][y] = (color == 1) ? black_eaten : white_eaten;
-        clearGroup(x+1, y, color);
-        clearGroup(x-1, y, color);
-        clearGroup(x, y+1, color);
-        clearGroup(x, y-1, color);
+        cleared.add(new int[]{x, y});
+
+        clearGroupHelper(x+1, y, color, cleared);
+        clearGroupHelper(x-1, y, color, cleared);
+        clearGroupHelper(x, y+1, color, cleared);
+        clearGroupHelper(x, y-1, color, cleared);
     }
 //This method is used to show all available position for a player to place stone.Implement it when designing GUI.
     public List<int[]> getAvailablePositions() {
@@ -93,7 +96,6 @@ public class Board {
         int blackTerritory = 0;
         int whiteTerritory = 0;
         boolean[][] visited = new boolean[19][19];
-        // Count stones.
         for (int i = 0; i < 19; i++) {
             for (int j = 0; j < 19; j++) {
                 int color = matrix[i][j].getColor();
@@ -103,7 +105,6 @@ public class Board {
                 else if (color == 4) whiteTerritory++;
             }
         }
-
 
         for (int i = 0; i < 19; i++) {
             for (int j = 0; j < 19; j++) {
@@ -119,7 +120,6 @@ public class Board {
         return (blackTerritory > whiteTerritory) ? 1 : 2;
     }
 
-    // Load result.
     private class TerritoryResult {
         int area = 0;
         boolean isBlackTerritory = false;
@@ -150,26 +150,24 @@ public class Board {
 
         result.area++;
 
-        // Initialize area counter.
         if (result.area == 1) {
             result.isBlackTerritory = true;
             result.isWhiteTerritory = true;
         }
 
-        // Four directions.
         dfsTerritory(x+1, y, visited, result);
         dfsTerritory(x-1, y, visited, result);
         dfsTerritory(x, y+1, visited, result);
         dfsTerritory(x, y-1, visited, result);
     }
 
-
     //This method should be done each time when a player placed a stone
-    public void checkState() {
-        if (consecutivePass >= 2) {
+    public int checkState() {
+        if (consecutivePass >= 2 && state == 0) {
             state = calculateWinner();
             System.out.println("Game end");
         }
+        return state;
     }
 
     private boolean hasLiberty(int x, int y, int color, boolean[][] visited) {
@@ -186,25 +184,46 @@ public class Board {
                 hasLiberty(x, y-1, color, visited);
     }
 
-
-
-    public void placeStone(int x, int y, int color) {
+    public MoveResult placeStone(int x, int y, int color) {
         if (x < 0 || x >= 19 || y < 0 || y >= 19 || matrix[x][y].getColor() != 0) {
             System.out.println("Invalid move");
-            return;
+            return new MoveResult(false, new ArrayList<>());
         }
         matrix[x][y] = (color == 1) ? black : white;
+        List<int[]> cleared = new ArrayList<>();
         checkSurround();
         checkState();
+        return new MoveResult(true, cleared);
     }
-    public void surrender(int surrenderingTeam) {
+
+    public int surrender(int surrenderingTeam) {
         state = 3;
         int winner = (surrenderingTeam == 1) ? 2 : 1;
         System.out.println("player " + surrenderingTeam + " surrendered.");
+        return winner;
     }
 
-    public void passTurn() {
+    public int passTurn() {
         consecutivePass++;
-        checkState();
+        return checkState();
     }
-}
+
+    public int getState() {
+        return state;
+    }
+
+    public int getStoneColor(int x, int y) {
+        if (x < 0 || x >= 19 || y < 0 || y >= 19) return -1;
+        return matrix[x][y].getColor();
+    }
+
+    public class MoveResult {
+        public boolean success;
+        public List<int[]> cleared;
+
+        public MoveResult(boolean success, List<int[]> cleared) {
+            this.success = success;
+            this.cleared = cleared;
+        }
+    }
+} 
