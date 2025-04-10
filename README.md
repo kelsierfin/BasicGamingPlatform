@@ -1,30 +1,40 @@
-# Online Multiplayer Board Game Platform (OMG)
+# Online Multiplayer Game Platform (OMG)
 
-Welcome to **OMG** - a feature-rich online platform where players can enjoy classic board games with friends and competitors worldwide. Built as part of SENG300, this system demonstrates full-stack multiplayer gaming capabilities with extensible architecture.
+## Platform Objective
+OMG enables users to play four classic board games (Chess, Connect Four, Tic-Tac-Toe, and Go) with secure multiplayer functionality. The system provides:
+- Account creation and authentication
+- Competitive matchmaking
+- Persistent game statistics
+- In-game chat functionality
 
-## Key Features 🎮
+## Implemented Features
 
-### 🔒 Enhanced Authentication System
-- **Secure registration** with password complexity enforcement
-- **Multi-factor authentication** (email-based OTP)
-- **Account recovery** (username/password reset flows)
-- **Session management** with automatic timeout
+### Authentication System
+- User registration with password complexity requirements:
+  - 8+ characters
+  - 1+ uppercase letter
+  - 1+ number
+  - No spaces
+- Account recovery via simulated email OTP
+- Session management for both registered users and guest accounts
 
-### 🏆 Expanded Game Library
-| Game        | Features Implemented                  |
-|-------------|---------------------------------------|
-| Chess       | Full move validation, check detection |
-| Go          | Stone placement, scoring              |
-| Connect Four| Win detection, column drops           |
-| Tic-Tac-Toe | Classic 3x3 with win logic            |
+### Game Implementations
+All games enforce standard rulesets:
+- **Chess**: Valid piece movements, check detection
+- **Connect Four**: Column drops with win condition checking
+- **Tic-Tac-Toe**: 3x3 grid with win/draw detection
+- **Go**: Stone placement and territory scoring
 
-### ✨ Platform Additional Features
-- **Player profiles** with avatars and stats
-- **Cross-game leaderboards** with rankings
-- **In-game chat** (text-based during matches)
-- **Match history** with replay capability
+### Multiplayer Services
+- ELO-based matchmaking (initial rating: 1000)
+- TCP game state synchronization
+- UDP real-time chat
+- CSV data storage for:
+  - User credentials (`accounts.csv`)
+  - Active sessions (`session.csv`)
+  - Game statistics (`stats.csv`)
 
-## Getting Started
+## Running the Program
 
 ### Prerequisites
 - IntelliJ IDEA 2024.3.5
@@ -36,4 +46,18 @@ Welcome to **OMG** - a feature-rich online platform where players can enjoy clas
 git clone https://csgit.ucalgary.ca/sanbeer.shafin/seng300-w25-project
 ```
 
-### Running the Platform
+### First-Time Setup
+The system will automatically generate required data files:
+- `data/accounts.csv` for user accounts
+- `data/session.csv` for active sessions
+- `data/stats.csv` for game statistics
+
+## Usage Instructions
+1. Launch the application
+2. Register an account or login as guest
+3. Select a game from the lobby
+4. Choose play mode:
+   - Private match (invite by username)
+   - Public lobby
+   - Ranked matchmaking
+5. Game results automatically update player statistics
