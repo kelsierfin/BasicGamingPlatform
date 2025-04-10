@@ -24,10 +24,10 @@ public class PlayerStats {
         PlayerStatData player2stats = DatabaseStub.getPlayerStatData(player2);
         GameStats player1gstats = player1stats.getGameStats(gameType);
         GameStats player2gstats = player2stats.getGameStats(gameType);
-        int mmr1 = player1gstats.getELO();
-        int mmr2 = player2gstats.getELO();
-        int mmrDifference = mmr2 - mmr1;
-        int rankChange = 20;
+//        int mmr1 = player1gstats.getELO();
+//        int mmr2 = player2gstats.getELO();
+//        int mmrDifference = mmr2 - mmr1;
+//        int rankChange = 20;
 
         // Add a win to the profile of the winning player, a loss to the other
         if (player1Won) {
@@ -47,46 +47,46 @@ public class PlayerStats {
         // Winner gets minimum of 8, no less. Gain is reversed for the loser but can only lose 6 minimum
         // There is currently no maximum rank gain or loss, that could be added if necessary (+-40 maximum for example)
         // There will also be next to no rank inflation, more calculations would be needed to create an "average rank"
-        if (player1Won) {
-            rankChange = 20 + (mmrDifference / 10);
-            if (rankChange < 8) {
-                mmr1 += 8;
-                if (rankChange < 6) {
-                    mmr2 -= 6;
-                } else {
-                    mmr2 -= rankChange;
-                }
-            } else {
-                mmr1 += rankChange;
-                mmr2 -= rankChange;
-            }
-        } else {
-            rankChange = 20 - (mmrDifference / 10);
-            if (rankChange < 8) {
-                mmr2 += 8;
-                if (rankChange < 6) {
-                    mmr1 -= 6;
-                } else {
-                    mmr1 -= rankChange;
-                }
-            } else {
-                mmr2 += rankChange;
-                mmr1 -= rankChange;
-            }
-        }
-        if(mmr1 < 0){
-            mmr1 = 0;
-        }
-        if(mmr2 < 0){
-            mmr2 = 0;
-        }
-
-        // Update the database with the new mmr numbers and player stats
-        player1gstats.setELO(mmr1);
-        player2gstats.setELO(mmr2);
-        DatabaseStub.updateStats(gameType, player1stats);
-        DatabaseStub.updateStats(gameType, player2stats);
-        Leaderboard.updateRankings(gameType);
+//        if (player1Won) {
+//            rankChange = 20 + (mmrDifference / 10);
+//            if (rankChange < 8) {
+//                mmr1 += 8;
+//                if (rankChange < 6) {
+//                    mmr2 -= 6;
+//                } else {
+//                    mmr2 -= rankChange;
+//                }
+//            } else {
+//                mmr1 += rankChange;
+//                mmr2 -= rankChange;
+//            }
+//        } else {
+//            rankChange = 20 - (mmrDifference / 10);
+//            if (rankChange < 8) {
+//                mmr2 += 8;
+//                if (rankChange < 6) {
+//                    mmr1 -= 6;
+//                } else {
+//                    mmr1 -= rankChange;
+//                }
+//            } else {
+//                mmr2 += rankChange;
+//                mmr1 -= rankChange;
+//            }
+//        }
+//        if(mmr1 < 0){
+//            mmr1 = 0;
+//        }
+//        if(mmr2 < 0){
+//            mmr2 = 0;
+//        }
+//
+//        // Update the database with the new mmr numbers and player stats
+//        player1gstats.setELO(mmr1);
+//        player2gstats.setELO(mmr2);
+//        DatabaseStub.updateStats(gameType, player1stats);
+//        DatabaseStub.updateStats(gameType, player2stats);
+//        Leaderboard.updateRankings(gameType);
     }
 
     /**

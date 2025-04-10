@@ -59,17 +59,17 @@ public class SettingsController {
 
     @FXML
     private void handleMatchHistoryTab() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/match_history.fxml"));
-            Parent matchHistory = loader.load();
-            contentArea.setCenter(matchHistory);
-
-            // Highlight the selected tab
-            matchHistoryTab.getStyleClass().add("selected-tab");
-            profileTab.getStyleClass().remove("selected-tab");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/match_history.fxml"));
+//            Parent matchHistory = loader.load();
+//            contentArea.setCenter(matchHistory);
+//
+//            // Highlight the selected tab
+//            matchHistoryTab.getStyleClass().add("selected-tab");
+//            profileTab.getStyleClass().remove("selected-tab");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     // Called when the menu button is clicked
