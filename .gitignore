@@ -1,7 +1,7 @@
 .idea/
 *.iml
 *.iws
-out/
+target/
 modules.xml
 vcs.xml
 workspace.xml

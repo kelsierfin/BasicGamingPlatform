@@ -95,34 +95,79 @@ public class DatabaseStub {
         throw new IllegalArgumentException("No stats found for player " + userName);
     }
 
-    /**
-     * makes a leaderboard data with the data from the csv file.
-     * used for displaying and updating the leaderboard
-     * @param gameType
-     * @return
-     * @throws IOException
-     */
     public static LeaderboardData getLeaderboard(String gameType) throws IOException {
         List<String[]> stats = loadStats();
         List<String> leaderboard = new ArrayList<>();
         List<Integer> ELOList = new ArrayList<>();
+
         for (String[] stat : stats) {
-            if (gameType.equals("chess")) {
+            if (gameType.equalsIgnoreCase("chess")){
                 leaderboard.add(stat[0]);
-                ELOList.add(Integer.parseInt(stat[3]));
-            }else if (gameType.equals("connect4")) {
+                try {
+                    ELOList.add(Integer.parseInt(stat[3])); // Chess Elo is at index 3
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid Elo value for Chess: " + stat[3]);
+                }
+            } else if (gameType.equalsIgnoreCase("connect4")) {
                 leaderboard.add(stat[0]);
-                ELOList.add(Integer.parseInt(stat[7]));
-            }else if (gameType.equals("go")) {
+                try {
+                    ELOList.add(Integer.parseInt(stat[7])); // Connect4 Elo is at index 7
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid Elo value for Connect4: " + stat[7]);
+                }
+            } else if (gameType.equalsIgnoreCase("go")) {
                 leaderboard.add(stat[0]);
-                ELOList.add(Integer.parseInt(stat[11]));
-            }else if (gameType.equals("tictactoe")) {
+                try {
+                    ELOList.add(Integer.parseInt(stat[11])); // Go Elo is at index 11
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid Elo value for Go: " + stat[11]);
+                }
+            } else if (gameType.equalsIgnoreCase("tic tac toe")) {
                 leaderboard.add(stat[0]);
-                ELOList.add(Integer.parseInt(stat[15]));
+                try {
+                    ELOList.add(Integer.parseInt(stat[15])); // TicTacToe Elo is at index 15
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid Elo value for TicTacToe: " + stat[15]);
+                }
             }
         }
+
+        if (leaderboard.isEmpty() || ELOList.isEmpty()) {
+            System.out.println("No players or scores found for " + gameType);
+        }
+
         return new LeaderboardData(leaderboard, ELOList);
     }
+
+
+//    /**
+//     * makes a leaderboard data with the data from the csv file.
+//     * used for displaying and updating the leaderboard
+//     * @param gameType
+//     * @return
+//     * @throws IOException
+//     */
+//    public static LeaderboardData getLeaderboard(String gameType) throws IOException {
+//        List<String[]> stats = loadStats();
+//        List<String> leaderboard = new ArrayList<>();
+//        List<Integer> ELOList = new ArrayList<>();
+//        for (String[] stat : stats) {
+//            if (gameType.equals("chess")) {
+//                leaderboard.add(stat[0]);
+//                ELOList.add(Integer.parseInt(stat[3]));
+//            }else if (gameType.equals("connect4")) {
+//                leaderboard.add(stat[0]);
+//                ELOList.add(Integer.parseInt(stat[7]));
+//            }else if (gameType.equals("go")) {
+//                leaderboard.add(stat[0]);
+//                ELOList.add(Integer.parseInt(stat[11]));
+//            }else if (gameType.equals("tictactoe")) {
+//                leaderboard.add(stat[0]);
+//                ELOList.add(Integer.parseInt(stat[15]));
+//            }
+//        }
+//        return new LeaderboardData(leaderboard, ELOList);
+//    }
 
     /**
      * Takes leaderboard data and the gametype that data is for and updates a players rankings base on the leaderboard data
