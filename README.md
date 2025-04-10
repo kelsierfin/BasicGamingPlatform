@@ -16,7 +16,7 @@ OMG enables users to play four classic board games (Chess, Connect Four, Tic-Tac
   - 1+ number
   - No spaces
 - Account recovery via simulated email OTP
-- Session management for both registered users and guest accounts
+- Session management for registered users
 
 ### Game Implementations
 All games enforce standard rulesets:
