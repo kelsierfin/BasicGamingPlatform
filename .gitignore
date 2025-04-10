@@ -1,7 +1,1 @@
-.idea/
-*.iml
-*.iws
-target/
-modules.xml
-vcs.xml
-workspace.xml
+/.idea/
