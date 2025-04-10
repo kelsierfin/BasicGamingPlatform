@@ -271,6 +271,7 @@ public class ProfileController {
                     UserLogin.saveSession(usernameField.getText());
                 }
                 //3.updates currentUsername to new one, resetting it in LogIn Controller
+                profileEditor.writeAllStats(currentUsername,newUsername);
                 LogInController.setCurrentUsername(newUsername);
                 currentUsername = newUsername;
                 successMessage.append("\n\t- Username");

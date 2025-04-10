@@ -77,8 +77,9 @@ public class DatabaseStub {
             if (stat[0].equals(userName)) {
                 // generates the match history
                 List<MatchData> matchHistory = new ArrayList<>();
-                for (int i = stat.length - 1; i < 17; i -= 4){
-                    matchHistory.addFirst(new MatchData(stat[0], stat[i], stat[i-1], stat[i-2], Integer.parseInt(stat[i-3])));
+                for (int i = 17; i <stat.length; i += 4){
+                    matchHistory.add(new MatchData(stat[0], stat[i], stat[i+1], stat[i+2], Integer.parseInt(stat[i+3])));
+
                 }
                 int gamesPlayed = (Integer.parseInt(stat[1]) + Integer.parseInt(stat[5]) + Integer.parseInt(stat[9]) + Integer.parseInt(stat[13]));
                 int gamesWon = (Integer.parseInt(stat[2]) + Integer.parseInt(stat[6]) + Integer.parseInt(stat[10]) + Integer.parseInt(stat[14]));
@@ -146,6 +147,7 @@ public class DatabaseStub {
                 stat[16] = String.valueOf(index + 1);
             }
         }
+        saveStats(stats);
     }
 
     /**
@@ -206,7 +208,7 @@ public class DatabaseStub {
      * @param username
      * @throws IOException
      */
-    private static void saveNewStats(String username) throws IOException {
+    public static void saveNewStats(String username) throws IOException {
         // Open the file in append mode and write the account details
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_NAME, true))) {
             // when creating new stats the player is set to the lowest rank

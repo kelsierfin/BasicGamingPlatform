@@ -14,13 +14,13 @@ import java.util.List;
 
 public class LeaderBoardHome {
 
-    private static final String CHESS_TITLE = "Chess Leaderboard";
+    private static final String CHESS_TITLE = "Chess";
     private static final String CHESS_BCKGRND = "/icons/chess-background.png";
-    private static final String GO_TITLE = "Go Leaderboard";
+    private static final String GO_TITLE = "Go";
     private static final String GO_BCKGRND = "/icons/go-background.png";
-    private static final String CONNECT_TITLE = "Connect 4 Leaderboard";
+    private static final String CONNECT_TITLE = "Connect4";
     private static final String CONNECT_BCKGRND = "/icons/connect4-background.png";
-    private static final String TTT_TITLE = "TicTacToe Leaderboard";
+    private static final String TTT_TITLE = "TicTacToe";
     private static final String TTT_BCKGRND = "/icons/tictactoe-background.png";
 
     @FXML

@@ -317,6 +317,37 @@ public class ProfileEditor {
         }
     }
 
+    public void writeAllStats(String oldUsername, String newUsername) throws IOException {
+        // Read the current stats file and store the updated lines
+        List<String> updatedLines = new ArrayList<>();
+
+        try (BufferedReader br = new BufferedReader(new FileReader("stats.csv"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] details = line.split(",");
+                String username = details[0];
+
+                // Check if the line corresponds to the old username
+                if (username.equals(oldUsername)) {
+                    // Replace the old username with the new one
+                    details[0] = newUsername;
+                    line = String.join(",", details);
+                }
+
+                updatedLines.add(line);
+            }
+        }
+
+        // Write the updated content back to the file
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("stats.csv"))) {
+            for (String updatedLine : updatedLines) {
+                bw.write(updatedLine);
+                bw.newLine();
+            }
+        }
+    }
+
+
     Map<String, String[]> loadAccounts() throws IOException {
         Map<String, String[]> accounts = new HashMap<>();
         File file = new File(fileName);

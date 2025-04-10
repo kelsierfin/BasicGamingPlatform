@@ -73,10 +73,14 @@ public class Leaderboard {
      * @throws IOException
      */
     public static LeaderboardData getLeaderboard(String gameType) throws IOException {
+        System.out.println("Fetching leaderboard for: " + gameType);
+
         LeaderboardData leaderboard = DatabaseStub.getLeaderboard(gameType);
         Leaderboard.sortLeaderboard(leaderboard);
         return leaderboard;
     }
+
+
 
 //    /**
 //     * Displays the leaderboard for a specific game type

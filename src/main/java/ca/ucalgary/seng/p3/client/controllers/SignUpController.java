@@ -1,5 +1,7 @@
 package ca.ucalgary.seng.p3.client.controllers;
 import ca.ucalgary.seng.p3.server.authentication.AccountRegistrationCSV;
+import ca.ucalgary.seng.p3.server.leadmatch.*;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -193,6 +195,7 @@ public class SignUpController {
         //if credentials are valid, account is saved, and user is directed to log In
         if (credentialsValid) {
             AccountRegistrationCSV.saveAccount(username, password, email);
+            DatabaseStub.saveNewStats(username);
             System.out.println("Sign Up Successful");
             PageNavigator.navigateTo("logIn");
         } else {

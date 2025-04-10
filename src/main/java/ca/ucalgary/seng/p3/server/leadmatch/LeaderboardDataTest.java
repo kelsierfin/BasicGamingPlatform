@@ -1,4 +1,4 @@
-//package ca.ucalgary.seng.p3.server.leadmatch;
+//package Leaderboard_and_Matchmaking_Classes;
 //
 //import org.junit.Test;
 //import java.util.ArrayList;

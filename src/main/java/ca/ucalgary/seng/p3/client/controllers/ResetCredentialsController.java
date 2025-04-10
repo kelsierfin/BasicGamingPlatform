@@ -6,6 +6,7 @@ import javafx.scene.control.*;
 import ca.ucalgary.seng.p3.server.authentication.*;
 import javafx.scene.layout.VBox;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,7 +23,7 @@ public class ResetCredentialsController {
         emailInput.setPromptText("Enter your email address");
     }
 
-    public void handleResetButton() {
+    public void handleResetButton() throws IOException {
         email = emailInput.getText();
         String[] credentials = ResetCredentials.findAccountByEmail(ResetCredentials.loadAccounts(), email);
         boolean validEmail = credentials != null;
@@ -83,7 +84,7 @@ public class ResetCredentialsController {
     }
 
 
-    public void allowReset() {
+    public void allowReset() throws IOException {
         boolean success = false;
 
         while (!success) {
@@ -122,6 +123,8 @@ public class ResetCredentialsController {
                         showWarning("Username already taken.");
                         continue; // retry
                     }
+                    ProfileEditor profileEditor = new ProfileEditor();
+                    profileEditor.writeAllStats(account[0],newUsername);
                     account[0] = newUsername;
                 }
 

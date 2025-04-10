@@ -61,6 +61,8 @@ public class LogInController {
     @FXML
     private VBox logInCard;
 
+    public static boolean isGuest = false;
+
     public void initialize() throws IOException {
         checkIfUserIsLocked();
         usernameInput.setPromptText("Username");
@@ -226,6 +228,7 @@ public class LogInController {
 
     public void handleGuestLogInButton() {
         username = UserLogin.guestLogin();
+        isGuest = true;
         // Navigate to the home page
         PageNavigator.navigateTo("home");
     }

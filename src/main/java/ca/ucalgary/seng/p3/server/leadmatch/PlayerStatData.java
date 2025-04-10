@@ -104,8 +104,8 @@ public class PlayerStatData {
 
 
     // Helper to calculate winrate whenever it changes
-    private double setMatchWinRate() {
-        return Math.floor((double)overallGamesWon / (double)overallGamesPlayed * 10000) / 100;
+    private void setMatchWinRate() {
+        this.overallWinRate = Math.floor((double)overallGamesWon / (double)overallGamesPlayed * 10000) / 100;
     }
 
 }
