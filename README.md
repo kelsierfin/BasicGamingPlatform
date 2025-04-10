@@ -31,12 +31,10 @@ Welcome to **OMG** - a feature-rich online platform where players can enjoy clas
 - **Networking**: Hybrid TCP/UDP communication
 - **Data**: CSV persistence (simulated DB)
 
-## Getting Started 🚀
+## Getting Started
 
 ### Prerequisites
-- Java 17+
-- Maven 3.8+
-- JavaFX SDK
+
 
 ### Installation
 ```bash
