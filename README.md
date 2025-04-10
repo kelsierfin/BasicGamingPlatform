@@ -24,21 +24,6 @@ Welcome to **OMG** - a feature-rich online platform where players can enjoy clas
 - **In-game chat** (text-based during matches)
 - **Match history** with replay capability
 
-## Technical Architecture 🛠️
-
-```mermaid
-flowchart TD
-    A[GUI Client] --> B[Game Lobby]
-    B --> C{Game Selection}
-    C --> D[Chess Engine]
-    C --> E[Go Engine]
-    C --> F[Connect4 Engine]
-    A --> G[Auth Service]
-    G --> H[(Accounts DB)]
-    A --> I[Matchmaking]
-    I --> J[(Leaderboards)]
-```
-
 ### Components
 - **Frontend**: JavaFX with MVC architecture
 - **Authentication**: JWT-based sessions with CSRF protection
