@@ -201,22 +201,7 @@ public class StartGameController {
 
     @FXML
     private void handleLogOutButton() {
-        Alert logOutVerification = new Alert(Alert.AlertType.CONFIRMATION);
-        logOutVerification.setTitle("Log out");
-        logOutVerification.setHeaderText("Are you sure you want to log out?");
-        ButtonType logOutButton = new ButtonType("Log Out");
-        ButtonType cancelButton = ButtonType.CANCEL;
-
-        logOutVerification.getButtonTypes().setAll(cancelButton, logOutButton);
-        logOutVerification.showAndWait().ifPresent(response -> {
-            if (response == logOutButton) {
-                // Perform the log-out action here
-                PageNavigator.navigateTo("landing");
-                logOutVerification.close();
-            }else{
-                logOutVerification.close();
-            }
-        });
+        LogInController.performLogout();
     }
 
     @FXML

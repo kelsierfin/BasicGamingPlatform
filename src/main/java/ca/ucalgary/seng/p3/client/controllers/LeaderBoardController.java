@@ -1,5 +1,7 @@
 package ca.ucalgary.seng.p3.client.controllers;
 
+import ca.ucalgary.seng.p3.server.leadmatch.Leaderboard;
+import ca.ucalgary.seng.p3.server.leadmatch.LeaderboardData;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
@@ -22,69 +24,7 @@ import java.util.List;
  * Scene scene = new Scene(page.root, 900, 600);
  */
 public class LeaderBoardController extends AnchorPane {
-
-    public LeaderBoardController(String label, String background){
-
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(LeaderBoardController.class.getResource("/leaderboard.fxml"));
-            loader.setRoot(this);
-            loader.setController(this);
-            loader.load();
-            setBackground(new Background(new BackgroundImage
-                    (new Image(getClass().getResourceAsStream(background)),
-                            BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,null,
-                            new BackgroundSize(BackgroundSize.AUTO,BackgroundSize.AUTO,true, true, false,true))));
-        } catch (IOException e) {
-
-        }
-        // handle dumb navigation buttons
-        profileButton.setOnAction(e -> handleProfileButton());
-        bellButton.setOnAction(e -> handleBellButton());
-        menuButton.setOnAction(e -> handleMenuButton());
-        dashboardButton.setOnAction(e -> handleDashboardButton());
-        leaderboardButton.setOnAction(e -> handleLeaderboardButton());
-        findAPlayerButton.setOnAction(e -> handleFindAPlayerButton());
-        settingsButton.setOnAction(e -> handleSettingsButton());
-        gameRulesButton.setOnAction(e  -> handleGameRulesButton());
-        editProfileButton.setOnAction(e -> handleEditProfileButton());
-        logOutButton.setOnAction(e -> handleLogOutButton());
-        //first medal
-        rankList.add(new ImageView(new Image(getClass().getResourceAsStream("/icons/first-medal.png"))), 0,1);
-        ImageView avatar = new ImageView(new Image(getClass().getResourceAsStream("/icons/avatar.png")));
-        rankList.add(avatar, 1,1);
-        //add name, i: column 2, i1: row 1
-        Label nameLabel = new Label("Pie");
-        nameLabel.setStyle("-fx-font-size: 20");
-        nameLabel.setTextFill(new Color(1,1,1,1));
-        rankList.add(nameLabel,2,1);
-
-        //add points
-        Label pointsLabel = new Label("1000pts");
-        pointsLabel.setStyle("-fx-font-size: 20" );
-        pointsLabel.setTextFill(new Color(1,1,1,1));
-        rankList.add(pointsLabel, 3, 1);
-        //add winning rate
-        Label winRateLabel = new Label("87%");
-        winRateLabel.setStyle("-fx-font-size: 20");
-        winRateLabel.setTextFill(new Color(1,1,1,1));
-        rankList.add(winRateLabel, 4, 1);
-
-        //set pop up
-        avatar.setOnMouseClicked(e->{
-
-            ProfilePopUp popup = new ProfilePopUp();
-            popup.setTitle("Profile");
-            popup.setUserName("Pie");
-            popup.setBio("\"I love choco pie \"");
-            popup.setAvatar("/icons/avatar.png");
-
-            popup.setMatches("150");
-            popup.setWinnings("100");
-            popup.setLosses("50");
-            popup.show();
-        });
-    }
+    String gameType;
 
     @FXML
     private GridPane rankList;
@@ -105,9 +45,105 @@ public class LeaderBoardController extends AnchorPane {
     private Button gameRulesButton, settingsButton, findAPlayerButton, leaderboardButton, dashboardButton;
     @FXML
     private Button logOutButton, editProfileButton;
-    @FXML
-    private void initialize(){
 
+
+
+    public LeaderBoardController(String gameType, String background){
+        this.gameType= gameType;
+
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(LeaderBoardController.class.getResource("/leaderboard.fxml"));
+            loader.setRoot(this);
+            loader.setController(this);
+            loader.load();
+            setBackground(new Background(new BackgroundImage
+                    (new Image(getClass().getResourceAsStream(background)),
+                            BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,null,
+                            new BackgroundSize(BackgroundSize.AUTO,BackgroundSize.AUTO,true, true, false,true))));
+        } catch (IOException e) {
+
+        }
+        profileButton.setOnAction(e -> handleProfileButton());
+        bellButton.setOnAction(e -> handleBellButton());
+        menuButton.setOnAction(e -> handleMenuButton());
+        dashboardButton.setOnAction(e -> handleDashboardButton());
+        leaderboardButton.setOnAction(e -> handleLeaderboardButton());
+        findAPlayerButton.setOnAction(e -> handleFindAPlayerButton());
+        settingsButton.setOnAction(e -> handleSettingsButton());
+        gameRulesButton.setOnAction(e  -> handleGameRulesButton());
+        editProfileButton.setOnAction(e -> handleEditProfileButton());
+        logOutButton.setOnAction(e -> handleLogOutButton());
+        loadData();
+    }
+
+    private void loadData() {
+        try {
+            LeaderboardData data = Leaderboard.getLeaderboard(gameType);
+
+            // Check if the data is null or empty
+            if (data == null) {
+                System.err.println("Error: Leaderboard data is null.");
+                return;
+            }
+            System.out.println(data.getPlayerScores().toString());
+            System.out.println("Leaderboard data loaded: " + data.getPlayerIds().size() + " players found.");
+
+            // Loop through the player data and display them dynamically on the leaderboard
+            for (int i = 0; i < data.getlast(); i++) {
+                String name = data.getPlayerIds().get(i);
+                int playerScore = data.getPlayerScores().get(i);
+                System.out.println(i + " " + name + " " + playerScore);
+                putPlayer(name, playerScore, i);
+            }
+
+        } catch (IOException e) {
+            System.err.println("Error loading leaderboard data.");
+            e.printStackTrace();  // Print the stack trace to identify the error
+        }
+    }
+
+
+    private void putPlayer(String name, Integer playerScore, int rank) {
+        // Manually calculate the row index based on the rank
+        int lastRow = rank; // Directly use 'rank' as the row index
+
+        // Add rank label
+        Label ranking = new Label(String.valueOf(rank + 1));
+        ranking.setStyle("-fx-font-size: 20");
+        ranking.setTextFill(new Color(1, 1, 1, 1));
+        rankList.add(ranking, 0, lastRow); // Column 0 for the rank
+
+        // Add player name dynamically
+        Label nameLabel = new Label(name);
+        nameLabel.setStyle("-fx-font-size: 20");
+        nameLabel.setTextFill(new Color(1, 1, 1, 1));
+        rankList.add(nameLabel, 1, lastRow); // Column 1 for the player name
+
+        // Add score dynamically
+        Label pointsLabel = new Label(String.valueOf(playerScore));
+        pointsLabel.setStyle("-fx-font-size: 20");
+        pointsLabel.setTextFill(new Color(1, 1, 1, 1));
+        rankList.add(pointsLabel, 2, lastRow); // Column 2 for the score
+
+        // Optionally, add medals dynamically based on rank
+        addMedalsForRank(rank, lastRow);
+    }
+
+    private void addMedalsForRank(int rank, int lastRow) {
+        String medalUrl = "";
+        if (rank == 0) {
+            medalUrl = "/icons/first-medal.png";
+        } else if (rank == 1) {
+            medalUrl = "/icons/second-medal.png";
+        } else if (rank == 2) {
+            medalUrl = "/icons/third-medal.png";
+        }
+
+        if (!medalUrl.isEmpty()) {
+            Image medalImage = new Image(getClass().getResourceAsStream(medalUrl));
+            rankList.add(new ImageView(medalImage), 3, lastRow); // Column 3 for medals
+        }
     }
 
     @FXML
@@ -122,7 +158,6 @@ public class LeaderBoardController extends AnchorPane {
         }
     }
 
-    // More event handlers for other buttons, unfinished:
     @FXML
     private void handleProfileButton() {
         // Toggle visibility of the popup
@@ -210,4 +245,5 @@ public class LeaderBoardController extends AnchorPane {
     private void handleGameRulesButton() {
         //game rules page
     }
+
 }

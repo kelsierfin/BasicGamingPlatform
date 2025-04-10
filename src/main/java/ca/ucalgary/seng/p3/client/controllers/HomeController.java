@@ -1,5 +1,8 @@
 package ca.ucalgary.seng.p3.client.controllers;
 
+import ca.ucalgary.seng.p3.server.authentication.ViewPlayerProfile;
+import ca.ucalgary.seng.p3.server.leadmatch.DatabaseStub;
+import ca.ucalgary.seng.p3.server.leadmatch.PlayerStatData;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -10,8 +13,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class HomeController {
 
@@ -59,24 +65,20 @@ public class HomeController {
    @FXML
    public Label gamesPlayed;
    @FXML
-   public Label rank;
+   public Label gamesWon;
 
 
     // Add a static variable to store the selected game type
     public static String selectedGameType;
 
     @FXML
-    public void initialize() {
+    public void initialize() throws IOException {
         btnPrev.setOnAction(event -> scrollLeft());
         btnNext.setOnAction(event -> scrollRight());
         menuPopup.setVisible(false);
         profilePopup.setVisible(false);
         notificationPopup.setVisible(false);
-         //TODO: Placeholders for now. set text information from database.
-        username.setText("Username");
-        gamesPlayed.setText("0");
-        winRate.setText("0%");
-        rank.setText("0");
+        username.setText(LogInController.getCurrentUsername());
 
         List<ImageView> icons = List.of(chessIcon, goIcon, tttIcon, connectIcon);
 
@@ -92,12 +94,26 @@ public class HomeController {
             rect.setArcHeight(20);
 
             icon.setClip(rect);
+
         }
 
         Circle circle = new Circle(75, 75, 75);
         avatarImage.setClip(circle);
 
         updateNotificationDot();
+
+        if (LogInController.isGuest){
+            gamesPlayed.setText("-");
+            winRate.setText("-");
+            gamesWon.setText("-");
+            return;
+        }
+        Object gamesPlayedStat = ViewPlayerProfile.getPlayerStats(LogInController.getCurrentUsername()).get("overallGamesPlayed");
+        Object winRateStat = ViewPlayerProfile.getPlayerStats(LogInController.getCurrentUsername()).get("overallWinRate");
+        Object gamesWonStat = ViewPlayerProfile.getPlayerStats(LogInController.getCurrentUsername()).get("overallGamesWon");
+        gamesPlayed.setText(gamesPlayedStat.toString());
+        winRate.setText(winRateStat.toString() + "%");
+        gamesWon.setText(gamesWonStat.toString());
     }
 
     private void scrollLeft() {
@@ -172,22 +188,7 @@ public class HomeController {
 
     @FXML
     private void handleLogOutButton() {
-        Alert logOutVerification = new Alert(Alert.AlertType.CONFIRMATION);
-        logOutVerification.setTitle("Log out");
-        logOutVerification.setHeaderText("Are you sure you want to log out?");
-        ButtonType logOutButton = new ButtonType("Log Out");
-        ButtonType cancelButton = ButtonType.CANCEL;
-
-        logOutVerification.getButtonTypes().setAll(cancelButton, logOutButton);
-        logOutVerification.showAndWait().ifPresent(response -> {
-            if (response == logOutButton) {
-
-                PageNavigator.navigateTo("landing");
-                logOutVerification.close();
-            }else{
-                logOutVerification.close();
-            }
-        });
+       LogInController.performLogout();
     }
 
     @FXML

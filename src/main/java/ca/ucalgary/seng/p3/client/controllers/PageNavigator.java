@@ -3,12 +3,19 @@ package ca.ucalgary.seng.p3.client.controllers;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class PageNavigator {
     public static void navigateTo(String pageName) {
+        if(LogInController.isGuest) {
+            if (pageName.equals("settings")||pageName.equals("player_Finder")) {
+                showAlert(Alert.AlertType.ERROR, "Access Denied", "Can't access this page as a guest. Create an account to access.");
+                return;
+            }
+        }
         try {
             Stage stage = new Stage();
             String fxmlPath = "/" + pageName + ".fxml";
@@ -25,6 +32,16 @@ public class PageNavigator {
             stage.setScene(scene);
             stage.setTitle(pageName.substring(0, 1).toUpperCase() + pageName.substring(1));
             stage.setResizable(false);
+
+            //Logs out user everytime app is closed
+            stage.setOnCloseRequest(event -> {
+                try {
+                    LogInController.performLogout(); //central logout method
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
+
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -63,5 +80,13 @@ public class PageNavigator {
         stage.setScene(scene);
         stage.setTitle(pageName.substring(0, 1).toUpperCase() + pageName.substring(1));
         stage.show();
+    }
+
+    public static void showAlert(Alert.AlertType type, String title, String content) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }
