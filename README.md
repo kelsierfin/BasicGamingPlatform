@@ -27,7 +27,9 @@ Welcome to **OMG** - a feature-rich online platform where players can enjoy clas
 ## Getting Started
 
 ### Prerequisites
-
+- IntelliJ IDEA 2024.3.5
+- Maven 3.8+
+- JavaFx SDK 21.0.2
 
 ### Installation
 ```bash
