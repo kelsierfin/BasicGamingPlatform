@@ -1,0 +1,7 @@
+.idea/
+*.iml
+*.iws
+out/
+modules.xml
+vcs.xml
+workspace.xml
