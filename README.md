@@ -24,13 +24,6 @@ Welcome to **OMG** - a feature-rich online platform where players can enjoy clas
 - **In-game chat** (text-based during matches)
 - **Match history** with replay capability
 
-### Components
-- **Frontend**: JavaFX with MVC architecture
-- **Authentication**: JWT-based sessions with CSRF protection
-- **Game Logic**: Rule engines for each game type
-- **Networking**: Hybrid TCP/UDP communication
-- **Data**: CSV persistence (simulated DB)
-
 ## Getting Started
 
 ### Prerequisites
