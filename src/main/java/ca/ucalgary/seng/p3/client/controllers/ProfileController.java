@@ -1,21 +1,22 @@
 package ca.ucalgary.seng.p3.client.controllers;
 
-import ca.ucalgary.seng.p3.server.authentication.*;
+import ca.ucalgary.seng.p3.client.reflection.AuthReflector;
+import ca.ucalgary.seng.p3.server.authentication.reflection.AuthenticationService.*;
+import ca.ucalgary.seng.p3.network.Request;
+import ca.ucalgary.seng.p3.network.Response;
+import ca.ucalgary.seng.p3.network.ClientSocketService;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
-
-import javax.swing.*;
-
+import java.util.regex.Pattern;
 
 public class ProfileController {
 
@@ -45,38 +46,255 @@ public class ProfileController {
 
     @FXML
     private Button deleteAccountButton;
+
     @FXML
     private CheckBox mfaCheckbox;
 
-    private static final String FILE_NAME = "accounts.csv";
+    private static final String FILE_NAME = "src/main/resources/database/accounts.csv";
+    private static final String CURRENT_SESSION = "src/main/resources/database/session.csv";
 
-    ProfileEditor profileEditor;
+    private final AuthReflector authReflector = AuthReflector.getInstance();
     String currentUsername = LogInController.getCurrentUsername();
 
+    // Add email validation method to replace dependency on AccountRegistrationCSV
+    private boolean isValidEmail(String email) {
+        if (email == null || email.isEmpty()) return false;
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        return pattern.matcher(email).matches();
+    }
+
+    // Add password validation method to replace dependency on AccountRegistrationCSV
+    private boolean isProperPassword(String password) {
+        if (password == null || password.isEmpty()) return false;
+        return password.length() >= 8 &&
+                password.matches(".*\\d.*") &&
+                password.matches(".*[A-Z].*") &&
+                !password.contains(" ");
+    }
+
+    // Add method to generate one-time code to replace dependency on MultifactorAuthentication
+    private String generateOneTimeCode(int length) {
+        Random random = new Random();
+        StringBuilder codeBuilder = new StringBuilder(length);
+        for (int i = 0; i < length; i++) {
+            codeBuilder.append(random.nextInt(10));
+        }
+        return codeBuilder.toString();
+    }
 
     /**
      * Loads data from account into the settings GUI by looking at the users session.csv
      */
-
     @FXML
     private void initialize() throws IOException {
-        String[] details = getAccountDetails(LogInController.getCurrentUsername());
-        usernameField.setText(LogInController.getCurrentUsername());
-        emailField.setText(details[1]);
+        // Create directories and session file if they don't exist
+        File sessionFile = new File(CURRENT_SESSION);
 
-        boolean isMfaEnabled = UserLogin.isMFAEnabled(LogInController.getCurrentUsername());
-        mfaCheckbox.setSelected(isMfaEnabled);
+        // Create parent directories if needed
+        if (sessionFile.getParentFile() != null && !sessionFile.getParentFile().exists()) {
+            sessionFile.getParentFile().mkdirs();
+        }
+
+        // Try to create session file if it doesn't exist
+        if (!sessionFile.exists()) {
+            try {
+                sessionFile.createNewFile();
+                System.out.println("Created session file at: " + sessionFile.getAbsolutePath());
+            } catch (IOException e) {
+                System.err.println("Could not create session file: " + e.getMessage());
+            }
+        }
+
+        // Set name to current session login
+        try {
+            CurrentUser currentUser = CurrentUser.getInstance(LogInController.getCurrentUsername());
+
+            // Check if we have a username before trying to get account details
+            if (LogInController.getCurrentUsername() == null || LogInController.getCurrentUsername().isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Not Logged In");
+                alert.setHeaderText("You are not currently logged in");
+                alert.setContentText("Please log in to view your profile.");
+                alert.showAndWait().ifPresent(response -> {
+                    if (response == ButtonType.OK) {
+                        PageNavigator.navigateTo("logIn");
+                    }
+                });
+                return;
+            }
+
+            // Get profile using AuthReflector
+            ProfileResult profileResult = authReflector.getUserProfile(LogInController.getCurrentUsername());
+
+            // Add null check for profile data
+            if (profileResult.isSuccess()) {
+                usernameField.setText(LogInController.getCurrentUsername());
+                emailField.setText(profileResult.getEmail());
+                mfaCheckbox.setSelected(profileResult.isMfaEnabled());
+            } else {
+                // Handle the case where user details can't be found
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Profile Error");
+                alert.setHeaderText("Could not find user profile information");
+                alert.setContentText("Your profile information could not be loaded. You may need to log in again.");
+                alert.showAndWait().ifPresent(response -> {
+                    if (response == ButtonType.OK) {
+                        PageNavigator.navigateTo("landing"); // Navigate to landing page
+                    }
+                });
+            }
+        } catch (Exception e) {
+            // If any error occurs (IOException or otherwise)
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error retrieving account information");
+            alert.setHeaderText(e.getMessage());
+            alert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    PageNavigator.navigateTo("landing"); // Navigate to landing page
+                }
+            });
+        }
     }
 
-    /**
-     * Called when user indicated they want to disable mfa
-     * @return true if mfa was disabled
-     * @throws IOException
-     */
+    @FXML
+    private void handleSave() throws IOException {
+        currentUsername = LogInController.getCurrentUsername();
+        StringBuilder errorMessage = new StringBuilder("No changes were applied: ");
+
+        // Validate inputs
+        boolean isValid = true;
+        String newUsername = usernameField.getText().trim();
+        String newEmail = emailField.getText().trim();
+        String currentPassword = currentPassField.getText().trim();
+        String newPassword = newPassField.getText().trim();
+
+        // Username validation
+        if (newUsername.isEmpty()) {
+            errorMessage.append("\n\t- Username is empty.");
+            isValid = false;
+        }
+
+        // Email validation
+        if (!isValidEmail(newEmail)) {
+            errorMessage.append("\n\t- Invalid email address.");
+            isValid = false;
+        }
+
+        // If user is trying to change password, require current password
+        if (!newPassword.isEmpty()) {
+            if (currentPassword.isEmpty()) {
+                errorMessage.append("\n\t- Need to verify current password before changing it.");
+                isValid = false;
+            } else {
+                // Verify current password using AuthReflector
+                LoginResult loginResult = authReflector.login(currentUsername, currentPassword);
+                if (!loginResult.isSuccess()) {
+                    errorMessage.append("\n\t- Wrong current password.");
+                    isValid = false;
+                } else if (!isProperPassword(newPassword)) {
+                    errorMessage.append("\n\t- New Password is invalid. Password Requirements:\n\t\t- 8+ characters \n\t\t- 1 number \n\t\t- No spaces");
+                    isValid = false;
+                }
+            }
+        }
+
+        if (isValid) {
+            boolean updated = false;
+            StringBuilder successMessage = new StringBuilder("Updated:");
+
+            // Update username if changed
+            if(!currentUsername.equals(newUsername)) {
+                ProfileResult result = authReflector.updateUsername(currentUsername, newUsername);
+                if (result.isSuccess()) {
+                    LogInController.setCurrentUsername(newUsername);
+                    currentUsername = newUsername;
+                    successMessage.append("\n\t- Username");
+                    updated = true;
+                } else {
+                    showAlert(Alert.AlertType.ERROR, "Error", "Failed to update username: " + result.getMessage());
+                    return;
+                }
+            }
+
+            // Update email if changed
+            ProfileResult profileResult = authReflector.getUserProfile(currentUsername);
+            String oldEmail = profileResult.getEmail();
+            if (!oldEmail.equals(newEmail)) {
+                ProfileResult result = authReflector.updateEmail(currentUsername, newEmail);
+                if (result.isSuccess()) {
+                    successMessage.append("\n\t- Email");
+                    updated = true;
+                } else {
+                    showAlert(Alert.AlertType.ERROR, "Error", "Failed to update email: " + result.getMessage());
+                    return;
+                }
+            }
+
+            // Update password if changed
+            if (!newPassword.isEmpty() && !currentPassword.equals(newPassword)) {
+                ProfileResult result = authReflector.updatePassword(currentUsername, newPassword);
+                if (result.isSuccess()) {
+                    successMessage.append("\n\t- Password");
+                    updated = true;
+                } else {
+                    showAlert(Alert.AlertType.ERROR, "Error", "Failed to update password: " + result.getMessage());
+                    return;
+                }
+            }
+
+            // Update MFA status if changed
+            boolean mfaDesiredState = mfaCheckbox.isSelected();
+            profileResult = authReflector.getUserProfile(currentUsername);
+            boolean mfaCurrentState = profileResult.isMfaEnabled();
+
+            if (mfaDesiredState != mfaCurrentState) {
+                boolean verified = false;
+
+                if (mfaDesiredState) {
+                    verified = handleEnableMfa();
+                    if (verified) {
+                        successMessage.append("\n\t- MFA Enabled");
+                        updated = true;
+                        mfaCheckbox.setSelected(true);
+                    } else {
+                        //User canceled or failed verification
+                        mfaCheckbox.setSelected(false);
+                    }
+                } else {
+                    verified = handleDisableMfa();
+                    if (verified) {
+                        successMessage.append("\n\t- MFA Disabled");
+                        updated = true;
+                        mfaCheckbox.setSelected(false);
+                    } else {
+                        //User canceled/failed verification
+                        mfaCheckbox.setSelected(true);
+                    }
+                }
+            }
+
+            //if anything is updated print confirmation of updates
+            if (updated) {
+                showAlert(Alert.AlertType.CONFIRMATION, "Success", successMessage.toString());
+                currentPassField.clear();
+                newPassField.clear();
+            } else {
+                showAlert(Alert.AlertType.CONFIRMATION, "Success", "No Updates to your credentials have been recorded");
+            }
+
+        } else {
+            // new input credentials are invalid
+            showAlert(Alert.AlertType.ERROR, "Error", errorMessage.toString());
+            // Reset MFA checkbox to actual state
+            ProfileResult profileResult = authReflector.getUserProfile(currentUsername);
+            mfaCheckbox.setSelected(profileResult.isMfaEnabled());
+        }
+    }
+
     private boolean handleDisableMfa() throws IOException {
-        ProfileEditor profileEditor = new ProfileEditor();
-        String email = MultifactorAuthentication.fetchUserEmail(currentUsername);
-        String code = MultifactorAuthentication.generateOneTimeCode(6);
+        String email = authReflector.getUserProfile(currentUsername).getEmail();
+        String code = generateOneTimeCode(6);
 
         boolean verified = false;
         int attempts = 3;
@@ -111,17 +329,9 @@ public class ProfileController {
         }
 
         if (verified) {
-            Map<String, String[]> accounts = loadAccounts();
-            String[] userDetails = accounts.get(currentUsername);
-
-            if (userDetails.length < 3) {
-                userDetails = Arrays.copyOf(userDetails, 3);
-            }
-
-            userDetails[2] = "disabled";
-            accounts.put(currentUsername, userDetails);
-            profileEditor.writeAllAccounts(accounts);
-            return true;
+            // Use AuthReflector to modify MFA status
+            ProfileResult result = authReflector.toggleMfa(currentUsername, false);
+            return result.isSuccess();
         } else {
             Platform.runLater(() -> mfaCheckbox.setSelected(true));
             showAlert(Alert.AlertType.CONFIRMATION, "Error", "Failed to disable MFA.");
@@ -129,15 +339,9 @@ public class ProfileController {
         }
     }
 
-    /**
-     * Called when user indicated they want to enable mfa
-     * @return true if mfa was enabled
-     * @throws IOException
-     */
     private boolean handleEnableMfa() throws IOException {
-        ProfileEditor profileEditor = new ProfileEditor();
-        String email = MultifactorAuthentication.fetchUserEmail(currentUsername);
-        String code = MultifactorAuthentication.generateOneTimeCode(6);
+        String email = authReflector.getUserProfile(currentUsername).getEmail();
+        String code = generateOneTimeCode(6);
 
         boolean verified = false;
         int attempts = 3;
@@ -172,172 +376,15 @@ public class ProfileController {
         }
 
         if (verified) {
-            Map<String, String[]> accounts = loadAccounts();
-            String[] userDetails = accounts.get(currentUsername);
-
-            if (userDetails.length < 3) {
-                userDetails = Arrays.copyOf(userDetails, 3);
-            }
-
-            userDetails[2] = "enabled";
-            accounts.put(currentUsername, userDetails);
-            profileEditor.writeAllAccounts(accounts);
-            return true;
+            // Use AuthReflector to modify MFA status
+            ProfileResult result = authReflector.toggleMfa(currentUsername, true);
+            return result.isSuccess();
         } else {
             Platform.runLater(() -> mfaCheckbox.setSelected(false));
             showAlert(Alert.AlertType.CONFIRMATION, "Error", "Failed to enable MFA.");
             return false;
-
         }
     }
-
-
-
-
-    // load accounts from Account.csv
-    String[] getAccountDetails(String username) throws IOException {
-        Map<String, String[]> accounts = loadAccounts();
-        return accounts.get(username);
-    }
-
-
-    @FXML
-    private void handleChangeAvatar() {
-        System.out.println("Change Avatar button clicked");
-
-    }
-
-
-    @FXML
-    private void handleLogout() {
-        LogInController.performLogout();
-    }
-
-    @FXML
-    private void handleSave() throws IOException {
-        profileEditor = new ProfileEditor();
-        currentUsername = LogInController.getCurrentUsername();
-        StringBuilder errorMessage = new StringBuilder("No changes were applied: ");
-
-        // Validate inputs
-        boolean isValid = true;
-        String newUsername = usernameField.getText().trim();
-        String newEmail = emailField.getText().trim();
-        String currentPassword = currentPassField.getText().trim();
-        String newPassword = newPassField.getText().trim();
-
-        // Username validation
-        if (newUsername.isEmpty()) {
-            errorMessage.append("\n\t- Username is empty.");
-            isValid = false;
-        } else if (loadAccounts().containsKey(newUsername) && !currentUsername.equals(usernameField.getText())) {
-            errorMessage.append("\n\t- Username already exists.");
-            isValid = false;
-        }
-
-        // Email validation
-        if (!AccountRegistrationCSV.isValidEmail(newEmail)) {
-            errorMessage.append("\n\t- Invalid email address.");
-            isValid = false;
-        }
-
-        // If user is trying to change password, require current password
-        FailedLogin loginManager = FailedLogin.getInstance();
-        if (!newPassword.isEmpty()) {
-            if (currentPassword.isEmpty()) {
-                errorMessage.append("\n\t- Need to verify current password before changing it.");
-                isValid = false;
-            } else if (!loginManager.authenticate(currentUsername, currentPassword).isSuccess()) {
-                errorMessage.append("\n\t- Wrong current password.");
-                isValid = false;
-            } else if (!AccountRegistrationCSV.isProperPassword(newPassword)) {
-                errorMessage.append("\n\t- New Password is invalid. Password Requirements:\n\t\t- 8+ characters \n\t\t- 1 number \n\t\t- No spaces");
-                isValid = false;
-            }
-        }
-
-
-        if (isValid) {
-            boolean updated = false;
-            StringBuilder successMessage = new StringBuilder("Updated:");
-            //all new credentials are valid so far. or haven't been changed.
-
-            if(!currentUsername.equals(newUsername)) {
-                //1. update username in accounts.csv by calling Profile Editor function
-                profileEditor.updateUsername(currentUsername, newUsername);
-                //2. update username in sessions.cvs -> delete it and then add the new username
-                if (UserLogout.getSessionUsers().contains(currentUsername)) {
-                    UserLogout.clearSession(currentUsername);
-                    UserLogin.saveSession(usernameField.getText());
-                }
-                //3.updates currentUsername to new one, resetting it in LogIn Controller
-                profileEditor.writeAllStats(currentUsername,newUsername);
-                LogInController.setCurrentUsername(newUsername);
-                currentUsername = newUsername;
-                successMessage.append("\n\t- Username");
-                updated = true;
-            }
-
-            String oldEmail = loadAccounts().get(currentUsername)[1];
-            if (!oldEmail.equals(newEmail)){
-                profileEditor.updateEmail(currentUsername, newEmail);
-                successMessage.append("\n\t- Email");
-                updated = true;
-            }
-
-            if (!newPassword.isEmpty() && !currentPassword.equals(newPassword)) {
-                profileEditor.updatePassword(currentUsername, newPassword);
-                successMessage.append("\n\t- Password");
-                updated = true;
-            }
-
-            boolean mfaDesiredState = mfaCheckbox.isSelected();
-            boolean mfaCurrentState = UserLogin.isMFAEnabled(currentUsername);
-
-            //changes mfa status if user requests
-            if (mfaDesiredState != mfaCurrentState) {
-                boolean verified = false;
-
-                if (mfaDesiredState) {
-                    verified = handleEnableMfa();
-                    if (verified) {
-                        successMessage.append("\n\t- MFA Enabled");
-                        updated = true;
-                        mfaCheckbox.setSelected(true);
-                    } else {
-                        //User canceled or failed verification
-                        mfaCheckbox.setSelected(false);
-                    }
-                } else {
-                    verified = handleDisableMfa();
-                    if (verified) {
-                        successMessage.append("\n\t- MFA Disabled");
-                        updated = true;
-                        mfaCheckbox.setSelected(false);
-                    } else {
-                        //User canceled/failed verification
-                        mfaCheckbox.setSelected(true);
-                    }
-                }
-            }
-
-            //if anything is updated print confirmation of updates
-            if (updated) {
-                showAlert(Alert.AlertType.CONFIRMATION, "Success", successMessage.toString());
-                currentPassField.clear();
-                newPassField.clear();
-            }else{
-                showAlert(Alert.AlertType.CONFIRMATION, "Success", "No Updates to your credentials have been recorded");
-            }
-
-        }else {
-        // new input credentials are invalid
-            showAlert(Alert.AlertType.ERROR, "Error", errorMessage.toString());
-            mfaCheckbox.setSelected(UserLogin.isMFAEnabled(currentUsername));
-        }
-
-    }
-
 
     @FXML
     private void handleDeleteAccount() {
@@ -392,7 +439,9 @@ public class ProfileController {
                 if (passwordResult.isPresent() && !passwordResult.get().trim().isEmpty()) {
                     String inputPassword = passwordResult.get().trim();
 
-                    success = AccountDeletion.deleteAccount(currentUsername, inputPassword);
+                    // Use AuthReflector to delete account
+                    AccountDeletionResult deletionResult = authReflector.deleteAccount(currentUsername, inputPassword);
+                    success = deletionResult.isSuccess();
 
                     if (success) {
                         Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
@@ -401,8 +450,7 @@ public class ProfileController {
                         successAlert.setContentText("Your account has been successfully deleted.");
                         successAlert.showAndWait();
 
-                        //Delete session and navigate to landing
-                        UserLogout.clearSession(currentUsername);
+                        // Navigate to landing
                         PageNavigator.navigateTo("landing");
                     } else {
                         attemptsLeft--;
@@ -440,8 +488,7 @@ public class ProfileController {
     /**
      * Loads user accounts from the CSV file.
      */
-
-    private static  Map<String, String[]> loadAccounts() throws IOException {
+    private static Map<String, String[]> loadAccounts() throws IOException {
         Map<String, String[]> accounts = new HashMap<>();
         File file = new File(FILE_NAME);
 
@@ -487,5 +534,4 @@ public class ProfileController {
 
         return accounts;
     }
-
 }

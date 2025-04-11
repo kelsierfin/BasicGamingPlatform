@@ -1,6 +1,7 @@
 package ca.ucalgary.seng.p3.client.controllers;
-import ca.ucalgary.seng.p3.server.authentication.*;
 
+import ca.ucalgary.seng.p3.client.reflection.AuthReflector;
+import ca.ucalgary.seng.p3.server.authentication.reflection.AuthenticationService.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -18,6 +19,9 @@ import java.util.Scanner;
 
 
 public class LogInController {
+
+    // Get the reflector instance - our magic method finder
+    private final AuthReflector authReflector = AuthReflector.getInstance();
 
     //GUI (FXML) ELEMENTS VISIBLE TO THE USER -> used to collect and display info//
 
@@ -83,7 +87,7 @@ public class LogInController {
         });
 
         mfaCard.setVisible(false);
-
+        checkIfUserIsLocked();
     }
 
     //FUNCTIONS THAT HANDLE VISIBILITY OF TEXT IN PASSWORD FIELDS
@@ -133,45 +137,32 @@ public class LogInController {
         setUsername();
         setPassword();
 
-        // Prevent double-login
-        if (UserLogout.getSessionUsers().contains(username)) {
-            errorMessage.setText("User is already logged in.");
+        // Check if the account is locked using the reflector
+        AccountLockResult lockResult = authReflector.checkAccountLock(username);
+        if (lockResult.isLocked()) {
+            errorMessage.setText(lockResult.getMessage());
+            highlightError(usernameInput, passwordInput);
             return;
         }
 
-        FailedLogin loginManager = FailedLogin.getInstance();
-        accounts = AccountRegistrationCSV.loadAccounts();
+        // Attempt login using the reflector
+        LoginResult loginResult = authReflector.login(username, password);
 
-        if (username.isEmpty()) {
-            errorMessage.setText("Enter Username.");
-        } else if (!accounts.containsKey(username)) {
-            errorMessage.setText("Account does not exist.");
-        } else {
-            // Check lock before proceeding with login attempt
-            FailedLogin.AuthResult result = loginManager.authenticate(username, password);
-
-            if (result.isSuccess()) {
-                // Login successful
-                if (UserLogin.isMFAEnabled(username)) {
-                    logInCard.setVisible(false);
-                    mfaCard.setVisible(true);
-                    startMFAProcess(username);
-                } else {
-                    UserLogin.saveSession(username);
-                    new CurrentUser(username);
-                    PageNavigator.navigateTo("home");
-                }
-            } else {
-                // Login failed
-                if (result.getMessage().contains("locked")) {
-                    errorMessage.setText(result.getMessage());
-                } else {
-                    // Handle failed login attempts
-                    errorMessage.setText(result.getMessage());
-                    System.out.println("Login failed: " + result.getMessage());
-                }
-                highlightError(usernameInput, passwordInput);
-            }
+        if (loginResult.isSuccess()) {
+            // Login successful without MFA
+            new CurrentUser(username);
+            PageNavigator.navigateTo("home");
+        }
+        else if (loginResult.requiresMfa()) {
+            // MFA required
+            logInCard.setVisible(false);
+            mfaCard.setVisible(true);
+            startMFAProcess(username);
+        }
+        else {
+            // Login failed
+            errorMessage.setText(loginResult.getMessage());
+            highlightError(usernameInput, passwordInput);
         }
     }
 
@@ -181,11 +172,9 @@ public class LogInController {
         String username = usernameInput.getText();
         if (username == null || username.isEmpty()) return;
 
-        FailedLogin loginManager = FailedLogin.getInstance();
-        FailedLogin.AuthResult result = loginManager.authenticate(username, password);
-
-        if (!result.isSuccess() && result.getMessage().contains("locked")) {
-            errorMessage.setText(result.getMessage());
+        AccountLockResult lockResult = authReflector.checkAccountLock(username);
+        if (lockResult.isLocked()) {
+            errorMessage.setText(lockResult.getMessage());
         }
     }
 
@@ -194,13 +183,11 @@ public class LogInController {
         String userInput = mfaCodeInput.getText().trim();
         mfaAttempts++;
 
-        if (System.currentTimeMillis() - codeGenerationTime > CODE_VALIDITY_DURATION_MS) {
-            mfaMessageLabel.setText("Code expired. Please request a new one.");
-            return;
-        }
-        if (userInput.equals(generatedCode)) {
+        MfaVerifyResult verifyResult = authReflector.verifyMfaCode(
+                username, userInput, generatedCode, codeGenerationTime);
+
+        if (verifyResult.isSuccess()) {
             mfaMessageLabel.setText("MFA successful!");
-            UserLogin.saveSession(username);
             new CurrentUser(username);
             PageNavigator.navigateTo("home");
         } else {
@@ -208,14 +195,14 @@ public class LogInController {
                 Alert failedMFA = new Alert(Alert.AlertType.CONFIRMATION);
                 failedMFA.setTitle("MFA Failed");
                 failedMFA.setHeaderText("MFA failed. Too many incorrect attempts.");
-                ButtonType exit= new ButtonType("Exit");
+                ButtonType exit = new ButtonType("Exit");
 
                 failedMFA.getButtonTypes().setAll(exit);
                 failedMFA.showAndWait().ifPresent(response -> {
                     if (response == exit) {
                         PageNavigator.navigateTo("logIn");
                         failedMFA.close();
-                    }else{
+                    } else {
                         failedMFA.close();
                     }
                 });
@@ -227,10 +214,13 @@ public class LogInController {
 
 
     public void handleGuestLogInButton() {
-        username = UserLogin.guestLogin();
-        isGuest = true;
-        // Navigate to the home page
-        PageNavigator.navigateTo("home");
+        LoginResult guestResult = authReflector.guestLogin();
+        if (guestResult.isSuccess()) {
+            username = guestResult.getUsername();
+            PageNavigator.navigateTo("home");
+        } else {
+            errorMessage.setText(guestResult.getMessage());
+        }
     }
     public void handleSignUpLink() {
         PageNavigator.navigateTo("signUp");
@@ -255,15 +245,22 @@ public class LogInController {
     public void startMFAProcess(String username) {
         mfaCard.setVisible(true);
         logInCard.setVisible(false);
-        String email = MultifactorAuthentication.fetchUserEmail(username);
-        if (email == null) {
-            mfaMessageLabel.setText("No email found for this user.");
-            mfaMessageLabel.setVisible(true);
-            return;
+
+        // Generate MFA code using reflector
+        MfaCodeResult mfaResult = authReflector.generateMfaCode(username);
+
+        if (mfaResult.isSuccess()) {
+            generatedCode = mfaResult.getCode();
+            codeGenerationTime = mfaResult.getGenerationTime();
+
+            // Get user profile to display email
+            ProfileResult profileResult = authReflector.getUserProfile(username);
+            String email = profileResult.isSuccess() ? profileResult.getEmail() : "your email";
+
+            mfaMessageLabel.setText("MFA code sent to: " + email + "\nFor demo purposes, code: " + generatedCode);
+        } else {
+            mfaMessageLabel.setText("Error generating MFA code: " + mfaResult.getMessage());
         }
-        generatedCode = MultifactorAuthentication.generateOneTimeCode(6);
-        codeGenerationTime = System.currentTimeMillis();
-        mfaMessageLabel.setText("MFA code sent to: " + email + "\nCode: " + generatedCode);
     }
 
     /**
@@ -289,7 +286,7 @@ public class LogInController {
     public static void performLogout() {
         //TODO: Add this to log out button handlers for the all the other pages, before navigating away from page
 
-        if(!UserLogout.getSessionUsers().isEmpty() && UserLogout.getSessionUsers().contains(username)) {
+        if (username != null && !username.isEmpty()) {
             Alert logOutVerification = new Alert(Alert.AlertType.CONFIRMATION);
             logOutVerification.setTitle("Logging out User: " + username);
             logOutVerification.setHeaderText("Are you sure you want to log out?");
@@ -299,9 +296,9 @@ public class LogInController {
             logOutVerification.showAndWait().ifPresent(response -> {
                 if (response == logOutButton) {
                     try {
-                        String username = getCurrentUsername();
-                        UserLogout.clearSession(username); // backend method
-                        PageNavigator.navigateTo("landing");
+                        AuthReflector reflector = AuthReflector.getInstance();
+                        LogoutResult result = reflector.logout(username); // backend method
+                        if (result.isSuccess()) {PageNavigator.navigateTo("landing");}
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

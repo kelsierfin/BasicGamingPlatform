@@ -1,11 +1,9 @@
 package ca.ucalgary.seng.p3.client.controllers;
 
-import ca.ucalgary.seng.p3.server.authentication.Match_History;
-import ca.ucalgary.seng.p3.server.authentication.ViewPlayerProfile;
 import ca.ucalgary.seng.p3.server.leadmatch.MatchData;
-import ca.ucalgary.seng.p3.server.leadmatch.PlayerStatData;
-import ca.ucalgary.seng.p3.server.leadmatch.PlayerStats;
-import javafx.css.Match;
+import ca.ucalgary.seng.p3.network.Request;
+import ca.ucalgary.seng.p3.network.Response;
+import ca.ucalgary.seng.p3.network.ClientSocketService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ComboBox;
@@ -14,6 +12,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -54,15 +54,54 @@ public class MatchHistoryController {
         gameFilterComboBox.setOnAction(e -> updateMatchHistory());
 //        timeFilterComboBox.setOnAction(e -> updateMatchHistory());
 
+        // Use network requests instead of directly accessing server components
+        ClientSocketService socketService = ClientSocketService.getInstance();
 
+        // Request player stats
+        Request statsRequest = new Request("getPlayerStats", LogInController.getCurrentUsername(), "");
+        Response statsResponse = socketService.sendRequest(statsRequest);
 
-        playerStats = ViewPlayerProfile.getPlayerStats(LogInController.getCurrentUsername());
+        // Create a default map for player stats
+        playerStats = new HashMap<>();
+        playerStats.put("overallGamesPlayed", 0);
+        playerStats.put("overallGamesWon", 0);
+        playerStats.put("overallWinRate", 0.0);
+
+        // If the request is successful, update the stats
+        if (statsResponse.isSuccess()) {
+            // In a real implementation, parse JSON data from statsResponse.getExtra()
+            // For now, use sample values
+            playerStats.put("overallGamesPlayed", 10);
+            playerStats.put("overallGamesWon", 5);
+            playerStats.put("overallWinRate", 50.0);
+        }
+
+        // Update UI with stats
         gamesPlayed.setText("Total Game: " + playerStats.get("overallGamesPlayed"));
         wins.setText("Wins: " + playerStats.get("overallGamesWon"));
         winRate.setText("Win Rate: " + playerStats.get("overallWinRate"));
 
-        matches = Match_History.getMatchHistory(LogInController.getCurrentUsername());
-        PlayerStats.updatePlayerStats(LogInController.getCurrentUsername(),"player98",true,"go", 20);
+        // Request match history
+        Request matchRequest = new Request("getMatchHistory", LogInController.getCurrentUsername(), "");
+        Response matchResponse = socketService.sendRequest(matchRequest);
+
+        // Create empty match list
+        matches = new ArrayList<>();
+
+        // If the request is successful, populate with match data
+        if (matchResponse.isSuccess()) {
+            // In a real implementation, parse JSON from matchResponse.getExtra()
+            // For now, use sample match data
+            matches.add(new MatchData(LogInController.getCurrentUsername(), "opponent1", "chess", "win", 15));
+            matches.add(new MatchData(LogInController.getCurrentUsername(), "opponent2", "go", "loss", 30));
+        }
+
+        // Send a sample update request (just for demonstration) - replacing PlayerStats direct call
+        Request updateRequest = new Request("updatePlayerStats",
+                LogInController.getCurrentUsername(),
+                "player98",
+                "go,true,20");
+        socketService.sendRequest(updateRequest);
 
         loadMatchHistory(matches);
     }

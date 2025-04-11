@@ -4,6 +4,7 @@ module ca.ucalgary.seng.p3.client{
     requires javafx.fxml;
     requires javafx.graphics;
     requires java.desktop;
+    requires com.google.gson;
 
     exports ca.ucalgary.seng.p3.client;
     opens ca.ucalgary.seng.p3.client to javafx.fxml;

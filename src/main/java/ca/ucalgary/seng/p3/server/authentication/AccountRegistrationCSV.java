@@ -5,7 +5,7 @@ import java.util.*;
 
 public class AccountRegistrationCSV {
     // Name of the CSV file used as the account database
-    private static final String FILE_NAME = "accounts.csv";
+    private static final String FILE_NAME = "src/main/resources/database/accounts.csv";
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);

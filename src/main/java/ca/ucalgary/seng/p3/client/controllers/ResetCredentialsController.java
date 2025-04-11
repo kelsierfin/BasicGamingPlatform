@@ -1,5 +1,7 @@
 package ca.ucalgary.seng.p3.client.controllers;
-
+import ca.ucalgary.seng.p3.network.Request;
+import ca.ucalgary.seng.p3.network.Response;
+import ca.ucalgary.seng.p3.network.ClientSocketService;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -23,13 +25,17 @@ public class ResetCredentialsController {
         emailInput.setPromptText("Enter your email address");
     }
 
-    public void handleResetButton() throws IOException {
+    public void handleResetButton() {
         email = emailInput.getText();
-        String[] credentials = ResetCredentials.findAccountByEmail(ResetCredentials.loadAccounts(), email);
-        boolean validEmail = credentials != null;
+
+        // Create a request to check if the email exists
+        Request checkEmailRequest = new Request("checkEmail", "", "", email);
+        Response response = ClientSocketService.getInstance().sendRequest(checkEmailRequest);
+
+        boolean validEmail = response.isSuccess();
 
         if (validEmail) {
-            String oneTimeCode = ResetCredentials.generateOneTimeCode(5);
+            String oneTimeCode = MultifactorAuthentication.generateOneTimeCode(5);
             boolean verified = false;
             int attempts = 3;
 
@@ -75,16 +81,15 @@ public class ResetCredentialsController {
             accountMissing.setHeaderText("No account found with this email.");
             ButtonType signUp = new ButtonType("Create Account");
             accountMissing.getButtonTypes().setAll(ButtonType.CANCEL, signUp);
-            accountMissing.showAndWait().ifPresent(response -> {
-                if (response == signUp) {
+            accountMissing.showAndWait().ifPresent(buttonResponse -> {
+                if (buttonResponse == signUp) {
                     PageNavigator.navigateTo("SignUp");
                 }
             });
         }
     }
 
-
-    public void allowReset() throws IOException {
+    public void allowReset() {
         boolean success = false;
 
         while (!success) {
@@ -105,8 +110,8 @@ public class ResetCredentialsController {
             ButtonType resetButton = new ButtonType("Reset");
             resetAlert.getButtonTypes().setAll(ButtonType.CANCEL, resetButton);
 
-            Optional<ButtonType> response = resetAlert.showAndWait();
-            if (response.isPresent() && response.get() == resetButton) {
+            Optional<ButtonType> dialogResponse = resetAlert.showAndWait();
+            if (dialogResponse.isPresent() && dialogResponse.get() == resetButton) {
                 String newUsername = usernameField.getText().trim();
                 String newPassword = passwordField.getText().trim();
 
@@ -115,35 +120,32 @@ public class ResetCredentialsController {
                     continue; // retry
                 }
 
-                List<String[]> accounts = ResetCredentials.loadAccounts();
-                String[] account = ResetCredentials.findAccountByEmail(accounts, email);
+                // Create a request to reset credentials
+                Request resetRequest = new Request(
+                        "resetCredentials",
+                        newUsername.isEmpty() ? null : newUsername,
+                        newPassword.isEmpty() ? null : newPassword,
+                        email
+                );
 
-                if (!newUsername.isEmpty()) {
-                    if (ResetCredentials.isUsernameTaken(accounts, newUsername)) {
+                Response response = ClientSocketService.getInstance().sendRequest(resetRequest);
+
+                if (response.isSuccess()) {
+                    Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                    successAlert.setTitle("Success");
+                    successAlert.setHeaderText("Credentials updated successfully!");
+                    successAlert.showAndWait();
+
+                    success = true;
+                } else {
+                    if (response.getMessage().contains("username")) {
                         showWarning("Username already taken.");
-                        continue; // retry
-                    }
-                    ProfileEditor profileEditor = new ProfileEditor();
-                    profileEditor.writeAllStats(account[0],newUsername);
-                    account[0] = newUsername;
-                }
-
-                if (!newPassword.isEmpty()) {
-                    if (!ResetCredentials.isValidPassword(newPassword)) {
+                    } else if (response.getMessage().contains("password")) {
                         showWarning("Password must be at least 8 characters, include an uppercase letter and a digit.");
-                        continue; // retry
+                    } else {
+                        showWarning(response.getMessage());
                     }
-                    account[1] = PasswordHasher.generateStorablePassword(newPassword);
                 }
-
-                ResetCredentials.saveAccounts(accounts);
-
-                Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
-                successAlert.setTitle("Success");
-                successAlert.setHeaderText("Credentials updated successfully!");
-                successAlert.showAndWait();
-
-                success = true;
             } else {
                 // User cancelled reset
                 break;

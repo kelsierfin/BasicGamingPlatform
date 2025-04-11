@@ -2,6 +2,7 @@ package ca.ucalgary.seng.p3.server.authentication;
 
 import java.io.*;
 import java.util.*;
+import ca.ucalgary.seng.p3.server.authentication.reflection.AuthenticationService;
 
 public class UserLogin {
     public static final String FILE_NAME = "accounts.csv"; // Stores registered user credentials
@@ -103,7 +104,8 @@ public class UserLogin {
      */
     public static Map<String, String> loadAccounts() {
         Map<String, String> accounts = new HashMap<>();
-        File file = new File(FILE_NAME);
+        String filePath = "src/main/resources/database/accounts.csv";
+        File file = new File(filePath);
 
         if (!file.exists()) { // Checks if the file exists
             System.out.println("Error: accounts.csv file not found.");
@@ -115,7 +117,7 @@ public class UserLogin {
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");
                 if (parts.length >= 2) {
-                    accounts.put(parts[0], parts[1]);
+                    accounts.put(parts[0].trim(), parts[1].trim());
                 }
             }
         } catch (IOException e) {
@@ -141,7 +143,14 @@ public class UserLogin {
      * @param username: The username for which MFA id enabled or disabled.
      */
     public static boolean isMFAEnabled(String username) {
-        try (BufferedReader br = new BufferedReader(new FileReader(FILE_NAME))) {
+        InputStream inputStream = AuthenticationService.class.getClassLoader().getResourceAsStream("database/accounts.csv");
+
+        if (inputStream == null) {
+            System.out.println("Error: accounts.csv file not found.");
+            return false;
+        }
+
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");

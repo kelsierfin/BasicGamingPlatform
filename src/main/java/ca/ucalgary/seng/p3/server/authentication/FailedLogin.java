@@ -68,8 +68,20 @@ public class FailedLogin {
             long secondsLeft = (lockedAccounts.get(username) - System.currentTimeMillis()) / 1000;
             return new AuthResult(false, "Account locked. Try again in " + secondsLeft + " seconds.");
         }
-        String storedPassword = AccountRegistrationCSV.loadAccounts().get(username)[0];
-        if (!AccountRegistrationCSV.loadAccounts().containsKey(username) || !PasswordHasher.verifyPassword(password,storedPassword)) {
+
+        // Load accounts each time to get fresh data instead of using userCredentials
+        Map<String, String> accounts = new HashMap<>();
+        try {
+            Map<String, String[]> loadedAccounts = AccountRegistrationCSV.loadAccounts();
+            for (Map.Entry<String, String[]> entry : loadedAccounts.entrySet()) {
+                accounts.put(entry.getKey(), entry.getValue()[0]);
+            }
+        } catch (IOException e) {
+            throw new IOException("Unable to load accounts database", e);
+        }
+
+        String storedPassword = accounts.get(username);
+        if (!accounts.containsKey(username) || !PasswordHasher.verifyPassword(password, storedPassword)) {
             int attempts = failedAttempts.merge(username, 1, Integer::sum);
             if (attempts >= MAX_ALLOWED_ATTEMPTS) {
                 lockAccount(username);

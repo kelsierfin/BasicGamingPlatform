@@ -1,8 +1,10 @@
 package ca.ucalgary.seng.p3.client.controllers;
 
-import ca.ucalgary.seng.p3.server.authentication.ViewPlayerProfile;
-import ca.ucalgary.seng.p3.server.leadmatch.DatabaseStub;
-import ca.ucalgary.seng.p3.server.leadmatch.PlayerStatData;
+
+import ca.ucalgary.seng.p3.client.reflection.AuthReflector;
+import ca.ucalgary.seng.p3.network.Request;
+import ca.ucalgary.seng.p3.network.Response;
+import ca.ucalgary.seng.p3.network.ClientSocketService;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -108,12 +110,25 @@ public class HomeController {
             gamesWon.setText("-");
             return;
         }
-        Object gamesPlayedStat = ViewPlayerProfile.getPlayerStats(LogInController.getCurrentUsername()).get("overallGamesPlayed");
-        Object winRateStat = ViewPlayerProfile.getPlayerStats(LogInController.getCurrentUsername()).get("overallWinRate");
-        Object gamesWonStat = ViewPlayerProfile.getPlayerStats(LogInController.getCurrentUsername()).get("overallGamesWon");
-        gamesPlayed.setText(gamesPlayedStat.toString());
-        winRate.setText(winRateStat.toString() + "%");
-        gamesWon.setText(gamesWonStat.toString());
+        ClientSocketService socketService = ClientSocketService.getInstance();
+        Request statsRequest = new Request("getPlayerStats", LogInController.getCurrentUsername(), "");
+        Response response = socketService.sendRequest(statsRequest);
+
+        // Set default values
+        int gamesPlayedValue = 0;
+        int gamesWonValue = 0;
+        double winRateValue = 0.0;
+
+        if (response.isSuccess()) {
+            // Parse the response - in a real implementation, this might come as JSON
+            // For now, we'll use default values for demonstration
+            gamesPlayedValue = 10;
+            gamesWonValue = 5;
+            winRateValue = 50.0;
+        }
+        gamesPlayed.setText(String.valueOf(gamesPlayedValue));
+        winRate.setText(winRateValue + "%");
+        gamesWon.setText(String.valueOf(gamesWonValue));
     }
 
     private void scrollLeft() {

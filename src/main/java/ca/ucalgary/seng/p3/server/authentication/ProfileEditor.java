@@ -226,11 +226,11 @@ public class ProfileEditor {
     }
 
     // Masking methods
-    public String getPassword() {
+    String getPassword() {
         return "********";
     }
 
-    public String getEmail(String email) {
+    String getEmail(String email) {
         if (email == null || email.isEmpty()) return "";
 
         String[] parts = email.split("@");
@@ -254,7 +254,7 @@ public class ProfileEditor {
         return accounts.get(username);
     }
 
-    public boolean updateUsername(String currentUsername, String newUsername) throws IOException {
+    boolean updateUsername(String currentUsername, String newUsername) throws IOException {
         Map<String, String[]> accounts = loadAccounts();
 
         if (accounts.containsKey(newUsername) && !currentUsername.equals(newUsername)) {
@@ -269,7 +269,7 @@ public class ProfileEditor {
         return true;
     }
 
-    public void updateEmail(String username, String newEmail) throws IOException {
+    void updateEmail(String username, String newEmail) throws IOException {
         if (!isValidEmail(newEmail)) {
             throw new IllegalArgumentException("Invalid email format");
         }
@@ -282,7 +282,7 @@ public class ProfileEditor {
         writeAllAccounts(accounts);
     }
 
-    public void updatePassword(String username, String newPassword) throws IOException {
+    void updatePassword(String username, String newPassword) throws IOException {
         if (!isValidPassword(newPassword)) {
             throw new IllegalArgumentException("Password doesn't meet requirements");
         }
@@ -296,7 +296,7 @@ public class ProfileEditor {
     }
 
     // File operations
-    public void writeAllAccounts(Map<String, String[]> accounts) throws IOException {
+    void writeAllAccounts(Map<String, String[]> accounts) throws IOException {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))) {
             for (Map.Entry<String, String[]> entry : accounts.entrySet()) {
                 String username = entry.getKey();
@@ -316,8 +316,8 @@ public class ProfileEditor {
             }
         }
     }
-
-    public void writeAllStats(String oldUsername, String newUsername) throws IOException {
+//this needs to be added to reflector
+     void writeAllStats(String oldUsername, String newUsername) throws IOException {
         // Read the current stats file and store the updated lines
         List<String> updatedLines = new ArrayList<>();
 
@@ -376,7 +376,7 @@ public class ProfileEditor {
     }
 
     // Validation methods
-    public boolean isValidEmail(String email) {
+    boolean isValidEmail(String email) {
         if (email == null || email.isEmpty()) return false;
         String[] parts = email.split("@");
         return parts.length == 2 &&
@@ -384,7 +384,7 @@ public class ProfileEditor {
                 !parts[1].isEmpty();
     }
 
-    public boolean isValidPassword(String password) {
+    boolean isValidPassword(String password) {
         if (password == null || password.length() < 8) return false;
 
         boolean hasNumber = false;

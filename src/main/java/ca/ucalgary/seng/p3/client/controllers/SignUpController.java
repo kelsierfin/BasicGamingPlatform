@@ -1,7 +1,8 @@
 package ca.ucalgary.seng.p3.client.controllers;
+import ca.ucalgary.seng.p3.network.ClientSocketService;
+import ca.ucalgary.seng.p3.network.Request;
+import ca.ucalgary.seng.p3.network.Response;
 import ca.ucalgary.seng.p3.server.authentication.AccountRegistrationCSV;
-import ca.ucalgary.seng.p3.server.leadmatch.*;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -182,26 +183,48 @@ public class SignUpController {
      * 3. after conformation of credentials account is saved
      * 4. user is directed to log In Screen, where they can log in with new credentials
      * **/
-    public void handleSignUpButton() throws IOException {
-        errorText = new StringBuilder();
-        credentialsValid = true;
+    @FXML
+    public void handleSignUpButton() {
+        // Clear any previous error messages
+        errorMessage.setText("");
 
-        accounts = AccountRegistrationCSV.loadAccounts();
+        // Get the input values
+        setUsername();
+        setEmail();
+        setPassword();
+        setSecondPassword();
 
-        emailConfirmation();   //changes credentialsValid to false if email is invalid or empty
-        usernameConfirmation();    //changes credentialsValid to false if username is invalid or empty
-        passwordConfirmation();      //changes credentialsValid to false if password is invalid
+        // Create a sign-up request
+        Request signUpRequest = new Request(
+                "signUp", username, password, confirmedPassword, email
+        );
 
-        //if credentials are valid, account is saved, and user is directed to log In
-        if (credentialsValid) {
-            AccountRegistrationCSV.saveAccount(username, password, email);
-            DatabaseStub.saveNewStats(username);
-            System.out.println("Sign Up Successful");
+        // Send the request to the server
+        Response response = ClientSocketService.getInstance().sendRequest(signUpRequest);
+
+        // Handle the response
+        if (response.isSuccess()) {
+            System.out.println("Sign Up Successful: " + response.getMessage());
             PageNavigator.navigateTo("logIn");
         } else {
-            //if credentials are in valid, error message prints user instructions
-            errorMessage.setText(errorText.toString());
             System.out.println("Sign Up Failed");
+            errorMessage.setText(response.getMessage());
+
+            // Highlight fields with errors based on the error message
+            String errorMsg = response.getMessage().toLowerCase();
+            if (errorMsg.contains("username")) {
+                highlightError(usernameInput);
+            }
+            if (errorMsg.contains("email")) {
+                highlightError(emailInput);
+            }
+            if (errorMsg.contains("password")) {
+                highlightError(passwordInput, passwordVisibleField);
+
+                if (errorMsg.contains("match")) {
+                    highlightError(passwordInput1, passwordVisibleField1);
+                }
+            }
         }
     }
 
