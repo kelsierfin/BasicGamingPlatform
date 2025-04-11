@@ -61,3 +61,24 @@ The system will automatically generate required data files:
    - Public lobby
    - Ranked matchmaking
 5. Game results automatically update player statistics
+
+
+### Project Structure
+
+```mermaid
+flowchart TD
+    A[src] --> B[main]
+    B --> C[java]
+    B --> D[resources]
+    C --> E[ca/ucalgary/seng/p3]
+    E --> F[client]
+    E --> G[server]
+    F --> H[controllers]
+    G --> I[authentication]
+    G --> J[gamelogic]
+    G --> K[leadmatch]
+    J --> L[chess]
+    J --> M[go]
+    J --> N[tictactoe]
+    J --> O[connect4]
+```
