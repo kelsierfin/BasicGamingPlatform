@@ -6,7 +6,7 @@ public class Request {
     private String password;
     private String confirmPassword;
     private String email;
-    private String extra; // For additional data
+    private String extra;
 
     // Constructor for sign-up
     public Request(String action, String username, String password, String confirmPassword, String email) {

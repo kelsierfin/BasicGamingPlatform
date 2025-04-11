@@ -26,6 +26,9 @@ public class ClientSocketService {
 
             // Read JSON-formatted response
             String jsonResponse = in.readLine();
+            if (jsonResponse == null || jsonResponse.isEmpty()) {
+                return new Response(false, "Server returned empty response", "", "");
+            }
             return gson.fromJson(jsonResponse, Response.class);
 
         } catch (IOException e) {
