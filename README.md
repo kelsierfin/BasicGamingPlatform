@@ -71,6 +71,7 @@ flowchart TD
     B --> C[java]
     B --> D[resources]
     C --> E[ca/ucalgary/seng/p3]
+    E --> O[network]
     E --> F[client]
     E --> G[server]
     F --> H[controllers]
