@@ -63,7 +63,7 @@ The system will automatically generate required data files:
 5. Game results automatically update player statistics
 
 
-### Project Structure
+## Project Structure
 
 ```mermaid
 flowchart TD
