@@ -1,8 +1,6 @@
 package ca.ucalgary.seng.p3.client.controllers;
 
-import ca.ucalgary.seng.p3.server.authentication.ViewPlayerProfile;
-import ca.ucalgary.seng.p3.server.leadmatch.Leaderboard;
-import ca.ucalgary.seng.p3.server.leadmatch.LeaderboardData;
+import ca.ucalgary.seng.p3.client.reflection.LeaderboardReflector;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.geometry.HPos;
@@ -14,12 +12,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Circle;
-
-import javax.swing.text.Position;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Map;
 
 public class LeaderBoardHome {
 
@@ -71,6 +66,7 @@ public class LeaderBoardHome {
     @FXML
     private GridPane tttRankList, chessRankList, goRankList, connect4RankList;
 
+    private LeaderboardReflector leaderboardReflector;
 
     @FXML
     public void initialize() {
@@ -82,6 +78,9 @@ public class LeaderBoardHome {
         setBackgroundImage(chessPane, CHESS_BCKGRND);
         setBackgroundImage(goPane, GO_BCKGRND);
         setBackgroundImage(connect4Pane, CONNECT_BCKGRND);
+
+        // Initialize the leaderboard reflector
+        leaderboardReflector = LeaderboardReflector.getInstance();
     }
 
     private void setBackgroundImage(AnchorPane pane, String imagePath) {
@@ -162,31 +161,30 @@ public class LeaderBoardHome {
 
         grid.setHgap(10);
         grid.setVgap(10);
-        try {
-            LeaderboardData data = Leaderboard.getLeaderboard(gameType);
 
-            if (data == null) {
-                System.out.println("No leaderboard data found for " + gameType);
-                return;
-            }
-            System.out.println("Player IDs: " + data.getPlayerIds());
-            System.out.println("Player Scores: " + data.getPlayerScores());
+        // Get leaderboard data using the reflector
+        LeaderboardReflector.LeaderboardResult leaderboardResult = leaderboardReflector.getLeaderboard(gameType);
 
-            // Check if we have player data
-            if (data.getPlayerIds().isEmpty() || data.getPlayerScores().isEmpty()) {
-                System.out.println("No players or scores found for " + gameType);
-                return;
-            }
+        if (!leaderboardResult.isSuccess() || leaderboardResult.getLeaderboardData() == null) {
+            System.out.println("No leaderboard data found for " + gameType);
+            return;
+        }
 
-            // Add player data to grid
-            for (int i = 0; i < data.getlast(); i++) {
-                String name = data.getPlayerIds().get(i);
-                int score = data.getPlayerScores().get(i);
-                putPlayer(grid, name, score, i); // Start from rank 1
-            }
-        } catch (IOException e) {
-            System.err.println("Failed to load leaderboard for " + gameType);
-            e.printStackTrace();
+        LeaderboardData data = leaderboardResult.getLeaderboardData();
+        System.out.println("Player IDs: " + data.getPlayerIds());
+        System.out.println("Player Scores: " + data.getPlayerScores());
+
+        // Check if we have player data
+        if (data.getPlayerIds().isEmpty() || data.getPlayerScores().isEmpty()) {
+            System.out.println("No players or scores found for " + gameType);
+            return;
+        }
+
+        // Add player data to grid
+        for (int i = 0; i < data.getlast(); i++) {
+            String name = data.getPlayerIds().get(i);
+            int score = data.getPlayerScores().get(i);
+            putPlayer(grid, name, score, i); // Start from rank 1
         }
     }
 
@@ -222,27 +220,32 @@ public class LeaderBoardHome {
         }
 
         Label nameLabel = setTextStyle(name);
-         //set pop up
-        nameLabel.setOnMouseClicked(e->{
+        //set pop up
+        nameLabel.setOnMouseClicked(e -> {
+            // Get player stats using the reflector
+            LeaderboardReflector.PlayerStatsResult statsResult = leaderboardReflector.getPlayerStats(name);
+            LeaderboardReflector.LeaderboardPositionResult positionsResult = leaderboardReflector.getLeaderboardPositions(name);
 
-            ProfilePopUp popup = new ProfilePopUp();
-            popup.setTitle(name);
-            popup.setUserName(name);
-            popup.setAvatar("/icons/avatar.png");
+            if (statsResult.isSuccess()) {
+                ProfilePopUp popup = new ProfilePopUp();
+                popup.setTitle(name);
+                popup.setUserName(name);
+                popup.setAvatar("/icons/avatar.png");
 
-            try {
-                popup.setMatches(String.valueOf(ViewPlayerProfile.getPlayerStats(name).get("overallGamesPlayed")));
-                int losses = Integer.parseInt(String.valueOf(ViewPlayerProfile.getPlayerStats(name).get("overallGamesPlayed"))) -
-                        Integer.parseInt(String.valueOf(ViewPlayerProfile.getPlayerStats(name).get("overallGamesWon")));
-                popup.setWinnings(String.valueOf(ViewPlayerProfile.getPlayerStats(name).get("overallGamesWon")));
+                int gamesPlayed = statsResult.getOverallGamesPlayed();
+                int gamesWon = statsResult.getOverallGamesWon();
+                int losses = gamesPlayed - gamesWon;
+
+                popup.setMatches(String.valueOf(gamesPlayed));
+                popup.setWinnings(String.valueOf(gamesWon));
                 popup.setLosses(String.valueOf(losses));
+
+                popup.show();
+            } else {
+                System.err.println("Could not load player profile: " + statsResult.getMessage());
             }
-            catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-            popup.show();
         });
-        
+
         Label scoreLabel = setTextStyle(String.valueOf(score));
 
         grid.add(nameLabel, 1, currentRowCount);

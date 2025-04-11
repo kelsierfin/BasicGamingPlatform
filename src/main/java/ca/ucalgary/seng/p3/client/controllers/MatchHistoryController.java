@@ -1,9 +1,6 @@
 package ca.ucalgary.seng.p3.client.controllers;
 
-import ca.ucalgary.seng.p3.server.leadmatch.MatchData;
-import ca.ucalgary.seng.p3.network.Request;
-import ca.ucalgary.seng.p3.network.Response;
-import ca.ucalgary.seng.p3.network.ClientSocketService;
+import ca.ucalgary.seng.p3.client.reflection.LeaderboardReflector;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ComboBox;
@@ -13,7 +10,6 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -38,8 +34,7 @@ public class MatchHistoryController {
     private Label winRate;
 
     List<MatchData> matches;
-
-    Map<String, Object> playerStats;
+    LeaderboardReflector leaderboardReflector;
 
     @FXML
     private void initialize() throws IOException {
@@ -54,54 +49,40 @@ public class MatchHistoryController {
         gameFilterComboBox.setOnAction(e -> updateMatchHistory());
 //        timeFilterComboBox.setOnAction(e -> updateMatchHistory());
 
-        // Use network requests instead of directly accessing server components
-        ClientSocketService socketService = ClientSocketService.getInstance();
+        // Get leaderboard reflector instance
+        leaderboardReflector = LeaderboardReflector.getInstance();
 
         // Request player stats
-        Request statsRequest = new Request("getPlayerStats", LogInController.getCurrentUsername(), "");
-        Response statsResponse = socketService.sendRequest(statsRequest);
-
-        // Create a default map for player stats
-        playerStats = new HashMap<>();
-        playerStats.put("overallGamesPlayed", 0);
-        playerStats.put("overallGamesWon", 0);
-        playerStats.put("overallWinRate", 0.0);
+        LeaderboardReflector.PlayerStatsResult statsResult = leaderboardReflector.getPlayerStats(LogInController.getCurrentUsername());
 
         // If the request is successful, update the stats
-        if (statsResponse.isSuccess()) {
-            // In a real implementation, parse JSON data from statsResponse.getExtra()
-            // For now, use sample values
-            playerStats.put("overallGamesPlayed", 10);
-            playerStats.put("overallGamesWon", 5);
-            playerStats.put("overallWinRate", 50.0);
+        if (statsResult.isSuccess()) {
+            // Update UI with stats
+            gamesPlayed.setText("Total Game: " + statsResult.getOverallGamesPlayed());
+            wins.setText("Wins: " + statsResult.getOverallGamesWon());
+            winRate.setText("Win Rate: " + statsResult.getOverallWinRate() + "%");
+        } else {
+            // Handle error case
+            gamesPlayed.setText("Total Game: 0");
+            wins.setText("Wins: 0");
+            winRate.setText("Win Rate: 0%");
+            System.err.println("Error getting player stats: " + statsResult.getMessage());
         }
 
-        // Update UI with stats
-        gamesPlayed.setText("Total Game: " + playerStats.get("overallGamesPlayed"));
-        wins.setText("Wins: " + playerStats.get("overallGamesWon"));
-        winRate.setText("Win Rate: " + playerStats.get("overallWinRate"));
-
         // Request match history
-        Request matchRequest = new Request("getMatchHistory", LogInController.getCurrentUsername(), "");
-        Response matchResponse = socketService.sendRequest(matchRequest);
+        LeaderboardReflector.MatchHistoryResult matchResult = leaderboardReflector.getMatchHistory(LogInController.getCurrentUsername());
 
         // Create empty match list
         matches = new ArrayList<>();
 
         // If the request is successful, populate with match data
-        if (matchResponse.isSuccess()) {
+        if (matchResult.isSuccess()) {
             // In a real implementation, parse JSON from matchResponse.getExtra()
             // For now, use sample match data
-            matches.add(new MatchData(LogInController.getCurrentUsername(), "opponent1", "chess", "win", 15));
-            matches.add(new MatchData(LogInController.getCurrentUsername(), "opponent2", "go", "loss", 30));
+            matches = matchResult.getMatches();
+        } else {
+            System.err.println("Error getting match history: " + matchResult.getMessage());
         }
-
-        // Send a sample update request (just for demonstration) - replacing PlayerStats direct call
-        Request updateRequest = new Request("updatePlayerStats",
-                LogInController.getCurrentUsername(),
-                "player98",
-                "go,true,20");
-        socketService.sendRequest(updateRequest);
 
         loadMatchHistory(matches);
     }
@@ -128,12 +109,40 @@ public class MatchHistoryController {
         }
     }
     private void updateMatchHistory() {
-        // This would filter the match history based on selected values
-        System.out.println("Filter changed - Game: " + gameFilterComboBox.getValue());
-//                + ", Time: " + timeFilterComboBox.getValue());
+        // Filter the match history based on selected game type
+        String gameFilter = gameFilterComboBox.getValue();
+        if (gameFilter.equals("All Games")) {
+            loadMatchHistory(matches);
+            return;
+        }
 
+        // Convert the filter name to match the game type in the data
+        String gameType = convertFilterNameToGameType(gameFilter);
+
+        // Filter matches by game type
+        List<MatchData> filteredMatches = new ArrayList<>();
+        for (MatchData match : matches) {
+            if (match.getGameType().equalsIgnoreCase(gameType)) {
+                filteredMatches.add(match);
+            }
+        }
+
+        loadMatchHistory(filteredMatches);
         // In a real implementation, this would update the match list
         // For now we're just using static content in the FXML
+
+    }
+
+
+    private String convertFilterNameToGameType(String filterName) {
+        switch (filterName) {
+            case "Tic Tac Toe":
+                return "tictactoe";
+            case "Connect Four":
+                return "connect4";
+            default:
+                return filterName.toLowerCase();
+        }
     }
 
     @FXML

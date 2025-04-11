@@ -1,19 +1,15 @@
 package ca.ucalgary.seng.p3.client.controllers;
 
+import ca.ucalgary.seng.p3.client.reflection.AuthReflector;
+import ca.ucalgary.seng.p3.client.reflection.LeaderboardReflector;
+import ca.ucalgary.seng.p3.client.reflection.MatchmakingReflector;
 import ca.ucalgary.seng.p3.server.authentication.AccountRegistrationCSV;
-import ca.ucalgary.seng.p3.server.authentication.ViewPlayerProfile;
-import ca.ucalgary.seng.p3.server.leadmatch.MatchmakingLogic;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
-import javafx.scene.input.ContextMenuEvent;
-import javafx.scene.input.InputMethodEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -51,11 +47,19 @@ public class PlayerFinderController {
     @FXML
     private AnchorPane rootPane;
 
+    private LeaderboardReflector leaderboardReflector;
+    private AuthReflector authReflector;
+
     @FXML
     public void initialize() throws IOException {
         menuPopup.setVisible(false);
         profilePopup.setVisible(false);
         notificationPopup.setVisible(false);
+
+        // Initialize reflectors
+        leaderboardReflector = LeaderboardReflector.getInstance();
+        authReflector = AuthReflector.getInstance();
+
         reloadList();
         searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
             filterPlayerList(newValue.toLowerCase());
@@ -95,6 +99,9 @@ public class PlayerFinderController {
     }
 
     public void reloadList() throws IOException {
+        // Instead of directly accessing the server, use the AuthReflector to get the list of users
+        // This is a placeholder - will need to add a method to AuthReflector to get all users
+        // For now, we'll still use the direct call to avoid modifying too much code
         players.setAll(AccountRegistrationCSV.loadAccounts().keySet());
         player_List.setItems(players);
     }
@@ -155,47 +162,88 @@ public class PlayerFinderController {
 
 
     @FXML
-    public static String getFormattedStats(String playerName) throws IOException {
-        Map<String, Object> playerStats = ViewPlayerProfile.getPlayerStats(playerName);
-        Map<String, Map<String, Integer>> leaderboardPositions = ViewPlayerProfile.getLeaderboardPositions(playerName);
+    public void handlePlayerProfileButton() {
+        // Get player stats using the reflector instead of direct server call
+        LeaderboardReflector.PlayerStatsResult statsResult = leaderboardReflector.getPlayerStats(selected_Player);
+        LeaderboardReflector.LeaderboardPositionResult positionsResult = leaderboardReflector.getLeaderboardPositions(selected_Player);
 
+        if (statsResult.isSuccess()) {
+            String formattedStats = getFormattedStats(selected_Player, statsResult, positionsResult);
+            showAlert(Alert.AlertType.INFORMATION, selected_Player, formattedStats);
+        } else {
+            showAlert(Alert.AlertType.ERROR, "Error", "Could not retrieve player statistics: " + statsResult.getMessage());
+        }
+    }
+
+    public String getFormattedStats(String playerName, LeaderboardReflector.PlayerStatsResult statsResult,
+                                    LeaderboardReflector.LeaderboardPositionResult positionsResult) {
         StringBuilder sb = new StringBuilder();
 
         sb.append("📊 Overall Statistics\n");
         sb.append("────────────────────────────\n");
-        sb.append("Games Played: ").append(playerStats.get("overallGamesPlayed")).append("\n");
-        sb.append("Games Won   : ").append(playerStats.get("overallGamesWon")).append("\n");
-        sb.append(String.format("Win Rate    : %.2f%%\n\n", playerStats.get("overallWinRate")));
+        sb.append("Games Played: ").append(statsResult.getOverallGamesPlayed()).append("\n");
+        sb.append("Games Won   : ").append(statsResult.getOverallGamesWon()).append("\n");
+        sb.append(String.format("Win Rate    : %.2f%%\n\n", statsResult.getOverallWinRate()));
 
         sb.append("🎯 Game-Specific Statistics\n");
         sb.append("────────────────────────────\n");
-        sb.append(printGameStats("Chess", (Map<String, Integer>) playerStats.get("chessStats")));
-        sb.append(printGameStats("Connect 4", (Map<String, Integer>) playerStats.get("connect4Stats")));
-        sb.append(printGameStats("Go", (Map<String, Integer>) playerStats.get("goStats")));
-        sb.append(printGameStats("Tic-Tac-Toe", (Map<String, Integer>) playerStats.get("tictactoeStats")));
+
+        // Get game stats from the statsResult
+        Map<String, Map<String, Object>> gameStats = statsResult.getGameStats();
+
+        if (gameStats != null) {
+            sb.append(printGameStats("Chess", gameStats.get("chess")));
+            sb.append(printGameStats("Connect 4", gameStats.get("connect4")));
+            sb.append(printGameStats("Go", gameStats.get("go")));
+            sb.append(printGameStats("Tic-Tac-Toe", gameStats.get("tictactoe")));
+        }
         sb.append("\n");
 
         sb.append("📅 Match History\n");
         sb.append("────────────────────────────\n");
-        sb.append(ViewPlayerProfile.getFormattedMatchHistory(playerName)).append("\n\n");
+
+        // Get match history using the reflector
+        LeaderboardReflector.MatchHistoryResult matchHistoryResult = leaderboardReflector.getMatchHistory(playerName);
+        if (matchHistoryResult.isSuccess() && matchHistoryResult.getMatches() != null) {
+            for (int i = 0; i < Math.min(5, matchHistoryResult.getMatches().size()); i++) {
+                var match = matchHistoryResult.getMatches().get(i);
+                sb.append(String.format("%s vs %s (%s): %s\n",
+                        playerName, match.getOpponentUsername(), match.getGameType(), match.getOutcome()));
+            }
+        } else {
+            sb.append("No match history available\n");
+        }
+        sb.append("\n");
 
         sb.append("🏆 Leaderboard Positions\n");
         sb.append("────────────────────────────\n");
-        for (String game : leaderboardPositions.keySet()) {
-            Map<String, Integer> data = leaderboardPositions.get(game);
-            sb.append(String.format("%-13s: Rank %d (ELO: %d)\n", game, data.get("rank"), data.get("elo")));
+
+        // Get leaderboard positions from the positionsResult
+        if (positionsResult != null && positionsResult.isSuccess() && positionsResult.getPositions() != null) {
+            Map<String, Map<String, Integer>> positions = positionsResult.getPositions();
+            for (String game : positions.keySet()) {
+                Map<String, Integer> data = positions.get(game);
+                sb.append(String.format("%-13s: Rank %d (ELO: %d)\n",
+                        game, data.get("rank"), data.get("elo")));
+            }
+        } else {
+            sb.append("No leaderboard positions available\n");
         }
 
         return sb.toString();
     }
 
+    private String printGameStats(String gameName, Map<String, Object> stats) {
+        if (stats == null) {
+            return String.format("%-13s - No data available\n", gameName);
+        }
 
-    private static String printGameStats(String gameName, Map<String, Integer> stats) {
+        int played = ((Number)stats.get("gamesPlayed")).intValue();
+        int won = ((Number)stats.get("gamesWon")).intValue();
+        int lost = played - won;
+
         return String.format("%-13s - Played: %-3d Won: %-3d Lost: %-3d\n",
-                gameName,
-                stats.getOrDefault("played", 0),
-                stats.getOrDefault("won", 0),
-                stats.getOrDefault("lost", 0));
+                gameName, played, won, lost);
     }
 
 
@@ -229,60 +277,62 @@ public class PlayerFinderController {
         dialog.setTitle("Challenge Player");
         dialog.setHeaderText("Challenge @" + selected_Player + " to a game:");
 
+        // Get matchmaking reflector
+        MatchmakingReflector matchmakingReflector = MatchmakingReflector.getInstance();
+
         // Game buttons
         Button chessButton = new Button("Chess");
         Button goButton = new Button("Go");
         Button connect4Button = new Button("Connect 4");
         Button tttButton = new Button("Tic-Tac-Toe");
 
-        // Button actions
+        // Button actions using the reflector instead of direct server access
         chessButton.setOnAction(e -> {
             //TODO: Insert MATCH LOGIC (Match between selectedPlayer and current Player (LoginController.getCurrentUsername()))
-            MatchmakingLogic matchmakingLogic = new MatchmakingLogic("Chess");
-            try {
-                matchmakingLogic.matchPlayers(selected_Player, LogInController.getCurrentUsername());
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-            PageNavigator.navigateTo("chess");
+            MatchmakingReflector.MatchResult result = matchmakingReflector.matchPlayers(
+                    LogInController.getCurrentUsername(), selected_Player, "Chess");
 
+            if (result.isSuccess()) {
+                PageNavigator.navigateTo("chess");
+            } else {
+                showAlert(Alert.AlertType.ERROR, "Matchmaking Failed", result.getMessage());
+            }
             dialog.close();
         });
 
         goButton.setOnAction(e -> {
-            //TODO: Insert MATCH LOGIC (Match between selectedPlayer and current Player (LoginController.getCurrentUsername()))
-            MatchmakingLogic matchmakingLogic = new MatchmakingLogic("Go");
-            try {
-                matchmakingLogic.matchPlayers(selected_Player, LogInController.getCurrentUsername());
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-            PageNavigator.navigateTo("go");
+            MatchmakingReflector.MatchResult result = matchmakingReflector.matchPlayers(
+                    LogInController.getCurrentUsername(), selected_Player, "Go");
 
+            if (result.isSuccess()) {
+                PageNavigator.navigateTo("go");
+            } else {
+                showAlert(Alert.AlertType.ERROR, "Matchmaking Failed", result.getMessage());
+            }
             dialog.close();
         });
 
         connect4Button.setOnAction(e -> {
-            //TODO: Insert MATCH LOGIC (Match between selectedPlayer and current Player (LoginController.getCurrentUsername()))
-            MatchmakingLogic matchmakingLogic = new MatchmakingLogic("Connect4");
-            try {
-                matchmakingLogic.matchPlayers(selected_Player, LogInController.getCurrentUsername());
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
+            MatchmakingReflector.MatchResult result = matchmakingReflector.matchPlayers(
+                    LogInController.getCurrentUsername(), selected_Player, "Connect4");
+
+            if (result.isSuccess()) {
+                PageNavigator.navigateTo("connect4");
+            } else {
+                showAlert(Alert.AlertType.ERROR, "Matchmaking Failed", result.getMessage());
             }
-            PageNavigator.navigateTo("connect4");
             dialog.close();
         });
 
         tttButton.setOnAction(e -> {
-            //TODO: Insert MATCH LOGIC (Match between selectedPlayer and current Player (LoginController.getCurrentUsername()))
-            MatchmakingLogic matchmakingLogic = new MatchmakingLogic("Tic-Tac-Toe");
-            try {
-                matchmakingLogic.matchPlayers(selected_Player, LogInController.getCurrentUsername());
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
+            MatchmakingReflector.MatchResult result = matchmakingReflector.matchPlayers(
+                    LogInController.getCurrentUsername(), selected_Player, "Tic-Tac-Toe");
+
+            if (result.isSuccess()) {
+                PageNavigator.navigateTo("tictactoe");
+            } else {
+                showAlert(Alert.AlertType.ERROR, "Matchmaking Failed", result.getMessage());
             }
-            PageNavigator.navigateTo("tictactoe");
             dialog.close();
         });
 
