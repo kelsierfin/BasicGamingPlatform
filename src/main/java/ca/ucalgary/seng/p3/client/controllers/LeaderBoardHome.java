@@ -1,5 +1,6 @@
 package ca.ucalgary.seng.p3.client.controllers;
 
+import ca.ucalgary.seng.p3.server.authentication.ViewPlayerProfile;
 import ca.ucalgary.seng.p3.server.leadmatch.Leaderboard;
 import ca.ucalgary.seng.p3.server.leadmatch.LeaderboardData;
 import javafx.event.Event;
@@ -221,6 +222,27 @@ public class LeaderBoardHome {
         }
 
         Label nameLabel = setTextStyle(name);
+         //set pop up
+        nameLabel.setOnMouseClicked(e->{
+
+            ProfilePopUp popup = new ProfilePopUp();
+            popup.setTitle(name);
+            popup.setUserName(name);
+            popup.setAvatar("/icons/avatar.png");
+
+            try {
+                popup.setMatches(String.valueOf(ViewPlayerProfile.getPlayerStats(name).get("overallGamesPlayed")));
+                int losses = Integer.parseInt(String.valueOf(ViewPlayerProfile.getPlayerStats(name).get("overallGamesPlayed"))) -
+                        Integer.parseInt(String.valueOf(ViewPlayerProfile.getPlayerStats(name).get("overallGamesWon")));
+                popup.setWinnings(String.valueOf(ViewPlayerProfile.getPlayerStats(name).get("overallGamesWon")));
+                popup.setLosses(String.valueOf(losses));
+            }
+            catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+            popup.show();
+        });
+        
         Label scoreLabel = setTextStyle(String.valueOf(score));
 
         grid.add(nameLabel, 1, currentRowCount);
