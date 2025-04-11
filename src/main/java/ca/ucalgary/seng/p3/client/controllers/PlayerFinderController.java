@@ -155,11 +155,6 @@ public class PlayerFinderController {
 //
 //    }
 
-    @FXML
-    public  void handlePlayerProfileButton() throws IOException {
-        showAlert(Alert.AlertType.INFORMATION, selected_Player, getFormattedStats(selected_Player));
-    }
-
 
     @FXML
     public void handlePlayerProfileButton() {

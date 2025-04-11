@@ -3,9 +3,8 @@ package ca.ucalgary.seng.p3.client.reflection;
 import ca.ucalgary.seng.p3.network.ClientSocketService;
 import ca.ucalgary.seng.p3.network.Request;
 import ca.ucalgary.seng.p3.network.Response;
-import ca.ucalgary.seng.p3.server.leadmatch.LeaderboardData;
-import ca.ucalgary.seng.p3.server.leadmatch.MatchData;
-import ca.ucalgary.seng.p3.server.leadmatch.PlayerStatData;
+import ca.ucalgary.seng.p3.client.models.ClientLeaderboardData;
+import ca.ucalgary.seng.p3.client.models.ClientMatchData;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -62,7 +61,7 @@ public class LeaderboardReflector {
                 playerScores.add(score.intValue());
             }
 
-            LeaderboardData leaderboardData = new LeaderboardData(playerIds, playerScores);
+            ClientLeaderboardData leaderboardData = new ClientLeaderboardData(playerIds, playerScores);
             return new LeaderboardResult(true, "Leaderboard retrieved successfully", leaderboardData);
         } catch (Exception e) {
             return new LeaderboardResult(false, "Error parsing leaderboard data: " + e.getMessage(), null);
@@ -126,7 +125,7 @@ public class LeaderboardReflector {
             @SuppressWarnings("unchecked")
             List<Map<String, Object>> matchDataList = gson.fromJson(res.getExtra(), new TypeToken<List<Map<String, Object>>>(){}.getType());
 
-            List<MatchData> matches = new ArrayList<>();
+            List<ClientMatchData> matches = new ArrayList<>();
             for (Map<String, Object> matchMap : matchDataList) {
                 String playerUsername = (String) matchMap.get("playerUsername");
                 String opponentUsername = (String) matchMap.get("opponentUsername");
@@ -134,7 +133,7 @@ public class LeaderboardReflector {
                 String outcome = (String) matchMap.get("outcome");
                 int turns = ((Double) matchMap.get("turns")).intValue();
 
-                matches.add(new MatchData(playerUsername, opponentUsername, gameType, outcome, turns));
+                matches.add(new ClientMatchData(playerUsername, opponentUsername, gameType, outcome, turns));
             }
 
             return new MatchHistoryResult(true, "Match history retrieved successfully", matches);
@@ -204,9 +203,9 @@ public class LeaderboardReflector {
     public static class LeaderboardResult {
         private final boolean success;
         private final String message;
-        private final LeaderboardData leaderboardData;
+        private final ClientLeaderboardData leaderboardData;
 
-        public LeaderboardResult(boolean success, String message, LeaderboardData leaderboardData) {
+        public LeaderboardResult(boolean success, String message, ClientLeaderboardData leaderboardData) {
             this.success = success;
             this.message = message;
             this.leaderboardData = leaderboardData;
@@ -214,7 +213,7 @@ public class LeaderboardReflector {
 
         public boolean isSuccess() { return success; }
         public String getMessage() { return message; }
-        public LeaderboardData getLeaderboardData() { return leaderboardData; }
+        public ClientLeaderboardData getLeaderboardData() { return leaderboardData; }
     }
 
     public static class PlayerStatsResult {
@@ -257,9 +256,9 @@ public class LeaderboardReflector {
     public static class MatchHistoryResult {
         private final boolean success;
         private final String message;
-        private final List<MatchData> matches;
+        private final List<ClientMatchData> matches;
 
-        public MatchHistoryResult(boolean success, String message, List<MatchData> matches) {
+        public MatchHistoryResult(boolean success, String message, List<ClientMatchData> matches) {
             this.success = success;
             this.message = message;
             this.matches = matches;
@@ -267,7 +266,7 @@ public class LeaderboardReflector {
 
         public boolean isSuccess() { return success; }
         public String getMessage() { return message; }
-        public List<MatchData> getMatches() { return matches; }
+        public List<ClientMatchData> getMatches() { return matches; }
     }
 
     public static class StatsUpdateResult {

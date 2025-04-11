@@ -1,5 +1,5 @@
 package ca.ucalgary.seng.p3.client.controllers;
-
+import ca.ucalgary.seng.p3.client.models.ClientLeaderboardData;
 import ca.ucalgary.seng.p3.client.reflection.LeaderboardReflector;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -155,8 +155,7 @@ public class LeaderBoardHome {
 
         grid.setPadding(new Insets(20, 0, 0, 0));
         grid.setAlignment(Pos.TOP_LEFT);
-        ColumnConstraints column
-                = new ColumnConstraints(200);
+        ColumnConstraints column = new ColumnConstraints(200);
         grid.getColumnConstraints().setAll(column);
 
         grid.setHgap(10);
@@ -170,7 +169,7 @@ public class LeaderBoardHome {
             return;
         }
 
-        LeaderboardData data = leaderboardResult.getLeaderboardData();
+        ClientLeaderboardData data = leaderboardResult.getLeaderboardData();
         System.out.println("Player IDs: " + data.getPlayerIds());
         System.out.println("Player Scores: " + data.getPlayerScores());
 

@@ -1,5 +1,5 @@
 package ca.ucalgary.seng.p3.client.controllers;
-
+import ca.ucalgary.seng.p3.client.models.ClientMatchData;
 import ca.ucalgary.seng.p3.client.reflection.LeaderboardReflector;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,7 +33,7 @@ public class MatchHistoryController {
     @FXML
     private Label winRate;
 
-    List<MatchData> matches;
+    List<ClientMatchData> matches;
     LeaderboardReflector leaderboardReflector;
 
     @FXML
@@ -87,10 +87,10 @@ public class MatchHistoryController {
         loadMatchHistory(matches);
     }
 
-    public void loadMatchHistory(List<MatchData> matches) {
+    public void loadMatchHistory(List<ClientMatchData> matches) {
         matchHistory.getChildren().clear();
 
-        for (MatchData match : matches) {
+        for (ClientMatchData match : matches) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/match_entry.fxml"));
                 BorderPane entry = loader.load();
@@ -120,8 +120,8 @@ public class MatchHistoryController {
         String gameType = convertFilterNameToGameType(gameFilter);
 
         // Filter matches by game type
-        List<MatchData> filteredMatches = new ArrayList<>();
-        for (MatchData match : matches) {
+        List<ClientMatchData> filteredMatches = new ArrayList<>();
+        for (ClientMatchData match : matches) {
             if (match.getGameType().equalsIgnoreCase(gameType)) {
                 filteredMatches.add(match);
             }
