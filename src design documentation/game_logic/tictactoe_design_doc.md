@@ -8,6 +8,92 @@
 
 ---
 
+```mermaid
+classDiagram
+
+%% Main Entry
+class TicTacToe {
+    +main(String[] args)
+}
+
+%% Game Runner (CLI)
+class GameRunner {
+    -Game game
+    -Input input
+    -Print print
+    +start()
+    +manageGameLoop()
+    +handleReplay()
+}
+
+%% Game Runner GUI
+class GameRunnerGui {
+    +makeMove(int space)
+    +getBoard()
+    +getWinnerMarker()
+    +isGameOver()
+}
+
+%% Game Logic
+class Game {
+    -Board board
+    -Player currentPlayer
+    -Player winner
+    +takeTurn()
+    +isGameOver()
+    +getWinner()
+    +changeCurrentPlayer()
+}
+
+%% Board
+class Board {
+    -spaces: List
+    +placeMarker(int, String)
+    +getAvailableSpaces()
+    +isMoveAllowed(int)
+    +getRows()
+    +getColumns()
+    +getLeftDiagonal()
+    +getRightDiagonal()
+}
+
+%% CLI Output
+class Print {
+    +displayBoard()
+    +showMessage(String)
+    +showPrompt()
+}
+
+%% Player Abstractions
+class Player {
+    <<interface>>
+    +getMove(Board): int
+    +getMarker(): String
+}
+
+class HumanPlayer {
+    +getMove(Board): int
+    +getMarker(): String
+}
+
+class PlayerVsPlayer {
+    +getMove(Board): int
+    +getMarker(): String
+}
+
+
+%% Relationships
+TicTacToe --> GameRunner
+GameRunner --> Game
+GameRunner --> Print
+GameRunnerGui --> Game
+Game --> Board
+Game --> Player : currentPlayer
+Game --> Player : winner
+HumanPlayer --> Player
+PlayerVsPlayer --> Player
+```
+
 ### `GameRunner`
 
 -   **Purpose:** Drives the CLI version of the game loop including setup, play, and end handling.
