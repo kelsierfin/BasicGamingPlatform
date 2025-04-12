@@ -1,5 +1,68 @@
 ## Design Document for Connect4 Game
+```mermaid
+classDiagram
+    class Connect4 {
+        +main(String[] args)
+        +startGame()
+        -gameLoop()
+        -handlePlayerTurn()
+        -checkGameEnd()
+    }
 
+    class Connect4_Board {
+        -String[][] board
+        +Connect4_Board()
+        +getBoard() String[][]
+        +placeDisc(int, Disc)
+        +removeDisc(int, int)
+        +validMove(int) boolean
+        +checkWin(String) boolean
+        +isColumnFull() boolean
+        +printBoard()
+        +getSymbol(String) String
+    }
+
+    class Player {
+        -String name
+        -String selectedSymbol
+        -int numberOfDiscPlaced
+        -int numberOfWins
+        +Player(String, String)
+        +addWin()
+        +getName() String
+        +getSelectedSymbol() String
+        +getNumberOfWins() int
+    }
+
+    class Disc {
+        -String symbol
+        +Disc(String)
+        +getSymbol() String
+    }
+
+    class ChatBox {
+        -Player playerOne
+        -Player playerTwo
+        +ChatBox(Player, Player)
+        +sendMessage(String)
+        +receiveMessage() String
+    }
+
+    class ScoreBoard {
+        -int points
+        -int gamesPlayed
+        +ScoreBoard()
+        +addPoints(int)
+        +addGamesPlayed(int)
+    }
+
+    Connect4 --> Connect4_Board : uses
+    Connect4 --> Player : manages
+    Connect4 --> ChatBox : communicates
+    Connect4 --> ScoreBoard : tracks
+    Connect4_Board --> Disc : places
+    ChatBox --> Player : references
+```
 ## Detailed Class Specifications
 
 ### 1\. Connect4 Class
