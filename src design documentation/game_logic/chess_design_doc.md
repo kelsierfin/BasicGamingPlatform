@@ -16,6 +16,88 @@ Key Features:
 
 ---
 
+```mermaid
+
+classDiagram
+    class ChessGame {
+        - static Square[][] board
+        - static HashMap<String, Square> nameToSquare
+        - HashMap<Square, Piece> squareToPiece
+        - Player whitePlayer
+        - Player blackPlayer
+        - Player currentPlayer
+        + ChessGame()
+        + void initializePieces()
+        + void move()
+    }
+
+    class Player {
+        - String color
+        - List<Piece> activePieces
+        - List<Piece> capturedPieces
+        + void enactClick(String squareName)
+        + void updateGameState()
+    }
+
+    class Square {
+        - int rankIndex
+        - int fileIndex
+        - String name
+        + getName()
+    }
+
+    class Piece {
+        <<abstract>>
+        - Player player
+        - int value
+        - Square position
+        - List<Square> moveOptions
+        + abstract void findMoveOptions()
+    }
+
+    class King {
+        + findMoveOptions()
+    }
+
+    class Queen {
+        + findMoveOptions()
+    }
+
+    class Rook {
+        + findMoveOptions()
+    }
+
+    class Bishop {
+        + findMoveOptions()
+    }
+
+    class Knight {
+        + findMoveOptions()
+    }
+
+    class Pawn {
+        + findMoveOptions()
+    }
+
+    ChessGame --> Player : has
+    ChessGame --> Square : uses
+    ChessGame --> Piece : maps squares to
+
+    Player --> Piece : owns
+    Player --> Square : interacts with
+
+    Piece --> Player : belongs to
+    Piece --> Square : located on
+
+    King --|> Piece
+    Queen --|> Piece
+    Rook --|> Piece
+    Bishop --|> Piece
+    Knight --|> Piece
+    Pawn --|> Piece
+
+```
+
 ## Detailed Class Specifications
 
 ### `ChessGame`
