@@ -1,12 +1,10 @@
-package ca.ucalgary.seng.p3.server.gamelogic.go;
-
-import ca.ucalgary.seng.p3.server.gamelogic.go.GeneralPlayer;
+package ca.ucalgary.seng.p3.client.gamelogic;
 
 public interface GameInterface {
 
-    GeneralPlayer getPlayerOne();
+    GeneralPlayer<?> getPlayerOne();
 
-    GeneralPlayer getPlayerTwo();
+    GeneralPlayer<?> getPlayerTwo();
 
     /**
      * If there's a winner, returns winning player's number, otherwise returns 0.

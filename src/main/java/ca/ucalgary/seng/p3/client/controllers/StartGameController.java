@@ -1,8 +1,10 @@
 package ca.ucalgary.seng.p3.client.controllers;
 
+import ca.ucalgary.seng.p3.client.game_client.GameClient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.application.Platform;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
@@ -98,20 +100,51 @@ public class StartGameController {
 
     @FXML
     private void handleFindMatch(ActionEvent event) {
+        // Determine the target page based on game type (as per your existing logic)
         if ("tictactoe".equalsIgnoreCase(gameType)) {
-            targetPage = "tictactoe";      // Navigates to tictactoe.fxml
+            targetPage = "tictactoe";
         } else if ("chess".equalsIgnoreCase(gameType)) {
-            targetPage = "chess";          // Navigates to chess.fxml
+            targetPage = "chess";
         } else if ("connect4".equalsIgnoreCase(gameType)) {
-            targetPage = "connect4";       // Navigates to connect4.fxml
+            targetPage = "connect4";
         } else if ("go".equalsIgnoreCase(gameType)) {
-            targetPage = "go";             // Navigates to go.fxml
+            targetPage = "go";
         } else {
-            // Unknown game type; do nothing, currently no error messages
+            // If game type is unknown, exit the handler.
             return;
         }
-            PageNavigator.navigateTo(targetPage);
+// Instead of immediately navigating, display a waiting screen (this is a sample implementation)
+        showWaitingScreen("Searching for a match...");
+
+        GameClient gameClient = new GameClient();
+        // Set callback to be notified when a match is found.
+        gameClient.setOnMatchFoundCallback(() -> {
+            // Ensure UI updates occur on the JavaFX Application Thread.
+            Platform.runLater(() -> {
+                hideWaitingScreen();
+                PageNavigator.navigateTo(targetPage);
+            });
+        });
+
+        // Run the GameClient in a background thread to avoid blocking the UI thread.
+        Thread gameClientThread = new Thread(() -> {
+            gameClient.start(LogInController.getCurrentUsername(), gameType);
+        });
+        gameClientThread.setDaemon(true);
+        gameClientThread.start();
     }
+
+    // Sample waiting screen methods
+    private void showWaitingScreen(String message) {
+        // Code to show a modal dialog, overlay, or dedicated waiting screen
+        System.out.println(message);
+    }
+
+    private void hideWaitingScreen() {
+        // Code to hide the waiting screen
+        System.out.println("Match found. Hiding waiting screen.");
+    }
+
 
 
     // Called when the menu button is clicked

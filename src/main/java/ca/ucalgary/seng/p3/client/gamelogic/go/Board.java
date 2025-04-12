@@ -1,4 +1,4 @@
-package ca.ucalgary.seng.p3.server.gamelogic.go;
+package ca.ucalgary.seng.p3.client.gamelogic.go;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +23,7 @@ public class Board {
     }
     //This method used to check if there are group of stones surrounded by enemy stones
     //If so, clear and replace them with eaten stones(occupied block but shown empty).
-    public List<int[]> checkSurround() {
-        List<int[]> totalCleared = new ArrayList<>();
+    public void checkSurround() {
         boolean[][] checked = new boolean[19][19];
         for (int i = 0; i < 19; i++) {
             for (int j = 0; j < 19; j++) {
@@ -32,14 +31,12 @@ public class Board {
                 if ((color == 1 || color == 2) && !checked[i][j]) {
                     boolean[][] visited = new boolean[19][19];
                     if (!hasLiberty(i, j, color, visited)) {
-                        List<int[]> eatenCoords = clearGroup(i, j, color);
-                        totalCleared.addAll(eatenCoords);
+                        clearGroup(i, j, color);
                         checked[i][j] = true;
                     }
                 }
             }
         }
-        return totalCleared;
     }
 
     private boolean isSurrounded(int x, int y, int color) {
@@ -65,25 +62,17 @@ public class Board {
     }
 
     //Clear the stones which got surrounded.
-    private List<int[]> clearGroup(int x, int y, int color) {
-        List<int[]> cleared = new ArrayList<>();
-        clearGroupHelper(x, y, color, cleared);
-        return cleared;
-    }
-
-    private void clearGroupHelper(int x, int y, int color, List<int[]> cleared) {
+    private void clearGroup(int x, int y, int color) {
         if (x < 0 || x >= 19 || y < 0 || y >= 19) return;
         if (matrix[x][y].getColor() != color) return;
 
         matrix[x][y] = (color == 1) ? black_eaten : white_eaten;
-        cleared.add(new int[]{x, y});
-
-        clearGroupHelper(x+1, y, color, cleared);
-        clearGroupHelper(x-1, y, color, cleared);
-        clearGroupHelper(x, y+1, color, cleared);
-        clearGroupHelper(x, y-1, color, cleared);
+        clearGroup(x+1, y, color);
+        clearGroup(x-1, y, color);
+        clearGroup(x, y+1, color);
+        clearGroup(x, y-1, color);
     }
-    //This method is used to show all available position for a player to place stone.Implement it when designing GUI.
+//This method is used to show all available position for a player to place stone.Implement it when designing GUI.
     public List<int[]> getAvailablePositions() {
         List<int[]> available = new ArrayList<>();
         for (int i = 0; i < 19; i++) {
@@ -189,18 +178,15 @@ public class Board {
                 hasLiberty(x, y-1, color, visited);
     }
 
-    public MoveResult placeStone(int x, int y, int color) {
-        int[] coord = new int[2];
-        coord[0] = x;
-        coord[1] = y;
+    public boolean placeStone(int x, int y, int color) {
         if (x < 0 || x >= 19 || y < 0 || y >= 19 || matrix[x][y].getColor() != 0) {
             System.out.println("Invalid move");
-            return new MoveResult(false, color, coord, new ArrayList<>());
+            return false;
         }
         matrix[x][y] = (color == 1) ? black : white;
-        List<int[]> cleared = checkSurround();
+        checkSurround();
         checkState();
-        return new MoveResult(true, color, coord, cleared);
+        return true;
     }
 
     public int surrender(int surrenderingTeam) {
@@ -223,17 +209,4 @@ public class Board {
         if (x < 0 || x >= 19 || y < 0 || y >= 19) return -1;
         return matrix[x][y].getColor();
     }
-
-    public static class MoveResult {
-        public boolean success;
-        public int color;
-        public int[] coord;
-        public List<int[]> cleared;
-        public MoveResult(boolean success, int color, int[] coord, List<int[]> cleared) {
-            this.success = success;
-            this.cleared = cleared;
-            this.color = color;
-            this.coord = coord;
-        }
-    }
-}
+} 

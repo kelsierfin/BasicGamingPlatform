@@ -1,5 +1,6 @@
 package ca.ucalgary.seng.p3.client.controllers;
 
+import ca.ucalgary.seng.p3.client.gamelogic.connect4.Connect4Game;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -8,7 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
 
-public class Connect4Controller {
+public class Connect4Controller implements GameController {
 
     @FXML private Label timer;
     @FXML private Button exitButton;
@@ -22,6 +23,7 @@ public class Connect4Controller {
 //    @FXML private Label player2Name;
 
     private boolean isLocalPlayerTurn = true;
+    Connect4Game game;
 
     @FXML
     private void initialize() {
@@ -46,6 +48,10 @@ public class Connect4Controller {
                 slot.setOnMouseClicked(e -> handleColumnClick(column));
             }
         }
+    }
+
+    public Connect4Game getGame() {
+        return game;
     }
 
     @FXML

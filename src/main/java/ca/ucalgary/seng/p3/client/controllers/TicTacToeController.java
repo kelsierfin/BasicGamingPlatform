@@ -1,5 +1,6 @@
 package ca.ucalgary.seng.p3.client.controllers;
 
+import ca.ucalgary.seng.p3.client.gamelogic.tictactoe.TicTacToeGame;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,7 +16,7 @@ import javafx.util.Duration;
 
 import java.util.Random;
 
-public class TicTacToeController {
+public class TicTacToeController implements GameController {
 
     @FXML
     private Label turnLabel;
@@ -37,6 +38,8 @@ public class TicTacToeController {
 
     private String playerSymbol; // "X" or "O"
 
+    TicTacToeGame game;
+
     @FXML
     private void initialize() {
         // Ensure the chat area is not editable by the user
@@ -56,6 +59,10 @@ public class TicTacToeController {
 
         // Randomly assign player symbol and show the popup message
         assignPlayerSymbolAndShowPopup();
+    }
+
+    public TicTacToeGame getGame() {
+        return game;
     }
 
     // Randomly assigns player symbol and displays a temporary popup

@@ -1,15 +1,15 @@
-package ca.ucalgary.seng.p3.server.gamelogic.go;
+package ca.ucalgary.seng.p3.client.gamelogic;
 
 import ca.ucalgary.seng.p3.client.ClientNetworkManager;
 import ca.ucalgary.seng.p3.client.controllers.GameController;
 
 import org.json.JSONObject;
 
-public interface GeneralPlayer {
+public interface GeneralPlayer<T extends GameController> {
 
     void setNetwork(ClientNetworkManager network);
 
-    void setGUI(GameController<?> gui);
+    void setGUI(T gui);
 
     /**
      * Updates the game state with the new move.
