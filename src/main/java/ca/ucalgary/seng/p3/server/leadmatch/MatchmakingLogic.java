@@ -1,4 +1,5 @@
 package ca.ucalgary.seng.p3.server.leadmatch;
+import ca.ucalgary.seng.p3.server.MatchManager;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -97,6 +98,7 @@ public class MatchmakingLogic {
         List<String> players = findMatch(username);
         if (players != null) {
             matchPlayers(players.get(0), players.get(1));
+            MatchManager.addMatch(players.get(0), players.get(1));
         }
     }
 }

@@ -77,9 +77,8 @@ public class DatabaseStub {
             if (stat[0].equals(userName)) {
                 // generates the match history
                 List<MatchData> matchHistory = new ArrayList<>();
-                for (int i = 17; i <stat.length; i += 4){
+                for (int i = 17; i < stat.length; i += 4){
                     matchHistory.add(new MatchData(stat[0], stat[i], stat[i+1], stat[i+2], Integer.parseInt(stat[i+3])));
-
                 }
                 int gamesPlayed = (Integer.parseInt(stat[1]) + Integer.parseInt(stat[5]) + Integer.parseInt(stat[9]) + Integer.parseInt(stat[13]));
                 int gamesWon = (Integer.parseInt(stat[2]) + Integer.parseInt(stat[6]) + Integer.parseInt(stat[10]) + Integer.parseInt(stat[14]));
@@ -99,75 +98,23 @@ public class DatabaseStub {
         List<String[]> stats = loadStats();
         List<String> leaderboard = new ArrayList<>();
         List<Integer> ELOList = new ArrayList<>();
-
         for (String[] stat : stats) {
-            if (gameType.equalsIgnoreCase("chess")){
+            if (gameType.equals("chess")) {
                 leaderboard.add(stat[0]);
-                try {
-                    ELOList.add(Integer.parseInt(stat[3])); // Chess Elo is at index 3
-                } catch (NumberFormatException e) {
-                    System.out.println("Invalid Elo value for Chess: " + stat[3]);
-                }
-            } else if (gameType.equalsIgnoreCase("connect4")) {
+                ELOList.add(Integer.parseInt(stat[3]));
+            }else if (gameType.equals("connect4")) {
                 leaderboard.add(stat[0]);
-                try {
-                    ELOList.add(Integer.parseInt(stat[7])); // Connect4 Elo is at index 7
-                } catch (NumberFormatException e) {
-                    System.out.println("Invalid Elo value for Connect4: " + stat[7]);
-                }
-            } else if (gameType.equalsIgnoreCase("go")) {
+                ELOList.add(Integer.parseInt(stat[7]));
+            }else if (gameType.equals("go")) {
                 leaderboard.add(stat[0]);
-                try {
-                    ELOList.add(Integer.parseInt(stat[11])); // Go Elo is at index 11
-                } catch (NumberFormatException e) {
-                    System.out.println("Invalid Elo value for Go: " + stat[11]);
-                }
-            } else if (gameType.equalsIgnoreCase("tic tac toe")) {
+                ELOList.add(Integer.parseInt(stat[11]));
+            }else if (gameType.equals("tictactoe")) {
                 leaderboard.add(stat[0]);
-                try {
-                    ELOList.add(Integer.parseInt(stat[15])); // TicTacToe Elo is at index 15
-                } catch (NumberFormatException e) {
-                    System.out.println("Invalid Elo value for TicTacToe: " + stat[15]);
-                }
+                ELOList.add(Integer.parseInt(stat[15]));
             }
         }
-
-        if (leaderboard.isEmpty() || ELOList.isEmpty()) {
-            System.out.println("No players or scores found for " + gameType);
-        }
-
         return new LeaderboardData(leaderboard, ELOList);
     }
-
-
-//    /**
-//     * makes a leaderboard data with the data from the csv file.
-//     * used for displaying and updating the leaderboard
-//     * @param gameType
-//     * @return
-//     * @throws IOException
-//     */
-//    public static LeaderboardData getLeaderboard(String gameType) throws IOException {
-//        List<String[]> stats = loadStats();
-//        List<String> leaderboard = new ArrayList<>();
-//        List<Integer> ELOList = new ArrayList<>();
-//        for (String[] stat : stats) {
-//            if (gameType.equals("chess")) {
-//                leaderboard.add(stat[0]);
-//                ELOList.add(Integer.parseInt(stat[3]));
-//            }else if (gameType.equals("connect4")) {
-//                leaderboard.add(stat[0]);
-//                ELOList.add(Integer.parseInt(stat[7]));
-//            }else if (gameType.equals("go")) {
-//                leaderboard.add(stat[0]);
-//                ELOList.add(Integer.parseInt(stat[11]));
-//            }else if (gameType.equals("tictactoe")) {
-//                leaderboard.add(stat[0]);
-//                ELOList.add(Integer.parseInt(stat[15]));
-//            }
-//        }
-//        return new LeaderboardData(leaderboard, ELOList);
-//    }
 
     /**
      * Takes leaderboard data and the gametype that data is for and updates a players rankings base on the leaderboard data
@@ -192,7 +139,6 @@ public class DatabaseStub {
                 stat[16] = String.valueOf(index + 1);
             }
         }
-        saveStats(stats);
     }
 
     /**
@@ -253,7 +199,7 @@ public class DatabaseStub {
      * @param username
      * @throws IOException
      */
-    public static void saveNewStats(String username) throws IOException {
+    private static void saveNewStats(String username) throws IOException {
         // Open the file in append mode and write the account details
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_NAME, true))) {
             // when creating new stats the player is set to the lowest rank

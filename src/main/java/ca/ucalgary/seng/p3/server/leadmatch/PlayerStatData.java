@@ -22,7 +22,7 @@ public class PlayerStatData {
                           Map<String, GameStats> gameStats, List<MatchData> matchHistory) {
         this.overallGamesPlayed = overallGamesPlayed;
         this.overallGamesWon = overallGamesWon;
-        this.setMatchWinRate();
+        this.overallWinRate = this.setMatchWinRate();
         this.gameStats = gameStats;
         this.matchHistory = matchHistory;
     }
@@ -39,19 +39,19 @@ public class PlayerStatData {
         return overallWinRate;
     }
 
-    public GameStats getChessStats(String game) {
+    public GameStats getChessStats() {
         return gameStats.get("chess");
     }
 
-    public GameStats getGoStats(String game) {
+    public GameStats getGoStats() {
         return gameStats.get("go");
     }
 
-    public GameStats getConnect4Stats(String game) {
+    public GameStats getConnect4Stats() {
         return gameStats.get("connect4");
     }
 
-    public GameStats getTictactoeStats(String game) {
+    public GameStats getTictactoeStats() {
         return gameStats.get("tictactoe");
     }
 
@@ -70,7 +70,7 @@ public class PlayerStatData {
     public void addWin(String gameType) {
         this.overallGamesPlayed ++;
         this.overallGamesWon ++;
-        setMatchWinRate();
+        overallWinRate = setMatchWinRate();
         GameStats game = getGameStats(gameType);
         game.addWin();
     }
@@ -81,7 +81,7 @@ public class PlayerStatData {
      */
     public void addLoss(String gameType) {
         this.overallGamesPlayed ++;
-        setMatchWinRate();
+        overallWinRate = setMatchWinRate();
         GameStats game = getGameStats(gameType);
         game.addLoss();
     }
@@ -96,7 +96,7 @@ public class PlayerStatData {
      */
     public void addMatch(String playerUsername, String opponentUsername, String gameType, String outcome, int turns) {
         MatchData match = new MatchData(playerUsername, opponentUsername, gameType, outcome, turns);
-        this.matchHistory.addFirst(match);
+        //this.matchHistory.addFirst(match);
         if (this.matchHistory.size() > 20) {
             this.matchHistory = this.matchHistory.subList(0, 20);
         }
@@ -104,8 +104,9 @@ public class PlayerStatData {
 
 
     // Helper to calculate winrate whenever it changes
-    private void setMatchWinRate() {
+    private double setMatchWinRate() {
         this.overallWinRate = Math.floor((double)overallGamesWon / (double)overallGamesPlayed * 10000) / 100;
+        return 0;
     }
 
 }
