@@ -125,6 +125,7 @@ public class AccountRegistrationCSV {
      */
     public static void saveAccount(String username, String password, String email) throws IOException {
         // Open the file in append mode and write the account details
+        DatabaseStub.saveNewStats(username);
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_NAME, true))) {
             String hashed_password= PasswordHasher.generateStorablePassword(password);
             bw.write(username + "," + hashed_password + "," + email);
