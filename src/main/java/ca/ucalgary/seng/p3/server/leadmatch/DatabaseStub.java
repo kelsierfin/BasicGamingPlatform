@@ -199,7 +199,7 @@ public class DatabaseStub {
      * @param username
      * @throws IOException
      */
-    private static void saveNewStats(String username) throws IOException {
+    public static void saveNewStats(String username) throws IOException {
         // Open the file in append mode and write the account details
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_NAME, true))) {
             // when creating new stats the player is set to the lowest rank

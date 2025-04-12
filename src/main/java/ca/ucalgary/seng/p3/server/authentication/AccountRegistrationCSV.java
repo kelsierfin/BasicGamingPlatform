@@ -2,6 +2,7 @@ package ca.ucalgary.seng.p3.server.authentication;
 
 import java.io.*;
 import java.util.*;
+import ca.ucalgary.seng.p3.server.leadmatch.*;
 
 public class AccountRegistrationCSV {
     // Name of the CSV file used as the account database
@@ -59,6 +60,7 @@ public class AccountRegistrationCSV {
             // Save the new account to the CSV file
         if( !accounts.containsKey(username) && isValidEmail(email) && isProperPassword(password) && password.equals(verifyPassword) ) {
             saveAccount(username, password, email);
+            DatabaseStub.saveNewStats(username);
             System.out.println("Account created successfully! Please login.");
         } else if (accounts.containsKey(username) && username != null) {
             System.out.println("Error: Username already exists. Try again.");
