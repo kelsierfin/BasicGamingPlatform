@@ -38,6 +38,7 @@ All games enforce standard rulesets:
 
 ### Prerequisites
 - IntelliJ IDEA 2024.3.5
+- JUnit 5.8.1
 - Maven 3.8+
 - JavaFx SDK 21.0.2
 
