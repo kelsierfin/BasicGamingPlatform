@@ -5,6 +5,7 @@ module ca.ucalgary.seng.p3.client{
     requires javafx.graphics;
     requires java.desktop;
     requires com.google.gson;
+    requires org.json;
 
     exports ca.ucalgary.seng.p3.client;
     opens ca.ucalgary.seng.p3.network to com.google.gson;
