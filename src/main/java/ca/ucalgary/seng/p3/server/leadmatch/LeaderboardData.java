@@ -66,6 +66,4 @@ public class LeaderboardData {
     public void setPlayerScores(List<Integer> playerScores) {
         this.playerScores = playerScores;
     }
-
-
 }

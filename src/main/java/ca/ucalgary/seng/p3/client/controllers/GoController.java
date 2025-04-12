@@ -1,18 +1,14 @@
 package ca.ucalgary.seng.p3.client.controllers;
 
-import ca.ucalgary.seng.p3.client.gamelogic.go.GoGame;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 
-public class GoController implements GameController {
+public class GoController {
 
     @FXML
     GridPane board = new GridPane();
-
-    GoGame game;
-
     @FXML
     public void initialize() {
         board.setGridLinesVisible(true);
@@ -30,10 +26,6 @@ public class GoController implements GameController {
                 board.add(b, i,j);
             }
         }
-    }
-
-    public GoGame getGame() {
-        return game;
     }
 
     public void handleCellClick(ActionEvent actionEvent) {

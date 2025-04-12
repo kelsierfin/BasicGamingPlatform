@@ -1,6 +1,6 @@
 package ca.ucalgary.seng.p3.client.controllers;
 
-import ca.ucalgary.seng.p3.client.game_client.GameClient;
+//import ca.ucalgary.seng.p3.client.game_client.GameClient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -114,36 +114,36 @@ public class StartGameController {
             return;
         }
 // Instead of immediately navigating, display a waiting screen (this is a sample implementation)
-        showWaitingScreen("Searching for a match...");
-
-        GameClient gameClient = new GameClient();
-        // Set callback to be notified when a match is found.
-        gameClient.setOnMatchFoundCallback(() -> {
-            // Ensure UI updates occur on the JavaFX Application Thread.
+//        showWaitingScreen("Searching for a match...");
+//
+//        GameClient gameClient = new GameClient();
+//        // Set callback to be notified when a match is found.
+//        gameClient.setOnMatchFoundCallback(() -> {
+//            // Ensure UI updates occur on the JavaFX Application Thread.
             Platform.runLater(() -> {
-                hideWaitingScreen();
+//                hideWaitingScreen();
                 PageNavigator.navigateTo(targetPage);
             });
-        });
+//        });
 
         // Run the GameClient in a background thread to avoid blocking the UI thread.
-        Thread gameClientThread = new Thread(() -> {
-            gameClient.start(LogInController.getCurrentUsername(), gameType);
-        });
-        gameClientThread.setDaemon(true);
-        gameClientThread.start();
+//        Thread gameClientThread = new Thread(() -> {
+//            gameClient.start(LogInController.getCurrentUsername(), gameType);
+//        });
+//        gameClientThread.setDaemon(true);
+//        gameClientThread.start();
     }
 
-    // Sample waiting screen methods
-    private void showWaitingScreen(String message) {
-        // Code to show a modal dialog, overlay, or dedicated waiting screen
-        System.out.println(message);
-    }
-
-    private void hideWaitingScreen() {
-        // Code to hide the waiting screen
-        System.out.println("Match found. Hiding waiting screen.");
-    }
+//    // Sample waiting screen methods
+//    private void showWaitingScreen(String message) {
+//        // Code to show a modal dialog, overlay, or dedicated waiting screen
+//        System.out.println(message);
+//    }
+//
+//    private void hideWaitingScreen() {
+//        // Code to hide the waiting screen
+//        System.out.println("Match found. Hiding waiting screen.");
+//    }
 
 
 

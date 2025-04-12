@@ -2,6 +2,7 @@ package ca.ucalgary.seng.p3.server.leadmatch;
 
 import java.util.*;
 
+
 public class PlayerStatData {
 
     private int overallGamesPlayed;
@@ -22,7 +23,7 @@ public class PlayerStatData {
                           Map<String, GameStats> gameStats, List<MatchData> matchHistory) {
         this.overallGamesPlayed = overallGamesPlayed;
         this.overallGamesWon = overallGamesWon;
-        this.overallWinRate = this.setMatchWinRate();
+        setMatchWinRate();
         this.gameStats = gameStats;
         this.matchHistory = matchHistory;
     }
@@ -70,7 +71,7 @@ public class PlayerStatData {
     public void addWin(String gameType) {
         this.overallGamesPlayed ++;
         this.overallGamesWon ++;
-        overallWinRate = setMatchWinRate();
+        setMatchWinRate();
         GameStats game = getGameStats(gameType);
         game.addWin();
     }
@@ -81,7 +82,7 @@ public class PlayerStatData {
      */
     public void addLoss(String gameType) {
         this.overallGamesPlayed ++;
-        overallWinRate = setMatchWinRate();
+        setMatchWinRate();
         GameStats game = getGameStats(gameType);
         game.addLoss();
     }
@@ -96,7 +97,7 @@ public class PlayerStatData {
      */
     public void addMatch(String playerUsername, String opponentUsername, String gameType, String outcome, int turns) {
         MatchData match = new MatchData(playerUsername, opponentUsername, gameType, outcome, turns);
-        //this.matchHistory.addFirst(match);
+        this.matchHistory.addFirst(match);
         if (this.matchHistory.size() > 20) {
             this.matchHistory = this.matchHistory.subList(0, 20);
         }
@@ -104,9 +105,8 @@ public class PlayerStatData {
 
 
     // Helper to calculate winrate whenever it changes
-    private double setMatchWinRate() {
+    private void setMatchWinRate() {
         this.overallWinRate = Math.floor((double)overallGamesWon / (double)overallGamesPlayed * 10000) / 100;
-        return 0;
     }
 
 }
