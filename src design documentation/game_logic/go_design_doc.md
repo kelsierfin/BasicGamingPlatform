@@ -15,6 +15,69 @@ This Go game is a console-based implementation of the traditional board game Go.
 -   Simple user interaction via command-line interface
 
 ---
+```mermaid
+classDiagram
+    class GoGame {
+        - List~Player~ players
+        - Board board
+        + main(String[])
+        + runGame()
+        + handleInput()
+    }
+
+    class Board {
+        - Stone[][] matrix
+        - int state
+        - int consecutivePass
+        + initialize(Board)
+        + placeStone(int, int, int)
+        + checkSurround()
+        + checkState()
+        + calculateWinner()
+        + getAvailablePositions() List~Position~
+        + passTurn()
+        + surrender(int)
+    }
+
+    class Stone {
+        - int color
+        - int x
+        - int y
+        + getColor() int
+        + setColor(int)
+        + getX() int
+        + setX(int)
+        + getY() int
+        + setY(int)
+    }
+
+    class Player {
+        - int team
+        - int UCID
+        - String password
+        + getTeam() int
+        + setTeam(int)
+        + getUCID() int
+        + setUCID(int)
+        + getPassword() String
+        + setPassword(String)
+        + placeStone(int, int, Board)
+        + surrender(Board)
+    }
+
+    class PlayerDataManager {
+        + savePlayers(List~Player~, String)
+        + loadPlayers(String) List~Player~
+    }
+
+    GoGame --> Player : uses
+    GoGame --> Board : uses
+    Player --> Board : interacts with
+    Board --> Stone : contains
+    PlayerDataManager --> Player : manages
+
+
+```
 
 ## Detailed Class Specifications
 
