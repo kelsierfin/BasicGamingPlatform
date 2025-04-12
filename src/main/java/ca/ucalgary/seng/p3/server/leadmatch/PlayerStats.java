@@ -84,8 +84,8 @@ public class PlayerStats {
         // Update the database with the new mmr numbers and player stats
         player1gstats.setELO(mmr1);
         player2gstats.setELO(mmr2);
-        DatabaseStub.updateStats(gameType, player1stats);
-        DatabaseStub.updateStats(gameType, player2stats);
+        DatabaseStub.updateStats(player1, player1stats);
+        DatabaseStub.updateStats(player2, player2stats);
         Leaderboard.updateRankings(gameType);
     }
 

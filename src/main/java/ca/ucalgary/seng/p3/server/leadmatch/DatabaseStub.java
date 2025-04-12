@@ -180,6 +180,11 @@ public class DatabaseStub {
                 int i = 17;
                 List<MatchData> matchHistory = playerStatData.getMatchHistory();
                 for (MatchData match : matchHistory) {
+                    if(stat.length < i){
+                        String[] stat2 = new String[stat.length + 4]; // increases stat size by 4
+                        System.arraycopy(stat, 0, stat2, 0, stat.length); // Copy elements from oldArray to newArray
+                        stat = stat2;
+                    }
                     stat[i] = match.getOpponentUsername();
                     stat[i+1] = match.getGameType();
                     stat[i+2] = match.getOutcome();
