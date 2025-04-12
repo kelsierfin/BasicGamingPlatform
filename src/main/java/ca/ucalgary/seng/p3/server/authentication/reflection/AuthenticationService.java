@@ -116,6 +116,102 @@ public class AuthenticationService {
             return new RegistrationResult(false, "Registration error: " + e.getMessage());
         }
     }
+    /**
+     * Checks if an email exists in the system
+     *
+     * @param email The email to check
+     * @return EmailCheckResult containing the check status and message
+     */
+    public EmailCheckResult checkEmail(String email) {
+        try {
+            List<String[]> accounts = ResetCredentials.loadAccounts();
+            String[] account = ResetCredentials.findAccountByEmail(accounts, email);
+
+            if (account != null) {
+                return new EmailCheckResult(true, "Email found in the system", email);
+            } else {
+                return new EmailCheckResult(false, "No account found with this email", null);
+            }
+        } catch (Exception e) {
+            return new EmailCheckResult(false, "Error checking email: " + e.getMessage(), null);
+        }
+    }
+
+    /**
+     * Resets user credentials (username and/or password)
+     *
+     * @param newUsername The new username (null if not changing)
+     * @param newPassword The new password (null if not changing)
+     * @param email The email to identify the account
+     * @return CredentialResetResult containing the reset status and message
+     */
+    public CredentialResetResult resetCredentials(String newUsername, String newPassword, String email) {
+        try {
+            List<String[]> accounts = ResetCredentials.loadAccounts();
+            String[] account = ResetCredentials.findAccountByEmail(accounts, email);
+
+            if (account == null) {
+                return new CredentialResetResult(false, "No account found with this email");
+            }
+
+            // Check if new username is provided and valid
+            if (newUsername != null && !newUsername.isEmpty()) {
+                // Check if username is already taken (excluding the current user)
+                if (ResetCredentials.isUsernameTaken(accounts, newUsername) &&
+                        !newUsername.equals(account[0])) {
+                    return new CredentialResetResult(false, "Error: username already taken");
+                }
+                account[0] = newUsername; // Update username
+            }
+
+            // Check if new password is provided and valid
+            if (newPassword != null && !newPassword.isEmpty()) {
+                if (!ResetCredentials.isValidPassword(newPassword)) {
+                    return new CredentialResetResult(false,
+                            "Error: password must be at least 8 characters, include an uppercase letter and a digit");
+                }
+                account[1] = PasswordHasher.generateStorablePassword(newPassword); // Update password
+            }
+
+            // Save the updated accounts
+            ResetCredentials.saveAccounts(accounts);
+
+            return new CredentialResetResult(true, "Credentials updated successfully");
+        } catch (Exception e) {
+            return new CredentialResetResult(false, "Error resetting credentials: " + e.getMessage());
+        }
+    }
+
+// Add these result classes at the end of the AuthenticationService class
+
+    public static class EmailCheckResult {
+        private final boolean success;
+        private final String message;
+        private final String email;
+
+        public EmailCheckResult(boolean success, String message, String email) {
+            this.success = success;
+            this.message = message;
+            this.email = email;
+        }
+
+        public boolean isSuccess() { return success; }
+        public String getMessage() { return message; }
+        public String getEmail() { return email; }
+    }
+
+    public static class CredentialResetResult {
+        private final boolean success;
+        private final String message;
+
+        public CredentialResetResult(boolean success, String message) {
+            this.success = success;
+            this.message = message;
+        }
+
+        public boolean isSuccess() { return success; }
+        public String getMessage() { return message; }
+    }
 
     /**
      * Generate an MFA code

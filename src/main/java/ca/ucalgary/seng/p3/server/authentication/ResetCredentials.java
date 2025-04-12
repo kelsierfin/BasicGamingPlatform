@@ -8,7 +8,7 @@ import java.util.*;
  * User data is stored in a CSV file named "accounts.csv".
  */
 public class ResetCredentials {
-    private static final String FILE_NAME = "accounts.csv"; // Contains user account data
+    private static final String FILE_NAME = "src/main/resources/Database/accounts.csv"; // Contains user account data
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);

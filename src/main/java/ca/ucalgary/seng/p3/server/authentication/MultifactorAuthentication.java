@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 public class MultifactorAuthentication {
 
     // Name of the CSV file used as the account database
-    private static final String FILE_NAME = "accounts.csv";
+    private static final String FILE_NAME = "src/main/resources/Database/accounts.csv";
 
     // MFA code validity: 1 hour
     private static final long CODE_VALIDITY_DURATION_MS = TimeUnit.HOURS.toMillis(1);

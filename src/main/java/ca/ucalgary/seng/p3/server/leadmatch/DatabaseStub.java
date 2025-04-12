@@ -12,7 +12,7 @@ import java.util.HashMap;
  */
 public class DatabaseStub {
 
-    private static final String FILE_NAME = "stats.csv";
+    private static final String FILE_NAME = "src/main/resources/Database/stats.csv";
 
     /**
      * reads the stats.csv file and puts each line into a list of arrays of strings with each of the arrays of strings
