@@ -26,7 +26,7 @@ All games enforce standard rulesets:
 - **Go**: Stone placement and territory scoring
 
 ### Multiplayer Services
-- ELO-based matchmaking (initial rating: 1000)
+- ELO-based matchmaking
 - TCP game state synchronization
 - UDP real-time chat
 - CSV data storage for:
