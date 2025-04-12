@@ -8,7 +8,7 @@ public class ProfileEditor {
     private Scanner scanner;
 
     public ProfileEditor() {
-        this("accounts.csv"); // default filename
+        this("src/main/resources/Database/accounts.csv"); // default filename
     }
 
     ProfileEditor(String fileName) {

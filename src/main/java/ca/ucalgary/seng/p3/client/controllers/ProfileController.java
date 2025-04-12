@@ -57,11 +57,12 @@ public class ProfileController {
     String currentUsername = LogInController.getCurrentUsername();
 
     // Add email validation method to replace dependency on AccountRegistrationCSV
-    private boolean isValidEmail(String email) {
+    boolean isValidEmail(String email) {
         if (email == null || email.isEmpty()) return false;
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
-        Pattern pattern = Pattern.compile(emailRegex);
-        return pattern.matcher(email).matches();
+        String[] parts = email.split("@");
+        return parts.length == 2 &&
+                !parts[0].isEmpty() &&
+                !parts[1].isEmpty();
     }
 
     // Add password validation method to replace dependency on AccountRegistrationCSV
@@ -384,6 +385,48 @@ public class ProfileController {
             showAlert(Alert.AlertType.CONFIRMATION, "Error", "Failed to enable MFA.");
             return false;
         }
+    }
+    @FXML
+    private void handleLogout() {
+        // Ask for confirmation
+        Alert confirmLogout = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmLogout.setTitle("Logout");
+        confirmLogout.setHeaderText("Are you sure you want to logout?");
+        confirmLogout.setContentText("You will be returned to the login screen.");
+
+        Optional<ButtonType> result = confirmLogout.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            try {
+                // Get the current username
+                String username = LogInController.getCurrentUsername();
+
+                // Call the logout method through the AuthReflector
+                ca.ucalgary.seng.p3.server.authentication.reflection.AuthenticationService.LogoutResult logoutResult =
+                        authReflector.logout(username);
+
+                if (logoutResult.isSuccess()) {
+                    // Clear current user session
+                    LogInController.setCurrentUsername(null);
+
+                    // Navigate to landing page
+                    PageNavigator.navigateTo("landing");
+                } else {
+                    // Show error if logout failed
+                    showAlert(Alert.AlertType.ERROR, "Logout Failed", logoutResult.getMessage());
+                }
+            } catch (Exception e) {
+                showAlert(Alert.AlertType.ERROR, "Logout Error", "An error occurred during logout: " + e.getMessage());
+            }
+        }
+    }
+    @FXML
+    private void handleChangeAvatar() {
+        // Future implementation for avatar changing
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Feature not available");
+        alert.setHeaderText(null);
+        alert.setContentText("Avatar changing functionality is not yet implemented.");
+        alert.showAndWait();
     }
 
     @FXML

@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 
 public class UserLogout {
-    public static final String SESSION_FILE = "session.csv"; // stores active user sessions
+    public static final String SESSION_FILE = "src/main/resources/database/session.csv"; // stores active user sessions
 
     public static void main(String[] args) throws IOException {
         logout(); // Initiates logout process

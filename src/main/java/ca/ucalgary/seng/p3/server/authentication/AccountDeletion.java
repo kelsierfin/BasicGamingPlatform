@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class AccountDeletion {
-    private static final String CSV_FILE_PATH = "accounts.csv";
+    private static final String CSV_FILE_PATH = "src/main/resources/database/accounts.csv";
 
     public static void main(String[] args) {
 

@@ -5,8 +5,8 @@ import java.util.*;
 import ca.ucalgary.seng.p3.server.authentication.reflection.AuthenticationService;
 
 public class UserLogin {
-    public static final String FILE_NAME = "accounts.csv"; // Stores registered user credentials
-    public static final String SESSION_FILE = "session.csv"; // Stores session data
+    public static final String FILE_NAME = "src/main/resources/database/accounts.csv"; // Stores registered user credentials
+    public static final String SESSION_FILE = "src/main/resources/database/session.csv"; // Stores session data
 
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);

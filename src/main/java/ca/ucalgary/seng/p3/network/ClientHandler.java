@@ -238,6 +238,7 @@ public class ClientHandler implements Runnable {
         return new Response(profileResult.isSuccess(), profileResult.getMessage(), profileResult.getEmail(),
                 String.valueOf(profileResult.isMfaEnabled()));
     }
+    
 
     // Handle check account lock action
     private Response handleCheckAccountLock(AuthenticationService authService, Request request) {
