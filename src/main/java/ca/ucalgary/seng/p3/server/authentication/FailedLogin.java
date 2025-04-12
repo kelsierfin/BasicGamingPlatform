@@ -81,7 +81,7 @@ public class FailedLogin {
         }
 
         String storedPassword = accounts.get(username);
-        if (!accounts.containsKey(username) || !PasswordHasher.verifyPassword(password, storedPassword)) {
+        if (accounts.containsKey(username) || !PasswordHasher.verifyPassword(password, storedPassword)) {
             int attempts = failedAttempts.merge(username, 1, Integer::sum);
             if (attempts >= MAX_ALLOWED_ATTEMPTS) {
                 lockAccount(username);
@@ -89,6 +89,9 @@ public class FailedLogin {
             }
             return new AuthResult(false, "Invalid credentials. " +
                     (MAX_ALLOWED_ATTEMPTS - attempts) + " attempt(s) left.");
+        }else if (!accounts.containsKey(username)) {
+            // Don't increment counter for non-existent usernames
+            return new AuthResult(false, "Invalid credentials.");
         }
         failedAttempts.remove(username);
         return new AuthResult(true, "Login successful.");

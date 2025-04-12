@@ -5,20 +5,16 @@ import ca.ucalgary.seng.p3.network.ClientSocketService;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-import ca.ucalgary.seng.p3.server.authentication.*;
 import javafx.scene.layout.VBox;
 
-import java.io.IOException;
-import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 public class ResetCredentialsController {
-
 
     @FXML
     public TextField emailInput;
     String email;
-
 
     @FXML
     public void initialize() {
@@ -35,7 +31,7 @@ public class ResetCredentialsController {
         boolean validEmail = response.isSuccess();
 
         if (validEmail) {
-            String oneTimeCode = MultifactorAuthentication.generateOneTimeCode(5);
+            String oneTimeCode = generateOneTimeCode(5);
             boolean verified = false;
             int attempts = 3;
 
@@ -160,6 +156,15 @@ public class ResetCredentialsController {
         alert.showAndWait();
     }
 
+    // Helper method to generate one-time code (moved from MultifactorAuthentication to avoid direct dependency)
+    private String generateOneTimeCode(int length) {
+        Random random = new Random();
+        StringBuilder codeBuilder = new StringBuilder(length);
+        for (int i = 0; i < length; i++) {
+            codeBuilder.append(random.nextInt(10));
+        }
+        return codeBuilder.toString();
+    }
 
     //directs user back to the Home Page
     public void handleHomeButton() {

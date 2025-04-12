@@ -104,6 +104,12 @@ public class ClientHandler implements Runnable {
                 case "getLeaderboardPositions":
                     response = handleGetLeaderboardPositions(leaderboardService, request);
                     break;
+                case "checkEmail":
+                    response = handleCheckEmail(authService, request);
+                    break;
+                case "resetCredentials":
+                    response = handleResetCredentials(authService, request);
+                    break;
 
                 default:
                     response = new Response(false, "Action not supported: " + request.getAction(), null, null);
@@ -156,6 +162,28 @@ public class ClientHandler implements Runnable {
         } else {
             return new Response(result.isSuccess(), result.getMessage(), null, null);
         }
+    }
+    // Handle check email action
+    private Response handleCheckEmail(AuthenticationService authService, Request request) {
+        String email = request.getExtra(); // Email is stored in the extra field
+
+        // Call the AuthenticationService to check the email
+        AuthenticationService.EmailCheckResult result = authService.checkEmail(email);
+
+        return new Response(result.isSuccess(), result.getMessage(), null, null);
+    }
+
+    // Handle reset credentials action
+    private Response handleResetCredentials(AuthenticationService authService, Request request) {
+        String newUsername = request.getUsername();
+        String newPassword = request.getPassword();
+        String email = request.getExtra();
+
+        // Call the AuthenticationService to reset the credentials
+        AuthenticationService.CredentialResetResult result =
+                authService.resetCredentials(newUsername, newPassword, email);
+
+        return new Response(result.isSuccess(), result.getMessage(), null, null);
     }
 
     // Handle login action
