@@ -67,18 +67,18 @@ class Print {
 %% Player Abstractions
 class Player {
     <<interface>>
-    +getMove(Board): int
-    +getMarker(): String
+    +getMove(Board) int
+    +getMarker() String
 }
 
 class HumanPlayer {
-    +getMove(Board): int
-    +getMarker(): String
+    +getMove(Board) int
+    +getMarker() String
 }
 
 class PlayerVsPlayer {
-    +getMove(Board): int
-    +getMarker(): String
+    +getMove(Board) int
+    +getMarker() String
 }
 
 
@@ -92,6 +92,7 @@ Game --> Player : currentPlayer
 Game --> Player : winner
 HumanPlayer --> Player
 PlayerVsPlayer --> Player
+
 ```
 
 ### `GameRunner`
