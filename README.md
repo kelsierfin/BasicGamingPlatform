@@ -1,52 +1,90 @@
-# Online Multiplayer Board Game Platform
+# Online Multiplayer Game Platform (OMG)
 
-Welcome to the **Online Multiplayer Board Game Platform (OMG)**! This project aims to provide a framework where users can:
+## Platform Objective
+OMG enables users to play four classic board games (Chess, Connect Four, Tic-Tac-Toe, and Go) with secure multiplayer functionality. The system provides:
+- Account creation and authentication
+- Competitive matchmaking
+- Persistent game statistics
+- In-game chat functionality
 
-1. Register, log in, and manage personal profiles  
-2. Match with other players using a matchmaking system  
-3. Play several board games (e.g., Chess, Tic-Tac-Toe, Connect Four) with real-time or turn-based interactions  
-4. Track and compare performance on leaderboards  
+## Implemented Features
 
-**Note**: The real database or fully hosted servers are stubs or placeholders.
+### Authentication System
+- User registration with password complexity requirements:
+  - 8+ characters
+  - 1+ uppercase letter
+  - 1+ number
+  - No spaces
+- Account recovery via simulated email OTP
+- Session management for registered users
 
----
+### Game Implementations
+All games enforce standard rulesets:
+- **Chess**: Valid piece movements, check detection
+- **Connect Four**: Column drops with win condition checking
+- **Tic-Tac-Toe**: 3x3 grid with win/draw detection
+- **Go**: Stone placement and territory scoring
 
-## Table of Contents
-1. [Project Overview](#project-overview)  
-2. [Features](#features)  
+### Multiplayer Services
+- ELO-based matchmaking
+- TCP game state synchronization
+- UDP real-time chat
+- CSV data storage for:
+  - User credentials (`accounts.csv`)
+  - Active sessions (`session.csv`)
+  - Game statistics (`stats.csv`)
 
----
+## How to Run This Program
 
-## Project Overview
+### Requirements
+- **Java 23 SDK**
+- **JavaFX 23.0.1 SDK** ([download here](https://gluonhq.com/products/javafx/))
+- **JUnit 5.8.1** (only required for running tests, not needed for the JAR)
 
-This project is part of an academic assignment for **SENG300**. It involves designing and implementing an online platform where players can discover and join multiple board games under one system. While the full hosting and database layers are not implemented, we have created clear stubs and interfaces to show where integration with external services would occur.
+### Run from the Provided JAR
 
-### Key Objectives
-- Demonstrate **multiplayer** functionality with turn-taking mechanics  
-- Provide a **GUI** that players can use to log in, start or join a game, and view leaderboards  
-- Showcase **extensible** design so additional games can be integrated in future iterations  
-- Include comprehensive **planning, design, and test documentation**  
+#### Instructions from Windows
+If you've installed JavaFX SDK to the default location:
 
----
+java --module-path "C:\Program Files\Java\javafx-sdk-23.0.1\lib" --add-modules javafx.controls,javafx.fxml -jar seng-w25-project.jar
 
-## Features
+Make sure you adjust the path if your JavaFX SDK is installed elsewhere.
 
-- **User Authentication**  
-  Stubs for registration and login (profiles, friend lists, user stats).  
 
-- **Matchmaking**  
-  Basic skill-based or open-lobby pairing.  
+### First-Time Setup
+The system will automatically generate required data files:
+- `data/accounts.csv` for user accounts
+- `data/session.csv` for active sessions
+- `data/stats.csv` for game statistics
 
-- **Board Game Implementation**  
-  - **Chess** (with turn-taking, capturing, check/checkmate detection)  
-  - **Tic-Tac-Toe** (simple, to validate core features)  
-  - **Connect Four** or any other chosen game (for more complex real-time play) 
-  - **Go** 
+## Usage Instructions
+1. Launch the application
+2. Register an account or login as guest
+3. Select a game from the lobby
+4. Choose play mode:
+   - Private match (invite by username)
+   - Public lobby
+   - Ranked matchmaking
+5. Game results automatically update player statistics
 
-- **Leaderboard**  
-  Track wins, losses, and performance stats.
 
-- **In-Game Chat**  
-  Real-time or turn-based messaging during matches.  
+## Project Structure
 
----
+```mermaid
+flowchart TD
+    A[src] --> B[main]
+    B --> C[java]
+    B --> D[resources]
+    C --> E[ca/ucalgary/seng/p3]
+    E --> P[network]
+    E --> F[client]
+    E --> G[server]
+    F --> H[controllers]
+    G --> I[authentication]
+    G --> J[gamelogic]
+    G --> K[leadmatch]
+    J --> L[chess]
+    J --> M[go]
+    J --> N[tictactoe]
+    J --> O[connect4]
+```
