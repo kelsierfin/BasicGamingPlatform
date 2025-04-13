@@ -59,7 +59,7 @@ The system will automatically generate required data files:
 
 ## Usage Instructions
 1. Launch the application
-2. Register an account or login as guest
+2. Register an account or login as a guest
 3. Select a game from the lobby
 4. Choose play mode:
    - Private match (invite by username)
