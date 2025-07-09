@@ -10,7 +10,6 @@ import javafx.util.Duration;
 public class AboutController {
     @FXML
     private VBox card1, card2, card3;
-
     @FXML
     public void initialize() {
         // Call the animate method for each card with their start and end positions.
