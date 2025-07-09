@@ -21,6 +21,5 @@ module ca.ucalgary.seng.p3.client{
     exports ca.ucalgary.seng.p3.client.game_to_gui_commands.tictactoe to javafx.fxml;
     exports ca.ucalgary.seng.p3.client.gamelogic.chess to javafx.fxml;
     exports ca.ucalgary.seng.p3.client.gamelogic.connect4 to javafx.fxml;
-    exports ca.ucalgary.seng.p3.client.gamelogic.go to javafx.fxml;
     exports ca.ucalgary.seng.p3.client.gamelogic.tictactoe to javafx.fxml;
 }
